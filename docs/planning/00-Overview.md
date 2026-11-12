@@ -85,9 +85,9 @@ So for this lab we are doing a **new, proper build**. The faculty already knows 
 7. HR approval list and a log of every decision
 8. Tests, and a proper way to measure the AI
 
-**Only if time allows:** hourglass chart, question-answering for cover colleagues, file upload, deleting data after a case closes.
+**Only if time allows:** hourglass chart, question-answering for cover colleagues, file upload, deleting data after a case closes, and **voice input** (first in line once HOLD works; typed Banglish already gives us the AI interview, so voice is an extra way to talk to it, not a new AI capability).
 
-**We will not build:** voice input, calendar or email integration, AI that acts alone, anything that scores or predicts people, payments.
+**We will not build:** calendar or email integration, AI that acts alone, anything that scores or predicts people, payments.
 
 **Honest warning:** the core version needs about 183 to 269 hours, plus about 20 to 35 more because we use React and FastAPI. Four people over seven weeks have about 170 to 225 hours. So three simplifications apply **from day one**:
 

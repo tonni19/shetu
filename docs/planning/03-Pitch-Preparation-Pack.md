@@ -305,7 +305,7 @@ Each member commits from their own GitHub account, works on a feature branch per
 | What is the hourglass? | The shape her workload takes: narrowing before leave, held by others during it, widening on return. Map, Hold and Fit manage those three parts. No fixed percentages; each plan is agreed individually |
 | Does it need payments? | No. It is licensed to an employer and invoiced; the application has no payment flow |
 | Is maternity data sensitive? | Yes, so we collect almost none: duties, dates and the arrangement she needs. Never the reason, never medical detail |
-| What did you cut? | Voice, live integrations, autonomous agents, and anything that scores people |
+| What did you cut? | Live integrations, autonomous agents, and anything that scores people. Voice input is a planned extra for later, not in the first version, because typed Banglish already gives us the AI interview |
 | Did you use AI to write code? | Yes, as the course encourages. Tools and where they were used are recorded in the repository, and every member can explain their code |
 | Who built what? | Each member owns a feature end to end; the commits, pull requests and reviews show it |
 

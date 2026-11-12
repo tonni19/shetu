@@ -28,6 +28,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 1. Proposal presentation on 15 November (slides: `docs/planning/05-Shetu-Proposal-Deck.pptx`). Decide who presents which slides (suggestion in `docs/planning/03-Pitch-Preparation-Pack.md`, section 7.2).
 2. Step 1 of the roadmap (`docs/planning/00-Overview.md`, section 7): assign roles; create the empty FastAPI + React + SQLite app with login; CI; the AI gateway.
 3. First six fake test cases, then test the AI models and choose one.
+4. Stretch, in order: hourglass chart, then voice input (first stretch feature, after HOLD works).
 
 ## Known problems and open questions
 

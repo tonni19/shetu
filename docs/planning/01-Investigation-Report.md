@@ -827,7 +827,7 @@ A model endpoint; the GitHub repository; synthetic cases written early; agreemen
 | 7 | Report format | Still open |
 | 8 | Live sheet | **Resolved**: same as the local workbook |
 | 9 | Scope of leave | Assumed maternity-first, built for any long leave. Confirm |
-| 10 | Voice | Assumed out of scope. Confirm |
+| 10 | Voice | **Resolved 12 November:** a stretch feature, first in line after HOLD works (decision 16) |
 
 The current list of decisions needed is in section 26.
 
@@ -1194,7 +1194,7 @@ Rule for every slide and report: say "we will build" for categories 2 and 3, "th
 5. File upload with text extraction (the MVP accepts pasted text).
 6. Close-and-purge.
 
-**Stretch.** Role-cycle suggestions; return briefing; follow-up check after return; a task or calendar CSV as a source; HR overview across leaves; Bangla voice.
+**Stretch.** Role-cycle suggestions; return briefing; follow-up check after return; a task or calendar CSV as a source; HR overview across leaves; Bangla voice (first in line, after HOLD works).
 
 **Explicitly excluded.** Live calendar, email or HR-system integrations; autonomous agents; any score, ranking or prediction about a person; fixed workload percentages; payments; multiple organisations; mobile apps; model fine-tuning; a vector database.
 
@@ -1532,7 +1532,7 @@ Listed in section 26. Until then I assume nothing about its contents, branch pro
 |---|---|
 | Four members, about 6 to 8 hours each per week, about seven weeks | Section 21 capacity and reductions change |
 | The lab sequence in the Section C outline applies to Section E | Roadmap checkpoints move |
-| Typed input only; no voice | Adds a speech model and about 15 to 25 hours |
+| Typed input only in the first version; voice is a stretch feature | With a separate speech model, about 15 to 25 hours. A cheaper route is to send recorded audio to the same hosted model through the gateway, roughly 6 to 12 hours. That estimate is unverified, and Bangla speech accuracy must be tested in the model comparison first |
 | Maternity-first story, built for any long leave | Wording only |
 | One organisation, demo run locally | Hosting work is added |
 | A Gemini free-tier key is available for development | Start on the local model, or a paid key |
