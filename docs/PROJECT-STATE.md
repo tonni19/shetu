@@ -4,13 +4,13 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-12 (evening), after PRs #4 and #6 were merged. Still no code.
+Last updated: 2026-11-12 (night), after the instructor email was sent. Still no code.
 
 ## Milestones
 
 | Checkpoint | Goal | Status |
 |---|---|---|
-| Proposal, 15 Nov 2026 | Pitch | Slides (10) and Excel draft ready in `docs/planning/`; team to review and rehearse. A feedback request for the instructor is prepared (one PDF, kept outside GitHub); whether it has been sent is not recorded here |
+| Proposal, 15 Nov 2026 | Pitch | Slides (10) and Excel draft ready in `docs/planning/`; team to review and rehearse. The feedback request to the instructor (one PDF, kept outside GitHub) was **sent by the team** (reported by Ahmad); **no reply yet**. If there is no reply, present as planned |
 | Update 1 (30%) | MAP works: interview, Role Map, a forgotten duty found | Not started |
 | Update 2 (60%) | HOLD works: a change typed in plain words is understood and re-planned | Not started |
 | Final (100%) | All three stages, tests green, AI measured | Not started |
