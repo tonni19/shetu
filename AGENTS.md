@@ -84,13 +84,29 @@ The member you are helping must be able to **explain and modify this code in fro
 - Never leave commented-out code. Delete it.
 - After building something, explain it to the member in plain language: what it does, how data flows through it, which parts are AI and which are ordinary code, and what an instructor might ask.
 
+## Keep the project state current
+
+`docs/PROJECT-STATE.md` must match reality **whenever the state of the project changes, not only when code changes.** Update it (and `docs/DECISIONS.md` if a decision was made) after any of these:
+
+- a pull request is merged (add it to "Merged so far", and update "In progress", "What works now" and "Next up")
+- a decision is made or changed
+- someone joins or leaves, or access, roles or ownership change
+- a plan, subscription or tool changes (for example GitHub Pro becomes active)
+- feedback, a deadline or a date arrives from the instructor
+- a blocker appears or is resolved
+- a milestone is reached or a date passes
+
+**How.** If the change happens inside a pull request, update the file in that pull request. If it happens outside one (a merge, an account change, a message), open a small "Update project state" pull request **the same day**. Change the "Last updated" line every time.
+
+**For AI assistants.** Before you end a session, ask yourself: did anything change that is not in the project state? If yes, update it, or tell the member exactly what to add. Write only what you have verified; if you could not verify something, write "unconfirmed". Never leave the file older than the work.
+
 ## Before you say a task is finished
 
 Do all of these in the same pull request as the code:
 
 1. Tests pass.
 2. Add a worklog note in `docs/worklog/` (see `docs/worklog/README.md`).
-3. Update `docs/PROJECT-STATE.md`.
+3. Update `docs/PROJECT-STATE.md` (see "Keep the project state current" above).
 4. Update `docs/CODE-EXPLANATION.md` if a module was added or changed.
 5. Add a line to `AI-USAGE.md`: what you (the AI) helped with.
 6. Add to `docs/DECISIONS.md` if a decision was made.
