@@ -5,3 +5,4 @@ The course asks us to record which AI tools we used and where. Add a row in ever
 | Date | Member | Tool | What it helped with | What the member checked or changed |
 |---|---|---|---|---|
 | 2026-11-12 | Ahmad Maruf Hossain | Claude Code (AI coding assistant) | Investigation of the competition prototype and course documents; planning documents in `docs/planning/`; proposal slides; repository starter files | Reviewed and approved the direction, scope, roadmap, slides and team details; corrected the slide design and structure |
+| 2026-11-12 | Ahmad Maruf Hossain | Claude Code (AI coding assistant) | Checked repository activity and permissions; reviewed and merged PR #2 on the member's request; drafted the project state, decisions and worklog updates in Issue #3 | Chose to approve and merge from his own account; reviewed the changes before they were proposed |
