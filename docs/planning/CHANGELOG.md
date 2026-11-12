@@ -1,5 +1,12 @@
 # Changelog
 
+## Voice input corrected: 12 November 2026
+
+| Change | Why |
+|---|---|
+| Voice input is now described everywhere as a stretch feature, first in line after HOLD works, not as dropped. Overview, pitch pack Q&A, report assumptions and the plan slide updated; decision 16 added | The report and pitch pack already said stretch, but the overview, the slide and the instructor summary said it was cut. They now agree |
+| A cheaper way to build voice is noted: send recorded audio to the same hosted model through the gateway (about 6 to 12 hours, unverified) | The earlier estimate assumed a separate speech model |
+
 ## Moved into the team repository: 12 November 2026
 
 | Change | Why |
