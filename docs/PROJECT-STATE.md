@@ -34,7 +34,6 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 - Hosted AI provider not chosen (decided by the bake-off).
 - Dates of Update 1 and Update 2 not known.
 - **`main` cannot be protected:** GitHub branch protection needs a public repo or GitHub Pro. Until then, the rule "no direct pushes to `main`, every change through a reviewed pull request" is kept by agreement. Tonni can get GitHub Pro free through the GitHub Student Developer Pack, which would allow protection.
-- Mohammad Mahadi Hasan (`HasanGMS0047`) has not yet accepted the collaborator invitation.
 - Member roles are not assigned yet.
 
 ## Things every assistant should know right now
