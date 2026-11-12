@@ -1,0 +1,13 @@
+# Shetu, explained: the interactive learning guide
+
+Open **`index.html`** in any browser (double-click it after you pull). It works offline, needs nothing installed, and saves your progress in your own browser only.
+
+It teaches the whole project in 14 short lessons: the problem, Map / Hold / Fit, the hourglass, evidence, who does what (AI, rules, people), the HOLD re-planning flow, how the app is built, the AI gateway, how we measure the AI, privacy, GitHub teamwork, who builds what, the course and the presentation, and a final exam. It has simulators, sorting games, quizzes and a glossary.
+
+## Keep it true
+
+The guide teaches the **plan**. When a decision or the design changes, update the matching lesson in the same pull request, the same way you update `docs/PROJECT-STATE.md`. When something is actually built, change the lesson's wording from "planned" to "built" and say where the code is. Never let the guide say something is built when it is not.
+
+## How it is made
+
+One self-contained HTML file: the text, the styles, the Plus Jakarta Sans font (subset, embedded) and plain JavaScript are all inside it. No libraries, no network. Edit it as a normal text file. The lessons are the `<section class="lesson">` blocks, the quiz questions are the `QB` object near the top of the script, and the glossary is the `GLOSS` list.

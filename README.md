@@ -26,6 +26,7 @@ AI proposes, rules check, people decide.
 |---|---|
 | Understand the whole project quickly | [docs/planning/00-Overview.md](docs/planning/00-Overview.md) |
 | See the proposal slides | [docs/planning/05-Shetu-Proposal-Deck.pdf](docs/planning/05-Shetu-Proposal-Deck.pdf) |
+| Learn the whole project, interactively (best first step for everyone) | Open [docs/learn/index.html](docs/learn/index.html) in your browser after pulling |
 | Know what is done and what is next | [docs/PROJECT-STATE.md](docs/PROJECT-STATE.md) |
 | Write code with an AI assistant | [AGENTS.md](AGENTS.md) first, always |
 | Know why something was decided | [docs/DECISIONS.md](docs/DECISIONS.md) |
@@ -39,6 +40,7 @@ docs/
   PROJECT-STATE.md   What works, who is doing what, what is next. Updated in every pull request
   DECISIONS.md       Settled decisions and their reasons
   worklog/           One short note per pull request
+  learn/             Interactive learning guide: open index.html in a browser
   planning/          The full plan: overview, investigation report, pitch pack, slides, Excel draft
     reference/       Course documents, competition materials, logos, old prototype code
 .github/             Pull request template

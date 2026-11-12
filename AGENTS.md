@@ -60,6 +60,7 @@ docs/
   PROJECT-STATE.md   current state; update in every pull request
   DECISIONS.md       settled decisions
   worklog/           one note per pull request
+  learn/             interactive learning guide (index.html); keep it true when the design changes
   planning/          the full project plan, slides and reference material (read-only background)
 ```
 
@@ -89,7 +90,7 @@ The member you are helping must be able to **explain and modify this code in fro
 `docs/PROJECT-STATE.md` must match reality **whenever the state of the project changes, not only when code changes.** Update it (and `docs/DECISIONS.md` if a decision was made) after any of these:
 
 - a pull request is merged (add it to "Merged so far", and update "In progress", "What works now" and "Next up")
-- a decision is made or changed
+- a decision is made or changed (and update the matching lesson in `docs/learn/index.html`, which teaches the design)
 - someone joins or leaves, or access, roles or ownership change
 - a plan, subscription or tool changes (for example GitHub Pro becomes active)
 - feedback, a deadline or a date arrives from the instructor

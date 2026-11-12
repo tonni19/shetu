@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-12 (night), after the instructor email was sent. Still no code.
+Last updated: 2026-11-13, after the interactive learning guide was added. Still no application code.
 
 ## Milestones
 
@@ -17,7 +17,7 @@ Last updated: 2026-11-12 (night), after the instructor email was sent. Still no 
 
 ## What works now
 
-No application code yet. The full plan, slides and Excel draft are in `docs/planning/`.
+No application code yet. The full plan, slides and Excel draft are in `docs/planning/`. An interactive learning guide for the whole team is in `docs/learn/index.html` (open it in a browser; it works offline).
 
 ## In progress
 
