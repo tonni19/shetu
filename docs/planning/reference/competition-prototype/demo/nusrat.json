@@ -1,0 +1,34 @@
+{
+ "_note": "Demo data. Nusrat, Bank Alpha, Rafiq, Tania and Imran are illustrative.",
+ "employee": {"name": "Nusrat Rahman", "role": "Senior Relationship Manager", "company": "Bank Alpha",
+              "manager": "Imran Hossain", "leave_start": "2027-03-01", "leave_end": "2027-08-31", "return": "2027-09-01"},
+ "conversation": [
+  {"q": "Walk me through a normal week. What do you do, and when?",
+   "a": "Ami mainly corporate clients handle kori, around 14 ta account. Every week client der sathe relationship calls thake, mostly Sunday ar Monday, eta office theke kori. Protiti Tuesday sondha 6 ta theke 7:30 porjonto credit pre-meeting hoy, oikhane ami amar clients er loan proposals present kori."},
+  {"q": "Anything monthly, or that needs travel?",
+   "a": "Mashe ekbar Chattogram jai, oikhane amar tin ta client er factory visit korte hoy, usually two days lage. Ar mash sheshe ekta portfolio report CFO office e pathai, eta ghore bose o kora jay."},
+  {"q": "Anything coming up during your leave?",
+   "a": "Haan, clients C, D ar E er trade finance renewals April er 10 tarikh er moddhe due. Oder statements gula shudhu amar email e ache. Rafiq bhai cover korbe bole plan, kintu uni ei client der sathe kokhono kaj koren ni."}
+ ],
+ "job_description": [
+  "Manage a portfolio of corporate clients and weekly relationship calls",
+  "Prepare and present loan proposals at the weekly credit pre-meeting",
+  "Visit client sites outside Dhaka as needed",
+  "Submit the monthly portfolio report to the CFO office",
+  "Complete the quarter-end loan classification review for her portfolio",
+  "Process trade finance renewals for assigned clients"
+ ],
+ "team": [
+  {"name": "Rafiq", "role": "Relationship Manager", "spare_hours": 2, "knows_clients": ["A", "B"]},
+  {"name": "Tania", "role": "Relationship Manager", "spare_hours": 8, "knows_clients": ["C", "D", "E"]},
+  {"name": "Imran", "role": "Manager", "spare_hours": 3, "knows_clients": ["A", "B", "C", "D", "E"]}
+ ],
+ "policy": {"latest_meeting_end": "17:30", "home_days_per_week": 1, "can_move_internal_meetings": true},
+ "needs": {"leave_by": "17:30", "home_day": "Wednesday", "no_travel_until": "2027-12-31"},
+ "answers": {"quarter_end_review": "Yes, it often runs until 9 pm on the last two days of the quarter."},
+ "hold_log": [
+  {"date": "2027-05-14", "change": "Client F moved to Rafiq after a merger", "by": "Imran", "status": "HR approved", "reason": "Merger of client F's group with an account Rafiq already holds."},
+  {"date": "2027-06-30", "change": "Mid-year review", "by": "HR", "status": "Fair leave rule applied", "reason": "Rated on her pre-leave record, as company policy says."},
+  {"date": "2027-07-20", "change": "Promotion board", "by": "HR", "status": "Considered", "reason": "Eligible and considered on her pre-leave record."}
+ ]
+}

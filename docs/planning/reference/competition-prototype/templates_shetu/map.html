@@ -1,0 +1,32 @@
+{% extends "base.html" %}{% block body %}
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px">
+ <div>
+  <h1>Nusrat's Role Map</h1>
+  <p class="sub">Built by AI from a {{ case.conversation|length }}-question conversation, then cross-checked with her job description.</p>
+  <div class="card" style="margin-top:12px;padding:6px 12px">
+   <table><tr><th>Duty</th><th>When</th><th>Where</th><th>Critical</th></tr>
+   {% for d in res.duties %}
+   <tr style="{{ 'background:#FFF2CF' if res.alerts and d.duty==res.alerts[0].duty }}">
+    <td><b>{{ d.duty }}</b>{% if d.source!='conversation' %} <span class="pill" style="background:var(--lav-l);color:#BF092F">from job description</span>{% endif %}
+      <div class="quote">"{{ d.quote[:90] }}{{ '…' if d.quote|length>90 }}"</div></td>
+    <td>{{ d.day or d.frequency }}{% if d.start %}<br><span style="color:var(--muted)">{{ d.start }}–{{ d.end }}</span>{% endif %}{% if d.due %}<br><span style="color:#BF092F;font-weight:700">due {{ d.due }}</span>{% endif %}</td>
+    <td>{{ d.place }}</td>
+    <td>{% if d.critical=='high' %}<span class="pill" style="background:var(--coral);color:#fff">High</span>{% else %}<span class="pill" style="background:#EEF1F6;color:var(--muted)">{{ d.critical|title }}</span>{% endif %}</td>
+   </tr>{% endfor %}</table>
+  </div>
+ </div>
+ <div style="display:grid;gap:12px;align-content:start">
+  {% for m in res.missing %}
+  <div class="card" style="border:2px solid var(--lav)"><p class="k" style="color:var(--lav)">Not mentioned · in job description</p>
+   <p style="font-weight:700;margin-top:6px">{{ m.jd_duty }}</p><p style="margin-top:6px;font-size:13px">Shetu asks: <i>"{{ m.question }}"</i></p></div>
+  {% endfor %}
+  {% for a in res.alerts %}
+  <div class="card" style="border:2px solid var(--sun)"><p class="k" style="color:#A86F00">Dropped-work alert</p>
+   <p style="font-weight:700;margin-top:6px">{{ a.duty }} due {{ a.due }}, during her leave</p>
+   <p style="font-size:13px;color:var(--muted);margin-top:4px">{{ a.reason }}.</p>
+   {% if a.suggest %}<p style="font-size:13px;margin-top:8px">Suggested cover: <b>{{ a.suggest }}</b> <span class="pill" style="background:var(--mint);color:var(--teal-d)">knows the clients</span></p>{% endif %}
+   <div style="display:flex;gap:8px;margin-top:10px"><span class="btn">Confirm</span><span class="btn g">Change</span></div></div>
+  {% endfor %}
+ </div>
+</div>
+{% endblock %}

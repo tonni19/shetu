@@ -1,0 +1,12 @@
+{% extends "me_base.html" %}{% block body %}
+<div><p class="k">Map · before leave</p><h1 style="margin-top:6px">Tell Shetu about your work</h1><p class="sub">Type or speak, in Bangla or English. About 15 minutes.</p></div>
+{% for t in case.conversation %}
+<div class="bub s">{{ t.q }}</div><div class="bub me">{{ t.a }}</div>
+{% endfor %}
+{% for m in res.missing %}<div class="bub s">{{ m.question }}</div><div class="bub me">{{ case.answers.quarter_end_review }}</div>{% endfor %}
+<div style="display:flex;gap:8px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:8px 10px"><i data-lucide="mic" style="color:var(--teal-d)"></i><span style="color:var(--muted);font-size:13.5px;flex:1">Hold to speak…</span><i data-lucide="send" style="color:var(--muted)"></i></div>
+<div class="card"><p class="k">Your Role Map · {{ res.duties|length }} duties</p>
+ {% for d in res.duties %}<div style="display:flex;justify-content:space-between;gap:8px;margin-top:10px;font-size:13.5px"><span>{{ d.duty }}{% if d.source!='conversation' %} <span class="pill" style="background:var(--lav-l);color:#BF092F">found</span>{% endif %}</span>
+  {% if d.critical=='high' %}<span class="pill" style="background:var(--coral-l);color:#BF092F">High</span>{% endif %}</div>{% endfor %}
+ <div style="display:flex;gap:8px;margin-top:14px"><button class="btn" data-confirm><i data-lucide="check"></i>Looks right</button><button class="btn g">Edit</button></div></div>
+{% endblock %}

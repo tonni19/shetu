@@ -1,0 +1,221 @@
+{
+ "duties": [
+  {
+   "duty": "Client relationship calls",
+   "frequency": "weekly",
+   "day": "Sunday",
+   "time": "mostly Sunday or Monday",
+   "due": null,
+   "place": "office",
+   "clients": [],
+   "critical": "medium",
+   "quote": "Every week client der sathe relationship calls thake, mostly Sunday ar Monday, eta office theke kori.",
+   "grounded": true,
+   "start": null,
+   "end": null,
+   "source": "conversation"
+  },
+  {
+   "duty": "Credit pre-meeting",
+   "frequency": "weekly",
+   "day": "Tuesday",
+   "time": "6 to 7:30 in the evening",
+   "due": null,
+   "place": "office",
+   "clients": [],
+   "critical": "medium",
+   "quote": "Protiti Tuesday sondha 6 ta theke 7:30 porjonto credit pre-meeting hoy, oikhane ami amar clients er loan proposals present kori.",
+   "grounded": true,
+   "start": "18:00",
+   "end": "19:30",
+   "source": "conversation"
+  },
+  {
+   "duty": "Client factory visit",
+   "frequency": "monthly",
+   "day": null,
+   "time": null,
+   "due": null,
+   "place": "travel",
+   "clients": [],
+   "critical": "medium",
+   "quote": "Mashe ekbar Chattogram jai, oikhane amar tin ta client er factory visit korte hoy, usually two days lage.",
+   "grounded": true,
+   "start": null,
+   "end": null,
+   "source": "conversation"
+  },
+  {
+   "duty": "Portfolio report submission",
+   "frequency": "monthly",
+   "day": null,
+   "time": null,
+   "due": null,
+   "place": "office",
+   "clients": [],
+   "critical": "medium",
+   "quote": "Ar mash sheshe ekta portfolio report CFO office e pathai, eta ghore bose o kora jay.",
+   "grounded": true,
+   "start": null,
+   "end": null,
+   "source": "conversation"
+  },
+  {
+   "duty": "Trade finance renewal follow-up",
+   "frequency": "one-off",
+   "day": null,
+   "time": null,
+   "due": "10 April",
+   "place": "office",
+   "clients": [
+    "C",
+    "D",
+    "E"
+   ],
+   "critical": "high",
+   "quote": "Haan, clients C, D ar E er trade finance renewals April er 10 tarikh er moddhe due. Oder statements gula shudhu amar email e ache. Rafiq bhai cover korbe bole plan, kintu uni ei client der sathe kokhono kaj koren ni.",
+   "grounded": true,
+   "start": null,
+   "end": null,
+   "source": "conversation"
+  },
+  {
+   "duty": "Quarter-end loan classification review",
+   "frequency": "quarterly",
+   "day": "last 2 days of quarter",
+   "time": "often until 9 pm",
+   "due": "30 September",
+   "place": "office",
+   "clients": [],
+   "critical": "high",
+   "quote": "Yes, it often runs until 9 pm on the last two days of the quarter.",
+   "grounded": true,
+   "start": "17:00",
+   "end": "21:00",
+   "source": "job description (she confirmed)"
+  }
+ ],
+ "missing": [
+  {
+   "jd_duty": "Complete the quarter-end loan classification review for her portfolio",
+   "question": "Could you share when during the quarter this review typically happens and how long it takes to complete?"
+  }
+ ],
+ "alerts": [
+  {
+   "duty": "Trade finance renewal follow-up",
+   "due": "2027-04-10",
+   "planned_cover": "Rafiq",
+   "reason": "Rafiq has never handled clients C, D, E",
+   "suggest": "Tania"
+  }
+ ],
+ "clashes": [
+  {
+   "duty": "Credit pre-meeting",
+   "type": "time",
+   "detail": "runs until 19:30, after her 17:30 finish",
+   "hours": 2,
+   "options": [
+    {
+     "action": "move_time",
+     "new_time": "16:00-17:00",
+     "text": "Move the credit pre-meeting to end by 17:00 to fit within the 17:30 policy limit.",
+     "ok": true,
+     "why": "ends before her finish"
+    },
+    {
+     "action": "remote",
+     "text": "Allow the credit pre-meeting to be conducted remotely so she can join from home without travel.",
+     "ok": true,
+     "why": "fine for meetings"
+    }
+   ],
+   "chosen": {
+    "action": "move_time",
+    "new_time": "16:00-17:00",
+    "text": "Move the credit pre-meeting to end by 17:00 to fit within the 17:30 policy limit.",
+    "ok": true,
+    "why": "ends before her finish"
+   }
+  },
+  {
+   "duty": "Client factory visit",
+   "type": "travel",
+   "detail": "needs travel; she has no travel until December",
+   "hours": 4,
+   "options": [
+    {
+     "action": "start_earlier",
+     "days_earlier": 30,
+     "text": "Schedule the factory visit to start 30 days earlier to align with her return and travel availability.",
+     "ok": false,
+     "why": "starting earlier doesn't remove the travel"
+    },
+    {
+     "action": "reassign",
+     "to": "Rafiq",
+     "text": "Reassign the client factory visit to Rafiq, who can manage the visit instead.",
+     "ok": false,
+     "why": "Rafiq is near his limit (2 h spare)"
+    },
+    {
+     "action": "reassign",
+     "to": "Tania",
+     "text": "Tania takes the client factory visit until December",
+     "ok": true,
+     "why": "Tania has 8 h spare",
+     "by_rule": true
+    }
+   ],
+   "chosen": {
+    "action": "reassign",
+    "to": "Tania",
+    "text": "Tania takes the client factory visit until December",
+    "ok": true,
+    "why": "Tania has 8 h spare",
+    "by_rule": true
+   }
+  },
+  {
+   "duty": "Quarter-end loan classification review",
+   "type": "time",
+   "detail": "runs until 21:00, after her 17:30 finish",
+   "hours": 2,
+   "options": [
+    {
+     "action": "start_earlier",
+     "days_earlier": 3,
+     "ok": true,
+     "by_rule": true,
+     "text": "Start 3 days earlier so she signs off by 17:00",
+     "why": "keeps the duty in her name"
+    },
+    {
+     "action": "reassign",
+     "to": "Tania",
+     "text": "Reassign the loan classification review to Tania to free up time for the returning mother.",
+     "ok": true,
+     "why": "Tania has 4 h spare"
+    },
+    {
+     "action": "move_time",
+     "new_time": "16:00-17:00",
+     "text": "Reschedule the loan classification review to end by 17:00 to comply with the 17:30 policy.",
+     "ok": false,
+     "why": "it is a piece of work, not a meeting"
+    }
+   ],
+   "chosen": {
+    "action": "start_earlier",
+    "days_earlier": 3,
+    "ok": true,
+    "by_rule": true,
+    "text": "Start 3 days earlier so she signs off by 17:00",
+    "why": "keeps the duty in her name"
+   }
+  }
+ ],
+ "seconds": 22.3,
+ "map_seconds": 12.1
+}

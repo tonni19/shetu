@@ -1,0 +1,19 @@
+{% extends "employer_base.html" %}{% block body %}
+<div class="top"><div><h1>Leadership report · this quarter</h1><p class="sub">Across all leaves. No individual is named.</p></div><a class="btn g"><i data-lucide="download"></i>Export</a></div>
+{% set r=cases.report %}
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+ <div class="card" style="background:var(--teal);color:#fff;border:0"><p class="k" style="color:#FBE6EA">Duties mapped</p><p style="font:800 40px 'Bricolage Grotesque';margin-top:8px">{{ r.duties_mapped }}</p><p style="font-size:13px">across {{ r.leaves }} leaves</p></div>
+ <div class="card"><p class="k">Left without an owner</p><p style="font:800 40px 'Bricolage Grotesque';margin-top:8px;color:var(--teal-d)">{{ r.duties_unowned }}</p><p class="demo">target: 0</p></div>
+ <div class="card"><p class="k">Found by Shetu</p><p style="font:800 40px 'Bricolage Grotesque';margin-top:8px;color:#BF092F">{{ r.found_by_shetu }}</p><p class="demo">issues nobody had listed</p></div>
+ <div class="card"><p class="k">Returns with 0 open issues</p><p style="font:800 40px 'Bricolage Grotesque';margin-top:8px">{{ r.returns_zero_open }}</p><p class="demo">plans holding at day 45: {{ r.holding_45 }}</p></div>
+</div>
+<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-top:16px">
+ <div class="card"><h2>Where cases are</h2>
+  {% for s,n,c in [('Map',1,'var(--teal)'),('Hold',1,'var(--sun)'),('Fit',2,'var(--coral)'),('Day-45 check',1,'var(--lav)')] %}
+  <div style="display:grid;grid-template-columns:130px 1fr 30px;gap:12px;align-items:center;margin-top:14px"><b style="font-size:14px">{{ s }}</b>
+   <div class="bar" style="height:14px"><span style="width:{{ n*40 }}%;background:{{ c }}"></span></div><b>{{ n }}</b></div>{% endfor %}</div>
+ <div class="card"><h2>Time spent</h2><p style="font-size:14px;margin-top:12px">HR: about <b>{{ r.hr_minutes }} minutes</b> per leave.</p><p style="font-size:14px;margin-top:6px">Managers: about <b>{{ r.manager_minutes }} minutes</b> across a whole leave.</p>
+  <p class="demo" style="margin-top:14px">Retention at 12 months is tracked against the company's own past record.</p></div>
+</div>
+<p class="demo" style="margin-top:12px">Demo data: illustrative numbers for the prototype, not results.</p>
+{% endblock %}

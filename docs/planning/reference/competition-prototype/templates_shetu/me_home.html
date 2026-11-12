@@ -1,0 +1,20 @@
+{% extends "me_base.html" %}{% block body %}
+<div><p class="k">Assalamu alaikum</p><h1 style="margin-top:6px">Hi Nusrat</h1><p class="sub">Your leave: {{ case.employee.leave_start }} to {{ case.employee.leave_end }}. Back on {{ case.employee['return'] }}.</p></div>
+<div class="card" style="background:var(--ink);color:#fff;border:0">
+ <p class="k" style="color:var(--sun)">Your return plan</p>
+ <p style="font:800 22px/1.2 'Bricolage Grotesque';margin-top:8px">Ready. 0 open issues.</p>
+ <p style="font-size:13px;color:#FBE6EA;margin-top:6px">Sent to HR 23 days before your first day.</p></div>
+<div class="card">
+ {% for s,txt,st,ic in [('Map','Your job is mapped. Nothing is dropped.','done','map'),('Hold','Your role and promotion are held in your name.','done','shield-check'),('Fit','Your needs are matched with your job.','done','puzzle')] %}
+ <div style="display:flex;gap:12px;align-items:center;{{ 'margin-top:14px' if not loop.first }}">
+  <div style="width:40px;height:40px;border-radius:12px;background:var(--mint);color:var(--teal-d);display:grid;place-items:center"><i data-lucide="{{ ic }}" style="width:20px;height:20px"></i></div>
+  <div style="flex:1"><b>{{ s }}</b><div style="font-size:13px;color:var(--muted)">{{ txt }}</div></div><span class="pill" style="background:var(--green-l);color:var(--green)">Done</span></div>{% endfor %}
+</div>
+<div class="card" style="background:var(--mint);border:0"><p class="k" style="color:var(--teal-d)">Your privacy</p>
+ <div style="display:grid;gap:8px;margin-top:10px;font-size:13.5px">
+  <div style="display:flex;gap:8px"><i data-lucide="eye-off" style="width:18px;flex:none;color:var(--teal-d)"></i>You are never asked why you need something.</div>
+  <div style="display:flex;gap:8px"><i data-lucide="phone-off" style="width:18px;flex:none;color:var(--teal-d)"></i>Nobody contacts you during leave unless you choose.</div>
+  <div style="display:flex;gap:8px"><i data-lucide="ban" style="width:18px;flex:none;color:var(--teal-d)"></i>No scores or predictions about you. Ever.</div></div></div>
+<a class="btn g" href="/how" style="justify-content:center">How Shetu works</a>
+<p class="demo">Demo data · prototype</p>
+{% endblock %}

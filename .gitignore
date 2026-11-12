@@ -1,0 +1,34 @@
+# Secrets: API keys live in .env and never in git
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Database files created while running locally
+*.db
+*.sqlite3
+
+# Node / React
+node_modules/
+dist/
+build/
+.vite/
+
+# Local AI models (gigabytes; never commit)
+*.gguf
+models/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*

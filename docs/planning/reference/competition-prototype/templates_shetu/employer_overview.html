@@ -1,0 +1,34 @@
+{% extends "employer_base.html" %}{% block body %}
+<div class="top"><div><h1>All leaves at {{ cases.company }}</h1><p class="sub">Every long leave on one screen. You only step in when something is red.</p></div>
+ <a class="btn"><i data-lucide="plus"></i>Open a new case</a></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+ <div class="card"><p class="k">Active cases</p><p style="font:800 34px 'Bricolage Grotesque';margin-top:8px">{{ cases.cases|length }}</p><p class="demo">across 5 teams</p></div>
+ <div class="card"><p class="k">Duties without an owner</p><p style="font:800 34px 'Bricolage Grotesque';margin-top:8px;color:var(--teal-d)">0</p><p class="demo">of {{ cases.report.duties_mapped }} mapped duties</p></div>
+ <div class="card"><p class="k">Needs HR</p><p style="font:800 34px 'Bricolage Grotesque';margin-top:8px;color:var(--coral)">1</p><p class="demo">a clash with no fix inside policy</p></div>
+ <div class="card"><p class="k">Your time per leave</p><p style="font:800 34px 'Bricolage Grotesque';margin-top:8px">~2 min</p><p class="demo">to open a case</p></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 340px;gap:16px;margin-top:16px">
+ <div class="card" style="padding:8px 14px">
+  <table><tr><th>Employee</th><th>Stage</th><th>Dates</th><th>Next</th><th>Status</th></tr>
+  {% for c in cases.cases %}
+  <tr><td><a href="/employer/case/{{ c.id }}" style="font-weight:700">{{ c.name }}</a><div class="demo">{{ c.role }} · {{ c.team }}</div></td>
+   <td>{% set col={'Map':'var(--mint);color:var(--teal-d)','Hold':'var(--sun-l);color:#8A5A00','Fit':'var(--coral-l);color:#BF092F','Day-45 check':'var(--lav-l);color:#BF092F'}[c.stage] %}
+     <span class="pill" style="background:{{ col }}">{{ c.stage }}</span></td>
+   <td style="font-size:13px">{{ c.dates }}</td><td style="font-size:13px">{{ c.next }}</td>
+   <td><span class="dot d-{{ c.status }}"></span></td></tr>
+  {% endfor %}</table>
+ </div>
+ <div style="display:grid;gap:12px;align-content:start">
+  <div class="card" style="border:2px solid var(--coral)"><p class="k" style="color:#BF092F">Needs your decision</p>
+   <p style="font-weight:700;margin-top:8px">Ayesha Siddiqua · Treasury</p>
+   <p style="font-size:13px;color:var(--muted);margin-top:4px">Her 5 pm finish clashes with the 7:30 pm market close. No fix fits current policy.</p>
+   <div style="display:flex;gap:8px;margin-top:10px"><a class="btn">Review options</a><a class="btn g">Message manager</a></div></div>
+  <div class="card" style="border:2px solid var(--sun)"><p class="k" style="color:#8A5A00">Waiting for a manager</p>
+   <p style="font-weight:700;margin-top:8px">Farzana Akter · Risk</p>
+   <p style="font-size:13px;color:var(--muted);margin-top:4px">Dropped-work alert: monthly risk report due during her leave. Sabbir to confirm cover.</p></div>
+  <div class="card" style="background:var(--ink);color:#fff;border:0"><p class="k" style="color:var(--sun)">Privacy</p>
+   <p style="font-size:13px;margin-top:8px">You see each case's status. You never see her reasons, medical or family details. No scores exist.</p></div>
+ </div>
+</div>
+<p class="demo" style="margin-top:14px">Demo data: all names are illustrative.</p>
+{% endblock %}

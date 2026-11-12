@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shetu for HR · {{ title }}</title>
+{% include "_style.html" %}
+<style>
+.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.side{background:var(--purple);color:#FBE6EA;padding:22px 16px;display:flex;flex-direction:column;gap:6px}
+.side img{height:56px;width:auto;align-self:flex-start;margin:0 8px 18px}
+.side a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;font-weight:600;font-size:14px}
+.side a.on{background:#fff;color:#BF092F}
+.side a svg{width:18px;height:18px}
+.side .who{margin-top:auto;font-size:12.5px;padding:12px;border-top:1px solid rgba(255,255,255,.18)}
+.main{padding:26px 32px}
+.top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.side{flex-direction:row;flex-wrap:wrap;align-items:center;gap:4px;padding:12px}
+.side img{height:36px;margin:0 8px 0 0}.side a{padding:8px 10px;font-size:13px}.side .who{display:none}.main{padding:18px 14px;overflow-x:hidden}
+.main>div[style*="grid-template-columns"]{grid-template-columns:1fr!important}.card{overflow-x:auto}table{min-width:560px}}
+</style></head><body>
+<div class="shell">
+ <nav class="side">
+  <img src="/static/shetu_logo_white.png" alt="Shetu">
+  <a href="/employer" class="{{ 'on' if nav=='overview' }}"><i data-lucide="layout-dashboard"></i>All leaves</a>
+  <a href="/employer/case/nusrat" class="{{ 'on' if nav=='case' }}"><i data-lucide="user-round"></i>Case: Nusrat</a>
+  <a href="/employer/team" class="{{ 'on' if nav=='team' }}"><i data-lucide="users"></i>Team capacity</a>
+  <a href="/employer/report" class="{{ 'on' if nav=='report' }}"><i data-lucide="bar-chart-3"></i>Leadership report</a>
+  <a href="/how" class="{{ 'on' if nav=='how' }}"><i data-lucide="cpu"></i>How it works</a>
+  <a href="/me"><i data-lucide="smartphone"></i>Switch to employee app</a>
+  <div class="who"><b style="color:#fff">Bank Alpha · HR</b><br>Signed in as Shabnam (HR Manager)<br><span style="opacity:.7">Demo data · runs offline</span></div>
+ </nav>
+ <main class="main">{% block body %}{% endblock %}</main>
+</div>
+<script>lucide.createIcons();
+document.querySelectorAll('[data-confirm]').forEach(b=>b.addEventListener('click',()=>{b.classList.add('done');b.innerHTML='Confirmed';const r=b.closest('[data-row]');if(r){const d=r.querySelector('.dot');if(d){d.className='dot d-green'}}}));
+</script>
+</body></html>

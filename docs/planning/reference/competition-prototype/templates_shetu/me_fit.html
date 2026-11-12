@@ -1,0 +1,14 @@
+{% extends "me_base.html" %}{% block body %}
+<div><p class="k">Fit · before return</p><h1 style="margin-top:6px">What do you need?</h1><p class="sub">Pick what works for you. You never have to say why.</p></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+ <span class="chipsel on"><i data-lucide="clock" style="width:16px"></i>Home by 5:30 pm</span>
+ <span class="chipsel on"><i data-lucide="house" style="width:16px"></i>Wednesdays from home</span>
+ <span class="chipsel on"><i data-lucide="plane-takeoff" style="width:16px"></i>No travel until Dec</span>
+ <span class="chipsel"><i data-lucide="baby" style="width:16px"></i>Feeding breaks</span>
+ <span class="chipsel"><i data-lucide="calendar" style="width:16px"></i>Shorter days at first</span></div>
+<div class="card"><p class="k">Your return plan · confirmed by {{ case.employee.manager.split()[0] }}</p>
+ {% for c in res.clashes %}<div style="margin-top:12px;display:grid;grid-template-columns:14px 1fr;gap:10px"><span class="dot d-green" style="margin-top:5px"></span>
+  <div><b style="font-size:14px">{{ c.duty }}</b><div style="font-size:13px;color:var(--muted)">{{ c.chosen.text if c.chosen else 'Sent to HR' }}</div></div></div>{% endfor %}</div>
+<div class="card" style="background:var(--teal);color:#fff;border:0;text-align:center"><b>0 open issues</b><div style="font-size:13px;opacity:.9">We'll check in with you at day 45.</div></div>
+<button class="btn g" style="justify-content:center"><i data-lucide="message-square"></i>Something isn't right? Ask HR to review</button>
+{% endblock %}

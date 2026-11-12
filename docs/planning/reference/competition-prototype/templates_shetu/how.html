@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shetu · How it works</title>
+{% include "_style.html" %}
+<style>
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top img{height:44px}
+.top nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:18px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;position:relative}
+.step .tag{display:inline-block;font:800 11px "Plus Jakarta Sans";letter-spacing:.1em;padding:3px 9px;border-radius:999px;background:var(--mint);color:var(--teal-d)}
+.step .tag.rules{background:#222023;color:#fff}.step .tag.people{background:var(--teal);color:#fff}
+.step h3{font:800 17px "Bricolage Grotesque",sans-serif;margin-top:10px}
+.step p{font-size:13px;color:var(--muted);margin-top:6px}
+.step .tool{margin-top:10px;font:700 12px "Plus Jakarta Sans";color:var(--teal-d)}
+.sec{margin-top:30px}
+.sec h2{display:flex;gap:10px;align-items:center}.sec h2::before{content:"";width:5px;height:22px;border-radius:3px;background:var(--teal)}
+.trace{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin-top:12px}
+.trace .arrow{display:grid;place-items:center;color:var(--teal);font:800 22px sans-serif}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13.5px}
+.box .k{margin-bottom:6px}
+.quote{font-style:italic;color:var(--muted)}
+.ok{color:var(--green);font-weight:700}.no{color:#BF092F;font-weight:700}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+@media(max-width:860px){.top nav{margin-left:0;width:100%}.top nav a{flex:1;justify-content:center}.card{overflow-x:auto}table{min-width:620px}.flow,.facts{grid-template-columns:1fr}.trace{grid-template-columns:1fr}.trace .arrow{transform:rotate(90deg)}}
+</style></head><body>
+<div class="wrap">
+ <div class="top"><img src="/static/shetu_logo.png" alt="Shetu"><div><h1>How Shetu works</h1><p class="sub">AI finds what people forget. Rules check it. People decide.</p></div>
+  <nav><a class="btn g" href="/">Home</a><a class="btn g" href="/employer">Employer app</a><a class="btn g" href="/me">Employee app</a></nav></div>
+
+ <div class="sec"><h2>The pipeline</h2>
+ <div class="flow">
+  <div class="step"><span class="tag">AI</span><h3>1 · Listens</h3><p>Her chat or voice, in Bangla, English or Banglish, becomes text.</p><p class="tool">Whisper large-v3 (speech) · typed chat in this demo</p></div>
+  <div class="step"><span class="tag">AI</span><h3>2 · Builds the Role Map</h3><p>A language model turns her words into a fixed structure: duty, when, where, clients, how critical. Each item keeps the words it came from.</p><p class="tool">Qwen3-4B, local, JSON mode</p></div>
+  <div class="step"><span class="tag">AI</span><h3>3 · Cross-checks</h3><p>Compares the Role Map with her job description and asks about anything missing.</p><p class="tool">Qwen3-4B + a rule that removes false alarms</p></div>
+  <div class="step"><span class="tag rules">RULES</span><h3>4 · Finds clashes, checks fixes</h3><p>Plain code: duties due during leave, time and travel clashes, policy, each colleague's spare hours. The AI drafts fixes; rules drop the bad ones.</p><p class="tool">Python rules engine</p></div>
+  <div class="step"><span class="tag people">PEOPLE</span><h3>5 · Decide</h3><p>Her manager confirms each fix. HR backs anything left open. She sees every decision.</p><p class="tool">Employer + employee apps</p></div>
+ </div></div>
+
+ <div class="sec"><h2>Real trace from our test run</h2><p class="sub">Demo case: Nusrat at Bank Alpha (illustrative names). These are the actual outputs our engine produced, offline, in about {{ res.seconds|round|int }} seconds.</p>
+ {% set rn = res.duties|selectattr('due','equalto','10 April')|first %}
+ <div class="trace">
+  <div class="box"><p class="k">She said</p><p class="quote">"{{ case.conversation[2].a }}"</p></div><div class="arrow">→</div>
+  <div class="box"><p class="k">AI built</p><b>{{ rn.duty }}</b><br>due {{ rn.due }} · clients {{ rn.clients|join(', ') }} · critical: {{ rn.critical }}</div><div class="arrow">→</div>
+  <div class="box"><p class="k">Rules decided</p>{% for a in res.alerts %}<span class="no">Dropped-work alert:</span> {{ a.reason }}. Suggest <b>{{ a.suggest }}</b>, who knows the clients.{% endfor %}</div>
+ </div>
+ {% for m in res.missing %}
+ <div class="trace">
+  <div class="box"><p class="k">Her job description says</p>{{ m.jd_duty }}</div><div class="arrow">→</div>
+  <div class="box"><p class="k">AI noticed</p>She never mentioned it. Shetu asked: <span class="quote">"{{ m.question }}"</span></div><div class="arrow">→</div>
+  <div class="box"><p class="k">She answered</p><span class="quote">"{{ case.answers.quarter_end_review }}"</span><br>Rules: runs to 21:00, after her 17:30 finish → clash.</div>
+ </div>{% endfor %}
+ </div>
+
+ <div class="sec"><h2>Every fix the AI proposed, and what the rules did</h2>
+ <div class="card" style="margin-top:12px;padding:6px 14px"><table><tr><th>Clash</th><th>AI proposal</th><th>Rules</th><th>Reason</th></tr>
+ {% for c in res.clashes %}{% for o in c.options %}<tr><td>{% if loop.first %}<b>{{ c.duty }}</b><div class="demo">{{ c.detail }}</div>{% endif %}</td>
+  <td style="font-size:13px">{{ o.text or (o.action ~ ' ' ~ (o.to or '')) }}{% if o.by_rule %} <span class="pill" style="background:#EFE8DC;color:#222023">added by rules</span>{% endif %}</td>
+  <td>{% if o.ok %}<span class="ok">kept</span>{% else %}<span class="no">rejected</span>{% endif %}</td><td style="font-size:13px">{{ o.why }}</td></tr>{% endfor %}{% endfor %}
+ </table></div></div>
+
+ <div class="sec"><h2>What it runs on</h2>
+ <div class="facts">
+  <div class="card"><p class="k">Models</p><p style="margin-top:8px;font-size:14px">Qwen3-4B open language model (6-bit, llama.cpp) and Whisper large-v3 for Bangla speech. No model is trained on employee data.</p></div>
+  <div class="card"><p class="k">Runs offline</p><p style="margin-top:8px;font-size:14px">On a laptop GPU (RTX 4050, 6 GB): about {{ res.seconds|round|int }} s per case. In a company it can run on its own server, so data never leaves.</p></div>
+  <div class="card"><p class="k">Honest limits</p><p style="margin-top:8px;font-size:14px">Tested on one demo case so far. Accuracy will be measured in pilots: issues found that nobody listed, and fixes managers accept.</p></div>
+ </div></div>
+ <p class="demo" style="margin-top:20px">This hosted page shows saved outputs from our offline engine. Demo data; all names are illustrative. Team_Anomaly · GP FutureMakers 2026.</p>
+</div></body></html>

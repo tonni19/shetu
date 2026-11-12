@@ -1,0 +1,4 @@
+আসসালামু আলাইকুম, এটা আমার handover note. আমি accounts payable এ senior executive. প্রতিদিন আমি vendor invoice process করি, SAP এ, মোটামুটি দুই ঘণ্টা লাগে প্রতিদিন। প্রতি Tuesday তে payment run হয়, ওটা আমি নিজে approve করি। মাসের প্রথম সপ্তাহে CFO কে vendor aging report পাঠাতে হয়।
+আর প্রতি Thursday সন্ধ্যা ছয়টায় finance team এর meeting হয়। SAP এ login বা access এর problem হলে IT এর রফিক ভাই কে বলবেন। পাঁচ লাখের উপরে payment হলে নাসরিন আপা approve করেন, উনি Finance Manager।
+vendor দের email গুলো Outlook এর shared mailbox এ আসে, ap@ address এ। সব vendor contract SharePoint এ আছে, AP Contracts folder এ। annual audit এর documents পনেরো January এর মধ্যে দিতে হবে।
+একটা open issue আছে, Delta Packaging এর একটা invoice নিয়ে dispute চলছে, তিন লাখ টাকার, ওরা revised bill পাঠাবে, ওটার জন্য wait করছি।

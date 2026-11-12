@@ -1,0 +1,110 @@
+{
+ "role_summary": "A senior executive in accounts payable responsible for processing vendor invoices in SAP, approving payments, and managing vendor-related tasks and reports.",
+ "recurring_tasks": [
+  {
+   "task": "Process vendor invoice in SAP",
+   "frequency": "daily",
+   "when": null,
+   "hours_per_week": 10,
+   "quote": "প্রতিদিন আমি vendor invoice process করি, SAP এ, মোটামুটি দুই ঘণ্টা লাগে প্রতিদিন।",
+   "grounded": true,
+   "check": null
+  },
+  {
+   "task": "Approve payment run",
+   "frequency": "every Tuesday",
+   "when": "Tuesday",
+   "hours_per_week": null,
+   "quote": "প্রতি Tuesday তে payment run হয়, ওটা আমি নিজে approve করি।",
+   "grounded": true,
+   "check": null
+  },
+  {
+   "task": "Send vendor aging report to CFO",
+   "frequency": "monthly",
+   "when": null,
+   "hours_per_week": null,
+   "quote": "মাসের প্রথম সপ্তাহে CFO কে vendor aging report পাঠাতে হয়।",
+   "grounded": true,
+   "check": null
+  },
+  {
+   "task": "Attend finance team meeting",
+   "frequency": "every Thursday",
+   "when": "Thursday evening 6:00",
+   "hours_per_week": null,
+   "quote": "প্রতি Thursday সন্ধ্যা ছয়টায় finance team এর meeting হয়।",
+   "grounded": true,
+   "check": null
+  }
+ ],
+ "deadlines": [
+  {
+   "item": "Submit annual audit documents",
+   "date": "by the middle of January",
+   "quote": "annual audit এর documents পনেরো January এর মধ্যে দিতে হবে।",
+   "grounded": true,
+   "check": null
+  }
+ ],
+ "contacts": [
+  {
+   "name": "Rafiq bhai",
+   "role": "IT",
+   "contact_for": "SAP login or access problems",
+   "quote": "SAP এ login বা access এর problem হলে IT এর রফিক ভাই কে বলবেন।",
+   "grounded": true,
+   "check": null
+  },
+  {
+   "name": "Nasrin apa",
+   "role": "Finance Manager",
+   "contact_for": "Approvals for payments over five lakh taka",
+   "quote": "পাঁচ লাখের উপরে payment হলে নাসরিন আপা approve করেন, উনি Finance Manager।",
+   "grounded": true,
+   "check": null
+  }
+ ],
+ "systems": [
+  {
+   "name": "SAP",
+   "used_for": "Processing vendor invoices and approving payments",
+   "quote": "প্রতিদিন আমি vendor invoice process করি, SAP এ",
+   "grounded": true,
+   "check": null
+  },
+  {
+   "name": "Outlook",
+   "used_for": "Receiving vendor emails",
+   "quote": "vendor দের email গুলো Outlook এর shared mailbox এ আসে, ap@ address এ।",
+   "grounded": true,
+   "check": null
+  },
+  {
+   "name": "SharePoint",
+   "used_for": "Storing vendor contracts",
+   "quote": "সব vendor contract SharePoint এ আছে, AP Contracts folder এ।",
+   "grounded": true,
+   "check": null
+  }
+ ],
+ "file_locations": [
+  {
+   "what": "Vendor contracts",
+   "where": "SharePoint AP Contracts folder",
+   "quote": "সব vendor contract SharePoint এ আছে, AP Contracts folder এ।",
+   "grounded": true,
+   "check": null
+  }
+ ],
+ "open_issues": [
+  {
+   "issue": "Dispute with Delta Packaging over a bill of three lakh taka",
+   "next_step": "Wait for revised bill from Delta Packaging",
+   "quote": "একটা open issue আছে, Delta Packaging এর একটা invoice নিয়ে dispute চলছে, তিন লাখ টাকার, ওরা revised bill পাঠাবে, ওটার জন্য wait করছি।",
+   "grounded": true,
+   "check": null
+  }
+ ],
+ "_flagged": 0
+}

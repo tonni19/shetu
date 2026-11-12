@@ -1,0 +1,19 @@
+{% extends "employer_base.html" %}{% block body %}
+<div class="top"><div><h1>Team capacity · Corporate Banking</h1><p class="sub">The manager marks who has room. Shetu only proposes cover from people with spare hours.</p></div></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+ {% for t in case.team %}<div class="card">
+  <div style="display:flex;gap:12px;align-items:center"><div style="width:46px;height:46px;border-radius:50%;background:var(--mint);display:grid;place-items:center;font-weight:800;color:var(--teal-d)">{{ t.name[0] }}</div>
+   <div><b>{{ t.name }}</b><div class="demo">{{ t.role }}</div></div></div>
+  <p class="k" style="margin-top:16px">Spare this quarter</p><p style="font:800 30px 'Bricolage Grotesque';margin-top:4px;color:{{ 'var(--coral)' if t.spare_hours<3 else 'var(--teal-d)' }}">{{ t.spare_hours }} h/week</p>
+  <div class="bar" style="margin-top:8px"><span style="width:{{ 100 - t.spare_hours*8 }}%;background:{{ 'var(--coral)' if t.spare_hours<3 else 'var(--teal)' }}"></span></div>
+  <p style="font-size:13px;margin-top:12px">Knows clients: <b>{{ t.knows_clients|join(', ') }}</b></p>
+  {% if t.spare_hours<3 %}<p style="font-size:12.5px;color:#BF092F;margin-top:8px">Near limit. Not offered new cover.</p>{% endif %}
+ </div>{% endfor %}
+</div>
+<div class="card" style="margin-top:16px"><h2>Cover assigned for Nusrat's leave</h2>
+ <table style="margin-top:8px"><tr><th>Duty</th><th>Cover</th><th>Hours/week</th><th>Why</th></tr>
+ <tr><td>Trade finance renewals (C, D, E)</td><td><b>Tania</b></td><td>2</td><td class="demo">Knows the clients; Rafiq has never handled them</td></tr>
+ <tr><td>Client factory visits, Chattogram</td><td><b>Tania</b></td><td>4</td><td class="demo">Rafiq has only 2 h spare</td></tr>
+ <tr><td>Credit pre-meeting</td><td><b>Imran</b></td><td>2</td><td class="demo">Manager presents her proposals while she's away</td></tr></table></div>
+<p class="demo" style="margin-top:12px">Demo data.</p>
+{% endblock %}

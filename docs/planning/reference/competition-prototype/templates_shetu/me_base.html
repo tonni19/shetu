@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Shetu · {{ title }}</title>
+{% include "_style.html" %}
+<style>
+body{background:#F8F4EC}
+.phone{max-width:430px;margin:0 auto;min-height:100vh;background:#fff;display:flex;flex-direction:column;box-shadow:0 0 60px rgba(14,27,58,.08)}
+.bar-top{display:flex;align-items:center;gap:10px;padding:calc(14px + env(safe-area-inset-top,0px)) 18px 14px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:2}
+.chipsel,.btn{min-height:40px}.tabs a{min-height:52px}
+.bar-top img{height:30px}
+.content{padding:18px;flex:1;display:grid;gap:12px;align-content:start}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);background:#fff;position:sticky;bottom:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabs a{display:grid;justify-items:center;gap:3px;padding:9px 0 11px;font-size:11.5px;font-weight:700;color:var(--muted)}
+.tabs a.on{color:var(--teal-d)}.tabs svg{width:20px;height:20px}
+.bub{max-width:86%;padding:10px 13px;border-radius:16px;font-size:14px}
+.bub.s{background:var(--ink);color:#fff;border-bottom-left-radius:4px}
+.bub.me{background:var(--lav-l);color:#3F33B0;margin-left:auto;border-bottom-right-radius:4px}
+.chipsel{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;border:2px solid var(--line);font-weight:700;font-size:13px;cursor:pointer;background:#fff}
+.chipsel.on{border-color:var(--teal);background:var(--mint);color:var(--teal-d)}
+</style></head><body>
+<div class="phone">
+ <div class="bar-top"><img src="/static/shetu_logo.png"><span style="font-size:13px;color:var(--muted);margin-left:auto">Bank Alpha</span></div>
+ <div class="content">{% block body %}{% endblock %}</div>
+ <nav class="tabs">
+  <a href="/me" class="{{ 'on' if nav=='home' }}"><i data-lucide="home"></i>Home</a>
+  <a href="/me/map" class="{{ 'on' if nav=='map' }}"><i data-lucide="map"></i>Map</a>
+  <a href="/me/hold" class="{{ 'on' if nav=='hold' }}"><i data-lucide="shield-check"></i>Hold</a>
+  <a href="/me/fit" class="{{ 'on' if nav=='fit' }}"><i data-lucide="puzzle"></i>Fit</a>
+ </nav>
+</div>
+<script>lucide.createIcons();document.querySelectorAll('.chipsel').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('on')));
+document.querySelectorAll('[data-confirm]').forEach(b=>b.addEventListener('click',()=>{b.classList.add('done');b.innerHTML='Done'}));</script>
+</body></html>

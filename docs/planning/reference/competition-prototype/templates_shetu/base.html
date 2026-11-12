@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shetu · {{ screen|title }}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#0D1838;--teal:#00A99D;--teal-d:#007E76;--mint:#D6F5F1;--coral:#FF5A4E;--coral-l:#FFE3DF;--sun:#FFC23D;--sun-l:#FFF2CF;--lav:#6C5CE7;--lav-l:#E8E4FF;--bg:#F5F7FB;--line:#E4E8F0;--muted:#5E6A85}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.45 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+.top{display:flex;align-items:center;gap:14px;padding:12px 22px;background:#fff;border-bottom:1px solid var(--line)}
+.top img{height:30px}.top .who{margin-left:auto;font-size:13px;color:var(--muted)}
+.tabs{display:flex;gap:6px;padding:10px 22px;background:#fff;border-bottom:1px solid var(--line)}
+.tabs a{text-decoration:none;color:var(--muted);font-weight:700;padding:7px 14px;border-radius:999px;font-size:14px}
+.tabs a.on{background:var(--ink);color:#fff}
+.wrap{padding:18px 22px}
+h1{font:800 24px/1.1 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em}
+.sub{color:var(--muted);font-size:13px;margin-top:4px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.k{font:800 11px/1 "Plus Jakarta Sans";letter-spacing:.12em;text-transform:uppercase}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding:6px 6px}
+td{padding:9px 6px;border-top:1px solid var(--line);vertical-align:top}
+.btn{display:inline-block;border:0;border-radius:10px;padding:8px 14px;font:700 13px "Plus Jakarta Sans";background:var(--teal);color:#fff}
+.btn.g{background:#EEF1F6;color:var(--muted)}
+.quote{color:var(--muted);font-size:12px;font-style:italic;margin-top:2px}
+@media (max-width:700px){.top .who,.tabs span{display:none}.tabs a{padding:6px 12px}}
+</style></head><body>
+<div class="top"><img src="/static/shetu_logo.png"><b style="font-size:14px">{{ case.employee.company }}</b>
+<span class="who">{{ case.employee.name }} · {{ case.employee.role }} · leave {{ case.employee.leave_start }} to {{ case.employee.leave_end }}</span></div>
+<div class="tabs"><a href="/map" class="{{ 'on' if screen=='map' }}">1 · Map</a><a href="/hold" class="{{ 'on' if screen=='hold' }}">2 · Hold</a><a href="/fit" class="{{ 'on' if screen=='fit' }}">3 · Fit</a>
+<span style="margin-left:auto;font-size:12px;color:var(--muted);align-self:center">Demo data · runs offline</span></div>
+<div class="wrap">{% block body %}{% endblock %}</div>
+</body></html>

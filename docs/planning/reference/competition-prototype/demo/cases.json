@@ -1,0 +1,18 @@
+{
+ "_note": "Demo data for the HR overview. All names and numbers are illustrative.",
+ "company": "Bank Alpha",
+ "cases": [
+  {"id": "nusrat", "name": "Nusrat Rahman", "role": "Senior Relationship Manager", "team": "Corporate Banking", "manager": "Imran Hossain",
+   "stage": "Fit", "dates": "Leave 1 Mar – 31 Aug 2027", "next": "Returns 1 Sep · plan ready", "status": "green", "open": 0},
+  {"id": "farzana", "name": "Farzana Akter", "role": "Credit Analyst", "team": "Risk", "manager": "Sabbir Ahmed",
+   "stage": "Map", "dates": "Leave starts 15 Apr 2027", "next": "1 dropped-work alert to confirm", "status": "amber", "open": 1},
+  {"id": "sumaiya", "name": "Sumaiya Islam", "role": "Branch Operations Officer", "team": "Gulshan Branch", "manager": "Rubina Khan",
+   "stage": "Hold", "dates": "On leave until 30 Jun 2027", "next": "Promotion board in May: eligible", "status": "green", "open": 0},
+  {"id": "tahmina", "name": "Tahmina Chowdhury", "role": "HR Business Partner", "team": "People", "manager": "Kamal Uddin",
+   "stage": "Day-45 check", "dates": "Returned 2 Feb 2027", "next": "Check due 19 Mar", "status": "green", "open": 0},
+  {"id": "ayesha", "name": "Ayesha Siddiqua", "role": "Treasury Dealer", "team": "Treasury", "manager": "Nadim Hasan",
+   "stage": "Fit", "dates": "Returns 10 May 2027", "next": "1 clash: no fix within policy, needs HR", "status": "red", "open": 1}
+ ],
+ "report": {"leaves": 5, "duties_mapped": 61, "duties_unowned": 0, "found_by_shetu": 7, "returns_zero_open": 2, "holding_45": "2 of 2",
+            "hr_minutes": 2, "manager_minutes": 45}
+}

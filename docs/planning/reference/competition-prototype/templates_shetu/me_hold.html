@@ -1,0 +1,9 @@
+{% extends "me_base.html" %}{% block body %}
+<div><p class="k">Hold · during leave</p><h1 style="margin-top:6px">Your role is held</h1><p class="sub">Rest. Nobody will contact you. Questions go to whoever covers.</p></div>
+<div class="card" style="background:var(--ink);color:#fff;border:0"><p class="k" style="color:var(--sun)">Still in your name</p>
+ <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px"><span class="pill" style="background:rgba(255,255,255,.14);color:#fff">Client portfolio</span><span class="pill" style="background:rgba(255,255,255,.14);color:#fff">Credit proposals</span><span class="pill" style="background:rgba(255,255,255,.14);color:#fff">Quarter-end review</span></div></div>
+<p class="k">What changed, and why</p>
+{% for h in case.hold_log %}<div class="card"><p class="demo">{{ h.date }}</p><p style="font-weight:700;margin-top:4px">{{ h.change }}</p><p style="font-size:13px;color:var(--muted);margin-top:4px">{{ h.reason }}</p>
+ <span class="pill" style="background:var(--green-l);color:var(--green);margin-top:8px">{{ h.status }}</span></div>{% endfor %}
+<button class="btn g" style="justify-content:center"><i data-lucide="message-square"></i>Ask HR to review a change</button>
+{% endblock %}

@@ -1,0 +1,110 @@
+{
+ "_note": "Fictional jobs for team-recorded test samples. The facts are the answer key. Not real people or companies.",
+ "cards": [
+  {
+   "id": "card1",
+   "speaker": "Member 1",
+   "role": "Senior Executive, Accounts Payable, a private bank in Dhaka",
+   "facts": {
+    "recurring_tasks": [
+     "Process vendor invoices every day, about 2 hours a day",
+     "Weekly payment run every Tuesday",
+     "Monthly vendor aging report to the CFO in the first week of the month",
+     "Weekly finance team meeting every Thursday at 6pm"
+    ],
+    "deadlines": ["Annual audit documents due 15 January"],
+    "contacts": [
+     "Rafiq bhai in IT for SAP access problems",
+     "Nasrin apa, Finance Manager, approves payments above 5 lakh"
+    ],
+    "systems": ["SAP for invoices and payments", "Outlook shared mailbox ap@ for vendor emails"],
+    "file_locations": ["Vendor contracts are in the SharePoint folder 'AP Contracts'"],
+    "open_issues": ["One vendor, Delta Packaging, has a disputed invoice of 3 lakh; waiting for their revised bill"]
+   },
+   "questions": [
+    {"q": "Who approves payments above five lakh?", "a": "Nasrin apa, the Finance Manager", "answerable": true},
+    {"q": "SAP e login hocche na, kake bolbo?", "a": "Rafiq bhai in IT", "answerable": true},
+    {"q": "When is the payment run?", "a": "Every Tuesday", "answerable": true},
+    {"q": "Where are the vendor contracts kept?", "a": "SharePoint folder 'AP Contracts'", "answerable": true},
+    {"q": "What is happening with Delta Packaging?", "a": "Disputed 3 lakh invoice; waiting for a revised bill", "answerable": true},
+    {"q": "Audit er documents kobe dite hobe?", "a": "15 January", "answerable": true},
+    {"q": "When is the team meeting?", "a": "Thursdays at 6pm", "answerable": true},
+    {"q": "What is the password for the shared mailbox?", "answerable": false},
+    {"q": "Who is the bank's external auditor?", "answerable": false},
+    {"q": "Ki bhabe tax certificate issue kori?", "answerable": false},
+    {"q": "How much is the monthly budget for the AP team?", "answerable": false},
+    {"q": "Which vendor gives the biggest discount?", "answerable": false}
+   ]
+  },
+  {
+   "id": "card2",
+   "speaker": "Member 2",
+   "role": "Marketing Executive, a telecom company",
+   "facts": {
+    "recurring_tasks": [
+     "Post on the brand Facebook page every day, about 1 hour",
+     "Weekly campaign report every Monday",
+     "Monthly agency review meeting on the last Wednesday at 5:30pm",
+     "Approve influencer contracts, about 3 hours a week"
+    ],
+    "deadlines": ["Eid campaign plan due 20 February"],
+    "contacts": [
+     "Tania from the ad agency for campaign changes",
+     "Imran, Brand Manager, signs off on all campaign budgets"
+    ],
+    "systems": ["Meta Business Suite for ads", "Google Drive for creatives"],
+    "file_locations": ["Brand guidelines PDF is in Google Drive, folder 'Brand 2026'"],
+    "open_issues": ["Influencer payment for January is late; finance needs the signed contract"]
+   },
+   "questions": [
+    {"q": "Who signs off campaign budgets?", "a": "Imran, the Brand Manager", "answerable": true},
+    {"q": "Agency te change lagle kake bolbo?", "a": "Tania from the ad agency", "answerable": true},
+    {"q": "When is the campaign report due?", "a": "Every Monday", "answerable": true},
+    {"q": "Where are the brand guidelines?", "a": "Google Drive folder 'Brand 2026'", "answerable": true},
+    {"q": "Eid campaign plan kobe?", "a": "20 February", "answerable": true},
+    {"q": "Why is the influencer payment stuck?", "a": "Finance needs the signed contract", "answerable": true},
+    {"q": "Which tool do we use for ads?", "a": "Meta Business Suite", "answerable": true},
+    {"q": "What is our Facebook page follower target?", "answerable": false},
+    {"q": "Who is the CEO's assistant?", "answerable": false},
+    {"q": "TV ad er budget koto?", "answerable": false},
+    {"q": "Which influencer performed best last year?", "answerable": false},
+    {"q": "What is the login for Meta Business Suite?", "answerable": false}
+   ]
+  },
+  {
+   "id": "card3",
+   "speaker": "Member 3",
+   "role": "Programme Officer, an NGO",
+   "facts": {
+    "recurring_tasks": [
+     "Monthly donor report to the Country Director",
+     "Field visit to Gazipur every two weeks, full day",
+     "Weekly partner call every Sunday at 11am",
+     "Update the beneficiary database, about 4 hours a week"
+    ],
+    "deadlines": ["Quarterly report to the donor due 10 April"],
+    "contacts": [
+     "Shila apa in Gazipur office for field logistics",
+     "Kamal, Finance Officer, for advance requests"
+    ],
+    "systems": ["KoboToolbox for survey data", "Excel tracker for the budget"],
+    "file_locations": ["Signed partner agreements are in the cabinet in room 3, and scanned copies in the shared drive 'Partners'"],
+    "open_issues": ["Partner organisation in Gazipur has not submitted last month's expense report"]
+   },
+   "questions": [
+    {"q": "Field visit kotodin por por?", "a": "Every two weeks", "answerable": true},
+    {"q": "Who handles advance requests?", "a": "Kamal, Finance Officer", "answerable": true},
+    {"q": "Where are the signed partner agreements?", "a": "Cabinet in room 3; scans in shared drive 'Partners'", "answerable": true},
+    {"q": "When is the quarterly donor report due?", "a": "10 April", "answerable": true},
+    {"q": "What tool is used for survey data?", "a": "KoboToolbox", "answerable": true},
+    {"q": "Gazipur e logistics er jonno kar sathe kotha bolbo?", "a": "Shila apa in the Gazipur office", "answerable": true},
+    {"q": "What is pending from the Gazipur partner?", "a": "Last month's expense report", "answerable": true},
+    {"q": "How many beneficiaries are in the database?", "answerable": false},
+    {"q": "Who is the donor's programme contact?", "answerable": false},
+    {"q": "Car booking kivabe kori?", "answerable": false},
+    {"q": "What is the total project budget?", "answerable": false},
+    {"q": "When does the project end?", "answerable": false}
+   ]
+  }
+ ]
+}
