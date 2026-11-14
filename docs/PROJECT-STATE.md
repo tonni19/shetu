@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-14 (night), after the deck wording fixes, the final elevator speech and pull requests #8 to #12. Still no application code.
+Last updated: 2026-11-14 (night), after the deck wording fixes, the final elevator speech, the speaker scripts and pull requests #8 to #13. Still no application code.
 
 ## Milestones
 
@@ -27,7 +27,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 ## Next up
 
-1. Proposal presentation on 15 November (slides: `docs/planning/05-Shetu-Proposal-Deck.pptx`). Speakers are agreed (pitch pack, section 7.2): Tonni slides 1 to 3 (elevator speech and introduction first), Mahadi 4 and 5, Ahmad 6 and 7, Nazha 8 to 10 and the questions. Optional deck polish, items 6 to 9 in `docs/planning/06-Slide-Deck-Change-Proposals.md`, is undecided.
+1. Proposal presentation on 15 November (slides: `docs/planning/05-Shetu-Proposal-Deck.pptx`). Speakers are agreed (pitch pack, section 7.2): Tonni slides 1 to 3 (elevator speech and introduction first), Mahadi 4 and 5, Ahmad 6 and 7, Nazha 8 to 10 and the questions. The scripts are in `docs/planning/07-Speaker-Scripts.md`: Tonni's are exactly as she wrote them, the others are drafts each speaker must still edit into their own words. Optional deck polish, items 6 to 9 in `docs/planning/06-Slide-Deck-Change-Proposals.md`, is undecided.
 2. The elevator speech keeps its wording, including "all data stays on the company's own server". That describes the design for a real company; the lab version uses a hosted AI with synthetic data. The prepared answer is in the pitch pack, section 10.
 3. Agree the work division. A proposal exists (not agreed): each member owns a layer and one feature end to end: A frontend + MAP, B backend + ownership and approvals, C AI + HOLD re-planning, D testing + FIT. Needs each member's skills and free time. See `docs/planning/01-Investigation-Report.md`, section 25.2.
 4. Step 1 of the roadmap (`docs/planning/00-Overview.md`, section 7): create the empty FastAPI + React + SQLite app with login; CI; the AI gateway.
@@ -64,6 +64,7 @@ This list lags by one: the pull request that updates this file cannot list itsel
 | #9 | Recorded that the instructor email was sent | SpicyFalcon619 | tonni19. No review recorded |
 | #10 | Interactive learning guide; decision 18 | tonni19 (commits by Ahmad Maruf Hossain) | SpicyFalcon619. No review recorded |
 | #12 | Workbook tidied, shorter elevator pitch, deck change proposals (Issue #11) | HasanGMS0047 | NazhaTarannum. No review recorded |
+| #13 | Final elevator speech in the workbook, pitch pack and slide notes; speaker split; decisions 20 and 21 | NazhaTarannum (commits by Ahmad Maruf Hossain) | SpicyFalcon619. No review recorded |
 
 ## Things every assistant should know right now
 

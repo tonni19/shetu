@@ -1,5 +1,11 @@
 # Changelog
 
+## Speaker scripts: 14 November 2026
+
+| Change | Why |
+|---|---|
+| Added `07-Speaker-Scripts.md`: Tonni's elevator speech and her slide 2 and 3 speeches exactly as she wrote them; drafts for slides 4 to 10; likely questions with suggested answerers | Every member needs a script for the presentation on 15 November |
+
 ## Final elevator speech: 14 November 2026
 
 | Change | Why |
