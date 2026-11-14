@@ -148,14 +148,14 @@ Listed so nobody assumes they are required or prepared.
 | B3 | Team Name | Placeholder; team action |
 | C3 | Members | Placeholder; team action |
 | D3 | Idea | Revised (68 words) |
-| E3 | Elevator Pitch | Revised (30-second version, 81 words) |
+| E3 | Elevator Pitch | Shortened on 14 November 2026 to the 20-second version (58 words) in pack section 2 |
 | F3 | Project Features | Revised (nine-item list) |
 | G3 | USP | Revised |
-| B17 to E38 | Module, Sub-module, Features, Description | Revised in Revision 2: a header row in the faculty's own style, then 21 core-MVP feature rows under 5 modules. Each description states what the user does and what the AI or the rules do. The faculty's example in rows 11 to 14 is left in place |
+| B11 to E31 | Module, Sub-module, Features, Description | 21 core-MVP feature rows under 5 modules, directly below the faculty's own header (rows 8 to 10). Each description states what the user does and what the AI or the rules do. On 14 November 2026 the faculty's example rows, the "DRAFT" label row and the second header row were removed, which moved the feature rows up from B18 to E38 |
 
-Row 3 and the placement below the example are my assumptions about where a team's entry goes; match the live sheet's layout when pasting.
+Row 3 and the placement directly under the faculty's header are assumptions about where a team's entry goes; match the live sheet's layout when pasting.
 
-The draft is regenerated from the untouched faculty workbook and the text in the pack, so the two cannot drift apart. When the team name and members arrive, only cells B3 and C3 change.
+The draft was first generated from the untouched faculty workbook and the text in the pack. The 14 November change was made by hand in the workbook, so regenerating it would bring the example rows back.
 
 ## K. Requirements added by the team in Revision 2
 

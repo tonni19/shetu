@@ -169,6 +169,7 @@ No coding starts until the team says so.
 | `03-Pitch-Preparation-Pack.md` | All presentation and Excel content, and the slide plan |
 | `04-Workbook-Submission-Draft.xlsx` | The faculty Excel sheet, filled in as a draft |
 | `05-Shetu-Proposal-Deck.pptx` | The slides for 15 November (10 slides; a PDF copy sits beside it) |
+| `06-Slide-Deck-Change-Proposals.md` | Proposed wording changes to the slides and the Excel sheet; none applied yet |
 | `reference/` | Course documents, competition materials, logos, and the old prototype code |
 | `README.md`, `AGENTS.md` | Start-here guide for people, and context for AI assistants opening this folder |
 | `CHANGELOG.md` | What changed between versions |
