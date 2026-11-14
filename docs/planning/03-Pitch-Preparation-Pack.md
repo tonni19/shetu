@@ -241,7 +241,7 @@ No official time limit is known; the estimate is 5 to 10 minutes. The deck is **
 | 5 | Hold: when things change | The Tania message, what the AI understood, the impact, the checked proposal, Approve or Change | The most AI-native part; working by the 60% update | 0:50 |
 | 6 | Features and USP | What each of the four users can do, by stage; the USP | What we commit to build | 0:40 |
 | 7 | Architecture and technology | React, FastAPI, the AI pipeline, the model gateway; the stack table | One reason per choice; the model is chosen by testing | 0:45 |
-| 8 | How we know it works | Fake test cases in Bangla, English and Banglish; six things we measure; how the model is chosen; what Shetu will never do | Answers the lab's "how do we know it works?"; no results yet | 0:45 |
+| 8 | How we will know it works | Fake test cases in Bangla, English and Banglish; six things we measure; how the model is chosen; what Shetu will never do | Answers the lab's "how do we know it works?"; no results yet | 0:45 |
 | 9 | Plan and scope | The four checkpoints on the bridge; what we cut; honest limits; how we work | Realistic commitment | 0:40 |
 | 10 | Close | "Keep the people you trained." | Thank you; invite questions | 0:10 |
 
@@ -311,7 +311,7 @@ Each member commits from their own GitHub account, works on a feature branch per
 | Is maternity data sensitive? | Yes, so we collect almost none: duties, dates and the arrangement she needs. Never the reason, never medical detail |
 | What did you cut? | Live integrations, autonomous agents, and anything that scores people. Voice input is a planned extra for later, not in the first version, because typed Banglish already gives us the AI interview |
 | Did you use AI to write code? | Yes, as the course encourages. Tools and where they were used are recorded in the repository, and every member can explain their code |
-| Who built what? | Each member owns a feature end to end; the commits, pull requests and reviews show it |
+| Who built what? | Each member will own a feature end to end; the commits, pull requests and reviews show it |
 
 ---
 

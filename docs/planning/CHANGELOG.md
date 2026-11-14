@@ -1,5 +1,16 @@
 # Changelog
 
+## Deck wording fixes 1 to 5 applied: 14 November 2026
+
+| Change | Why |
+|---|---|
+| Slide 8 label is now "How we will know it works" | The slide says there are no results yet |
+| Slide 9 headline is now "Working AI at every update" | The first checkpoint is the proposal, which has no working AI |
+| Slide 2 statistic now reads "About 2,000 fewer women in Bangladesh's banks after six months"; the learning guide says the same | The source reports a net fall in the count, not women who left. The slide does not claim a cause |
+| Slide 9 now says each member "will own" a feature; pitch pack Q&A likewise | Roles are not agreed yet |
+| Slide 3 gains a seventh duty, "Quarterly report"; slide 5 shows both repairs (renewals to Imran, quarterly report to Rafiq) | Slide 5 moved the quarterly report, which slide 3 did not list |
+| `05-Shetu-Proposal-Deck.pptx` and its PDF rebuilt; `06-Slide-Deck-Change-Proposals.md` marked with what was applied | Items 6 to 9 stay optional |
+
 ## Workbook tidied, deck change proposals added: 14 November 2026
 
 | Change | Why |

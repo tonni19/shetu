@@ -1,11 +1,13 @@
 # Slide deck and workbook: change proposals
 
 - Date: 2026-11-14
-- Status: **proposals, with one exception.** Nothing here has been applied to `05-Shetu-Proposal-Deck.pptx` or its PDF. In `04-Workbook-Submission-Draft.xlsx` only the Elevator Pitch cell (E3) was changed; every other wording item is a proposal. The team decides which to accept.
+- Status: **items 1 to 5 were applied on 14 November 2026** (the deck and its PDF were rebuilt). Items 6 to 9 are optional and not applied. In `04-Workbook-Submission-Draft.xlsx` only the Elevator Pitch cell (E3) was changed; every other wording item for the workbook is still a proposal. The team decides which remain.
 
 The deck was read slide by slide on 14 November 2026, the day before the proposal presentation. It does not need a rewrite: the wording is short, plain and consistent. The items below are the places where an instructor could question a claim, or where two documents disagree.
 
 If a proposal is accepted, change the `.pptx`, export the PDF again, and add a line to `CHANGELOG.md`.
+
+**How item 5 was applied:** slide 3 now has a seventh duty, "Quarterly report" (held by Tania), and slide 5 shows both repairs: Imran takes the renewals, Rafiq takes the quarterly report (1 hour, within his 2 spare). The speaker notes of slide 2 now carry the answer about the bank statistic.
 
 ## 1. Deck: worth fixing before presenting
 
