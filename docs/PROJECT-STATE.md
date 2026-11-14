@@ -4,13 +4,13 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-14 (night), after the deck wording fixes, the final elevator speech, the speaker scripts and pull requests #8 to #13. Still no application code.
+Last updated: 2026-11-14 (night), the evening before the proposal presentation, after pull requests #2 to #14. Still no application code.
 
 ## Milestones
 
 | Checkpoint | Goal | Status |
 |---|---|---|
-| Proposal, 15 Nov 2026 | Pitch | Slides (10, wording fixes 1 to 5 applied on 14 Nov) and the Excel draft are ready in `docs/planning/`. The instructor replied to our feedback request: the idea is approved to proceed, and some questions may come after the presentation. The final elevator speech (63 words, written by Tonni) is in the workbook cell E3, the pitch pack (section 2) and the notes of slide 1. Tonni delivers it first, then the introduction. Not recorded here: whether the Excel sheet has been entered in the faculty's Google Sheet |
+| Proposal, 15 Nov 2026 | Pitch | Slides (10, wording fixes 1 to 5 applied on 14 Nov) and the Excel draft are ready in `docs/planning/`. The instructor replied to our feedback request: the idea is approved to proceed, and some questions may come after the presentation. The final elevator speech (63 words, written by Tonni) is in the workbook cell E3, the pitch pack (section 2) and the notes of slide 1. Tonni delivers it first, then the introduction. Speaker scripts for all ten slides are in `docs/planning/07-Speaker-Scripts.md` (decision 22). Not recorded here: whether the Excel sheet has been entered in the faculty's Google Sheet |
 | Update 1 (30%) | MAP works: interview, Role Map, a forgotten duty found | Not started |
 | Update 2 (60%) | HOLD works: a change typed in plain words is understood and re-planned | Not started |
 | Final (100%) | All three stages, tests green, AI measured | Not started |
@@ -23,7 +23,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 | Issue | What | Who | Branch |
 |---|---|---|---|
-| | Deck wording fixes 1 to 5 and this refresh. Pull request waiting for a teammate's review | Ahmad Maruf Hossain | `feature/deck-fixes-and-state` |
+| | Nothing in progress. The next work starts after the proposal presentation | | |
 
 ## Next up
 
@@ -43,7 +43,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 - Member roles are not assigned yet. Waiting for each member's skills and availability.
 - Hosted AI provider, and who holds the API key, not decided.
 - Task tracking: GitHub Issues with a Projects board is proposed instead of Jira. Not decided.
-- No review is recorded on pull requests #4 to #12. They were merged by a teammate or from Ahmad's computer without a written review.
+- No review is recorded on pull requests #4 to #14. They were merged by a teammate or from Ahmad's computer without a written review.
 
 ## Team and access
 
@@ -65,10 +65,12 @@ This list lags by one: the pull request that updates this file cannot list itsel
 | #10 | Interactive learning guide; decision 18 | tonni19 (commits by Ahmad Maruf Hossain) | SpicyFalcon619. No review recorded |
 | #12 | Workbook tidied, shorter elevator pitch, deck change proposals (Issue #11) | HasanGMS0047 | NazhaTarannum. No review recorded |
 | #13 | Final elevator speech in the workbook, pitch pack and slide notes; speaker split; decisions 20 and 21 | NazhaTarannum (commits by Ahmad Maruf Hossain) | SpicyFalcon619. No review recorded |
+| #14 | Speaker scripts for all ten slides (`docs/planning/07-Speaker-Scripts.md`); decision 22 | tonni19 (commits by Ahmad Maruf Hossain) | NazhaTarannum. No review recorded |
 
 ## Things every assistant should know right now
 
 - No code exists yet. Do not assume any file or function is there; check.
 - Voice input is a **stretch** feature (decision 16), not cut and not in the first version.
+- Speaker scripts exist for all ten slides (decision 22). **Tonni's parts (the elevator speech, slides 2 and 3) are exactly as she wrote them: never edit or "improve" them.** The scripts for slides 4 to 10 are drafts that Mahadi, Ahmad and Nazha edit into their own words, so those may change.
 - The deck wording fixes 1 to 5 are applied (decision 19). The bank statistic is a net fall in the count, never "women who left".
 - Do not push, pull, merge or open issues or pull requests unless the member asks, and ask which GitHub account to use each time.
