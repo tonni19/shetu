@@ -16,9 +16,12 @@ The deck is built from a script that is not in this repository, so the new `.ppt
 ## How it was tested
 The deck was rendered through PowerPoint and the changed slides (2, 3, 5, 8, 9) were checked by eye for overflow. The learning guide was rebuilt and its 31 browser checks pass.
 
+## Elevator speech
+The team's final elevator speech (written by Tonni) was added unchanged to the workbook cell E3, the pitch pack and the notes of slide 1. Words were not edited. One line was flagged: "all data stays on the company's own server" is a design option, not what the lab version does.
+
 ## Not finished / known problems
 - Items 6 to 9 in the proposals file are optional and not applied.
-- The elevator pitch is being rewritten by a teammate. When it is ready, update the workbook cell E3, pitch pack section 2, and the notes of slide 3.
+- The flagged line in the elevator speech needs a decision.
 - Whether the Excel sheet was entered in the faculty's Google Sheet is not recorded.
 - Pull requests #4 to #12 were merged without a recorded review. Where a merge was done from Ahmad's computer under another member's account, the project state says so.
 

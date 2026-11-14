@@ -4,13 +4,13 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-14 (evening), after the deck wording fixes and pull requests #8 to #12. Still no application code.
+Last updated: 2026-11-14 (night), after the deck wording fixes, the final elevator speech and pull requests #8 to #12. Still no application code.
 
 ## Milestones
 
 | Checkpoint | Goal | Status |
 |---|---|---|
-| Proposal, 15 Nov 2026 | Pitch | Slides (10, wording fixes 1 to 5 applied on 14 Nov) and the Excel draft are ready in `docs/planning/`. The instructor replied to our feedback request: the idea is approved to proceed, and some questions may come after the presentation. The elevator pitch is being rewritten by a teammate; until it is ready the current text stands (workbook cell E3, pitch pack section 2). Not recorded here: whether the Excel sheet has been entered in the faculty's Google Sheet |
+| Proposal, 15 Nov 2026 | Pitch | Slides (10, wording fixes 1 to 5 applied on 14 Nov) and the Excel draft are ready in `docs/planning/`. The instructor replied to our feedback request: the idea is approved to proceed, and some questions may come after the presentation. The final elevator speech (63 words, written by Tonni) is in the workbook cell E3, the pitch pack (section 2) and the notes of slide 1. Tonni delivers it first, then the introduction. Not recorded here: whether the Excel sheet has been entered in the faculty's Google Sheet |
 | Update 1 (30%) | MAP works: interview, Role Map, a forgotten duty found | Not started |
 | Update 2 (60%) | HOLD works: a change typed in plain words is understood and re-planned | Not started |
 | Final (100%) | All three stages, tests green, AI measured | Not started |
@@ -24,12 +24,11 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 | Issue | What | Who | Branch |
 |---|---|---|---|
 | | Deck wording fixes 1 to 5 and this refresh. Pull request waiting for a teammate's review | Ahmad Maruf Hossain | `feature/deck-fixes-and-state` |
-| | A new elevator pitch. Nothing in the repository yet | A teammate (name not recorded here) | |
 
 ## Next up
 
 1. Proposal presentation on 15 November (slides: `docs/planning/05-Shetu-Proposal-Deck.pptx`). Decide who presents which slides (suggestion in `docs/planning/03-Pitch-Preparation-Pack.md`, section 7.2). Optional deck polish, items 6 to 9 in `docs/planning/06-Slide-Deck-Change-Proposals.md`, is undecided.
-2. When the new elevator pitch is ready, update the workbook cell E3, the pitch pack (section 2) and the notes of slide 3 together.
+2. Decide the wording of one claim in the elevator speech: "all data stays on the company's own server". The lab version uses a hosted AI with synthetic data; keeping data on a company's server is a design option. The pitch pack, section 2, has the question and a safer wording.
 3. Agree the work division. A proposal exists (not agreed): each member owns a layer and one feature end to end: A frontend + MAP, B backend + ownership and approvals, C AI + HOLD re-planning, D testing + FIT. Needs each member's skills and free time. See `docs/planning/01-Investigation-Report.md`, section 25.2.
 4. Step 1 of the roadmap (`docs/planning/00-Overview.md`, section 7): create the empty FastAPI + React + SQLite app with login; CI; the AI gateway.
 5. First six fake test cases, then test the AI models and choose one.

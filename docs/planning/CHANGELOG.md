@@ -1,5 +1,14 @@
 # Changelog
 
+## Final elevator speech: 14 November 2026
+
+| Change | Why |
+|---|---|
+| The Excel cell E3 now holds the final 63-word elevator speech written by Tonni | The team finalised it the night before the presentation |
+| Pitch pack section 2 leads with the final speech and keeps the earlier versions as drafts; the slide table says slide 1 opens with it and slide 3 explains the hourglass | One speech in three places: the workbook, the pack and the speaker notes |
+| The notes of slide 1 hold the speech; the notes of slide 3 no longer call it the thirty-second pitch | The speech is said first, before the introduction |
+| One line is flagged: "all data stays on the company's own server" | It describes a design option (a local model on the company's own server), not the lab build, which uses a hosted AI with synthetic data |
+
 ## Deck wording fixes 1 to 5 applied: 14 November 2026
 
 | Change | Why |

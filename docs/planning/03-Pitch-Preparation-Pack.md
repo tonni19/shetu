@@ -60,13 +60,19 @@ The company loses work and often loses the person. She loses career ground.
 
 ## 2. Workbook field: Elevator Pitch
 
-No official length is given. The sheet uses the 20-second version (changed from the 30-second version on 14 November 2026, because that one repeated most of the Idea cell).
+**The final elevator speech (63 words)** was written by Tonni on 14 November 2026. It is the text in the Excel cell, and the first thing said at the presentation, followed by the introduction.
+
+> Companies lose experienced women after maternity leave because nobody plans her job. Shetu is AI software that maps her duties before leave, protects her role during it, and fits the job to her life before she returns. Her manager confirms every change, and all data stays on the company's own server. The company keeps the person it trained, and she keeps her career.
+
+Open question about it: the line "all data stays on the company's own server" describes what a company *can* do (run the AI on a local model on its own server). In the lab build the AI is a hosted model with synthetic data only. If asked, say it is a design option, not what the lab version does. The team may prefer the wording "can stay on the company's own server".
+
+The versions below are earlier drafts, kept for reference and for the 60-second spoken version.
 
 **10 seconds**
 
 > Shetu is an AI system that maps what an employee really does, hands each duty over before a long leave, keeps the plan intact while she is away, and brings her work back to her on her terms.
 
-**20 seconds: in the Excel cell (58 words)**
+**20 seconds: the Excel cell until 14 November evening (58 words), replaced by the final speech**
 
 > When someone goes on maternity leave, her work has to pass to others and come back later. Today nobody manages that properly. Shetu's AI maps what she really does, including the duties nobody listed. It plans who covers each one, re-plans when things change, and brings her work back on her terms. AI proposes, rules check, people decide.
 
@@ -234,9 +240,9 @@ No official time limit is known; the estimate is 5 to 10 minutes. The deck is **
 
 | # | Slide | On the slide | Say | Time |
 |---|---|---|---|---|
-| 1 | Title | "Map her job. Hold her role. Fit her return." Team Anomaly and the four members | The 10-second pitch | 0:20 |
+| 1 | Title | "Map her job. Hold her role. Fit her return." Team Anomaly and the four members | The final elevator speech (section 2), then the introduction | 0:45 |
 | 2 | The problem | An illustrative job card (what the job description says, what nobody wrote down), the three failures, the Bangladesh Bank news clipping | Say the example is illustrative | 0:50 |
-| 3 | Our solution | The bridge with Map, Hold and Fit, and six duties on an ownership timeline that narrows and widens like an hourglass | The 30-second pitch; no fixed percentages | 0:55 |
+| 3 | Our solution | The bridge with Map, Hold and Fit, and seven duties on an ownership timeline that narrows and widens like an hourglass | Explain the hourglass; no fixed percentages | 0:55 |
 | 4 | Why AI is essential | Her Banglish sentence turning into Role Map rows marked Said, Documented, Suggested; AI, Rules, People | "Without AI this is a form." | 0:50 |
 | 5 | Hold: when things change | The Tania message, what the AI understood, the impact, the checked proposal, Approve or Change | The most AI-native part; working by the 60% update | 0:50 |
 | 6 | Features and USP | What each of the four users can do, by stage; the USP | What we commit to build | 0:40 |
@@ -245,7 +251,7 @@ No official time limit is known; the estimate is 5 to 10 minutes. The deck is **
 | 9 | Plan and scope | The four checkpoints on the bridge; what we cut; honest limits; how we work | Realistic commitment | 0:40 |
 | 10 | Close | "Keep the people you trained." | Thank you; invite questions | 0:10 |
 
-Total about 6:45. If the limit turns out to be five minutes, shorten slides 2, 6 and 9 rather than dropping a slide.
+Total about 7:10. If the limit turns out to be five minutes, shorten slides 2, 6 and 9 rather than dropping a slide.
 
 ### 7.2 Who presents what (suggestion)
 
