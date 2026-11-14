@@ -24,11 +24,11 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 | Issue | What | Who | Branch |
 |---|---|---|---|
 | 7 | Refresh this file and add the rule that keeps it current | Ahmad Maruf Hossain (pushed as tonni19) | `feature/7-refresh-project-state` |
-| none yet | Remove the faculty's example rows and the "DRAFT" label from the workbook draft; propose wording changes to the deck and workbook (`docs/planning/06-Slide-Deck-Change-Proposals.md`). Committed locally, not pushed | Mohammad Mahadi Hasan | `feature/workbook-cleanup-deck-proposals` |
+| 11 | Remove the faculty's example rows and the "DRAFT" label from the workbook draft; shorten its Elevator Pitch; propose wording changes to the deck and workbook (`docs/planning/06-Slide-Deck-Change-Proposals.md`). Pull request open, waiting for review | Mohammad Mahadi Hasan | `feature/workbook-cleanup-deck-proposals` |
 
 ## Next up
 
-1. Proposal presentation on 15 November (slides: `docs/planning/05-Shetu-Proposal-Deck.pptx`). Decide who presents which slides (suggestion in `docs/planning/03-Pitch-Preparation-Pack.md`, section 7.2). Before presenting, decide which of the proposed wording changes in `docs/planning/06-Slide-Deck-Change-Proposals.md` to accept; none is applied yet.
+1. Proposal presentation on 15 November (slides: `docs/planning/05-Shetu-Proposal-Deck.pptx`). Decide who presents which slides (suggestion in `docs/planning/03-Pitch-Preparation-Pack.md`, section 7.2). Before presenting, decide which of the proposed wording changes in `docs/planning/06-Slide-Deck-Change-Proposals.md` to accept; none is applied to the deck, and only the Elevator Pitch is applied to the workbook.
 2. Agree the work division. A proposal exists (not agreed): each member owns a layer and one feature end to end: A frontend + MAP, B backend + ownership and approvals, C AI + HOLD re-planning, D testing + FIT. Needs each member's skills and free time. See `docs/planning/01-Investigation-Report.md`, section 25.2.
 3. Step 1 of the roadmap (`docs/planning/00-Overview.md`, section 7): create the empty FastAPI + React + SQLite app with login; CI; the AI gateway.
 4. First six fake test cases, then test the AI models and choose one.

@@ -60,13 +60,17 @@ The company loses work and often loses the person. She loses career ground.
 
 ## 2. Workbook field: Elevator Pitch
 
-No official length is given. Use the 30-second version in the sheet.
+No official length is given. The sheet uses the 20-second version (changed from the 30-second version on 14 November 2026, because that one repeated most of the Idea cell).
 
 **10 seconds**
 
 > Shetu is an AI system that maps what an employee really does, hands each duty over before a long leave, keeps the plan intact while she is away, and brings her work back to her on her terms.
 
-**30 seconds: for the Excel cell (about 85 words)**
+**20 seconds: in the Excel cell (58 words)**
+
+> When someone goes on maternity leave, her work has to pass to others and come back later. Today nobody manages that properly. Shetu's AI maps what she really does, including the duties nobody listed. It plans who covers each one, re-plans when things change, and brings her work back on her terms. AI proposes, rules check, people decide.
+
+**30 seconds: the earlier Excel cell text (about 85 words)**
 
 > When someone goes on maternity leave, her work has to pass to others and come back to her later, and today nobody manages that properly. Shetu's AI interviews her in Bangla, English or Banglish, builds an evidence-backed map of her real job, and finds the duties nobody listed. It plans who takes each duty and when, re-plans when a colleague becomes unavailable or a deadline moves, and plans her return around the arrangement she needs. AI proposes, rules check, people decide.
 

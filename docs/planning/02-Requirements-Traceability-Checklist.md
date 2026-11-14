@@ -148,7 +148,7 @@ Listed so nobody assumes they are required or prepared.
 | B3 | Team Name | Placeholder; team action |
 | C3 | Members | Placeholder; team action |
 | D3 | Idea | Revised (68 words) |
-| E3 | Elevator Pitch | Revised (30-second version, 81 words) |
+| E3 | Elevator Pitch | Shortened on 14 November 2026 to the 20-second version (58 words) in pack section 2 |
 | F3 | Project Features | Revised (nine-item list) |
 | G3 | USP | Revised |
 | B11 to E31 | Module, Sub-module, Features, Description | 21 core-MVP feature rows under 5 modules, directly below the faculty's own header (rows 8 to 10). Each description states what the user does and what the AI or the rules do. On 14 November 2026 the faculty's example rows, the "DRAFT" label row and the second header row were removed, which moved the feature rows up from B18 to E38 |

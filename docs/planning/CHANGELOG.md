@@ -4,9 +4,10 @@
 
 | Change | Why |
 |---|---|
-| `04-Workbook-Submission-Draft.xlsx`: the faculty's example rows (Order Food, Order Transport), the "DRAFT: Shetu feature breakdown" label row and the second header row were removed. The 21 feature rows now sit directly under the faculty's own header, in rows 11 to 31. No wording was changed | Requested by Mohammad Mahadi Hasan before the proposal. This reverses the Revision 2 choice to leave the example in place |
+| `04-Workbook-Submission-Draft.xlsx`: the faculty's example rows (Order Food, Order Transport), the "DRAFT: Shetu feature breakdown" label row and the second header row were removed. The 21 feature rows now sit directly under the faculty's own header, in rows 11 to 31 | Requested by Mohammad Mahadi Hasan before the proposal. This reverses the Revision 2 choice to leave the example in place |
+| Workbook cell E3 (Elevator Pitch) shortened from about 85 words to 58. Pack section 2 now holds the new text as the 20-second version and keeps the earlier one | The earlier pitch repeated most of the Idea cell and was long to say. No other wording in the workbook was changed |
 | The workbook was edited by hand, not regenerated. If it is regenerated from the faculty workbook, the example rows will come back | No generator script is in this repository |
-| `06-Slide-Deck-Change-Proposals.md` added: nine proposed wording changes to the deck, and proposed wording for the workbook's pitch cells and eight feature descriptions. None is applied | The deck was reviewed the day before the presentation; the team decides what to accept |
+| `06-Slide-Deck-Change-Proposals.md` added: nine proposed wording changes to the deck, and proposed wording for the workbook's pitch cells and eight feature descriptions. Only the Elevator Pitch is applied | The deck was reviewed the day before the presentation; the team decides what to accept |
 | Checklist section J, the README file table and the overview file table updated | To match the workbook's new rows and list the new file |
 
 ## Voice input corrected: 12 November 2026

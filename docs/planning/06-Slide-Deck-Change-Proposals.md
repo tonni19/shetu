@@ -1,7 +1,7 @@
 # Slide deck and workbook: change proposals
 
 - Date: 2026-11-14
-- Status: **proposals only.** Nothing here has been applied to `05-Shetu-Proposal-Deck.pptx`, its PDF, or the wording in `04-Workbook-Submission-Draft.xlsx`. The team decides which to accept.
+- Status: **proposals, with one exception.** Nothing here has been applied to `05-Shetu-Proposal-Deck.pptx` or its PDF. In `04-Workbook-Submission-Draft.xlsx` only the Elevator Pitch cell (E3) was changed; every other wording item is a proposal. The team decides which to accept.
 
 The deck was read slide by slide on 14 November 2026, the day before the proposal presentation. It does not need a rewrite: the wording is short, plain and consistent. The items below are the places where an instructor could question a claim, or where two documents disagree.
 
@@ -32,7 +32,7 @@ For item 5, if the slides are not changed, the presenter needs a spoken answer: 
 
 ## 3. Workbook: wording proposals
 
-These are for the pitch cells and feature descriptions in `04-Workbook-Submission-Draft.xlsx`. They keep every fact in the current text and add no numbers or new claims. Cell numbers are the ones after the example rows were removed on 14 November 2026.
+These are for the pitch cells and feature descriptions in `04-Workbook-Submission-Draft.xlsx`. They add no numbers or new claims. Cell numbers are the ones after the example rows were removed on 14 November 2026.
 
 Slide 6 uses the same USP sentence as cell G3. If the USP changes in one place, change it in the other.
 
@@ -44,11 +44,13 @@ Slide 6 uses the same USP sentence as cell G3. If the USP changes in one place, 
 
 Why: the current opening, "an AI-native workforce continuity system", has to be decoded. This one says what Shetu does.
 
-**E3, Elevator Pitch**
+**E3, Elevator Pitch: applied on 14 November 2026**
 
-> When someone goes on maternity leave, her work has to pass to other people and come back to her later. Today nobody manages that properly. Shetu does. Its AI interviews her in Bangla, English or Banglish, maps the job she really does, and finds the duties nobody listed. It plans who takes each duty and when, re-plans when a colleague becomes unavailable or a deadline moves, and plans her return around the arrangement she needs. AI proposes, rules check, people decide.
+This is the one wording change already made in the workbook. The cell went from about 85 words to 58.
 
-Why: shorter sentences, and "Shetu does." marks the turn from the problem to the answer.
+> When someone goes on maternity leave, her work has to pass to others and come back later. Today nobody manages that properly. Shetu's AI maps what she really does, including the duties nobody listed. It plans who covers each one, re-plans when things change, and brings her work back on her terms. AI proposes, rules check, people decide.
+
+Why: the earlier text repeated most of the Idea cell and took about 30 seconds to say. This one still covers the problem, all three stages and the trust rule. It leaves out "Bangla, English or Banglish", "evidence-backed" and the examples of what can change; those remain in the Idea cell, the feature list and slides 4 and 5. The earlier text is kept in the pitch pack, section 2.
 
 **F3, Project Features**
 
