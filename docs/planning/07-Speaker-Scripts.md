@@ -59,11 +59,13 @@ Cue: Hand over to Mahadi for slide 4.
 
 *Draft for Mahadi to edit into their own words.*
 
-So why does Shetu need AI? Without it, this would just be a form, and a form only records what people already remember.
+So why does Shetu need AI? Because without it, this would just be a form. And a form only records what people already remember.
 
-Look at what she really says, in Banglish: the Tuesday credit meeting runs from six to seven thirty in the evening. Shetu reads that mix of Bangla and English and turns it into a row in her Role Map, with her own words kept as the evidence. A line in her job description becomes a documented duty. And when the job description mentions a quarter-end review that she never talked about, Shetu does not guess. It asks her, and until she confirms it, it stays a suggestion.
+Think about how she really talks. She might describe her week half in Bangla and half in English, the way most of us do. Shetu understands that, and turns it into one row in her Role Map, with her own words kept right beside it as proof. If a duty is written in her job description, it's marked as documented.
 
-That is why we split the work three ways. The AI understands language and drafts the plans. Rules check the dates, the numbers and everyone's workload. And people decide.
+And when the job description mentions something she never brought up, like the quarter-end review, Shetu doesn't guess. It asks her. Until she says yes, it's only a question.
+
+So the work is shared three ways. The AI listens and drafts. Rules check the dates, the numbers and everyone's workload. And people make the decision.
 
 Cue: Next slide: your slide 5, when the plan breaks.
 
@@ -71,13 +73,15 @@ Cue: Next slide: your slide 5, when the plan breaks.
 
 *Draft for Mahadi to edit into their own words.*
 
-Now, what happens when the plan breaks.
+Now, plans break. That's the part nobody plans for.
 
-The manager simply types it. Tania will be unavailable for three weeks, and the quarterly report deadline has moved to April 2. The AI reads that into facts: who, for how long, and the new date. The sentence has no start date, so the AI asks. It does not guess.
+Say the manager just types it: Tania will be away for three weeks, and the quarterly report is now due on April 2. Shetu reads that, and it notices something is missing: when does Tania's absence start? So it asks. It doesn't guess.
 
-Then plain code takes over. It works out the dates, finds the two affected duties, and checks who has room. The AI proposes Rafiq for the renewals, and the rules reject it: Rafiq has two spare hours and the job needs three. Imran takes the renewals instead, Rafiq takes the quarterly report, and both pass.
+Then ordinary code does the maths: which dates, which duties are affected, who has time. The AI suggests Rafiq for the renewals. The rules say no. Rafiq has two free hours, and the job needs three. So Imran takes the renewals, Rafiq takes the quarterly report, and this time both pass.
 
-Then a person decides. The manager approves or changes it. The AI never applies a change by itself. This is our design. We will build it, and show it working by the 60 percent update.
+And then the manager decides. She can approve it or change it. Shetu never changes anything on its own.
+
+This is how we've designed it. We will build it, and show it working by the 60 percent update.
 
 Cue: Hand over to Ahmad for slide 6.
 
@@ -87,11 +91,11 @@ Cue: Hand over to Ahmad for slide 6.
 
 *Draft for Ahmad to edit into their own words.*
 
-Here is what each person can do.
+So what can people actually do with Shetu?
 
-The employee describes her job in an AI interview and confirms her own Role Map. The manager approves handover proposals that are checked against the team's workload, sees who owns every duty on every date, and reports a change in plain words. The cover colleague sees exactly which duties they hold. HR decides exceptions and reads a log of every proposal, rule check and decision.
+The employee talks through her job with the AI, then checks and confirms her own map. The manager can see who owns every duty on every date, and can type in a change in plain words. Every proposal comes with a workload check, so nobody ends up overloaded. The colleague covering for her sees exactly what is theirs. And HR can read a log of everything: what was proposed, what the rules said, and who decided.
 
-What makes Shetu different is simple. It works on the job itself, not the leave paperwork. It finds work nobody listed, and every AI statement traces back to her words or a document.
+So what makes us different? Most tools deal with the leave paperwork. We work on the job itself. We find the work nobody wrote down. And everything the AI tells you points back to her own words, or to a document.
 
 Cue: Next slide: your slide 7, architecture and technology.
 
@@ -99,13 +103,13 @@ Cue: Next slide: your slide 7, architecture and technology.
 
 *Draft for Ahmad to edit into their own words.*
 
-Now, how we will build it. The plan is simple to build and simple to explain.
+Now, how will we build it? We're keeping it simple on purpose.
 
-Two parts talk through one API. The frontend is React: the screens people use. The backend is Python with FastAPI, as our instructor advised, and it holds the login and roles, the case workflow, the rule checks and the AI pipeline. The data lives in SQLite, a single file that is the same on every laptop.
+There are two parts, and they talk through one API. The screens are in React. Behind them is Python with FastAPI, which our instructor recommended. That's where the login, the rule checks and the AI pipeline live. And everything is saved in SQLite, one file, the same on every laptop.
 
-The app never calls an AI model directly. Every request goes through our own gateway, which checks each reply and can switch provider, so we can change the model without rewriting the app. We have not chosen the model yet. We will run the same fake test cases through several and choose by results. A real company could run the same app on a local model on its own server.
+One choice matters most. The app never talks to an AI model directly. Everything goes through our own gateway, which checks every answer before we use it. So if we want a different model, we change one place, not the whole app. And we haven't picked a model yet. We'll run the same fake cases through a few of them and choose by the results. A real company could even run a local model on its own server.
 
-We test the rules with pytest and the user flows with Selenium in a real browser, and we all work in one GitHub repository.
+We'll test the rules with pytest and the screens with Selenium in a real browser, and all four of us work in one GitHub repository. And to be honest with you: this is our plan. It's not something we've already built.
 
 Cue: Hand over to Nazha for slide 8.
 
@@ -115,13 +119,13 @@ Cue: Hand over to Nazha for slide 8.
 
 *Draft for Nazha to edit into their own words.*
 
-How will we know it works? We will test the AI, not just trust it.
+So how will we know it works? We won't just trust the AI. We'll test it.
 
-We write fake test cases in Bangla, English and Banglish, with the right answers written before the AI sees them. Then we measure six things: did it find the real duties, did it invent any, is the evidence correct, did it catch the duties we hid on purpose, how often did the rules reject its plans, and does it say it does not know when it should.
+We write fake cases in Bangla, English and Banglish, and we write the right answers first, before the AI ever sees them. Then we measure six things. Did it find the real duties? Did it make any up? Is the evidence correct? Did it catch the duties we hid on purpose? How often did the rules reject its plan? And does it say "I don't know" when it should?
 
-We have no results yet, and results on fake data will never be presented as real-world accuracy. We choose the AI model the same way, by running the same test cases through several models.
+We have no results yet. And when we do, we'll be clear about them: they come from fake data, so they are not real-world accuracy. We'll choose the model the same way, by testing.
 
-And there are things Shetu will never do. It never asks why she needs an arrangement, never stores medical or family details, never scores or predicts anything about a person, and never approves a plan on its own.
+And there are things Shetu will never do. It never asks why she needs an arrangement. It never stores medical or family details. It never scores or predicts anything about a person. And it never approves a plan on its own.
 
 Cue: Next slide: your slide 9, the plan.
 
@@ -129,11 +133,13 @@ Cue: Next slide: your slide 9, the plan.
 
 *Draft for Nazha to edit into their own words.*
 
-Here is our plan, and every update shows working AI. At the proposal we show the plan and the design. By Update 1, at 30 percent, the first stage works: the interview, the Role Map, and a forgotten duty found. By Update 2, at 60 percent, a change typed in plain words is understood and re-planned. By the final, all three stages work, the tests pass, and the AI is measured.
+Here's our plan, and at every update you'll see working AI.
 
-We cut some things on purpose: live integrations, an AI that acts on its own, scoring people, and fixed percentages. Voice input is a planned extra, after Hold works.
+Today, it's the plan and the design. By Update 1, at 30 percent, the first stage works: the interview, the Role Map, and a forgotten duty found. By Update 2, at 60 percent, you can type a change in plain words, and Shetu understands it and re-plans. And by the final, all three stages work, the tests pass, and the AI is measured.
 
-We are honest about our limits. All data is synthetic, we have no user research yet, and the AI can be wrong, so every item needs evidence and a person's approval. We work in one GitHub repository, with a reviewed pull request for every feature, and each of us will own a feature end to end.
+We've also chosen what to leave out: live integrations, an AI that acts on its own, scoring people, and fixed percentages. Voice input is something we'd love to add once Hold works.
+
+And we're honest about our limits. All our data is fake. We haven't done user research yet. And the AI can be wrong, which is why everything needs evidence and a person's approval. We work in one GitHub repository, every feature goes through a reviewed pull request, and each of us will own a feature from start to finish.
 
 Cue: Next slide: your slide 10, the close.
 
@@ -141,7 +147,7 @@ Cue: Next slide: your slide 10, the close.
 
 *Draft for Nazha to edit into their own words.*
 
-That is Shetu: keep the people you trained. Thank you. We would be happy to take your questions.
+That's Shetu: keep the people you trained. Thank you. We'd be happy to take your questions.
 
 Cue: Then take the questions. See the Questions tab.
 
