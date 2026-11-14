@@ -64,7 +64,7 @@ The company loses work and often loses the person. She loses career ground.
 
 > Companies lose experienced women after maternity leave because nobody plans her job. Shetu is AI software that maps her duties before leave, protects her role during it, and fits the job to her life before she returns. Her manager confirms every change, and all data stays on the company's own server. The company keeps the person it trained, and she keeps her career.
 
-Open question about it: the line "all data stays on the company's own server" describes what a company *can* do (run the AI on a local model on its own server). In the lab build the AI is a hosted model with synthetic data only. If asked, say it is a design option, not what the lab version does. The team may prefer the wording "can stay on the company's own server".
+**The team kept her wording** (14 November 2026). The line "all data stays on the company's own server" describes what a company can do: run the AI on a local model on its own server, so employee data never leaves. In the lab build the AI is a hosted model and the data is synthetic. If asked, say exactly that: it is the design for a real company, and the lab version does not claim it. See the question in section 10.
 
 The versions below are earlier drafts, kept for reference and for the 60-second spoken version.
 
@@ -253,18 +253,16 @@ No official time limit is known; the estimate is 5 to 10 minutes. The deck is **
 
 Total about 7:10. If the limit turns out to be five minutes, shorten slides 2, 6 and 9 rather than dropping a slide.
 
-### 7.2 Who presents what (suggestion)
+### 7.2 Who presents what
 
-All four members must be present, so each should speak. One way to split it evenly:
+Agreed by the team on 14 November 2026.
 
 | Speaker | Slides | Topic |
 |---|---|---|
-| 1 | 1, 2, 10 | Introduction, problem, and the close |
-| 2 | 3, 4 | Solution and why AI |
-| 3 | 5, 6 | Hold re-planning and features |
-| 4 | 7, 8, 9 | Architecture, testing the AI, and the plan |
-
-The team decides who takes which part.
+| Tonni | 1, 2, 3 | The elevator speech and introduction, the problem, the solution |
+| Mohammad Mahadi Hasan | 4, 5 | Why AI is essential, HOLD re-planning |
+| Ahmad Maruf Hossain | 6, 7 | Features and USP, architecture and technology |
+| Nazha Tarannum Roza | 8, 9, 10 | How we will know it works, the plan, the close, and answering the questions |
 
 ### 7.3 Deck rules
 
@@ -315,6 +313,7 @@ Each member commits from their own GitHub account, works on a feature branch per
 | What is the hourglass? | The shape her workload takes: narrowing before leave, held by others during it, widening on return. Map, Hold and Fit manage those three parts. No fixed percentages; each plan is agreed individually |
 | Does it need payments? | No. It is licensed to an employer and invoiced; the application has no payment flow |
 | Is maternity data sensitive? | Yes, so we collect almost none: duties, dates and the arrangement she needs. Never the reason, never medical detail |
+| Does all the data really stay on the company's own server? | That is how Shetu is designed for a real company: the AI can run on a local model on the company's own server, so employee data never has to leave. For this lab we use a hosted model with synthetic data only, and we have not claimed otherwise |
 | What did you cut? | Live integrations, autonomous agents, and anything that scores people. Voice input is a planned extra for later, not in the first version, because typed Banglish already gives us the AI interview |
 | Did you use AI to write code? | Yes, as the course encourages. Tools and where they were used are recorded in the repository, and every member can explain their code |
 | Who built what? | Each member will own a feature end to end; the commits, pull requests and reviews show it |

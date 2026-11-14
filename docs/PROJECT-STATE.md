@@ -27,8 +27,8 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 ## Next up
 
-1. Proposal presentation on 15 November (slides: `docs/planning/05-Shetu-Proposal-Deck.pptx`). Decide who presents which slides (suggestion in `docs/planning/03-Pitch-Preparation-Pack.md`, section 7.2). Optional deck polish, items 6 to 9 in `docs/planning/06-Slide-Deck-Change-Proposals.md`, is undecided.
-2. Decide the wording of one claim in the elevator speech: "all data stays on the company's own server". The lab version uses a hosted AI with synthetic data; keeping data on a company's server is a design option. The pitch pack, section 2, has the question and a safer wording.
+1. Proposal presentation on 15 November (slides: `docs/planning/05-Shetu-Proposal-Deck.pptx`). Speakers are agreed (pitch pack, section 7.2): Tonni slides 1 to 3 (elevator speech and introduction first), Mahadi 4 and 5, Ahmad 6 and 7, Nazha 8 to 10 and the questions. Optional deck polish, items 6 to 9 in `docs/planning/06-Slide-Deck-Change-Proposals.md`, is undecided.
+2. The elevator speech keeps its wording, including "all data stays on the company's own server". That describes the design for a real company; the lab version uses a hosted AI with synthetic data. The prepared answer is in the pitch pack, section 10.
 3. Agree the work division. A proposal exists (not agreed): each member owns a layer and one feature end to end: A frontend + MAP, B backend + ownership and approvals, C AI + HOLD re-planning, D testing + FIT. Needs each member's skills and free time. See `docs/planning/01-Investigation-Report.md`, section 25.2.
 4. Step 1 of the roadmap (`docs/planning/00-Overview.md`, section 7): create the empty FastAPI + React + SQLite app with login; CI; the AI gateway.
 5. First six fake test cases, then test the AI models and choose one.
