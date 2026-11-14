@@ -1,5 +1,14 @@
 # Changelog
 
+## Workbook tidied, deck change proposals added: 14 November 2026
+
+| Change | Why |
+|---|---|
+| `04-Workbook-Submission-Draft.xlsx`: the faculty's example rows (Order Food, Order Transport), the "DRAFT: Shetu feature breakdown" label row and the second header row were removed. The 21 feature rows now sit directly under the faculty's own header, in rows 11 to 31. No wording was changed | Requested by Mohammad Mahadi Hasan before the proposal. This reverses the Revision 2 choice to leave the example in place |
+| The workbook was edited by hand, not regenerated. If it is regenerated from the faculty workbook, the example rows will come back | No generator script is in this repository |
+| `06-Slide-Deck-Change-Proposals.md` added: nine proposed wording changes to the deck, and proposed wording for the workbook's pitch cells and eight feature descriptions. None is applied | The deck was reviewed the day before the presentation; the team decides what to accept |
+| Checklist section J, the README file table and the overview file table updated | To match the workbook's new rows and list the new file |
+
 ## Voice input corrected: 12 November 2026
 
 | Change | Why |
