@@ -1,5 +1,25 @@
 # Changelog
 
+## Final elevator speech: 14 November 2026
+
+| Change | Why |
+|---|---|
+| The Excel cell E3 now holds the final 63-word elevator speech written by Tonni | The team finalised it the night before the presentation |
+| Pitch pack section 2 leads with the final speech and keeps the earlier versions as drafts; the slide table says slide 1 opens with it and slide 3 explains the hourglass | One speech in three places: the workbook, the pack and the speaker notes |
+| The notes of slide 1 hold the speech; the notes of slide 3 no longer call it the thirty-second pitch | The speech is said first, before the introduction |
+| The team decided to keep her wording, including the line "all data stays on the company's own server", and a prepared answer was added to the pitch pack Q&A. Speaker split agreed: Tonni slides 1 to 3, Mahadi 4 and 5, Ahmad 6 and 7, Nazha 8 to 10 and the questions | It describes a design option (a local model on the company's own server), not the lab build, which uses a hosted AI with synthetic data |
+
+## Deck wording fixes 1 to 5 applied: 14 November 2026
+
+| Change | Why |
+|---|---|
+| Slide 8 label is now "How we will know it works" | The slide says there are no results yet |
+| Slide 9 headline is now "Working AI at every update" | The first checkpoint is the proposal, which has no working AI |
+| Slide 2 statistic now reads "About 2,000 fewer women in Bangladesh's banks after six months"; the learning guide says the same | The source reports a net fall in the count, not women who left. The slide does not claim a cause |
+| Slide 9 now says each member "will own" a feature; pitch pack Q&A likewise | Roles are not agreed yet |
+| Slide 3 gains a seventh duty, "Quarterly report"; slide 5 shows both repairs (renewals to Imran, quarterly report to Rafiq) | Slide 5 moved the quarterly report, which slide 3 did not list |
+| `05-Shetu-Proposal-Deck.pptx` and its PDF rebuilt; `06-Slide-Deck-Change-Proposals.md` marked with what was applied | Items 6 to 9 stay optional |
+
 ## Workbook tidied, deck change proposals added: 14 November 2026
 
 | Change | Why |

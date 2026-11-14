@@ -60,13 +60,19 @@ The company loses work and often loses the person. She loses career ground.
 
 ## 2. Workbook field: Elevator Pitch
 
-No official length is given. The sheet uses the 20-second version (changed from the 30-second version on 14 November 2026, because that one repeated most of the Idea cell).
+**The final elevator speech (63 words)** was written by Tonni on 14 November 2026. It is the text in the Excel cell, and the first thing said at the presentation, followed by the introduction.
+
+> Companies lose experienced women after maternity leave because nobody plans her job. Shetu is AI software that maps her duties before leave, protects her role during it, and fits the job to her life before she returns. Her manager confirms every change, and all data stays on the company's own server. The company keeps the person it trained, and she keeps her career.
+
+**The team kept her wording** (14 November 2026). The line "all data stays on the company's own server" describes what a company can do: run the AI on a local model on its own server, so employee data never leaves. In the lab build the AI is a hosted model and the data is synthetic. If asked, say exactly that: it is the design for a real company, and the lab version does not claim it. See the question in section 10.
+
+The versions below are earlier drafts, kept for reference and for the 60-second spoken version.
 
 **10 seconds**
 
 > Shetu is an AI system that maps what an employee really does, hands each duty over before a long leave, keeps the plan intact while she is away, and brings her work back to her on her terms.
 
-**20 seconds: in the Excel cell (58 words)**
+**20 seconds: the Excel cell until 14 November evening (58 words), replaced by the final speech**
 
 > When someone goes on maternity leave, her work has to pass to others and come back later. Today nobody manages that properly. Shetu's AI maps what she really does, including the duties nobody listed. It plans who covers each one, re-plans when things change, and brings her work back on her terms. AI proposes, rules check, people decide.
 
@@ -234,31 +240,29 @@ No official time limit is known; the estimate is 5 to 10 minutes. The deck is **
 
 | # | Slide | On the slide | Say | Time |
 |---|---|---|---|---|
-| 1 | Title | "Map her job. Hold her role. Fit her return." Team Anomaly and the four members | The 10-second pitch | 0:20 |
+| 1 | Title | "Map her job. Hold her role. Fit her return." Team Anomaly and the four members | The final elevator speech (section 2), then the introduction | 0:45 |
 | 2 | The problem | An illustrative job card (what the job description says, what nobody wrote down), the three failures, the Bangladesh Bank news clipping | Say the example is illustrative | 0:50 |
-| 3 | Our solution | The bridge with Map, Hold and Fit, and six duties on an ownership timeline that narrows and widens like an hourglass | The 30-second pitch; no fixed percentages | 0:55 |
+| 3 | Our solution | The bridge with Map, Hold and Fit, and seven duties on an ownership timeline that narrows and widens like an hourglass | Explain the hourglass; no fixed percentages | 0:55 |
 | 4 | Why AI is essential | Her Banglish sentence turning into Role Map rows marked Said, Documented, Suggested; AI, Rules, People | "Without AI this is a form." | 0:50 |
 | 5 | Hold: when things change | The Tania message, what the AI understood, the impact, the checked proposal, Approve or Change | The most AI-native part; working by the 60% update | 0:50 |
 | 6 | Features and USP | What each of the four users can do, by stage; the USP | What we commit to build | 0:40 |
 | 7 | Architecture and technology | React, FastAPI, the AI pipeline, the model gateway; the stack table | One reason per choice; the model is chosen by testing | 0:45 |
-| 8 | How we know it works | Fake test cases in Bangla, English and Banglish; six things we measure; how the model is chosen; what Shetu will never do | Answers the lab's "how do we know it works?"; no results yet | 0:45 |
+| 8 | How we will know it works | Fake test cases in Bangla, English and Banglish; six things we measure; how the model is chosen; what Shetu will never do | Answers the lab's "how do we know it works?"; no results yet | 0:45 |
 | 9 | Plan and scope | The four checkpoints on the bridge; what we cut; honest limits; how we work | Realistic commitment | 0:40 |
 | 10 | Close | "Keep the people you trained." | Thank you; invite questions | 0:10 |
 
-Total about 6:45. If the limit turns out to be five minutes, shorten slides 2, 6 and 9 rather than dropping a slide.
+Total about 7:10. If the limit turns out to be five minutes, shorten slides 2, 6 and 9 rather than dropping a slide.
 
-### 7.2 Who presents what (suggestion)
+### 7.2 Who presents what
 
-All four members must be present, so each should speak. One way to split it evenly:
+Agreed by the team on 14 November 2026.
 
 | Speaker | Slides | Topic |
 |---|---|---|
-| 1 | 1, 2, 10 | Introduction, problem, and the close |
-| 2 | 3, 4 | Solution and why AI |
-| 3 | 5, 6 | Hold re-planning and features |
-| 4 | 7, 8, 9 | Architecture, testing the AI, and the plan |
-
-The team decides who takes which part.
+| Tonni | 1, 2, 3 | The elevator speech and introduction, the problem, the solution |
+| Mohammad Mahadi Hasan | 4, 5 | Why AI is essential, HOLD re-planning |
+| Ahmad Maruf Hossain | 6, 7 | Features and USP, architecture and technology |
+| Nazha Tarannum Roza | 8, 9, 10 | How we will know it works, the plan, the close, and answering the questions |
 
 ### 7.3 Deck rules
 
@@ -309,9 +313,10 @@ Each member commits from their own GitHub account, works on a feature branch per
 | What is the hourglass? | The shape her workload takes: narrowing before leave, held by others during it, widening on return. Map, Hold and Fit manage those three parts. No fixed percentages; each plan is agreed individually |
 | Does it need payments? | No. It is licensed to an employer and invoiced; the application has no payment flow |
 | Is maternity data sensitive? | Yes, so we collect almost none: duties, dates and the arrangement she needs. Never the reason, never medical detail |
+| Does all the data really stay on the company's own server? | That is how Shetu is designed for a real company: the AI can run on a local model on the company's own server, so employee data never has to leave. For this lab we use a hosted model with synthetic data only, and we have not claimed otherwise |
 | What did you cut? | Live integrations, autonomous agents, and anything that scores people. Voice input is a planned extra for later, not in the first version, because typed Banglish already gives us the AI interview |
 | Did you use AI to write code? | Yes, as the course encourages. Tools and where they were used are recorded in the repository, and every member can explain their code |
-| Who built what? | Each member owns a feature end to end; the commits, pull requests and reviews show it |
+| Who built what? | Each member will own a feature end to end; the commits, pull requests and reviews show it |
 
 ---
 
