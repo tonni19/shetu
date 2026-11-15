@@ -17,7 +17,7 @@ Last updated: 2026-11-16, after the proposal presentation, tonni19's GitHub Pro 
 
 ## What works now
 
-No application code yet. The full plan, slides and Excel draft are in `docs/planning/`. An interactive learning guide for the whole team is in `docs/learn/index.html` (open it in a browser; it works offline).
+No application code yet. The full plan, slides and Excel draft are in `docs/planning/`. An interactive learning guide for the whole team is online at https://tonni19.github.io/shetu/ and in `docs/learn/index.html` (works offline). Its "Deeper, in plain words" lessons explain rules, tests, the architecture, the AI pipeline, tokens and embeddings, and our niche.
 
 ## In progress
 
@@ -28,7 +28,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 ## Next up
 
 1. Answer the presentation feedback: agree how we explain the niche (why maternity first, how it differs from a work planner) and whether embeddings have a place in the design. Record the outcome in `docs/DECISIONS.md`.
-2. Assign the roles: one primary owner per area, others may help. Record it in this file and in `CONTRIBUTIONS.md`.
+2. Assign the roles: one primary owner per area, others may help. The team discusses it on 17 November 2026. Record the result in this file and in `CONTRIBUTIONS.md`.
 3. Agree the work division. A proposal exists (not agreed): each member owns a layer and one feature end to end: A frontend + MAP, B backend + ownership and approvals, C AI + HOLD re-planning, D testing + FIT. Needs each member's skills and free time. See `docs/planning/01-Investigation-Report.md`, section 25.2.
 4. Step 1 of the roadmap (`docs/planning/00-Overview.md`, section 7): create the empty FastAPI + React + SQLite app with login; CI; the AI gateway.
 5. First six fake test cases, then test the AI models and choose one.

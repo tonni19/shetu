@@ -6,6 +6,10 @@ The online page is **public**, even though the repository is private. Never add 
 
 It teaches the whole project in 14 short lessons: the problem, Map / Hold / Fit, the hourglass, evidence, who does what (AI, rules, people), the HOLD re-planning flow, how the app is built, the AI gateway, how we measure the AI, privacy, GitHub teamwork, who builds what, the course and the presentation, and a final exam. It has simulators, sorting games, quizzes and a glossary.
 
+A second group, **Deeper, in plain words**, explains the technical words in more detail: what a rule is, tests and pytest, the architecture piece by piece, the AI pipeline, tokens and embeddings, and our niche (why maternity first, and why Shetu is not a work planner). Anything there that the team has not agreed is marked "Proposed, not agreed".
+
+**Add to it whenever something is explained.** If a teammate's assistant teaches a concept about Shetu, put the explanation in the guide too, so the whole team can read it later.
+
 ## Keep it true
 
 The guide teaches the **plan**. When a decision or the design changes, update the matching lesson in the same pull request, the same way you update `docs/PROJECT-STATE.md`. When something is actually built, change the lesson's wording from "planned" to "built" and say where the code is. Never let the guide say something is built when it is not.

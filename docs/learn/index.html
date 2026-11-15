@@ -293,7 +293,7 @@ select{font:inherit;border:1.5px solid var(--ink);border-radius:10px;padding:8px
 
 @media (max-width:900px){
   .menu-btn{display:block}
-  .shell{grid-template-columns:1fr}
+  .shell{grid-template-columns:minmax(0,1fr)}
   nav.side{position:fixed;top:64px;left:0;bottom:0;width:min(86vw,320px);height:auto;background:var(--paper);z-index:15;transform:translateX(-100%);transition:transform .2s;box-shadow:6px 0 24px rgba(0,0,0,.15)}
   nav.side.open{transform:none}
   .grid2,.grid3,.gw,.step-body,.story-out,.hero{grid-template-columns:1fr}
@@ -579,6 +579,200 @@ select{font:inherit;border:1.5px solid var(--ink);border-radius:10px;padding:8px
   <div data-widget="glossary"></div>
 </section>
 
+<!-- ============ D1 RULES ============ -->
+<section class="lesson" id="d1" hidden>
+  <div class="kicker">Deeper 1 &middot; Rules, exactly</div>
+  <h2>What a <em>rule</em> actually is.</h2>
+  <p class="lead">When we say "rules check", we mean <b>ordinary Python code</b>: plain arithmetic and if/else logic. No AI, no guessing. The same input always gives the same answer, and every rule has tests. They will live in <code>backend/app/rules/</code> (planned, not built).</p>
+  <div class="card"><div class="kicker">Why rules exist</div><p style="margin:0">An AI model can be confidently wrong about numbers and dates. So the model never decides anything a program can calculate. The AI proposes; only the rules can say a proposal is valid; a person still decides.</p></div>
+  <h3>The rules Shetu will have</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Rule</th><th>What it does</th><th>Example</th></tr>
+    <tr><td><b>Dates</b></td><td>Computes dates and ranges from the facts the AI pulled out of a sentence</td><td>"Three weeks from the start date" becomes an exact end date</td></tr>
+    <tr><td><b>Impact</b></td><td>Finds which duties a change affects</td><td>Tania is away, so the renewals and the quarterly report are hit</td></tr>
+    <tr><td><b>Workload</b></td><td>Checks a colleague has enough spare hours</td><td>Rafiq has 2 spare hours, the job needs 3: rejected. Imran has 3 of 4: passed</td></tr>
+    <tr><td><b>Coverage</b></td><td>No duty may be without an owner on any date</td><td>Any gap in the ownership timeline fails the plan</td></tr>
+    <tr><td><b>Policy</b></td><td>Checks a proposal against company policy (one policy rule in the first version, for FIT)</td><td>A return arrangement must follow the company's rule</td></tr>
+    <tr><td><b>Time clashes</b></td><td>Finds meetings or travel that clash with the arrangement she asked for (FIT)</td><td>A 7:30 pm meeting against an agreed finish time</td></tr>
+    <tr><td><b>Evidence</b></td><td>"Said" or "documented" needs a matching quote or document; "suggested" stays a question until a person confirms</td><td>The quarter-end review stays a suggestion until she says yes</td></tr>
+    <tr><td><b>Output shape</b></td><td>Every AI reply must match a fixed format, or it is retried once and then rejected</td><td>A wrong reply never reaches the database</td></tr>
+  </table></div>
+  <h3>What a rule looks like in code</h3>
+<pre><span class="c"># a rule is a normal function: facts in, a verdict out</span>
+<span class="k">def</span> has_capacity(free_hours, needed_hours):
+    <span class="k">return</span> free_hours >= needed_hours
+
+has_capacity(2, 3)   <span class="c"># Rafiq</span>  <span class="bad">False</span>
+has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span></pre>
+  <div class="card"><div class="kicker">If you are asked</div><p style="margin:0">"A rule is plain code that checks something we can calculate, like dates, workload or whether a duty has an owner. The AI can propose, but only the rules can say a proposal is valid, and a person still decides."</p></div>
+  <div class="remember"><div><b>Remember</b><p>"Rules" is not a fancy engine or machine learning. It is normal Python functions with tests. Nothing is built yet, so say "the rules will check".</p></div></div>
+</section>
+
+<!-- ============ D2 TESTS ============ -->
+<section class="lesson" id="d2" hidden>
+  <div class="kicker">Deeper 2 &middot; Tests and pytest</div>
+  <h2>"Tested with pytest", <em>in plain words.</em></h2>
+  <p class="lead">A <b>test</b> is a small piece of code that runs your real code and checks the answer is right. <b>pytest</b> is the Python tool that finds all the tests, runs them, and tells you which passed and which failed.</p>
+<pre><span class="k">def</span> test_rafiq_has_too_little_time():
+    <span class="c"># Rafiq has 2 free hours, the job needs 3</span>
+    <span class="k">assert</span> has_capacity(free_hours=2, needed_hours=3) == False
+
+<span class="k">def</span> test_imran_has_enough_time():
+    <span class="k">assert</span> has_capacity(free_hours=3, needed_hours=3) == True</pre>
+  <p><code>assert</code> means "this must be true". If someone later changes the rule by accident and Rafiq suddenly passes, this test fails and tells us <b>before</b> a manager ever sees a wrong plan.</p>
+  <div class="grid2">
+    <div class="card"><div class="kicker">pytest: the inside</div><p style="margin:0">Tests the backend code: the rules, the API routes, the AI gateway. Fast, runs in seconds.</p></div>
+    <div class="card"><div class="kicker">Selenium: the outside</div><p style="margin:0">Opens a real browser and clicks through the app like a user would: log in, type a change, press Approve.</p></div>
+  </div>
+  <div class="card"><div class="kicker">Two more words</div><ul class="tight" style="margin:0">
+    <li><b>Replay adapter.</b> In tests, the AI gateway plays back recorded AI answers instead of calling a real model. So tests are free, fast, and give the same result every time.</li>
+    <li><b>CI (continuous integration).</b> GitHub runs all the tests automatically on every pull request, so broken code cannot be merged without anyone noticing.</li>
+  </ul></div>
+  <div class="remember"><div><b>Remember</b><p>The rules are the safety net around the AI. Tests are how we know the net has no holes.</p></div></div>
+</section>
+
+<!-- ============ D3 ARCHITECTURE ============ -->
+<section class="lesson" id="d3" hidden>
+  <div class="kicker">Deeper 3 &middot; The architecture, piece by piece</div>
+  <h2>Shetu as a <em>restaurant.</em></h2>
+  <p class="lead">Every technical part, what it is, and why it is there. All of this is the plan; nothing is built yet.</p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Restaurant</th><th>Shetu</th></tr>
+    <tr><td>Dining room and menu</td><td><b>Frontend</b> (React): what people see and click</td></tr>
+    <tr><td>Waiter</td><td><b>API</b>: carries requests and answers between the screen and the kitchen</td></tr>
+    <tr><td>Kitchen</td><td><b>Backend</b> (FastAPI): does the real work</td></tr>
+    <tr><td>Head chef who checks every plate</td><td><b>Rules</b>: plain code that validates</td></tr>
+    <tr><td>A specialist chef who reads and writes</td><td><b>The AI model</b></td></tr>
+    <tr><td>One supplier contract, with a spare supplier</td><td><b>AI gateway</b>: one door to whichever model we use</td></tr>
+    <tr><td>Pantry and records</td><td><b>Database</b> (SQLite)</td></tr>
+  </table></div>
+  <h3>Each part</h3>
+  <div class="card"><div class="kicker">1 &middot; Frontend: React (with Vite)</div><p style="margin:0">Everything a person sees and clicks: the interview chat, the Role Map, the ownership timeline, the Approve button. It runs in the browser. <b>React</b> builds screens from small reusable pieces called <b>components</b> (a duty row, a button) and redraws only what changed. <b>Vite</b> is the tool that runs and builds the React project quickly. The frontend holds no business logic: it shows data and sends what the user did.</p></div>
+  <div class="card"><div class="kicker">2 &middot; The API</div><p style="margin:0">The agreed set of requests the frontend may send, such as "give me the Role Map for case 7". The backend answers in <b>JSON</b>, plain text like <code>{"duty": "Monthly report", "owner": "Tania"}</code>. The browser sends requests with <code>fetch</code>. Because the two halves only share this agreed format, one person can build screens while another builds the backend.</p></div>
+  <div class="card"><div class="kicker">3 &middot; Backend: Python and FastAPI</div><p style="margin:0">Runs on a server and holds everything important: login, roles, the case workflow, the rules, the AI calls and the database. <b>FastAPI</b> receives each request and sends it to the right Python function. Our instructor recommended it, and Python is the language of AI work. <b>Permissions are checked here, on every route:</b> hiding a button is not security, because anyone can send a request without the button.</p></div>
+  <div class="card"><div class="kicker">4 &middot; Pydantic: a form every message must fill</div><p style="margin:0">Describes the exact shape data must have: a duty has a title (text), an owner (a known person), hours (a number). Anything that does not match is rejected. We use it on API requests and, most importantly, on <b>AI replies</b>.</p></div>
+  <div class="card"><div class="kicker">5 &middot; Database: SQLite and SQLAlchemy</div><p style="margin:0">A database stores data permanently in tables, like spreadsheets: cases, duties, owners over time, proposals, approvals, the audit log. <b>SQLite</b> is a database in a single file with nothing to install, so it is the same on every laptop. <b>SQLAlchemy</b> lets Python treat tables as objects, so we write <code>case.duties</code> instead of database commands.</p></div>
+  <div class="card"><div class="kicker">6 &middot; Rules</div><p style="margin:0">Plain Python for dates, impact, workload, policy, coverage and evidence. See Deeper 1.</p></div>
+  <div class="card"><div class="kicker">7 &middot; The AI gateway</div><p style="margin:0">The app never calls a model directly. Every request goes through our gateway, which builds the request from our <b>prompt</b> (the written instructions for the model), sends it to the configured model, checks the reply against the Pydantic shape, retries once, falls back if it still fails, and logs what happened. Behind it can sit a <b>hosted model</b> (an AI company's server), a <b>local model</b> (an open model such as Qwen3-4B on the company's own machine, so data never leaves), or the <b>replay adapter</b> for tests. Changing the model means changing one setting.</p></div>
+  <div class="card"><div class="kicker">8 &middot; Tests and 9 &middot; GitHub</div><p style="margin:0">pytest for the backend, Selenium for user flows (Deeper 2). One shared repository; every feature goes Issue, branch, commits, pull request, review by another member, merge. The history shows who built what.</p></div>
+  <h3>One request, start to finish</h3>
+  <ol class="tight">
+    <li>The manager types "Tania will be away for three weeks, and the report is now due April 2" in a React screen.</li>
+    <li>React sends it to the API.</li>
+    <li>FastAPI checks the manager is allowed to do this.</li>
+    <li>The backend calls the AI gateway, which sends the text to the model.</li>
+    <li>The model returns facts (who, how long, the new date). The start date is missing, so it asks.</li>
+    <li>Pydantic checks the reply has the right shape.</li>
+    <li>Rules compute the dates and the affected duties, and check workload and coverage.</li>
+    <li>The AI proposes Rafiq; the rules reject him (2 free hours, 3 needed). The next proposal passes.</li>
+    <li>The proposal is saved as "waiting for approval" and written to the audit log.</li>
+    <li>React shows it; the manager approves or changes it.</li>
+  </ol>
+  <div class="remember"><div><b>Remember</b><p>Screens in React, logic in FastAPI, data in SQLite. The AI is reached only through our gateway, so it is replaceable and its answers are checked. Dates and numbers are never left to the model.</p></div></div>
+</section>
+
+<!-- ============ D4 PIPELINE ============ -->
+<section class="lesson" id="d4" hidden>
+  <div class="kicker">Deeper 4 &middot; The AI pipeline</div>
+  <h2>The model is <em>one step</em> of nine.</h2>
+  <p class="lead">An <b>AI pipeline</b> is the fixed sequence of steps that turns what a person types into a checked, usable result. "The AI pipeline" in our backend means everything that happens <b>around</b> the model, not only the model.</p>
+  <div style="overflow-x:auto"><table>
+    <tr><th>#</th><th>Step</th><th>What happens</th><th>Who</th></tr>
+    <tr><td>1</td><td><b>Input</b></td><td>A person's words arrive: an interview answer, or "Tania will be away for three weeks"</td><td><span class="chip c-rules">Code</span></td></tr>
+    <tr><td>2</td><td><b>Build the prompt</b></td><td>Wrap the text in our instructions: what to extract, the answer format, plus context such as her job description</td><td><span class="chip c-rules">Code</span></td></tr>
+    <tr><td>3</td><td><b>Gateway sends it</b></td><td>To whichever model is configured: hosted, local, or replay in tests</td><td><span class="chip c-rules">Code</span></td></tr>
+    <tr><td>4</td><td><b>The model answers</b></td><td>Reads Banglish or English and returns facts or a proposal</td><td><span class="chip c-ai">AI</span></td></tr>
+    <tr><td>5</td><td><b>Validate</b></td><td>Pydantic checks the exact shape; retry once, then fall back or report failure</td><td><span class="chip c-rules">Code</span></td></tr>
+    <tr><td>6</td><td><b>Check the evidence</b></td><td>Every duty must point to her exact words or a document; otherwise it is only "suggested"</td><td><span class="chip c-rules">Code</span></td></tr>
+    <tr><td>7</td><td><b>Rules check</b></td><td>Dates, affected duties, workload, policy, coverage; pass or reject with a reason</td><td><span class="chip c-rules">Code</span></td></tr>
+    <tr><td>8</td><td><b>Save and log</b></td><td>Stored as "waiting for approval" and written to the audit log</td><td><span class="chip c-rules">Code</span></td></tr>
+    <tr><td>9</td><td><b>A person decides</b></td><td>Manager or HR sees what the AI understood and the proposal, then approves or changes it</td><td><span class="chip c-people">People</span></td></tr>
+  </table></div>
+  <h3>One pipeline per stage</h3>
+  <div class="grid3">
+    <div class="card"><div class="kicker">MAP</div><p style="margin:0" class="note">The AI chooses the next interview question, extracts duties with her words as evidence, matches them against her job description, finds duties she never mentioned (as questions), and drafts who takes each one.</p></div>
+    <div class="card"><div class="kicker">HOLD</div><p style="margin:0" class="note">The manager types a change. The AI turns it into facts and asks if one is missing. Code computes dates and impact, the AI proposes a fix, the rules check it, the manager approves.</p></div>
+    <div class="card"><div class="kicker">FIT</div><p style="margin:0" class="note">She states the arrangement she needs. Rules find the time clashes. The AI proposes fixes. Rules check them, and people decide.</p></div>
+  </div>
+  <div class="card"><div class="kicker">Why a pipeline, not "just ask the model"</div><ul class="tight" style="margin:0">
+    <li><b>Wrong answers are caught</b> by validation, evidence checks and rules, before anyone sees them as fact.</li>
+    <li><b>The model is replaceable</b>, because the pipeline is the same for any model.</li>
+    <li><b>Tests are repeatable</b>: with replay, steps 5 to 8 are tested without calling a real model.</li>
+    <li><b>It is auditable</b>: every step is logged.</li>
+  </ul></div>
+  <div class="remember"><div><b>Remember</b><p>"We build the prompt, our gateway sends it, we validate and evidence-check the reply, the rules verify it, and a person approves. The model is one step; the rest is ordinary code we test."</p></div></div>
+</section>
+
+<!-- ============ D5 TOKENS EMBEDDINGS ============ -->
+<section class="lesson" id="d5" hidden>
+  <div class="kicker">Deeper 5 &middot; Tokens and embeddings</div>
+  <h2>Tokenization and <em>vectorization.</em></h2>
+  <p class="lead">Our instructor mentioned these after the proposal presentation. Here is what they mean and where they could fit Shetu.</p>
+  <div class="card"><div class="kicker">Tokenization</div><p>AI models do not read words; they read <b>tokens</b>, small pieces of text. "Shetu maps duties" is about four or five tokens. Cost, speed and how much text fits in one request are all measured in tokens.</p><p style="margin:0"><b>Why it matters for us:</b> Bangla usually needs many more tokens than English for the same meaning, and Banglish splits differently again. So Bangla input costs more, is slower, and fills the model's memory faster in long interviews. We can count tokens per test case in the model bake-off, and keep prompts short.</p></div>
+  <div class="card"><div class="kicker">Vectorization (embeddings)</div><p>An <b>embedding model</b> turns a piece of text into a list of numbers, a <b>vector</b>, so that texts with similar <b>meaning</b> get similar numbers. "Credit meeting every Tuesday" and "weekly credit committee" share almost no words, but their vectors are close. A computer can then compare meaning, not just spelling, using a measure called <b>cosine similarity</b>.</p>
+<pre><span class="c"># the idea, not real numbers</span>
+"credit meeting every Tuesday"  -> [0.12, -0.40, 0.88, ...]
+"weekly credit committee"       -> [0.10, -0.38, 0.85, ...]   <span class="ok"># close: same meaning</span>
+"submit the monthly report"     -> [-0.70, 0.22, 0.05, ...]   <span class="bad"># far: different meaning</span></pre></div>
+  <h3>Where embeddings could fit Shetu</h3>
+  <ul class="tight">
+    <li><b>MAP gap finding:</b> match what she said against each job-description line, so duties she never mentioned stand out. That is our "forgotten duty" feature.</li>
+    <li><b>Duplicates:</b> "monthly report" and "the report I send each month" become one duty.</li>
+    <li><b>FIT:</b> find the policy paragraph that relates to her return request.</li>
+    <li><b>Never</b> to match or rank colleagues. That would break the rule "never score people".</li>
+  </ul>
+  <div class="card"><div class="kicker">How, without breaking our simple design</div><ul class="tight" style="margin:0">
+    <li>No vector database is needed: a few hundred lines fit in SQLite, and Python compares the vectors directly.</li>
+    <li>The embedding call goes through the same AI gateway.</li>
+    <li>Embeddings shortlist possible matches; the language model decides with evidence; rules and a person confirm.</li>
+    <li>We test it on our fake cases with and without embeddings, and keep it only if it finds more missed duties.</li>
+  </ul></div>
+  <div class="card tint"><b>Proposed, not agreed.</b> This is a suggestion from 16 November 2026, after the instructor's comment. The design (decision list and <code>AGENTS.md</code>) does not include embeddings yet. The team decides, and the result is recorded in <code>docs/DECISIONS.md</code>.</div>
+  <div class="remember"><div><b>Remember</b><p>Tokens are how a model counts text. Embeddings turn meaning into numbers so we can compare it. One line for the instructor: "We will use embeddings to find forgotten duties by meaning, store the vectors in SQLite, and measure whether it helps."</p></div></div>
+</section>
+
+<!-- ============ D6 NICHE ============ -->
+<section class="lesson" id="d6" hidden>
+  <div class="kicker">Deeper 6 &middot; Our niche</div>
+  <h2>"Why only mothers? <em>Isn't it a work planner?"</em></h2>
+  <p class="lead">We were asked this in both places we presented on 15 November. It means the pitch had a gap, not the product. Here is how a product manager answers it.</p>
+  <div class="card tint"><b>Proposed, not agreed.</b> This framing was suggested on 16 November 2026. The team has not agreed it yet; when it does, it is recorded in <code>docs/DECISIONS.md</code> and the pitch pack.</div>
+  <div class="card"><div class="kicker">First, agree</div><p style="margin:0">The engine is general: find the duties in a job, keep an owner for every duty on every date, re-plan when things change. That is a strength. Successful products <b>start narrow</b>, with the one group whose pain is sharpest (a <b>beachhead market</b>), then expand.</p></div>
+  <h3>Why maternity first</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Reason</th><th>Why it matters</th></tr>
+    <tr><td><b>You can see it coming</b></td><td>Known months ahead, so there is time for MAP. Sick leave gives no warning</td></tr>
+    <tr><td><b>It is long</b></td><td>Months, not days: long enough that work really is dropped and the job drifts</td></tr>
+    <tr><td><b>She comes back different</b></td><td>Hours, travel and late meetings may no longer fit. That is FIT, and no planner has a return stage</td></tr>
+    <tr><td><b>It is where companies lose people</b></td><td>About 2,000 fewer women in Bangladesh's banks after six months. The cost is a trained person, not a missed task</td></tr>
+    <tr><td><b>It is sensitive</b></td><td>You must not ask why, or store medical or family details. Generic tools are not built with those limits</td></tr>
+    <tr><td><b>There is a clear buyer</b></td><td>HR has a budget and a target: keeping women after they return</td></tr>
+  </table></div>
+  <h3>Why it is not a work planner</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th></th><th>Work planner (Asana, Jira, Trello)</th><th>HR leave system</th><th>Shetu</th></tr>
+    <tr><td><b>Knows the work</b></td><td>Only tasks someone already typed</td><td>No; only leave dates</td><td>Finds the job, including unwritten duties, from her words and documents, with evidence</td></tr>
+    <tr><td><b>Ownership</b></td><td>Who has a task now</td><td>No</td><td>Who owns every duty on every date, with the coverage rule</td></tr>
+    <tr><td><b>When plans break</b></td><td>Someone re-plans by hand</td><td>No</td><td>The manager types the change in plain words; AI re-plans; rules check workload</td></tr>
+    <tr><td><b>The return</b></td><td>No such idea</td><td>Records the date</td><td>Plans the job to fit her life</td></tr>
+  </table></div>
+  <div class="card dark"><div class="kicker">The answer, out loud</div><p style="margin:0;font-size:17px;font-weight:700">"A planner manages work you already know about. Shetu finds the work nobody wrote down, and keeps a person's job whole while she is away and when she comes back. We start with maternity because it is the long leave you can see coming, and the return is where companies lose people. The same engine then handles any long leave."</p></div>
+  <h3>Where it grows</h3>
+  <ol class="tight">
+    <li><b>Now:</b> maternity leave, in Bangladeshi banks and large employers with many skilled women.</li>
+    <li><b>Next:</b> any planned long leave: paternity, planned surgery, study leave, Hajj, a sabbatical. MAP, HOLD and FIT still apply.</li>
+    <li><b>Later:</b> unplanned absence, and people who resign, so their unwritten knowledge is captured before they go.</li>
+  </ol>
+  <div class="card"><div class="kicker">The business, if they push</div><ul class="tight" style="margin:0">
+    <li><b>Customer:</b> banks, NGOs, telecoms and IT companies with many women in skilled roles.</li>
+    <li><b>Who pays:</b> HR. <b>Who uses it:</b> the employee, her manager, the colleagues who cover.</li>
+    <li><b>Pricing idea:</b> per active leave case, or per employee per year, after a free pilot.</li>
+    <li><b>How success is measured:</b> share of women who return, still employed 12 months later, zero dropped duties, manager time spent re-planning.</li>
+    <li><b>Biggest risks:</b> managers not using it, and trust in the AI. Evidence on every duty and manager approval are our answer to both.</li>
+  </ul></div>
+  <div class="remember"><div><b>Remember</b><p>Do not add features to answer this. Change the explanation, and make the demo show what a planner cannot: the forgotten duty in MAP, the plain-language re-plan in HOLD, and the return fit. "Built for maternity, ready for any long leave."</p></div></div>
+</section>
+
   </main>
 </div>
 <script>
@@ -634,7 +828,13 @@ const LESSONS = [
   { id: 'l12', t: 'Who builds what', g: 'How we work' },
   { id: 'l13', t: 'Course and presentation', g: 'How we work' },
   { id: 'l14', t: 'Final exam', g: 'Check yourself' },
-  { id: 'l15', t: 'Glossary', g: 'Reference' }
+  { id: 'l15', t: 'Glossary', g: 'Reference' },
+  { id: 'd1', t: 'Rules, exactly', g: 'Deeper, in plain words' },
+  { id: 'd2', t: 'Tests and pytest', g: 'Deeper, in plain words' },
+  { id: 'd3', t: 'The architecture, piece by piece', g: 'Deeper, in plain words' },
+  { id: 'd4', t: 'The AI pipeline', g: 'Deeper, in plain words' },
+  { id: 'd5', t: 'Tokens and embeddings', g: 'Deeper, in plain words' },
+  { id: 'd6', t: 'Our niche', g: 'Deeper, in plain words' }
 ];
 const COUNTED = LESSONS.slice(1, 14).map(l => l.id);      // lessons 1 to 13 carry a quiz
 let done = store.get('done', {});
@@ -685,6 +885,13 @@ document.addEventListener('click', e => {
    QUIZ BANK (also the question pool for the final exam)
    ====================================================================== */
 const QB = {
+  d1: [{"q": "What is a rule in Shetu?", "o": ["A machine-learning model", "Ordinary Python code that checks something we can calculate", "A prompt for the AI", "A setting in GitHub"], "a": 1, "w": "Plain arithmetic and if/else logic, with tests. No AI."}, {"q": "Rafiq has 2 spare hours and the duty needs 3. What happens?", "o": ["The workload rule rejects the proposal", "The manager is never told", "Rafiq gets it anyway", "The AI decides"], "a": 0, "w": "Capacity is computed by code, never trusted from the model."}],
+  d2: [{"q": "What does pytest do?", "o": ["Hosts the website", "Trains the AI", "Draws the screens", "Runs our tests and reports which pass and fail"], "a": 3, "w": "It finds the test functions, runs them, and reports the result."}, {"q": "Why do tests use the replay adapter?", "o": ["Selenium needs it", "It is more accurate", "Tests become free, fast and give the same result every time", "The teacher asked"], "a": 2, "w": "Replay plays back recorded AI answers instead of calling a real model."}],
+  d3: [{"q": "Where are permissions checked?", "o": ["In React, by hiding buttons", "In the backend, on every route", "In the database file", "By the AI"], "a": 1, "w": "Hiding a button is not security; anyone can send a request directly."}, {"q": "What is SQLite?", "o": ["A database stored in a single file", "A JavaScript library", "An AI model", "A cloud service"], "a": 0, "w": "Nothing to install, the same on every laptop."}],
+  d4: [{"q": "In our AI pipeline, how many of the nine steps are done by the AI model?", "o": ["Five", "None", "All nine", "One"], "a": 3, "w": "Only step 4. The rest is ordinary code or a person."}, {"q": "What happens if the model's reply has the wrong shape?", "o": ["The app crashes", "It is saved anyway", "It is retried once, then falls back or fails, and never reaches the database", "The manager fixes it"], "a": 2, "w": "Pydantic validation in the gateway catches it."}],
+  d5: [{"q": "What is a token?", "o": ["A password", "A small piece of text that a model reads", "A GitHub badge", "A database row"], "a": 1, "w": "Cost, speed and context size are all measured in tokens."}, {"q": "What does an embedding let a computer compare?", "o": ["Meaning", "File sizes", "Dates", "Spelling only"], "a": 0, "w": "Similar meanings get similar vectors, even with different words."}],
+  d6: [{"q": "What is a beachhead market?", "o": ["A market by the sea", "A competitor", "The biggest market", "The narrow first group with the sharpest pain, before expanding"], "a": 3, "w": "Start where the pain is sharpest, then grow."}, {"q": "What can Shetu do that a work planner cannot?", "o": ["Make charts", "Store tasks", "Find duties nobody wrote down and keep an owner for every duty on every date", "Send emails"], "a": 2, "w": "A planner only knows tasks someone already typed."}],
+
   l1: [
     { q: 'What does Shetu actually manage?', o: ['The leave paperwork and dates', 'The job: who owns each duty on every date', "The employee's health", 'Payroll'], a: 1, w: 'Shetu works on the job itself, not the paperwork. HR already records the dates.' },
     { q: 'Which of these is NOT one of the three failures?', o: ['Work is dropped', 'The plan breaks', 'Employees take too many holidays', 'The return does not fit'], a: 2, w: 'The three failures are dropped work, a plan that breaks, and a return that does not fit.' },
@@ -1331,6 +1538,16 @@ W.exam = el => {
 
 /* ---------- Glossary ---------- */
 const GLOSS = [
+  ["Beachhead market", "The narrow first group of customers with the sharpest pain. A product wins there first, then expands."],
+  ["CI (continuous integration)", "GitHub runs all the tests automatically on every pull request."],
+  ["Cosine similarity", "A number that says how close two vectors (meanings) are."],
+  ["Embedding", "A list of numbers (a vector) that represents the meaning of a piece of text. Similar meanings get similar vectors."],
+  ["Pipeline", "The fixed sequence of steps around the AI model: build the prompt, send, validate, check evidence, check rules, save, a person decides."],
+  ["pytest", "The Python tool that runs our tests and reports which pass and fail."],
+  ["Test", "A small piece of code that runs real code and checks the answer is right."],
+  ["Token", "A small piece of text. Models read tokens, and cost and speed are measured in them. Bangla usually needs more tokens than English."],
+  ["Vectorization", "Turning text into vectors (embeddings) so a computer can compare meaning."],
+
   ['AI-native', 'A product where the AI is the core capability, not a decoration. Remove the AI and the main value collapses.'],
   ['API', 'A menu of requests a backend accepts, such as "save this change". React calls it; the backend answers.'],
   ['Audit log', 'A permanent record of every AI proposal, rule verdict and human decision, with who and when.'],
@@ -1377,7 +1594,7 @@ W.glossary = el => {
   const draw = () => {
     const f = inp.value.trim().toLowerCase(); const hit = s => f ? s.toLowerCase().includes(f) : true;
     const mark = s => f ? esc(s).replace(new RegExp('(' + f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>') : esc(s);
-    const rows = GLOSS.filter(g => hit(g[0]) || hit(g[1]));
+    const rows = GLOSS.slice().sort((x, y) => x[0].localeCompare(y[0])).filter(g => hit(g[0]) || hit(g[1]));
     dl.innerHTML = rows.length ? rows.map(g => `<dt>${mark(g[0])}</dt><dd>${mark(g[1])}</dd>`).join('') : '<p class="note">Nothing matches. Try another word.</p>';
   };
   inp.addEventListener('input', draw); draw();
@@ -1388,6 +1605,7 @@ W.glossary = el => {
    ====================================================================== */
 $$('[data-widget]').forEach(el => { const f = W[el.dataset.widget]; if (f) { try { f(el); } catch (e) { el.innerHTML = '<div class="fb bad">This part could not load.</div>'; console.error(e); } } });
 COUNTED.forEach(mountQuiz);
+['d1', 'd2', 'd3', 'd4', 'd5', 'd6'].forEach(mountQuiz);   // the deeper lessons: quizzes, but not counted in the progress bar
 renderNav(); renderProgress();
 go(location.hash.slice(1) || 'l0');
 })();
