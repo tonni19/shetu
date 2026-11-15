@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-16, after the proposal presentation, tonni19's GitHub Pro becoming active, and pull requests #2 to #15. Still no application code.
+Last updated: 2026-11-16, after pull request #16 (the first one approved under branch protection) and the learning guide going online. Still no application code.
 
 ## Milestones
 
@@ -49,7 +49,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 All four members are collaborators on `tonni19/shetu`: `tonni19` (admin, repository owner), `SpicyFalcon619`, `NazhaTarannum` and `HasanGMS0047` (write). Anyone with write access can review and merge a pull request, but **not their own**, and must use **their own GitHub account** so the history shows who reviewed what. Merge type: **merge commit**, not squash, so each member's own commits stay visible.
 
-**`main` is protected** (since 16 November 2026, when `tonni19`'s GitHub Pro became active): no direct pushes, no force pushes, and every pull request needs **one approving review from a member who is not the author** before it can be merged. This also applies to the owner. **Learning guide online:** https://tonni19.github.io/shetu/ (published by `.github/workflows/learn-guide.yml` whenever `docs/learn` changes on `main`; the workflow publishes only that folder).
+**`main` is protected** (since 16 November 2026, when `tonni19`'s GitHub Pro became active): no direct pushes, no force pushes, and every pull request needs **one approving review from a member who is not the author** before it can be merged. This also applies to the owner. **Learning guide online:** https://tonni19.github.io/shetu/ (published by `.github/workflows/learn-guide.yml` whenever `docs/learn` changes on `main`; the workflow publishes only that folder. First published on 16 November 2026 and checked live).
 
 Three of the accounts (`SpicyFalcon619`, `tonni19`, `NazhaTarannum`) are signed in on Ahmad's computer. At the team's request, some pull requests were pushed or merged from it under one of them. The worklog notes and the table below say which. Commits are authored under the name of the person who wrote them.
 
@@ -69,6 +69,7 @@ This list lags by one: the pull request that updates this file cannot list itsel
 | #13 | Final elevator speech in the workbook, pitch pack and slide notes; speaker split; decisions 20 and 21 | NazhaTarannum (commits by Ahmad Maruf Hossain) | SpicyFalcon619. No review recorded |
 | #14 | Speaker scripts for all ten slides (`docs/planning/07-Speaker-Scripts.md`); decision 22 | tonni19 (commits by Ahmad Maruf Hossain) | NazhaTarannum. No review recorded |
 | #15 | Project state brought up to date after #14 | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19. No review recorded |
+| #16 | Learning guide online with GitHub Pages; six "Deeper, in plain words" lessons; presentation feedback; decision 23 | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19, **approved by tonni19** (the first reviewed pull request under branch protection) |
 
 ## Things every assistant should know right now
 
