@@ -26,7 +26,7 @@ AI proposes, rules check, people decide.
 |---|---|
 | Understand the whole project quickly | [docs/planning/00-Overview.md](docs/planning/00-Overview.md) |
 | See the proposal slides | [docs/planning/05-Shetu-Proposal-Deck.pdf](docs/planning/05-Shetu-Proposal-Deck.pdf) |
-| Learn the whole project, interactively (best first step for everyone) | Open [docs/learn/index.html](docs/learn/index.html) in your browser after pulling |
+| Learn the whole project, interactively (best first step for everyone) | Open https://tonni19.github.io/shetu/ (or [docs/learn/index.html](docs/learn/index.html) after pulling) |
 | Know what is done and what is next | [docs/PROJECT-STATE.md](docs/PROJECT-STATE.md) |
 | Write code with an AI assistant | [AGENTS.md](AGENTS.md) first, always |
 | Know why something was decided | [docs/DECISIONS.md](docs/DECISIONS.md) |
