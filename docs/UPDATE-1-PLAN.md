@@ -1,10 +1,10 @@
 # Shetu progress plan: Thursday 26 November and after
 
-**Checkpoint:** Thursday, 26 November 2026, online, about 10 to 15% progress. Ahmad confirmed on 23 November that **Thursday is the final date** (an earlier note said Sunday 29 November; that is dropped). The time and the exact format are unconfirmed. **Status:** Plan drafted. Ownership, scope choices and instructor answers below are proposed for the team to confirm.
+**Checkpoint:** Thursday, 26 November 2026, online, about 10 to 15% progress. Maruf confirmed on 23 November that **Thursday is the final date** (an earlier note said Sunday 29 November; that is dropped). The time and the exact format are unconfirmed. **Status:** Plan drafted. Ownership, scope choices and instructor answers below are proposed for the team to confirm.
 
 ## First: the 10 to 15% progress presentation, Thursday 26 November 2026 (online)
 
-The faculty's requirements, as Ahmad received them: present project progress at 10 to 15%; GitHub should be set up; the teams hold group discussions to get a better idea of the features; **every team member must be present**. The time and the exact format are unconfirmed.
+The faculty's requirements, as Maruf received them: present project progress at 10 to 15%; GitHub should be set up; the teams hold group discussions to get a better idea of the features; **every team member must be present**. The time and the exact format are unconfirmed.
 
 **Thursday is the final date.** The fuller MAP slice further down is the target after Thursday; it has no date yet.
 
@@ -28,7 +28,7 @@ The faculty's requirements, as Ahmad received them: present project progress at 
 
 **Who does what for 26 November** (proposed, matching the ownership table below):
 - **Tonni:** the React/Vite shell, the sign-in screen and the case page, in the Shetu look.
-- **Ahmad:** the FastAPI/SQLite skeleton, seeded accounts, sign-in and permissions, the case route and the interview route; joins the pieces and runs the demo.
+- **Maruf:** the FastAPI/SQLite skeleton, seeded accounts, sign-in and permissions, the case route and the interview route; joins the pieces and runs the demo.
 - **Mahadi:** the AI gateway with the replay adapter, the first prompt and its Pydantic schema, one fixture for the Banglish answer.
 - **Nazha:** pytest set-up, the evidence and access tests, the CI workflow, and the first three synthetic cases with answer keys.
 
@@ -102,16 +102,16 @@ This is a starting API sketch for the issue, with names and payloads open for re
 
 ## Proposed ownership
 
-Agreed by Ahmad on 23 November 2026; the other three members still need to confirm it. Each person owns a working feature, its tests, and a short explanation of it. **Primary** means one person is responsible for it; others can and should help.
+Agreed by Maruf on 23 November 2026; the other three members still need to confirm it. Each person owns a working feature, its tests, and a short explanation of it. **Primary** means one person is responsible for it; others can and should help.
 
 | Person | Primary: owns, tests and explains | Helps with |
 |---|---|---|
-| **Sadia Noman Tonni** | **Frontend and UI/UX.** The React/Vite app: design and layout, sign-in screen, the employee MAP screen (interview, evidence labels, confirm and dismiss), and the manager coverage screen with its error states. Connects every screen to the real API | Ahmad on the API calls and the shared contract; Nazha on the Selenium flows |
+| **Sadia Noman Tonni** | **Frontend and UI/UX.** The React/Vite app: design and layout, sign-in screen, the employee MAP screen (interview, evidence labels, confirm and dismiss), and the manager coverage screen with its error states. Connects every screen to the real API | Maruf on the API calls and the shared contract; Nazha on the Selenium flows |
 | **Ahmad Maruf Hossain** | **Full stack.** The FastAPI and SQLite foundation: database tables, seeded sign-in, roles and case-level permissions, the routes in the contract below, the approval transaction and audit events. Wires the frontend, rules and AI together, owns the demo script, and follows one request from the screen to the database | Mahadi on calling the gateway from the routes; Tonni on the API; everyone's pull requests |
-| **Mohammad Mahadi Hasan** | **AI.** The AI gateway with replay and one hosted adapter once chosen, the interview questions, evidence extraction and reference checks, and the model comparison on the synthetic cases. Next: HOLD change understanding | Nazha on writing the synthetic cases and answer keys; Ahmad on wiring the gateway into the routes |
-| **Nazha Tarannum Roza** | **Rules and quality.** The plain-Python rules (dated coverage, date boundaries, approval checks), pytest, Selenium, the CI run on every pull request, and the six synthetic cases with answer keys. Next: FIT's return-time clash check | Tonni on Selenium for the screens; Mahadi on the cases; Ahmad on calling the rules from the routes |
+| **Mohammad Mahadi Hasan** | **AI.** The AI gateway with replay and one hosted adapter once chosen, the interview questions, evidence extraction and reference checks, and the model comparison on the synthetic cases. Next: HOLD change understanding | Nazha on writing the synthetic cases and answer keys; Maruf on wiring the gateway into the routes |
+| **Nazha Tarannum Roza** | **Rules and quality.** The plain-Python rules (dated coverage, date boundaries, approval checks), pytest, Selenium, the CI run on every pull request, and the six synthetic cases with answer keys. Next: FIT's return-time clash check | Tonni on Selenium for the screens; Mahadi on the cases; Maruf on calling the rules from the routes |
 
-**Review rotation (starting point):** Ahmad reviews Tonni's and Mahadi's pull requests, Tonni reviews Nazha's, Nazha and Mahadi review Ahmad's. Each person opens their own pull request under their own account and explains it to the reviewer. Have one short walkthrough where each owner explains their module, then one where Ahmad traces a complete request from the React screen to the database and back. Ask each owner to explain one failure case live.
+**Review rotation (starting point):** Maruf reviews Tonni's and Mahadi's pull requests, Tonni reviews Nazha's, Nazha and Mahadi review Maruf's. Each person opens their own pull request under their own account and explains it to the reviewer. Have one short walkthrough where each owner explains their module, then one where Maruf traces a complete request from the React screen to the database and back. Ask each owner to explain one failure case live.
 
 ## After Thursday
 
@@ -119,7 +119,7 @@ We do not have a date for the next checkpoint. Keep the order of priority from t
 
 ## Notes for the next session
 
-Start with [AGENTS.md](../AGENTS.md), [PROJECT-STATE.md](PROJECT-STATE.md), this plan and [DECISIONS.md](DECISIONS.md), then the Issue for the work. As of this planning pass, the lab has no application implementation. The suggested first Issue is **Start the FastAPI/SQLite app and seed a signed-in employee case**. Ahmad is the proposed owner. Acceptance is a locally runnable API with a seeded case, authenticated case read and a pytest check for access denial. Tonni scaffolds the React/Vite app against the agreed case response in parallel, and Mahadi starts the gateway with replay. `docs/CODE-EXPLANATION.md` starts with the first code. Record confirmed roles and evidence of real contributions in `CONTRIBUTIONS.md` as work lands.
+Start with [AGENTS.md](../AGENTS.md), [PROJECT-STATE.md](PROJECT-STATE.md), this plan and [DECISIONS.md](DECISIONS.md), then the Issue for the work. As of this planning pass, the lab has no application implementation. The suggested first Issue is **Start the FastAPI/SQLite app and seed a signed-in employee case**. Maruf is the proposed owner. Acceptance is a locally runnable API with a seeded case, authenticated case read and a pytest check for access denial. Tonni scaffolds the React/Vite app against the agreed case response in parallel, and Mahadi starts the gateway with replay. `docs/CODE-EXPLANATION.md` starts with the first code. Record confirmed roles and evidence of real contributions in `CONTRIBUTIONS.md` as work lands.
 
 Use one GitHub Issue, branch and peer-reviewed PR per task. Each owner adds a [worklog](worklog/README.md), updates the project state, explains their module, and adds their actual AI use and human verification to [AI-USAGE.md](../AI-USAGE.md). Record an agreed product or design decision in [DECISIONS.md](DECISIONS.md) and update the corresponding lesson in the learning guide. The guide's embeddings lesson used to say the team will use embeddings; it now says the team may, and will test first. Keep the spoken answer conditional until there is a decision.
 
