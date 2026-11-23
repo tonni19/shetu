@@ -2,6 +2,38 @@
 
 **Checkpoint:** Sunday, 29 November 2026, as confirmed by Ahmad on 22 November. The time and submission details still need checking. **Status:** Implementation plan drafted. Ownership, scope choices and instructor answers below are proposed for the team to confirm.
 
+## First: the 10 to 15% progress presentation, Thursday 26 November 2026 (online)
+
+The faculty's requirements, as Ahmad received them: present project progress at 10 to 15%; GitHub should be set up; the teams hold group discussions to get a better idea of the features; **every team member must be present**. The time and the exact format are unconfirmed.
+
+**It is not clear how this relates to the 29 November date below.** Ahmad has given both dates. Treat 26 November as the next hard deadline, and the 29 November scope (the whole MAP slice) as the target after it. Confirm with the faculty which one is the "Update 1" checkpoint.
+
+**What "10 to 15%" means for us.** We have no percentage rule from the faculty, so we show only what exists and say what it is. Planning, the proposal and the GitHub set-up are done. The new part is a running foundation and the first thin slice of MAP.
+
+**What can honestly be shown on 26 November (screen share from a laptop, with a recorded backup):**
+1. **GitHub set up** (already true): private repository with all four members, protected `main`, pull requests with real reviews, Issues, worklog and decision records, AI-use log, the learning guide online.
+2. **A running skeleton:** the FastAPI backend and the React/Vite frontend start on every member's laptop; a seeded synthetic account signs in; the employee opens a leave case that comes from SQLite through the API.
+3. **The AI gateway with replay:** one Banglish interview answer goes in and a draft Role Map duty comes out with the employee's own quote as evidence, validated by Pydantic. Say clearly that this run is a labelled replay unless a provider was really called.
+4. **Tests that pass:** pytest for the evidence check and the access check (a colleague gets 403), run by CI on a pull request.
+5. **The group discussion:** each member says what they own and one decision from the discussion (the niche answer, embeddings yes or no, who owns what). The decisions go in `docs/DECISIONS.md` the same day.
+
+**Not on 26 November:** the manager coverage screen, the second case, Selenium flows, a live model comparison, HOLD, FIT. They stay in the plan for 29 November and later.
+
+| By | What |
+|---|---|
+| **Mon 23 Nov (today)** | Confirm owners and the shared contract (case, duty, assignment). Write one Issue per owner. Everyone clones the repository and checks they can run Python and Node. |
+| **Tue 24 Nov** | Backend skeleton merged: health route, seeded accounts, sign-in, `GET /api/cases/{id}` with a permission check. Frontend skeleton merged: login screen and the case page. Gateway interface with the replay adapter and one fixture. First pytest run in CI. |
+| **Wed 25 Nov** | The frontend reads the real case from the API. The interview reply route returns draft duties with evidence (replay). Evidence and 403 tests pass. Rehearse the demo twice, record a backup video, agree who says what. |
+| **Thu 26 Nov** | Present, online. Everyone attends. Each member shows or explains their own part. Afterwards: update the project state and decisions the same day. |
+
+**Who does what for 26 November** (proposed, matching the ownership table below):
+- **Tonni:** the React/Vite shell, the sign-in screen and the case page, in the Shetu look.
+- **Ahmad:** the FastAPI/SQLite skeleton, seeded accounts, sign-in and permissions, the case route and the interview route; joins the pieces and runs the demo.
+- **Mahadi:** the AI gateway with the replay adapter, the first prompt and its Pydantic schema, one fixture for the Banglish answer.
+- **Nazha:** pytest set-up, the evidence and access tests, the CI workflow, and the first three synthetic cases with answer keys.
+
+If time runs short, protect this order: (1) sign-in and a case from the API, (2) the replay interview returning a duty with evidence, (3) a passing test run. Cut anything else.
+
 ## What to tell the instructor
 
 **Why maternity first?** Shetu is for planned long absences. Maternity leave is our first design case because it exercises preparation, extended cover and a return that may need new arrangements. The same workflow can handle study leave with different dates and duties. We can show that with two synthetic cases using the same code, and the app can work without a field for the reason for leave.

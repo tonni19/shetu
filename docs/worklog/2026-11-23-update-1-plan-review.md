@@ -8,7 +8,12 @@
 - Recorded that the separate Congress build is not mentioned in our proposal answers, and updated the "Did you build this before?" answer in the pitch pack and in the learning guide to mention it.
 - Changed the learning guide's embeddings talking point from "we will use" to "we may use", because the team has not decided.
 
+## The 26 November progress presentation
+- The faculty's requirements arrived: present about 10 to 15% on Thursday 26 November (online), GitHub set up, group discussions about the features, every member present.
+- Added a section at the top of `docs/UPDATE-1-PLAN.md` with what can honestly be shown, a day-by-day schedule from 23 to 26 November, and who builds what. Recorded it in the project state.
+
 ## Not finished / known problems
+- It is unclear how this presentation relates to the 29 November Update 1 date.
 - Mahadi, Nazha and Tonni have not confirmed the proposed split.
 - The team has not decided how to tell the instructor about the Congress build.
 - The "Who builds what" lesson in the guide still shows the older proposed areas A to D; update it when the roles are confirmed.
