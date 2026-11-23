@@ -309,7 +309,7 @@ Each member commits from their own GitHub account, works on a feature branch per
 | What happens when the AI is wrong? | Every item needs a matching quote or document; numbers and times are recomputed by rules; a person confirms. Unsupported items are flagged, not hidden |
 | Which model? | Not fixed yet. It sits behind our own gateway, we will measure candidates on the same test cases, and a local open model can run fully offline |
 | How do you know it works? | A set of synthetic scenarios with answer keys in Bangla, English and Banglish, scored on six metrics. Team-written data, reported as such. No results yet |
-| Did you build this before? | The concept and a one-case prototype come from the GP FutureMakers competition, as you know. The application proposed here is a new build; the repository history will show it |
+| Did you build this before? | The concept and a one-case prototype come from the GP FutureMakers competition, as you know. Our team also built a separate, public version for the AI Builders Congress 2026, on a different stack (Next.js and PostgreSQL). This lab project is a new build in React, FastAPI and SQLite on this repository, and it credits any idea it reuses. The history shows the new work |
 | What is the hourglass? | The shape her workload takes: narrowing before leave, held by others during it, widening on return. Map, Hold and Fit manage those three parts. No fixed percentages; each plan is agreed individually |
 | Does it need payments? | No. It is licensed to an employer and invoiced; the application has no payment flow |
 | Is maternity data sensitive? | Yes, so we collect almost none: duties, dates and the arrangement she needs. Never the reason, never medical detail |

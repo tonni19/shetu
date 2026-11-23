@@ -728,7 +728,7 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
     <li>We test it on our fake cases with and without embeddings, and keep it only if it finds more missed duties.</li>
   </ul></div>
   <div class="card tint"><b>Proposed, not agreed.</b> This is a suggestion from 16 November 2026, after the instructor's comment. The design (decision list and <code>AGENTS.md</code>) does not include embeddings yet. The team decides, and the result is recorded in <code>docs/DECISIONS.md</code>.</div>
-  <div class="remember"><div><b>Remember</b><p>Tokens are how a model counts text. Embeddings turn meaning into numbers so we can compare it. One line for the instructor: "We will use embeddings to find forgotten duties by meaning, store the vectors in SQLite, and measure whether it helps."</p></div></div>
+  <div class="remember"><div><b>Remember</b><p>Tokens are how a model counts text. Embeddings turn meaning into numbers so we can compare it. One line for the instructor: "We may use embeddings to find forgotten duties by meaning. We will test on the same fake cases whether they help before we decide."</p></div></div>
 </section>
 
 <!-- ============ D6 NICHE ============ -->
@@ -1469,7 +1469,7 @@ const FLASH = [
   ['What happens when the AI is wrong?', 'Every item needs a matching quote or document, numbers and times are recomputed by rules, and a person confirms. Unsupported items are flagged, not hidden. A wrong reply never reaches the database.'],
   ['Which model do you use?', 'Not chosen yet. It sits behind our own gateway, so we can swap it. We will run the same fake test cases through several models and choose by results. A local open model can run fully offline.'],
   ['How do you know it works?', 'Fake scenarios in Bangla, English and Banglish with answer keys written first, scored on six measures. They are team-written data, and we have no results yet.'],
-  ['Did you build this before?', 'The concept and a one-case prototype come from the GP FutureMakers competition, as you know. The application proposed here is a new build, and the repository history will show it.'],
+  ['Did you build this before?', 'The concept and a one-case prototype come from the GP FutureMakers competition, as you know. Our team also built a separate, public version for the AI Builders Congress 2026, on a different stack (Next.js and PostgreSQL). This lab project is a new build in React, FastAPI and SQLite on this repository, and it credits any idea it reuses. The history shows the new work.'],
   ['What is the hourglass?', 'The shape of a leave: duties narrow as they pass to colleagues, are held by others during leave, and widen again on return. Map, Hold and Fit manage those three parts. No fixed percentages.'],
   ['Does it need payments?', 'No. It would be licensed to an employer and invoiced. The application has no payment flow.'],
   ['Is maternity data sensitive?', 'Yes, so we collect almost none: duties, dates and the arrangement she needs. Never the reason, never medical detail. And we use synthetic data only.'],
