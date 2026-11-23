@@ -4,14 +4,14 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-16, after pull request #16 (the first one approved under branch protection) and the learning guide going online. Still no application code.
+Last updated: 2026-11-23. Update 1 is on 29 November (date from Ahmad). The [Update 1 plan](UPDATE-1-PLAN.md) records the scope, a proposed split of work (Tonni frontend and UI/UX, Ahmad full stack, Mahadi AI, Nazha rules and quality; the other three still need to confirm), answers to the presentation feedback, and what we can learn from the separate Congress build. Application work has yet to start.
 
 ## Milestones
 
 | Checkpoint | Goal | Status |
 |---|---|---|
 | Proposal, 15 Nov 2026 | Pitch | **Done.** Presented on 15 November; the deck (`05-Shetu-Proposal-Deck.pptx`) was submitted to the portal on 14 November. Feedback, asked in both places we presented: *why only for mothers, when anyone could use it? Where is the niche? Isn't it just a work planner?* The instructor also mentioned tokenization and vectorization (embeddings). Our answers are not agreed yet (see Next up). Not recorded here: whether the Excel sheet was entered in the faculty's Google Sheet |
-| Update 1 (30%) | MAP works: interview, Role Map, a forgotten duty found | Not started |
+| Update 1 (30%), 29 Nov 2026 | MAP works: interview, Role Map, a forgotten duty found, initial cover check | Plan drafted. Implementation has yet to start. Time and submission details are unconfirmed |
 | Update 2 (60%) | HOLD works: a change typed in plain words is understood and re-planned | Not started |
 | Final (100%) | All three stages, tests green, AI measured | Not started |
 
@@ -27,20 +27,18 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 ## Next up
 
-1. Answer the presentation feedback: agree how we explain the niche (why maternity first, how it differs from a work planner) and whether embeddings have a place in the design. Record the outcome in `docs/DECISIONS.md`.
-2. Assign the roles: one primary owner per area, others may help. The team discusses it on 17 November 2026. Record the result in this file and in `CONTRIBUTIONS.md`.
-3. Agree the work division. A proposal exists (not agreed): each member owns a layer and one feature end to end: A frontend + MAP, B backend + ownership and approvals, C AI + HOLD re-planning, D testing + FIT. Needs each member's skills and free time. See `docs/planning/01-Investigation-Report.md`, section 25.2.
-4. Step 1 of the roadmap (`docs/planning/00-Overview.md`, section 7): create the empty FastAPI + React + SQLite app with login; CI; the AI gateway.
-5. First six fake test cases, then test the AI models and choose one.
-6. Done: `main` is protected and the learning guide is published (see Team and access).
-7. Stretch, in order: hourglass chart, then voice input (first stretch feature, after HOLD works).
+1. Confirm the ownership and shared API contract in the [Update 1 plan](UPDATE-1-PLAN.md). Agree how to answer the instructor and record settled product decisions in `docs/DECISIONS.md`. Record confirmed roles here and in `CONTRIBUTIONS.md`.
+2. Get the FastAPI, React/Vite and SQLite foundation running, including sign-in, CI and the AI gateway with replay. Then connect interview, evidence, confirmation, and dated cover approval as one flow.
+3. Write the first six synthetic cases in parallel. Compare live model candidates on those cases and prepare a labeled replay for the checkpoint. Attempt the HOLD change-parsing spike once the MAP path is working.
+4. Stretch, in order: hourglass chart, then voice input (first stretch feature, after HOLD works).
 
 ## Known problems and open questions
 
 - Hosted AI provider not chosen (decided by the bake-off).
-- Dates of Update 1 and Update 2 not known.
+- Update 1 is Sunday, 29 November (per Ahmad). The time, submission details and Update 2 date are unconfirmed.
+- A separate, public **Congress** build of Shetu exists (`SpicyFalcon619/shetu-congress`, Next.js and PostgreSQL, made by Ahmad and Tonni for the AI Builders Congress 2026). Our proposal answers called the earlier work "a one-case prototype". The team has to decide how to tell the instructor. This lab project stays a new build here, and anything adapted from Congress is credited in the worklog.
 - The learning guide on GitHub Pages is **public** (anyone with the link), even though the repository is private. Only `docs/learn` is published. Never put names with student IDs, emails, keys or course PDFs in `docs/learn`.
-- Member roles are not assigned yet. Waiting for each member's skills and availability.
+- Member roles: a split is proposed in `docs/UPDATE-1-PLAN.md` (Tonni frontend and UI/UX, Ahmad full stack, Mahadi AI, Nazha rules and quality). Mahadi, Nazha and Tonni have not confirmed it yet; once they do, record it here and in `CONTRIBUTIONS.md`.
 - Hosted AI provider, and who holds the API key, not decided.
 - Task tracking: GitHub Issues with a Projects board is proposed instead of Jira. Not decided.
 - No review is recorded on pull requests #4 to #15 (merged before `main` was protected). From now on every pull request needs an approval from another member.

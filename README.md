@@ -18,7 +18,7 @@ AI proposes, rules check, people decide.
 
 ## Status
 
-**Planning done; no application code yet.** The proposal presentation is on 15 November 2026. See [docs/PROJECT-STATE.md](docs/PROJECT-STATE.md) for the current state.
+**Proposal presented on 15 November 2026.** Team Anomaly is preparing to build the first MAP flow for Update 1 on Sunday, 29 November. See [the current state](docs/PROJECT-STATE.md) and [the Update 1 plan](docs/UPDATE-1-PLAN.md).
 
 ## Start here
 
@@ -28,6 +28,7 @@ AI proposes, rules check, people decide.
 | See the proposal slides | [docs/planning/05-Shetu-Proposal-Deck.pdf](docs/planning/05-Shetu-Proposal-Deck.pdf) |
 | Learn the whole project, interactively (best first step for everyone) | Open https://tonni19.github.io/shetu/ (or [docs/learn/index.html](docs/learn/index.html) after pulling) |
 | Know what is done and what is next | [docs/PROJECT-STATE.md](docs/PROJECT-STATE.md) |
+| Build or rehearse the first checkpoint | [docs/UPDATE-1-PLAN.md](docs/UPDATE-1-PLAN.md) |
 | Write code with an AI assistant | [AGENTS.md](AGENTS.md) first, always |
 | Know why something was decided | [docs/DECISIONS.md](docs/DECISIONS.md) |
 
@@ -38,6 +39,7 @@ AGENTS.md            Briefing and rules for AI assistants (CLAUDE.md points here
 AI-USAGE.md          Where AI tools were used (course requirement)
 docs/
   PROJECT-STATE.md   What works, who is doing what, what is next. Updated in every pull request
+  UPDATE-1-PLAN.md   First checkpoint scope, proposed owners, schedule and handoff
   DECISIONS.md       Settled decisions and their reasons
   worklog/           One short note per pull request
   learn/             Interactive learning guide: open index.html in a browser
