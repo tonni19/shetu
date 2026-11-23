@@ -37,6 +37,7 @@ Core rule of the product: **AI proposes, rules check, people decide.**
 9. **Permissions are checked in the backend on every route.** Hiding a button is not security.
 10. **All model calls go through the AI gateway** (`backend/app/ai/gateway`). Never call a provider SDK from anywhere else. Every reply is validated against a Pydantic schema.
 11. **Gender-neutral wording** everywhere the product, its code or its data can be seen: screens, API messages, prompts, rule messages, fixtures, tests. Say "the employee" or "they". Maternity is a design focus, never a field, and nothing in the product asks about, stores or reveals the reason for leave. (Older slides and planning documents tell the maternity story with "she"; leave those as they are.)
+12. **Stay a role-continuity product, not a generic work manager.** Shetu manages a role through one absence (a leave case) and its return. Do not build a task board, time tracking, productivity or workload scoring, auto-assignment, or a dashboard of an individual's output. **Litmus test:** would this feature be at home in a generic task manager? If yes, do not build it; say so to the member. Keep names sector-neutral (`duty`, not `client task`) and keep capacity optional, so other sectors such as garments can be added as packs later. See `docs/planning/08-Positioning-and-Strategy.md`.
 
 ## Stack
 

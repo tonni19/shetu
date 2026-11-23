@@ -782,6 +782,39 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
   <div class="remember"><div><b>Remember</b><p>Do not add features to answer this. Change the explanation, and make the demo show what a planner cannot: the forgotten duty in MAP, the plain-language re-plan in HOLD, and the return fit. "Built for maternity, ready for any long leave."</p></div></div>
 </section>
 
+<!-- ============ D7 FIVE HARD QUESTIONS ============ -->
+<section class="lesson" id="d7" hidden>
+  <div class="kicker">Deeper 7 &middot; Five hard questions</div>
+  <h2>Positioning: <em>why us, why this.</em></h2>
+  <p class="lead">The questions we were asked after the presentation, and our working answers. Full version: <code>docs/planning/08-Positioning-and-Strategy.md</code>. These are working answers the team adopted on 23 November 2026, and nothing here is built yet.</p>
+  <div class="card dark"><div class="kicker">One sentence to anchor everything</div><p style="margin:0;font-size:17px;font-weight:700">Shetu is role-continuity software. It keeps a job whole while its owner is away, and guards the return. We build it first for maternity leave, the hardest case; the same engine serves any planned leave.</p></div>
+
+  <h3>1. Why only mothers? Why can't I use it?</h3>
+  <p><b>You can.</b> It is for any planned absence of about two weeks or more: study leave, paternity leave, planned surgery, Hajj, a sabbatical. Maternity is our <b>first and hardest case</b>, because it is known months ahead, it is long, and the return is where careers are lost. If it works there, it works for everything easier.</p>
+  <ul class="tight"><li>Wording is gender-neutral ("the employee", "they").</li><li>There is no field for the reason, so the product cannot tell maternity from any other leave.</li><li>We show two cases through the same code: maternity and study leave.</li></ul>
+
+  <h3>2. How do we fit a real domain, and make it better?</h3>
+  <p>Test a domain on four things: many skilled people take planned long leave; duties are partly undocumented; someone must own every duty every day; and there is a buyer. <b>Banks and NGOs</b> fit best, so our wedge is knowledge-work teams there. We get better by adding domain depth, not generic features: duty templates (credit committee, donor reports) and a rule that checks who may sign or approve while the owner is away.</p>
+
+  <h3>3. How do we avoid being a generic workload balancer?</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>A generic work manager</th><th>Shetu</th></tr>
+    <tr><td>Manages tasks every day</td><td>Manages a role through one absence</td></tr>
+    <tr><td>Knows only what someone typed</td><td>Finds duties nobody wrote down</td></tr>
+    <tr><td>Balances load for efficiency</td><td>Guarantees every duty has an owner every day</td></tr>
+    <tr><td>Scores productivity</td><td>Never scores or ranks anyone</td></tr>
+    <tr><td>Ends when the task ends</td><td>Guards the return: temporary must not become permanent</td></tr>
+  </table></div>
+  <div class="card tint"><b>The litmus test.</b> "Would this feature be at home in a generic task manager?" If yes, we do not build it. No task board, no time tracking, no productivity score, no auto-assignment.</div>
+
+  <h3>4. How does it work outside corporate offices, such as garments?</h3>
+  <p>Garments is harder: the thing covered is an operation on a line, knowledge is in a skill matrix, the manager is a line supervisor, and people use phones, not laptops. The answer is a <b>sector-neutral core plus sector packs</b>. The core is the same everywhere (a leave case, duties with evidence, an owner for every duty on every date, a person approves, an audit log, a return guard). A pack changes five things: the duty vocabulary, what a duty is covered by, the capacity model, the compliance rules, and the input channel and language. In the lab we keep the core neutral and only sketch a garments pack.</p>
+
+  <h3>5. The manager's manual entry, and keeping the mother at the centre</h3>
+  <p><b>The manager is the operator, she is the protagonist, HR is the buyer.</b> The manager does not fill forms: her interview builds her own map, the job description is read in, and the manager only approves a drafted plan, reports a change in one sentence, and answers one-tap availability questions. The AI drafts and the rules check, so the manager reviews rather than types. She stays at the centre because the story and the first case are hers, her confirmation gates everything, and nothing becomes permanent without her agreement.</p>
+  <div class="remember"><div><b>Remember</b><p>The manager approves; the AI does the typing. The employee confirms her own job, and the return guard protects it. "Built for maternity, ready for any long leave."</p></div></div>
+</section>
+
   </main>
 </div>
 <script>
@@ -843,7 +876,8 @@ const LESSONS = [
   { id: 'd3', t: 'The architecture, piece by piece', g: 'Deeper, in plain words' },
   { id: 'd4', t: 'The AI pipeline', g: 'Deeper, in plain words' },
   { id: 'd5', t: 'Tokens and embeddings', g: 'Deeper, in plain words' },
-  { id: 'd6', t: 'Our niche', g: 'Deeper, in plain words' }
+  { id: 'd6', t: 'Our niche', g: 'Deeper, in plain words' },
+  { id: 'd7', t: 'Five hard questions', g: 'Deeper, in plain words' }
 ];
 const COUNTED = LESSONS.slice(1, 14).map(l => l.id);      // lessons 1 to 13 carry a quiz
 let done = store.get('done', {});
@@ -894,6 +928,8 @@ document.addEventListener('click', e => {
    QUIZ BANK (also the question pool for the final exam)
    ====================================================================== */
 const QB = {
+  d7: [{"q": "What does the 'litmus test' ask?", "o": ["Is it cheap to build?", "Would this feature be at home in a generic task manager? If yes, we do not build it", "Does it use AI?", "Is it in Bangla?"], "a": 1, "w": "It keeps Shetu a role-continuity product, not a workload balancer."}, {"q": "Who is the main user of Shetu, and who is the person it protects?", "o": ["HR uses it, the manager is protected", "The manager uses it most; the employee is the person it protects", "Only the employee uses it", "The company's customers"], "a": 1, "w": "The manager is the operator, the employee is the protagonist, and HR or the organization is the customer."}],
+
   d1: [{"q": "What is a rule in Shetu?", "o": ["A machine-learning model", "Ordinary Python code that checks something we can calculate", "A prompt for the AI", "A setting in GitHub"], "a": 1, "w": "Plain arithmetic and if/else logic, with tests. No AI."}, {"q": "Rafiq has 2 spare hours and the duty needs 3. What happens?", "o": ["The workload rule rejects the proposal", "The manager is never told", "Rafiq gets it anyway", "The AI decides"], "a": 0, "w": "Capacity is computed by code, never trusted from the model."}],
   d2: [{"q": "What does pytest do?", "o": ["Hosts the website", "Trains the AI", "Draws the screens", "Runs our tests and reports which pass and fail"], "a": 3, "w": "It finds the test functions, runs them, and reports the result."}, {"q": "Why do tests use the replay adapter?", "o": ["Selenium needs it", "It is more accurate", "Tests become free, fast and give the same result every time", "The teacher asked"], "a": 2, "w": "Replay plays back recorded AI answers instead of calling a real model."}],
   d3: [{"q": "Where are permissions checked?", "o": ["In React, by hiding buttons", "In the backend, on every route", "In the database file", "By the AI"], "a": 1, "w": "Hiding a button is not security; anyone can send a request directly."}, {"q": "What is SQLite?", "o": ["A database stored in a single file", "A JavaScript library", "An AI model", "A cloud service"], "a": 0, "w": "Nothing to install, the same on every laptop."}],
@@ -1607,6 +1643,10 @@ W.exam = el => {
 
 /* ---------- Glossary ---------- */
 const GLOSS = [
+  ["Role continuity", "Keeping a job whole while its owner is away, and guarding the return. What Shetu is."],
+  ["Sector pack", "A small set of changes that adapts the neutral core to one sector: duty vocabulary, what a duty is covered by, capacity model, compliance rules, input channel and language."],
+  ["Litmus test", "Would this feature be at home in a generic task manager? If yes, Shetu does not build it."],
+
   ["Beachhead market", "The narrow first group of customers with the sharpest pain. A product wins there first, then expands."],
   ["CI (continuous integration)", "GitHub runs all the tests automatically on every pull request."],
   ["Cosine similarity", "A number that says how close two vectors (meanings) are."],
@@ -1674,7 +1714,7 @@ W.glossary = el => {
    ====================================================================== */
 $$('[data-widget]').forEach(el => { const f = W[el.dataset.widget]; if (f) { try { f(el); } catch (e) { el.innerHTML = '<div class="fb bad">This part could not load.</div>'; console.error(e); } } });
 COUNTED.forEach(mountQuiz);
-['d1', 'd2', 'd3', 'd4', 'd5', 'd6'].forEach(mountQuiz);   // the deeper lessons: quizzes, but not counted in the progress bar
+['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7'].forEach(mountQuiz);   // the deeper lessons: quizzes, but not counted in the progress bar
 renderNav(); renderProgress();
 go(location.hash.slice(1) || 'l0');
 })();

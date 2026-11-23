@@ -22,6 +22,7 @@ This folder (`docs/planning/` in our repository) holds everything we decided **b
 | `03-Pitch-Preparation-Pack.md` | Pitch text, feature breakdown, slide plan, speaker split, Q&A answers | Presenters |
 | `04-Workbook-Submission-Draft.xlsx` | The faculty's Excel sheet, filled in. Copy it into the Google Sheet | Whoever submits |
 | `05-Shetu-Proposal-Deck.pptx` / `.pdf` | The 10 proposal slides, with speaker notes | Presenters |
+| `08-Positioning-and-Strategy.md` | Working answers to the five hard questions: why not only mothers, domain fit, not a generic work manager, other sectors such as garments, the manager's manual entry | Everyone |
 | `07-Speaker-Scripts.md` | What each speaker says, slide by slide. Tonni's parts exactly as she wrote them; the rest are drafts for each speaker to edit, plus likely questions | Presenters, before 15 November |
 | `06-Slide-Deck-Change-Proposals.md` | Proposed wording changes to the slides and the Excel sheet. Not applied; the team decides | Presenters, before 15 November |
 | `CHANGELOG.md` | What changed in each revision, and why | When something looks different |

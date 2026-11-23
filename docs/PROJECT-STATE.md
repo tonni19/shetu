@@ -74,6 +74,7 @@ This list lags by one: the pull request that updates this file cannot list itsel
 
 ## Things every assistant should know right now
 
+- **Positioning (working answer, decision 28).** Shetu is role-continuity software, not a generic work manager: it manages a role through one absence and its return. Do not build task boards, time tracking, productivity scoring or auto-assignment (`AGENTS.md` rule 12). Wording is gender-neutral (rule 11). Details: `docs/planning/08-Positioning-and-Strategy.md`.
 - **Coordinate before you act.** Read `docs/TEAM-BOARD.md` and `docs/API-CONTRACT.md` at the start of every session, check on `origin/main` that the parts you depend on are really merged, and use labelled stubs (`STUB(T#)`) rather than guessing or building someone else's part. The rules are in `AGENTS.md`, section "Coordinate before you act".
 - No code exists yet. Do not assume any file or function is there; check.
 - Voice input is a **stretch** feature (decision 16), not cut and not in the first version.

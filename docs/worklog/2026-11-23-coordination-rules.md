@@ -24,6 +24,10 @@ The "Who builds what" lesson now shows the four confirmed owners by name (it sti
 - Compared the Congress build's fixes with the lab documents. Added: rule 11 (gender-neutral wording) in `AGENTS.md`; the comparison with a plain checklist and a general chatbot, and the manager and HR interviews, as planned work; a guide section on what the earlier build fixed; a credit note about its fifth member.
 - Limit: only the Congress repository could be read. The questions the Congress judges asked are not recorded anywhere we can see, so anything beyond what the repository shows is unchecked.
 
+## Positioning
+- Maruf raised five questions (why only mothers, fitting a domain, not being a generic work manager, other sectors such as garments, the manager's manual entry). Wrote working answers in `docs/planning/08-Positioning-and-Strategy.md`, a guide lesson ("Five hard questions"), `AGENTS.md` rule 12 and decision 28.
+- Facts to check before quoting: maternity-leave length under the Labour Act 2006 (we believe 16 weeks) and garments sector details.
+
 ## Not finished / known problems
 - The owners on the board are confirmed (all four members accepted on 23 November 2026, reported by Maruf).
 - The contract was accepted by Maruf for the team on 23 November 2026. It can still change, by the protocol in `AGENTS.md`.
