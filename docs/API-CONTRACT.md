@@ -1,6 +1,6 @@
 # Shared contract: data shapes, routes and function signatures
 
-**Status: PROPOSED, not agreed.** Written on 2026-11-23 so four people (and their AI assistants) can work in parallel. When all four owners have read it and agreed, change this line to "Agreed on <date>" and record it in `docs/DECISIONS.md`. Until then, treat the names below as a starting point, but **do not change them silently** (see "Changing a shared interface" in `AGENTS.md`).
+**Status: AGREED on 2026-11-23.** Maruf accepted this contract for the whole team that day, because the team is new to this kind of design and wanted to start building. It is the shared reference now. It is still not frozen: if a real need appears, change it by the protocol in `AGENTS.md` ("Changing a shared interface"): edit this file in your own pull request, log a handoff for everyone affected, and do not merge until they have seen it.
 
 Why this file exists: Tonni's screens, Maruf's routes, Mahadi's gateway and Nazha's rules must fit together without waiting for each other. Everyone builds against this file. If the code and this file disagree, one of them is wrong: fix it in the same pull request and tell the people listed under "Used by".
 
@@ -45,7 +45,7 @@ Rule: a `suggested` duty never counts as a fact until `confirmation` is `"confir
 
 The cover routes (`PUT .../cover`, `POST .../cover/approve`) are described in `docs/UPDATE-1-PLAN.md` and come after Thursday.
 
-## 3. Python signatures (proposed)
+## 3. Python signatures
 
 These let Mahadi, Nazha and Maruf write and test their parts without waiting.
 

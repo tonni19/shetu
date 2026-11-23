@@ -8,7 +8,7 @@ This is the live coordination file for the four members and their AI assistants.
 
 Keep it short and true. If this file disagrees with GitHub, **GitHub wins**: check `origin/main`, open pull requests and Issues, then fix this file.
 
-Last updated: 2026-11-23. The owners below are **confirmed**: all four members accepted their areas on 23 November 2026 (reported by Maruf). The shared contract is still proposed.
+Last updated: 2026-11-23. The owners below are **confirmed**: all four members accepted their areas on 23 November 2026 (reported by Maruf). The shared contract (`docs/API-CONTRACT.md`) is **agreed** (23 November 2026).
 
 ## How to use this file (members and AI assistants)
 
@@ -63,7 +63,7 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 | Date | From | To | Note |
 |---|---|---|---|
 | 2026-11-23 | Maruf | everyone | Board and contract created. |
-| 2026-11-23 | Maruf | everyone | All four members accepted their areas; the owners on this board are confirmed. The contract is still proposed until each owner has read and agreed it. |
+| 2026-11-23 | Maruf | everyone | All four members accepted their areas; the owners on this board are confirmed. The contract is agreed, as accepted by Maruf for the team. Each owner should still read their part and raise a problem early. |
 
 ## Known conflicts and open questions
 

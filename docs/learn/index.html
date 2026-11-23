@@ -727,7 +727,7 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
     <li>Embeddings shortlist possible matches; the language model decides with evidence; rules and a person confirm.</li>
     <li>We test it on our fake cases with and without embeddings, and keep it only if it finds more missed duties.</li>
   </ul></div>
-  <div class="card tint"><b>Proposed, not agreed.</b> This is a suggestion from 16 November 2026, after the instructor's comment. The design (decision list and <code>AGENTS.md</code>) does not include embeddings yet. The team decides, and the result is recorded in <code>docs/DECISIONS.md</code>.</div>
+  <div class="card tint"><b>Agreed on 23 November 2026.</b> The team accepted the plan to test embeddings first: we may use them, we will try them on the same fake cases, and we keep them only if they help. The decision is in <code>docs/DECISIONS.md</code>.</div>
   <div class="remember"><div><b>Remember</b><p>Tokens are how a model counts text. Embeddings turn meaning into numbers so we can compare it. One line for the instructor: "We may use embeddings to find forgotten duties by meaning. We will test on the same fake cases whether they help before we decide."</p></div></div>
 </section>
 
@@ -736,7 +736,7 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
   <div class="kicker">Deeper 6 &middot; Our niche</div>
   <h2>"Why only mothers? <em>Isn't it a work planner?"</em></h2>
   <p class="lead">We were asked this in both places we presented on 15 November. It means the pitch had a gap, not the product. Here is how a product manager answers it.</p>
-  <div class="card tint"><b>Proposed, not agreed.</b> This framing was suggested on 16 November 2026. The team has not agreed it yet; when it does, it is recorded in <code>docs/DECISIONS.md</code> and the pitch pack.</div>
+  <div class="card tint"><b>Agreed on 23 November 2026.</b> The team accepted this framing as our answer. The decision is in <code>docs/DECISIONS.md</code>.</div>
   <div class="card"><div class="kicker">First, agree</div><p style="margin:0">The engine is general: find the duties in a job, keep an owner for every duty on every date, re-plan when things change. That is a strength. Successful products <b>start narrow</b>, with the one group whose pain is sharpest (a <b>beachhead market</b>), then expand.</p></div>
   <h3>Why maternity first</h3>
   <div style="overflow-x:auto"><table>
@@ -763,6 +763,15 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
     <li><b>Next:</b> any planned long leave: paternity, planned surgery, study leave, Hajj, a sabbatical. MAP, HOLD and FIT still apply.</li>
     <li><b>Later:</b> unplanned absence, and people who resign, so their unwritten knowledge is captured before they go.</li>
   </ol>
+  <h3>What an earlier build of ours already fixed</h3>
+  <p>Before the lab build, our team made a separate public version of Shetu for the AI Builders Congress 2026. Its history shows what we fixed after being asked the same sort of questions. We carry the ideas over, not the code.</p>
+  <ul class="tight">
+    <li><b>Gender-neutral wording.</b> Screens, messages, prompts and rule texts say "the employee" or "they", so every planned leave reads correctly. Maternity is our design focus, never a data field.</li>
+    <li><b>Any planned leave of two weeks or more.</b> Study leave runs through the same flow with different dates and duties.</li>
+    <li><b>Never how a pregnancy becomes known.</b> There is no field for the reason, so Shetu cannot reveal it.</li>
+    <li><b>Temporary means temporary.</b> Every assignment ends, and nothing becomes permanent without the employee's agreement. A work planner does not guard this.</li>
+    <li><b>Compare against a plain checklist and a general chatbot</b> on the same fake cases, to show what Shetu adds, plus interviews with managers and HR. Both are planned for the lab, not done.</li>
+  </ul>
   <div class="card"><div class="kicker">The business, if they push</div><ul class="tight" style="margin:0">
     <li><b>Customer:</b> banks, NGOs, telecoms and IT companies with many women in skilled roles.</li>
     <li><b>Who pays:</b> HR. <b>Who uses it:</b> the employee, her manager, the colleagues who cover.</li>

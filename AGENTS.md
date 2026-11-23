@@ -36,6 +36,7 @@ Core rule of the product: **AI proposes, rules check, people decide.**
 8. **No secrets in the repository.** API keys go in `.env`, which is git-ignored.
 9. **Permissions are checked in the backend on every route.** Hiding a button is not security.
 10. **All model calls go through the AI gateway** (`backend/app/ai/gateway`). Never call a provider SDK from anywhere else. Every reply is validated against a Pydantic schema.
+11. **Gender-neutral wording** everywhere the product, its code or its data can be seen: screens, API messages, prompts, rule messages, fixtures, tests. Say "the employee" or "they". Maternity is a design focus, never a field, and nothing in the product asks about, stores or reveals the reason for leave. (Older slides and planning documents tell the maternity story with "she"; leave those as they are.)
 
 ## Stack
 

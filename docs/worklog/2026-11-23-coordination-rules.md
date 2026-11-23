@@ -19,7 +19,12 @@ Documentation only. Read the new rules against the existing ones for contradicti
 ## Learning guide
 The "Who builds what" lesson now shows the four confirmed owners by name (it still described four unassigned areas, A to D). The quiz question about who owns HOLD was replaced by one about who owns the gateway, and the architecture widget names owners instead of letters.
 
+## Accepted proposals and Congress fixes
+- Maruf accepted, for the team, the contract, the niche framing and the embeddings plan (decision 27). The "Proposed, not agreed" cards in the guide now say "Agreed on 23 November 2026".
+- Compared the Congress build's fixes with the lab documents. Added: rule 11 (gender-neutral wording) in `AGENTS.md`; the comparison with a plain checklist and a general chatbot, and the manager and HR interviews, as planned work; a guide section on what the earlier build fixed; a credit note about its fifth member.
+- Limit: only the Congress repository could be read. The questions the Congress judges asked are not recorded anywhere we can see, so anything beyond what the repository shows is unchecked.
+
 ## Not finished / known problems
 - The owners on the board are confirmed (all four members accepted on 23 November 2026, reported by Maruf).
-- The contract is proposed, not agreed. It must be agreed by all four owners before it is called final.
+- The contract was accepted by Maruf for the team on 23 November 2026. It can still change, by the protocol in `AGENTS.md`.
 - No application code yet, so the comment standard has not been used on real files.

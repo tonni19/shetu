@@ -28,7 +28,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 ## Next up
 
-1. **Thursday 26 November: the 10 to 15% progress presentation.** Follow the schedule at the top of the [progress plan](UPDATE-1-PLAN.md). Take ideas, not stacks, from the Congress build (decided 23 November). The owners are confirmed; the shared contract (`docs/API-CONTRACT.md`) still needs each owner's agreement. Agree how to answer the instructor and record settled product decisions in `docs/DECISIONS.md`. Record confirmed roles here and in `CONTRIBUTIONS.md`.
+1. **Thursday 26 November: the 10 to 15% progress presentation.** Follow the schedule at the top of the [progress plan](UPDATE-1-PLAN.md). Take ideas, not stacks, from the Congress build (decided 23 November). The owners are confirmed and the shared contract (`docs/API-CONTRACT.md`) is agreed. Agree how to answer the instructor and record settled product decisions in `docs/DECISIONS.md`. Record confirmed roles here and in `CONTRIBUTIONS.md`.
 2. Get the FastAPI, React/Vite and SQLite foundation running, including sign-in, CI and the AI gateway with replay. Then connect interview, evidence, confirmation, and dated cover approval as one flow.
 3. Write the first six synthetic cases in parallel. Compare live model candidates on those cases and prepare a labeled replay for the checkpoint. Attempt the HOLD change-parsing spike once the MAP path is working.
 4. Stretch, in order: hourglass chart, then voice input (first stretch feature, after HOLD works).
@@ -37,7 +37,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 - Hosted AI provider not chosen (decided by the bake-off).
 - The faculty's later checkpoint dates (Update 1 at 30%, Update 2) are unknown. Maruf confirmed that Thursday 26 November is the final date for the 10 to 15% presentation; an earlier note about Sunday 29 November is dropped.
-- A separate, public **Congress** build of Shetu exists (`SpicyFalcon619/shetu-congress`, Next.js and PostgreSQL, made by Maruf and Tonni for the AI Builders Congress 2026). Our proposal answers called the earlier work "a one-case prototype". The team has to decide how to tell the instructor. This lab project stays a new build here, and anything adapted from Congress is credited in the worklog.
+- A separate, public **Congress** build of Shetu exists (`SpicyFalcon619/shetu-congress`, Next.js and PostgreSQL, made by Maruf and Tonni for the AI Builders Congress 2026; its team page also lists Rowshonur Rahman Rizvy, who is not on the lab team, so credit him when adapting ideas). Our proposal answers called the earlier work "a one-case prototype". The team has to decide how to tell the instructor. This lab project stays a new build here, and anything adapted from Congress is credited in the worklog.
 - The learning guide on GitHub Pages is **public** (anyone with the link), even though the repository is private. Only `docs/learn` is published. Never put names with student IDs, emails, keys or course PDFs in `docs/learn`.
 - Member roles are **confirmed** (all four accepted on 23 November 2026, reported by Maruf): Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality. Details: `docs/TEAM-BOARD.md`. `CONTRIBUTIONS.md` is not created yet; add it when the first work lands.
 - Hosted AI provider, and who holds the API key, not decided.
