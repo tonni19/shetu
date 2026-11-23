@@ -12,10 +12,13 @@
 - The faculty's requirements arrived: present about 10 to 15% on Thursday 26 November (online), GitHub set up, group discussions about the features, every member present.
 - Added a section at the top of `docs/UPDATE-1-PLAN.md` with what can honestly be shown, a day-by-day schedule from 23 to 26 November, and who builds what. Recorded it in the project state.
 
+## Later the same day
+- Ahmad confirmed Thursday 26 November is the final date; the Sunday 29 November date was dropped from the plan, the README and the project state.
+- Ahmad decided to keep React and FastAPI and take only ideas from the Congress build. The plan has a table of the ideas, what is built by Thursday, and what comes later (decision 24).
+
 ## Not finished / known problems
-- It is unclear how this presentation relates to the 29 November Update 1 date.
 - Mahadi, Nazha and Tonni have not confirmed the proposed split.
 - The team has not decided how to tell the instructor about the Congress build.
 - The "Who builds what" lesson in the guide still shows the older proposed areas A to D; update it when the roles are confirmed.
-- Update 1 has about six days left; the plan's scope is large (see the project state).
+- Only three days remain until Thursday; the plan protects an order of priority if time runs short.
 - No application code yet.

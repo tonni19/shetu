@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-23. A **10 to 15% progress presentation is due on Thursday 26 November 2026 (online, every member present)**; Update 1 is on 29 November (date from Ahmad). The [Update 1 plan](UPDATE-1-PLAN.md) has the scope for both, a proposed split of work (Tonni frontend and UI/UX, Ahmad full stack, Mahadi AI, Nazha rules and quality; the other three still need to confirm), answers to the presentation feedback, and what we can learn from the separate Congress build. Application work has yet to start.
+Last updated: 2026-11-23. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope, a proposed split of work (Tonni frontend and UI/UX, Ahmad full stack, Mahadi AI, Nazha rules and quality; the other three still need to confirm), the ideas we take from the separate Congress build, and answers to the presentation feedback. The lab project stays on React and FastAPI with SQLite. Application work has yet to start.
 
 ## Milestones
 
@@ -12,7 +12,7 @@ Last updated: 2026-11-23. A **10 to 15% progress presentation is due on Thursday
 |---|---|---|
 | Proposal, 15 Nov 2026 | Pitch | **Done.** Presented on 15 November; the deck (`05-Shetu-Proposal-Deck.pptx`) was submitted to the portal on 14 November. Feedback, asked in both places we presented: *why only for mothers, when anyone could use it? Where is the niche? Isn't it just a work planner?* The instructor also mentioned tokenization and vectorization (embeddings). Our answers are not agreed yet (see Next up). Not recorded here: whether the Excel sheet was entered in the faculty's Google Sheet |
 | Progress, 26 Nov 2026 (online) | Show about 10 to 15%: GitHub set up, every member present, group discussion of the features | Plan drafted in `docs/UPDATE-1-PLAN.md`: a running skeleton and the first thin MAP slice. Not started. Time and format unconfirmed |
-| Update 1 (30%), 29 Nov 2026 | MAP works: interview, Role Map, a forgotten duty found, initial cover check | Plan drafted. Implementation has yet to start. Time and submission details are unconfirmed |
+| Update 1 (30%) | MAP works: interview, Role Map, a forgotten duty found, initial cover check | Not started. Date unknown |
 | Update 2 (60%) | HOLD works: a change typed in plain words is understood and re-planned | Not started |
 | Final (100%) | All three stages, tests green, AI measured | Not started |
 
@@ -28,7 +28,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 ## Next up
 
-1. **Thursday 26 November: the 10 to 15% progress presentation.** Follow the schedule at the top of the [Update 1 plan](UPDATE-1-PLAN.md). Confirm the ownership and shared API contract in it today. Agree how to answer the instructor and record settled product decisions in `docs/DECISIONS.md`. Record confirmed roles here and in `CONTRIBUTIONS.md`.
+1. **Thursday 26 November: the 10 to 15% progress presentation.** Follow the schedule at the top of the [progress plan](UPDATE-1-PLAN.md). Take ideas, not stacks, from the Congress build (decided 23 November). Confirm the ownership and shared API contract in it. Agree how to answer the instructor and record settled product decisions in `docs/DECISIONS.md`. Record confirmed roles here and in `CONTRIBUTIONS.md`.
 2. Get the FastAPI, React/Vite and SQLite foundation running, including sign-in, CI and the AI gateway with replay. Then connect interview, evidence, confirmation, and dated cover approval as one flow.
 3. Write the first six synthetic cases in parallel. Compare live model candidates on those cases and prepare a labeled replay for the checkpoint. Attempt the HOLD change-parsing spike once the MAP path is working.
 4. Stretch, in order: hourglass chart, then voice input (first stretch feature, after HOLD works).
@@ -36,8 +36,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 ## Known problems and open questions
 
 - Hosted AI provider not chosen (decided by the bake-off).
-- It is unclear how the 26 November progress presentation relates to Update 1 on 29 November. Both dates came from Ahmad; confirm with the faculty.
-- Update 1 is Sunday, 29 November (per Ahmad). The time, submission details and Update 2 date are unconfirmed.
+- The faculty's later checkpoint dates (Update 1 at 30%, Update 2) are unknown. Ahmad confirmed that Thursday 26 November is the final date for the 10 to 15% presentation; an earlier note about Sunday 29 November is dropped.
 - A separate, public **Congress** build of Shetu exists (`SpicyFalcon619/shetu-congress`, Next.js and PostgreSQL, made by Ahmad and Tonni for the AI Builders Congress 2026). Our proposal answers called the earlier work "a one-case prototype". The team has to decide how to tell the instructor. This lab project stays a new build here, and anything adapted from Congress is credited in the worklog.
 - The learning guide on GitHub Pages is **public** (anyone with the link), even though the repository is private. Only `docs/learn` is published. Never put names with student IDs, emails, keys or course PDFs in `docs/learn`.
 - Member roles: a split is proposed in `docs/UPDATE-1-PLAN.md` (Tonni frontend and UI/UX, Ahmad full stack, Mahadi AI, Nazha rules and quality). Mahadi, Nazha and Tonni have not confirmed it yet; once they do, record it here and in `CONTRIBUTIONS.md`.

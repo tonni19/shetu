@@ -18,7 +18,7 @@ AI proposes, rules check, people decide.
 
 ## Status
 
-**Proposal presented on 15 November 2026.** Team Anomaly is preparing to build the first MAP flow for Update 1 on Sunday, 29 November. See [the current state](docs/PROJECT-STATE.md) and [the Update 1 plan](docs/UPDATE-1-PLAN.md).
+**Proposal presented on 15 November 2026.** Team Anomaly is preparing a running foundation and the first slice of the MAP flow for the progress presentation on Thursday, 26 November. See [the current state](docs/PROJECT-STATE.md) and [the Update 1 plan](docs/UPDATE-1-PLAN.md).
 
 ## Start here
 

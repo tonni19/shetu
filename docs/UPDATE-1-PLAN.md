@@ -1,12 +1,12 @@
-# Shetu Update 1 plan
+# Shetu progress plan: Thursday 26 November and after
 
-**Checkpoint:** Sunday, 29 November 2026, as confirmed by Ahmad on 22 November. The time and submission details still need checking. **Status:** Implementation plan drafted. Ownership, scope choices and instructor answers below are proposed for the team to confirm.
+**Checkpoint:** Thursday, 26 November 2026, online, about 10 to 15% progress. Ahmad confirmed on 23 November that **Thursday is the final date** (an earlier note said Sunday 29 November; that is dropped). The time and the exact format are unconfirmed. **Status:** Plan drafted. Ownership, scope choices and instructor answers below are proposed for the team to confirm.
 
 ## First: the 10 to 15% progress presentation, Thursday 26 November 2026 (online)
 
 The faculty's requirements, as Ahmad received them: present project progress at 10 to 15%; GitHub should be set up; the teams hold group discussions to get a better idea of the features; **every team member must be present**. The time and the exact format are unconfirmed.
 
-**It is not clear how this relates to the 29 November date below.** Ahmad has given both dates. Treat 26 November as the next hard deadline, and the 29 November scope (the whole MAP slice) as the target after it. Confirm with the faculty which one is the "Update 1" checkpoint.
+**Thursday is the final date.** The fuller MAP slice further down is the target after Thursday; it has no date yet.
 
 **What "10 to 15%" means for us.** We have no percentage rule from the faculty, so we show only what exists and say what it is. Planning, the proposal and the GitHub set-up are done. The new part is a running foundation and the first thin slice of MAP.
 
@@ -17,7 +17,7 @@ The faculty's requirements, as Ahmad received them: present project progress at 
 4. **Tests that pass:** pytest for the evidence check and the access check (a colleague gets 403), run by CI on a pull request.
 5. **The group discussion:** each member says what they own and one decision from the discussion (the niche answer, embeddings yes or no, who owns what). The decisions go in `docs/DECISIONS.md` the same day.
 
-**Not on 26 November:** the manager coverage screen, the second case, Selenium flows, a live model comparison, HOLD, FIT. They stay in the plan for 29 November and later.
+**Not on 26 November:** the manager coverage screen, the second case, Selenium flows, a live model comparison, HOLD, FIT. They stay in the plan for after Thursday.
 
 | By | What |
 |---|---|
@@ -44,6 +44,27 @@ If time runs short, protect this order: (1) sign-in and a case from the API, (2)
 
 **How do tokens and vectors fit?** A hosted model tokenizes the interview text internally. An embedding represents a passage as a vector so we can compare meaning across wording and languages. For Update 1, send the short job description alongside the interview and check the evidence behind the model's output. Track token use by language when the provider reports it. If the baseline misses paraphrased matches, test whether embeddings improve recall on the same synthetic cases without adding false matches. Any match still needs a source and human confirmation.
 
+## What we take from Congress: ideas, not stacks
+
+Decided on 23 November 2026: the lab project **stays on React (Vite) and FastAPI, with SQLite and SQLAlchemy**, as the instructor advised. We do **not** take the Congress stack (Next.js, TypeScript-first app router, PostgreSQL, Alembic, Tailwind) or its code files. We take the ideas the team upgraded there, and rebuild each one in our own stack. Anything adapted is named in the worklog.
+
+| Idea from Congress | What it means | On Thursday | Later |
+|---|---|---|---|
+| **Numbered rules as plain functions** | Each rule is a pure Python function with tests for pass, fail and boundary cases. The model never decides one | R1 quote check (the quoted words really appear in the employee's reply, after Unicode normalization, so Bangla text compares correctly; otherwise the duty is downgraded to "suggested") and R2 (a suggested duty counts only after the employee confirms it) | R3 full coverage by date, R4 capacity week by week, R5 nothing assigned to the person on leave, R6 every temporary assignment ends (with a handback window), R7 availability answers older than 30 days are asked again, R9 only the manager approves |
+| **Evidence statuses** | A duty is "said" (her exact words), "documented" (a source line), or "suggested" (a question until she answers) | Yes | |
+| **Never ask why** | There is no field for the reason for leave, or for health or family details | Yes: in the database design and the fixtures | |
+| **Server-side role checks** | Every route checks who is asking, from the signed-in session | Yes: a colleague gets 403 | Case-level access for every route |
+| **Audit log** | Every proposal, confirmation and approval is written down with who and when | One audit event when a duty is confirmed | The full log and the HR view |
+| **Replay mode, clearly labelled** | Recorded model replies make tests and offline demos repeatable. A replay run is never called live | Yes | Case-specific fixtures; compare live models separately |
+| **Pluggable AI behind one gateway** | Hosted providers or a local model can be swapped without touching the app | The gateway interface and the replay adapter | One hosted adapter once chosen, then the local model option |
+| **A typed contract** | FastAPI already produces an OpenAPI description. The React side can generate its TypeScript types from it, so the screens and the API cannot drift apart | Only if time allows | Yes |
+| **Health route** | A `/healthz` route reports that the API and the database are up | Yes | |
+| **Seeded demo accounts** | The sign-in page offers a few synthetic accounts, each seeing only what its role allows | Yes | |
+| **R8, the return guard** | Temporary cover must not quietly become permanent: nothing moves for good without the employee's agreement, and the leave cannot close until she has decided | | Yes: this is the heart of FIT |
+| **Manager overview, attention queue, load bars, rules inspector** | The screens that made Congress easy to follow | | Design ideas for Tonni's UI/UX work |
+
+**A sharper story for the niche answer.** Congress frames the problem as *temporary cover slowly becoming permanent, so the person returns to a smaller job*. That is something a work planner does not guard against. It is worth using in the answer to "isn't it just a work planner?", once the team agrees it.
+
 ## What the Congress version teaches us
 
 **Disclosure.** The Congress build is a separate, public repository made by Team Anomaly for the AI Builders Congress 2026 (created 19 November, so after our proposal). It uses Next.js and PostgreSQL, so it is a different stack from this lab project. Our proposal answers say "a one-case prototype from the GP FutureMakers competition"; they did not mention the Congress build. The team decides how to tell the instructor (see the Q&A answer in the pitch pack). The lab project stays a new build in this repository, and anything adapted from Congress is credited in the worklog.
@@ -59,7 +80,7 @@ The Congress build at `34c08bb` has synthetic maternity and study cases, an adap
 
 Write the lab implementation in FastAPI, SQLAlchemy, SQLite and React/Vite with pytest and Selenium. The Congress persona header identifies a demo user by a caller-supplied value. The lab should establish identity through sign-in and enforce both role and case access on the server. Congress also lets its extractor estimate hours and can clear coverage when approving a change. For the lab, keep unknown effort unknown until a person supplies it, and validate replacement coverage before committing a future HOLD change. Treat the Congress app, stack, tests and deployment as reference material and credit any adapted idea or code in the relevant worklog.
 
-## What has to run on 29 November
+## The fuller MAP slice (the target after Thursday, no date yet)
 
 1. A synthetic employee signs in and opens their leave case. They answer a short adaptive interview, including a Banglish answer. The Role Map shows a real quote from their reply and a follow-up about a duty found in the synthetic job description. The employee can confirm or dismiss items.
 2. A manager opens the confirmed map and assigns cover for a date range. Leave one day uncovered first. The API blocks approval and the UI shows which duty and date need cover. Fix the gap, approve, and reload to show that the plan and approval persisted.
@@ -92,19 +113,9 @@ Agreed by Ahmad on 23 November 2026; the other three members still need to confi
 
 **Review rotation (starting point):** Ahmad reviews Tonni's and Mahadi's pull requests, Tonni reviews Nazha's, Nazha and Mahadi review Ahmad's. Each person opens their own pull request under their own account and explains it to the reviewer. Have one short walkthrough where each owner explains their module, then one where Ahmad traces a complete request from the React screen to the database and back. Ask each owner to explain one failure case live.
 
-## Working backward from Sunday
+## After Thursday
 
-| By | What should be demonstrable |
-|---|---|
-| **Mon 23 Nov** | Confirm owners. Agree the minimal case/duty/assignment contract and write the four issue descriptions from the table above. Check the presentation time and submission instructions. |
-| **Tue 24 Nov** | Everyone can run the FastAPI and Vite shells. Seed one case and accounts. Demo sign-in and one round trip from the UI to the API with replay. Start fixtures and CI in parallel. |
-| **Wed 25 Nov** | Interview, evidence, missing-duty follow-up and confirmation work against SQLite. Try the first live Banglish case and record the result or its blocker. |
-| **Thu 26 Nov** | Manager screen can show a failed coverage check, correct the gap and approve. Verify the forbidden approval and the second case. |
-| **Fri 27 Nov** | Run pytest and Selenium. Record the first evaluation counts, attempt the small HOLD parsing spike, and record what ran live versus in replay. |
-| **Sat 28 Nov** | Rehearse from a clean checkout, assign speaking parts, and preserve a labeled replay backup. Fix failing core checks before adding presentation polish. |
-| **Sun 29 Nov** | Show the fresh MAP case, the rejected then approved plan, a brief study-leave example, and the test evidence. Acknowledge any checkpoint item that remains unfinished. |
-
-If the schedule slips, protect the interview-to-confirmation and failed-then-approved cover path. Keep the second case short and report any incomplete evaluation or spike. Avoid trading away evidence, permissions or coverage checks to add more screens.
+We do not have a date for the next checkpoint. Keep the order of priority from the fuller MAP slice above: the interview-to-confirmation path first, then the failed-then-approved cover check, then the second case and the evaluation counts. Do not trade away evidence, permissions or coverage checks to add more screens.
 
 ## Notes for the next session
 
