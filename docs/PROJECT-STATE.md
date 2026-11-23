@@ -72,6 +72,7 @@ This list lags by one: the pull request that updates this file cannot list itsel
 
 ## Things every assistant should know right now
 
+- **Coordinate before you act.** Read `docs/TEAM-BOARD.md` and `docs/API-CONTRACT.md` at the start of every session, check on `origin/main` that the parts you depend on are really merged, and use labelled stubs (`STUB(T#)`) rather than guessing or building someone else's part. The rules are in `AGENTS.md`, section "Coordinate before you act".
 - No code exists yet. Do not assume any file or function is there; check.
 - Voice input is a **stretch** feature (decision 16), not cut and not in the first version.
 - Speaker scripts exist for all ten slides (decision 22). **Tonni's parts (the elevator speech, slides 2 and 3) are exactly as she wrote them: never edit or "improve" them.** The scripts for slides 4 to 10 are drafts that Mahadi, Ahmad and Nazha edit into their own words, so those may change.
