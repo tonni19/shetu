@@ -26,7 +26,7 @@ The faculty's requirements, as Maruf received them: present project progress at 
 | **Wed 25 Nov** | The frontend reads the real case from the API. The interview reply route returns draft duties with evidence (replay). Evidence and 403 tests pass. Rehearse the demo twice, record a backup video, agree who says what. |
 | **Thu 26 Nov** | Present, online. Everyone attends. Each member shows or explains their own part. Afterwards: update the project state and decisions the same day. |
 
-**Who does what for 26 November** (proposed, matching the ownership table below):
+**Who does what for 26 November** (confirmed, matching the ownership table below):
 - **Tonni:** the React/Vite shell, the sign-in screen and the case page, in the Shetu look.
 - **Maruf:** the FastAPI/SQLite skeleton, seeded accounts, sign-in and permissions, the case route and the interview route; joins the pieces and runs the demo.
 - **Mahadi:** the AI gateway with the replay adapter, the first prompt and its Pydantic schema, one fixture for the Banglish answer.
@@ -98,11 +98,11 @@ This is a starting API sketch for the issue, with names and payloads open for re
 | Resolve a proposed duty | `PATCH /api/cases/{case_id}/duties/{duty_id}` with `decision` set to `confirm` or `dismiss`. Return the updated duty. A human confirmation is recorded separately from the original evidence type. |
 | Check and approve cover | `PUT /api/cases/{case_id}/cover` with assignments containing `duty_id`, `colleague_id`, `start_date` and `end_date`. Return the draft and findings. `POST /api/cases/{case_id}/cover/approve` rechecks the stored draft before committing. For a gap, return HTTP 409 with findings containing a code, the duty ID and the first uncovered date. |
 
-**Evidence for the checkpoint.** Add six synthetic cases with an answer key, two each in Bangla, English and Banglish. Include a planted missing duty, a misleading or absent quote and a case with no gap. Use pytest for evidence, approval, date boundaries and permissions. Use Selenium for employee confirmation and manager gap rejection followed by approval. When a live provider is available, compare candidates on the same inputs and report the actual number of cases, duties found, invented duties, verified quotes and missed-duty questions. Aim for at least one fresh live Banglish run and one quick HOLD change-parsing spike. HOLD re-planning, FIT, dashboards, voice, uploads and integrations come after the MAP checkpoint.
+**Evidence for the checkpoint.** Add six synthetic cases with an answer key, two each in Bangla, English and Banglish. Include a planted missing duty, a misleading or absent quote and a case with no gap. Use pytest for evidence, approval, date boundaries and permissions. Use Selenium for employee confirmation and manager gap rejection followed by approval. When a live provider is available, compare candidates on the same inputs and report the actual number of cases, duties found, invented duties, verified quotes and missed-duty questions. Aim for at least one fresh live Banglish run and one quick HOLD change-parsing spike. After Thursday, also compare Shetu against a plain checklist and a general chatbot on the same synthetic cases, and plan short interviews with managers and HR (the Congress build lists both as next steps; neither is done). HOLD re-planning, FIT, dashboards, voice, uploads and integrations come after the MAP checkpoint.
 
-## Proposed ownership
+## Ownership (confirmed)
 
-Agreed by Maruf on 23 November 2026; the other three members still need to confirm it. Each person owns a working feature, its tests, and a short explanation of it. **Primary** means one person is responsible for it; others can and should help.
+Chosen by Maruf and accepted by all four members on 23 November 2026. Each person owns a working feature, its tests, and a short explanation of it. **Primary** means one person is responsible for it; others can and should help.
 
 | Person | Primary: owns, tests and explains | Helps with |
 |---|---|---|

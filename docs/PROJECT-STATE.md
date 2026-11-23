@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-23, after pull requests #2 to #18. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope, a proposed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality; the other three still need to confirm), the ideas we take from the separate Congress build, and answers to the presentation feedback. The lab project stays on React and FastAPI with SQLite. Application work has yet to start.
+Last updated: 2026-11-23, after pull requests #2 to #18. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope, the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality), the ideas we take from the separate Congress build, and answers to the presentation feedback. The lab project stays on React and FastAPI with SQLite. Application work has yet to start.
 
 ## Milestones
 
@@ -28,7 +28,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 ## Next up
 
-1. **Thursday 26 November: the 10 to 15% progress presentation.** Follow the schedule at the top of the [progress plan](UPDATE-1-PLAN.md). Take ideas, not stacks, from the Congress build (decided 23 November). Confirm the ownership and shared API contract in it. Agree how to answer the instructor and record settled product decisions in `docs/DECISIONS.md`. Record confirmed roles here and in `CONTRIBUTIONS.md`.
+1. **Thursday 26 November: the 10 to 15% progress presentation.** Follow the schedule at the top of the [progress plan](UPDATE-1-PLAN.md). Take ideas, not stacks, from the Congress build (decided 23 November). The owners are confirmed and the shared contract (`docs/API-CONTRACT.md`) is agreed. Agree how to answer the instructor and record settled product decisions in `docs/DECISIONS.md`. Record confirmed roles here and in `CONTRIBUTIONS.md`.
 2. Get the FastAPI, React/Vite and SQLite foundation running, including sign-in, CI and the AI gateway with replay. Then connect interview, evidence, confirmation, and dated cover approval as one flow.
 3. Write the first six synthetic cases in parallel. Compare live model candidates on those cases and prepare a labeled replay for the checkpoint. Attempt the HOLD change-parsing spike once the MAP path is working.
 4. Stretch, in order: hourglass chart, then voice input (first stretch feature, after HOLD works).
@@ -37,9 +37,9 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 - Hosted AI provider not chosen (decided by the bake-off).
 - The faculty's later checkpoint dates (Update 1 at 30%, Update 2) are unknown. Maruf confirmed that Thursday 26 November is the final date for the 10 to 15% presentation; an earlier note about Sunday 29 November is dropped.
-- A separate, public **Congress** build of Shetu exists (`SpicyFalcon619/shetu-congress`, Next.js and PostgreSQL, made by Maruf and Tonni for the AI Builders Congress 2026). Our proposal answers called the earlier work "a one-case prototype". The team has to decide how to tell the instructor. This lab project stays a new build here, and anything adapted from Congress is credited in the worklog.
+- A separate, public **Congress** build of Shetu exists (`SpicyFalcon619/shetu-congress`, Next.js and PostgreSQL, made by Maruf and Tonni for the AI Builders Congress 2026; its team page also lists Rowshonur Rahman Rizvy, who is not on the lab team, so credit him when adapting ideas). Our proposal answers called the earlier work "a one-case prototype". The team has to decide how to tell the instructor. This lab project stays a new build here, and anything adapted from Congress is credited in the worklog.
 - The learning guide on GitHub Pages is **public** (anyone with the link), even though the repository is private. Only `docs/learn` is published. Never put names with student IDs, emails, keys or course PDFs in `docs/learn`.
-- Member roles: a split is proposed in `docs/UPDATE-1-PLAN.md` (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality). Mahadi, Nazha and Tonni have not confirmed it yet; once they do, record it here and in `CONTRIBUTIONS.md`.
+- Member roles are **confirmed** (all four accepted on 23 November 2026, reported by Maruf): Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality. Details: `docs/TEAM-BOARD.md`. `CONTRIBUTIONS.md` is not created yet; add it when the first work lands.
 - Hosted AI provider, and who holds the API key, not decided.
 - Task tracking: GitHub Issues with a Projects board is proposed instead of Jira. Not decided.
 - No review is recorded on pull requests #4 to #15 (merged before `main` was protected). From now on every pull request needs an approval from another member.
@@ -74,6 +74,8 @@ This list lags by one: the pull request that updates this file cannot list itsel
 
 ## Things every assistant should know right now
 
+- **Positioning (working answer, decision 28).** Shetu is role-continuity software, not a generic work manager: it manages a role through one absence and its return. Do not build task boards, time tracking, productivity scoring or auto-assignment (`AGENTS.md` rule 12). Wording is gender-neutral (rule 11). Details: `docs/planning/08-Positioning-and-Strategy.md`.
+- **Coordinate before you act.** Read `docs/TEAM-BOARD.md` and `docs/API-CONTRACT.md` at the start of every session, check on `origin/main` that the parts you depend on are really merged, and use labelled stubs (`STUB(T#)`) rather than guessing or building someone else's part. The rules are in `AGENTS.md`, section "Coordinate before you act".
 - No code exists yet. Do not assume any file or function is there; check.
 - Voice input is a **stretch** feature (decision 16), not cut and not in the first version.
 - Speaker scripts exist for all ten slides (decision 22). **Tonni's parts (the elevator speech, slides 2 and 3) are exactly as she wrote them: never edit or "improve" them.** The scripts for slides 4 to 10 are drafts that Mahadi, Maruf and Nazha edit into their own words, so those may change.

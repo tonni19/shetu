@@ -1,0 +1,76 @@
+# Shared contract: data shapes, routes and function signatures
+
+**Status: AGREED on 2026-11-23.** Maruf accepted this contract for the whole team that day, because the team is new to this kind of design and wanted to start building. It is the shared reference now. It is still not frozen: if a real need appears, change it by the protocol in `AGENTS.md` ("Changing a shared interface"): edit this file in your own pull request, log a handoff for everyone affected, and do not merge until they have seen it.
+
+Why this file exists: Tonni's screens, Maruf's routes, Mahadi's gateway and Nazha's rules must fit together without waiting for each other. Everyone builds against this file. If the code and this file disagree, one of them is wrong: fix it in the same pull request and tell the people listed under "Used by".
+
+Conventions: JSON field names are `snake_case`. Dates are ISO `YYYY-MM-DD`, ranges are inclusive. IDs are strings. Everything is synthetic data. There is **no field for the reason for leave**, and none may be added.
+
+## 1. Data shapes
+
+### Case
+| Field | Type | Notes |
+|---|---|---|
+| `id` | string | |
+| `employee_id`, `manager_id` | string | user IDs |
+| `leave_start`, `leave_end` | date | inclusive; no reason field |
+| `stage` | `"map"` \| `"hold"` \| `"fit"` | only `"map"` is used first |
+
+### Duty
+| Field | Type | Notes |
+|---|---|---|
+| `id` | string | |
+| `case_id` | string | |
+| `title` | string | short, in the employee's words |
+| `evidence_type` | `"said"` \| `"documented"` \| `"suggested"` | **said** needs `quote`; **documented** needs `source_line_id`; **suggested** is only a question |
+| `quote` | string or null | exact words from the employee's reply; checked by rule R1 |
+| `source_line_id` | string or null | numbered line of the job description |
+| `confirmation` | `"pending"` \| `"confirmed"` \| `"dismissed"` | set by a person, kept **separate** from `evidence_type` |
+| `hours_per_week` | number or null | **null means unknown**; only a person fills it in, never the AI |
+
+Rule: a `suggested` duty never counts as a fact until `confirmation` is `"confirmed"` (rule R2).
+
+### Error
+`{"code": "<machine_code>", "detail": "<human sentence>"}`. Permission problems return HTTP 403, a missing case 404, a failed rule 409.
+
+## 2. Routes (T1 and T5)
+
+| Action | Route | Who may call it |
+|---|---|---|
+| Sign in | `POST /api/login` with a seeded account; the server sets the session | anyone |
+| Health | `GET /healthz` | anyone |
+| Read a case | `GET /api/cases/{case_id}` | the employee, the manager, HR; a cover colleague only sees their own assignments. Anyone else gets **403** |
+| Answer the interview | `POST /api/cases/{case_id}/interview/reply` with `{"turns": [{"role": "assistant"\|"employee", "text": "..."}]}`. Returns `{"next_question": "...", "duties": [Duty]}`. Quotes are checked against `employee` turns only; raw turns are **not** stored | the employee of that case |
+| Confirm or dismiss a duty | `PATCH /api/cases/{case_id}/duties/{duty_id}` with `{"decision": "confirm"\|"dismiss"}`. Writes one audit event | the employee of that case |
+
+The cover routes (`PUT .../cover`, `POST .../cover/approve`) are described in `docs/UPDATE-1-PLAN.md` and come after Thursday.
+
+## 3. Python signatures
+
+These let Mahadi, Nazha and Maruf write and test their parts without waiting.
+
+```python
+# backend/app/ai/gateway.py   (owner: Mahadi)  used by: routes (Maruf), tests (Nazha)
+def extract_duties(turns: list[Turn], job_description_lines: list[JdLine]) -> ExtractResult:
+    """Ask the model (or replay fixture) for draft duties. Always returns a validated
+    ExtractResult or raises GatewayError. Never returns raw model text."""
+
+# backend/app/rules/evidence.py   (owner: Nazha)  used by: routes (Maruf)
+def check_quote(quote: str, employee_turns: list[str]) -> bool:
+    """R1: True only if `quote` really appears in an employee turn, after Unicode
+    normalization (so Bangla text compares correctly)."""
+
+def counts_as_fact(duty: Duty) -> bool:
+    """R2: a suggested duty counts only once a person has confirmed it."""
+```
+
+## 4. Who depends on what
+
+| If this changes | Tell | Because |
+|---|---|---|
+| A Duty or Case field | everyone | all four parts read it |
+| A route or its response | Tonni, Maruf | the screens call it |
+| `extract_duties` or `ExtractResult` | Maruf, Nazha | routes call it, tests replay it |
+| `check_quote` or `counts_as_fact` | Maruf, Mahadi | routes call them, the gateway output feeds them |
+
+Add a row to the Handoff log in `docs/TEAM-BOARD.md` whenever you change something in this table.

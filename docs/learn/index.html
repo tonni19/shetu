@@ -544,7 +544,7 @@ select{font:inherit;border:1.5px solid var(--ink);border-radius:10px;padding:8px
 <section class="lesson" id="l12" hidden>
   <div class="kicker">Lesson 12 &middot; Who builds what</div>
   <h2>Four people, <em>four owned features.</em></h2>
-  <p class="lead">Each member has a main layer and one feature they own end to end. This is a <b>proposal</b>: it is not agreed yet, because we still need each person's skills and free time.</p>
+  <p class="lead">Each member is the <b>primary owner</b> of one area and builds one feature end to end. The four members accepted these areas on 23 November 2026. Others may help, but one person is responsible. The live version is in <code>docs/TEAM-BOARD.md</code>.</p>
   <div data-widget="roles"></div>
   <h3>The roadmap</h3>
   <div data-widget="roadmap"></div>
@@ -727,7 +727,7 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
     <li>Embeddings shortlist possible matches; the language model decides with evidence; rules and a person confirm.</li>
     <li>We test it on our fake cases with and without embeddings, and keep it only if it finds more missed duties.</li>
   </ul></div>
-  <div class="card tint"><b>Proposed, not agreed.</b> This is a suggestion from 16 November 2026, after the instructor's comment. The design (decision list and <code>AGENTS.md</code>) does not include embeddings yet. The team decides, and the result is recorded in <code>docs/DECISIONS.md</code>.</div>
+  <div class="card tint"><b>Agreed on 23 November 2026.</b> The team accepted the plan to test embeddings first: we may use them, we will try them on the same fake cases, and we keep them only if they help. The decision is in <code>docs/DECISIONS.md</code>.</div>
   <div class="remember"><div><b>Remember</b><p>Tokens are how a model counts text. Embeddings turn meaning into numbers so we can compare it. One line for the instructor: "We may use embeddings to find forgotten duties by meaning. We will test on the same fake cases whether they help before we decide."</p></div></div>
 </section>
 
@@ -736,7 +736,7 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
   <div class="kicker">Deeper 6 &middot; Our niche</div>
   <h2>"Why only mothers? <em>Isn't it a work planner?"</em></h2>
   <p class="lead">We were asked this in both places we presented on 15 November. It means the pitch had a gap, not the product. Here is how a product manager answers it.</p>
-  <div class="card tint"><b>Proposed, not agreed.</b> This framing was suggested on 16 November 2026. The team has not agreed it yet; when it does, it is recorded in <code>docs/DECISIONS.md</code> and the pitch pack.</div>
+  <div class="card tint"><b>Agreed on 23 November 2026.</b> The team accepted this framing as our answer. The decision is in <code>docs/DECISIONS.md</code>.</div>
   <div class="card"><div class="kicker">First, agree</div><p style="margin:0">The engine is general: find the duties in a job, keep an owner for every duty on every date, re-plan when things change. That is a strength. Successful products <b>start narrow</b>, with the one group whose pain is sharpest (a <b>beachhead market</b>), then expand.</p></div>
   <h3>Why maternity first</h3>
   <div style="overflow-x:auto"><table>
@@ -763,6 +763,15 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
     <li><b>Next:</b> any planned long leave: paternity, planned surgery, study leave, Hajj, a sabbatical. MAP, HOLD and FIT still apply.</li>
     <li><b>Later:</b> unplanned absence, and people who resign, so their unwritten knowledge is captured before they go.</li>
   </ol>
+  <h3>What an earlier build of ours already fixed</h3>
+  <p>Before the lab build, our team made a separate public version of Shetu for the AI Builders Congress 2026. Its history shows what we fixed after being asked the same sort of questions. We carry the ideas over, not the code.</p>
+  <ul class="tight">
+    <li><b>Gender-neutral wording.</b> Screens, messages, prompts and rule texts say "the employee" or "they", so every planned leave reads correctly. Maternity is our design focus, never a data field.</li>
+    <li><b>Any planned leave of two weeks or more.</b> Study leave runs through the same flow with different dates and duties.</li>
+    <li><b>Never how a pregnancy becomes known.</b> There is no field for the reason, so Shetu cannot reveal it.</li>
+    <li><b>Temporary means temporary.</b> Every assignment ends, and nothing becomes permanent without the employee's agreement. A work planner does not guard this.</li>
+    <li><b>Compare against a plain checklist and a general chatbot</b> on the same fake cases, to show what Shetu adds, plus interviews with managers and HR. Both are planned for the lab, not done.</li>
+  </ul>
   <div class="card"><div class="kicker">The business, if they push</div><ul class="tight" style="margin:0">
     <li><b>Customer:</b> banks, NGOs, telecoms and IT companies with many women in skilled roles.</li>
     <li><b>Who pays:</b> HR. <b>Who uses it:</b> the employee, her manager, the colleagues who cover.</li>
@@ -771,6 +780,39 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
     <li><b>Biggest risks:</b> managers not using it, and trust in the AI. Evidence on every duty and manager approval are our answer to both.</li>
   </ul></div>
   <div class="remember"><div><b>Remember</b><p>Do not add features to answer this. Change the explanation, and make the demo show what a planner cannot: the forgotten duty in MAP, the plain-language re-plan in HOLD, and the return fit. "Built for maternity, ready for any long leave."</p></div></div>
+</section>
+
+<!-- ============ D7 FIVE HARD QUESTIONS ============ -->
+<section class="lesson" id="d7" hidden>
+  <div class="kicker">Deeper 7 &middot; Five hard questions</div>
+  <h2>Positioning: <em>why us, why this.</em></h2>
+  <p class="lead">The questions we were asked after the presentation, and our working answers. Full version: <code>docs/planning/08-Positioning-and-Strategy.md</code>. These are working answers the team adopted on 23 November 2026, and nothing here is built yet.</p>
+  <div class="card dark"><div class="kicker">One sentence to anchor everything</div><p style="margin:0;font-size:17px;font-weight:700">Shetu is role-continuity software. It keeps a job whole while its owner is away, and guards the return. We build it first for maternity leave, the hardest case; the same engine serves any planned leave.</p></div>
+
+  <h3>1. Why only mothers? Why can't I use it?</h3>
+  <p><b>You can.</b> It is for any planned absence of about two weeks or more: study leave, paternity leave, planned surgery, Hajj, a sabbatical. Maternity is our <b>first and hardest case</b>, because it is known months ahead, it is long, and the return is where careers are lost. If it works there, it works for everything easier.</p>
+  <ul class="tight"><li>Wording is gender-neutral ("the employee", "they").</li><li>There is no field for the reason, so the product cannot tell maternity from any other leave.</li><li>We show two cases through the same code: maternity and study leave.</li></ul>
+
+  <h3>2. How do we fit a real domain, and make it better?</h3>
+  <p>Test a domain on four things: many skilled people take planned long leave; duties are partly undocumented; someone must own every duty every day; and there is a buyer. <b>Banks and NGOs</b> fit best, so our wedge is knowledge-work teams there. We get better by adding domain depth, not generic features: duty templates (credit committee, donor reports) and a rule that checks who may sign or approve while the owner is away.</p>
+
+  <h3>3. How do we avoid being a generic workload balancer?</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>A generic work manager</th><th>Shetu</th></tr>
+    <tr><td>Manages tasks every day</td><td>Manages a role through one absence</td></tr>
+    <tr><td>Knows only what someone typed</td><td>Finds duties nobody wrote down</td></tr>
+    <tr><td>Balances load for efficiency</td><td>Guarantees every duty has an owner every day</td></tr>
+    <tr><td>Scores productivity</td><td>Never scores or ranks anyone</td></tr>
+    <tr><td>Ends when the task ends</td><td>Guards the return: temporary must not become permanent</td></tr>
+  </table></div>
+  <div class="card tint"><b>The litmus test.</b> "Would this feature be at home in a generic task manager?" If yes, we do not build it. No task board, no time tracking, no productivity score, no auto-assignment.</div>
+
+  <h3>4. How does it work outside corporate offices, such as garments?</h3>
+  <p>Garments is harder: the thing covered is an operation on a line, knowledge is in a skill matrix, the manager is a line supervisor, and people use phones, not laptops. The answer is a <b>sector-neutral core plus sector packs</b>. The core is the same everywhere (a leave case, duties with evidence, an owner for every duty on every date, a person approves, an audit log, a return guard). A pack changes five things: the duty vocabulary, what a duty is covered by, the capacity model, the compliance rules, and the input channel and language. In the lab we keep the core neutral and only sketch a garments pack.</p>
+
+  <h3>5. The manager's manual entry, and keeping the mother at the centre</h3>
+  <p><b>The manager is the operator, she is the protagonist, HR is the buyer.</b> The manager does not fill forms: her interview builds her own map, the job description is read in, and the manager only approves a drafted plan, reports a change in one sentence, and answers one-tap availability questions. The AI drafts and the rules check, so the manager reviews rather than types. She stays at the centre because the story and the first case are hers, her confirmation gates everything, and nothing becomes permanent without her agreement.</p>
+  <div class="remember"><div><b>Remember</b><p>The manager approves; the AI does the typing. The employee confirms her own job, and the return guard protects it. "Built for maternity, ready for any long leave."</p></div></div>
 </section>
 
   </main>
@@ -834,7 +876,8 @@ const LESSONS = [
   { id: 'd3', t: 'The architecture, piece by piece', g: 'Deeper, in plain words' },
   { id: 'd4', t: 'The AI pipeline', g: 'Deeper, in plain words' },
   { id: 'd5', t: 'Tokens and embeddings', g: 'Deeper, in plain words' },
-  { id: 'd6', t: 'Our niche', g: 'Deeper, in plain words' }
+  { id: 'd6', t: 'Our niche', g: 'Deeper, in plain words' },
+  { id: 'd7', t: 'Five hard questions', g: 'Deeper, in plain words' }
 ];
 const COUNTED = LESSONS.slice(1, 14).map(l => l.id);      // lessons 1 to 13 carry a quiz
 let done = store.get('done', {});
@@ -885,6 +928,8 @@ document.addEventListener('click', e => {
    QUIZ BANK (also the question pool for the final exam)
    ====================================================================== */
 const QB = {
+  d7: [{"q": "What does the 'litmus test' ask?", "o": ["Is it cheap to build?", "Would this feature be at home in a generic task manager? If yes, we do not build it", "Does it use AI?", "Is it in Bangla?"], "a": 1, "w": "It keeps Shetu a role-continuity product, not a workload balancer."}, {"q": "Who is the main user of Shetu, and who is the person it protects?", "o": ["HR uses it, the manager is protected", "The manager uses it most; the employee is the person it protects", "Only the employee uses it", "The company's customers"], "a": 1, "w": "The manager is the operator, the employee is the protagonist, and HR or the organization is the customer."}],
+
   d1: [{"q": "What is a rule in Shetu?", "o": ["A machine-learning model", "Ordinary Python code that checks something we can calculate", "A prompt for the AI", "A setting in GitHub"], "a": 1, "w": "Plain arithmetic and if/else logic, with tests. No AI."}, {"q": "Rafiq has 2 spare hours and the duty needs 3. What happens?", "o": ["The workload rule rejects the proposal", "The manager is never told", "Rafiq gets it anyway", "The AI decides"], "a": 0, "w": "Capacity is computed by code, never trusted from the model."}],
   d2: [{"q": "What does pytest do?", "o": ["Hosts the website", "Trains the AI", "Draws the screens", "Runs our tests and reports which pass and fail"], "a": 3, "w": "It finds the test functions, runs them, and reports the result."}, {"q": "Why do tests use the replay adapter?", "o": ["Selenium needs it", "It is more accurate", "Tests become free, fast and give the same result every time", "The teacher asked"], "a": 2, "w": "Replay plays back recorded AI answers instead of calling a real model."}],
   d3: [{"q": "Where are permissions checked?", "o": ["In React, by hiding buttons", "In the backend, on every route", "In the database file", "By the AI"], "a": 1, "w": "Hiding a button is not security; anyone can send a request directly."}, {"q": "What is SQLite?", "o": ["A database stored in a single file", "A JavaScript library", "An AI model", "A cloud service"], "a": 0, "w": "Nothing to install, the same on every laptop."}],
@@ -948,7 +993,7 @@ const QB = {
     { q: 'What is a merge conflict?', o: ['A broken server', 'Two changes to the same lines that git cannot combine by itself', 'A failed test', 'An unreviewed PR'], a: 1, w: 'Git stops and asks a person to decide what the final text should be.' }
   ],
   l12: [
-    { q: 'In our proposal, which role owns HOLD re-planning?', o: ['A: frontend', 'B: backend and database', 'C: AI and evaluation', 'D: testing and documentation'], a: 2, w: 'C owns the AI understanding and re-planning. B owns the rules that find impact and check workload.' },
+    { q: 'Who owns the AI gateway and the prompts?', o: ['Tonni', 'Maruf', 'Mahadi', 'Nazha'], a: 2, w: 'Mahadi owns the AI. Nazha owns the rules and tests, Maruf the routes that connect everything, and Tonni the screens.' },
     { q: 'Why not split purely by layer?', o: ['Layers are not allowed', 'One person gets little technical work and only one could explain the AI', 'It is slower', 'It needs more tools'], a: 1, w: 'Each member owns a layer and one feature end to end, so everyone writes real code and can explain something.' },
     { q: 'What does Step 1 deliver, before any AI?', o: ['The finished app', 'An empty app that runs: login, database, tests, gateway', 'The report', 'The slides'], a: 1, w: 'Step 1 is the foundation, so four people can build in parallel.' }
   ],
@@ -1236,15 +1281,15 @@ W.hold = el => {
 
 /* ---------- Lesson 7: architecture explorer and request trace ---------- */
 const NODES = [
-  { id: 'react', n: 'React frontend', s: 'the screens', what: 'The pages people see: interview, Role Map, manager review, HR queue. It sends requests to the backend and shows what comes back.', files: 'frontend/src/ (planned)', who: 'Role A', ex: 'A manager types the Tania sentence into a text box and clicks Submit.', q: 'Why is the frontend separate from the backend?  So two people can work in parallel against an agreed API.' },
-  { id: 'api', n: 'FastAPI routes', s: 'the backend entrance', what: 'Receives every request. Each route is one address, like POST /cases/12/changes.', files: 'backend/app/routes/ (planned)', who: 'Role B', ex: 'POST /cases/12/changes with the sentence in the body.', q: 'What is a route?  One address on the API that does one job.' },
-  { id: 'perm', n: 'Login and permissions', s: 'who may do this', what: 'Checks who you are and what your role allows, on the server, for every request.', files: 'backend/app/auth/ (planned)', who: 'Role B', ex: 'Is this person a manager on case 12? If not, refuse.', q: 'Why check on the server?  Anyone can call the API directly, so hiding a button is not security.' },
-  { id: 'rules', n: 'Rules engine', s: 'plain Python', what: 'Dates, impact, workload, policy and the coverage rule. Ordinary code with ordinary tests.', files: 'backend/app/rules/ (planned)', who: 'Roles B and C', ex: 'Imran has 3 of 4 spare hours: pass. Rafiq has 2 of 3 needed: reject.', q: 'Why not let the AI do the maths?  Models make arithmetic and date mistakes. Code must always be right.' },
-  { id: 'ai', n: 'AI pipeline', s: 'prompts and schemas', what: 'The prompts and the fixed shapes each reply must have. It prepares the request for the model and checks what comes back.', files: 'backend/app/ai/ (planned)', who: 'Role C', ex: 'Extract who, how long and the new date from the manager\'s sentence.', q: 'How do you stop the AI making things up?  Evidence on every item, schema checks, rules, and human approval.' },
-  { id: 'gw', n: 'AI gateway', s: 'one door to any model', what: 'The only place the app talks to a model. It validates, retries once, falls back to another provider, and logs.', files: 'backend/app/ai/gateway (planned)', who: 'Role C', ex: 'The hosted model is down, so it falls back to the local model.', q: 'Why a gateway?  So we can change model without rewriting the app, and nothing unchecked gets through.' },
-  { id: 'model', n: 'Model providers', s: 'hosted, local, replay', what: 'A hosted API, a local model such as Qwen3-4B, or recorded answers for tests. Chosen by testing the same fake cases on each.', files: 'configuration only', who: 'Role C', ex: 'The model returns: {"person": "Tania", "weeks": 3}.', q: 'Which model?  Not chosen yet. We measure candidates on the same test cases first.' },
-  { id: 'db', n: 'SQLite database', s: 'one file', what: 'Stores cases, duties, owners over time, proposals, approvals. One file, the same on every laptop.', files: 'backend/app/models/ (planned)', who: 'Role B', ex: 'A proposal saved as "waiting for approval".', q: 'Why SQLite?  No server to install, and it can move to PostgreSQL by configuration later.' },
-  { id: 'audit', n: 'Audit log', s: 'who did what', what: 'An append-only record of every AI proposal, rule verdict and human decision, with who and when.', files: 'a table in the database', who: 'Role B', ex: 'proposed by AI, checked by rules, approved by the manager.', q: 'Why log it?  So any decision can be explained and challenged afterwards.' }
+  { id: 'react', n: 'React frontend', s: 'the screens', what: 'The pages people see: interview, Role Map, manager review, HR queue. It sends requests to the backend and shows what comes back.', files: 'frontend/src/ (planned)', who: 'Tonni', ex: 'A manager types the Tania sentence into a text box and clicks Submit.', q: 'Why is the frontend separate from the backend?  So two people can work in parallel against an agreed API.' },
+  { id: 'api', n: 'FastAPI routes', s: 'the backend entrance', what: 'Receives every request. Each route is one address, like POST /cases/12/changes.', files: 'backend/app/routes/ (planned)', who: 'Maruf', ex: 'POST /cases/12/changes with the sentence in the body.', q: 'What is a route?  One address on the API that does one job.' },
+  { id: 'perm', n: 'Login and permissions', s: 'who may do this', what: 'Checks who you are and what your role allows, on the server, for every request.', files: 'backend/app/auth/ (planned)', who: 'Maruf', ex: 'Is this person a manager on case 12? If not, refuse.', q: 'Why check on the server?  Anyone can call the API directly, so hiding a button is not security.' },
+  { id: 'rules', n: 'Rules engine', s: 'plain Python', what: 'Dates, impact, workload, policy and the coverage rule. Ordinary code with ordinary tests.', files: 'backend/app/rules/ (planned)', who: 'Nazha (rules), Maruf (routes)', ex: 'Imran has 3 of 4 spare hours: pass. Rafiq has 2 of 3 needed: reject.', q: 'Why not let the AI do the maths?  Models make arithmetic and date mistakes. Code must always be right.' },
+  { id: 'ai', n: 'AI pipeline', s: 'prompts and schemas', what: 'The prompts and the fixed shapes each reply must have. It prepares the request for the model and checks what comes back.', files: 'backend/app/ai/ (planned)', who: 'Mahadi', ex: 'Extract who, how long and the new date from the manager\'s sentence.', q: 'How do you stop the AI making things up?  Evidence on every item, schema checks, rules, and human approval.' },
+  { id: 'gw', n: 'AI gateway', s: 'one door to any model', what: 'The only place the app talks to a model. It validates, retries once, falls back to another provider, and logs.', files: 'backend/app/ai/gateway (planned)', who: 'Mahadi', ex: 'The hosted model is down, so it falls back to the local model.', q: 'Why a gateway?  So we can change model without rewriting the app, and nothing unchecked gets through.' },
+  { id: 'model', n: 'Model providers', s: 'hosted, local, replay', what: 'A hosted API, a local model such as Qwen3-4B, or recorded answers for tests. Chosen by testing the same fake cases on each.', files: 'configuration only', who: 'Mahadi', ex: 'The model returns: {"person": "Tania", "weeks": 3}.', q: 'Which model?  Not chosen yet. We measure candidates on the same test cases first.' },
+  { id: 'db', n: 'SQLite database', s: 'one file', what: 'Stores cases, duties, owners over time, proposals, approvals. One file, the same on every laptop.', files: 'backend/app/models/ (planned)', who: 'Maruf', ex: 'A proposal saved as "waiting for approval".', q: 'Why SQLite?  No server to install, and it can move to PostgreSQL by configuration later.' },
+  { id: 'audit', n: 'Audit log', s: 'who did what', what: 'An append-only record of every AI proposal, rule verdict and human decision, with who and when.', files: 'a table in the database', who: 'Maruf', ex: 'proposed by AI, checked by rules, approved by the manager.', q: 'Why log it?  So any decision can be explained and challenged afterwards.' }
 ];
 const TRACE = [
   ['react', 'The manager types the sentence and clicks Submit. React sends it to the backend.'],
@@ -1269,7 +1314,7 @@ W.arch = el => {
   const sel = id => {
     const n = NODES.find(x => x.id === id); nodes.forEach(b => b.setAttribute('aria-pressed', b.dataset.id === id));
     const [qa, qb] = n.q.split('  ');
-    info.innerHTML = `<h4>${n.n}</h4><p>${esc(n.what)}</p><dl class="kv"><dt>Planned files</dt><dd><code>${esc(n.files)}</code></dd><dt>Owner (proposal)</dt><dd>${n.who}</dd><dt>Example</dt><dd>${esc(n.ex)}</dd><dt>Likely question</dt><dd><b>${esc(qa)}</b><br>${esc(qb || '')}</dd></dl>`;
+    info.innerHTML = `<h4>${n.n}</h4><p>${esc(n.what)}</p><dl class="kv"><dt>Planned files</dt><dd><code>${esc(n.files)}</code></dd><dt>Owner</dt><dd>${n.who}</dd><dt>Example</dt><dd>${esc(n.ex)}</dd><dt>Likely question</dt><dd><b>${esc(qa)}</b><br>${esc(qb || '')}</dd></dl>`;
   };
   nodes.forEach(b => b.addEventListener('click', () => sel(b.dataset.id)));
   let k = -1, timer = null;
@@ -1423,23 +1468,83 @@ W.conflict = el => {
 
 /* ---------- Lesson 12: roles and roadmap ---------- */
 const ROLES = [
-  { k: 'A', t: 'Frontend and MAP', layer: 'Frontend (React)', feat: 'MAP: the interview and Role Map confirmation',
-    builds: ['The interview screen', 'The Role Map table with an evidence label on every row', 'Confirm and edit, and the "suggested" questions'],
-    w1: 'Empty React app, a login screen and empty pages for the four roles.', explain: ['How a React page asks the backend for data', 'Why the frontend never talks to the database'], q: 'Where does the evidence label come from?  From the backend: each duty carries its status.' },
-  { k: 'B', t: 'Backend, database and ownership', layer: 'Backend and database (FastAPI, SQLite)', feat: 'Ownership timeline, cover proposals and approvals',
-    builds: ['Case flow as a state machine', 'The coverage rule: no duty without an owner', 'Cover proposals checked against workload, and manager approval'],
-    w1: 'FastAPI skeleton, database tables, login and roles, permission checks.', explain: ['The database tables and how duties, owners and dates relate', 'How permissions are checked on every route'], q: 'How does the coverage rule work?  Code walks every duty and every date and flags any gap.' },
-  { k: 'C', t: 'AI, evaluation and HOLD', layer: 'AI integration and evaluation', feat: 'HOLD: change understanding and re-planning',
-    builds: ['The AI gateway, prompts and schemas', 'Understanding a change typed in plain words, and drafting a repair', 'The evaluation scripts and the model comparison'],
-    w1: 'The gateway, the first model test, and the first fake test cases (with D).', explain: ['What each prompt asks and what shape the reply must have', 'What happens when the model replies badly'], q: 'How do you stop the AI making things up?  Evidence, schema checks, rules, and a human approval.' },
-  { k: 'D', t: 'Testing, documentation and FIT', layer: 'Testing and documentation (pytest, Selenium, CI)', feat: 'FIT: return needs, clashes and fixes',
-    builds: ['Return needs, time-clash detection and fix proposals', 'The browser tests and the automatic test run on every PR', 'The code explanation file and the contributions file'],
-    w1: 'pytest, GitHub running tests on every PR, and the first six fake test cases (with C).', explain: ['What each test proves', 'How the clash rules work'], q: 'How do you test AI that gives different answers?  Tests use recorded answers; quality is measured separately.' }
+  {
+    "k": "A",
+    "name": "Tonni",
+    "t": "Frontend and UI/UX",
+    "layer": "Frontend (React with Vite)",
+    "feat": "The screens: sign-in, the employee MAP screen (interview, evidence labels, confirm and dismiss) and the manager screen",
+    "builds": [
+      "The look and layout of every screen",
+      "The interview screen and the Role Map table with an evidence label on every row",
+      "Error states, such as a plan the rules reject"
+    ],
+    "w1": "A running React app with a login screen and the case page, reading a case from the API.",
+    "explain": [
+      "How a React page asks the backend for data",
+      "Why the frontend never talks to the database"
+    ],
+    "q": "Where does the evidence label come from?  From the backend: each duty carries its status."
+  },
+  {
+    "k": "B",
+    "name": "Maruf",
+    "t": "Full stack",
+    "layer": "Backend and database (FastAPI, SQLite), and the wiring to the frontend",
+    "feat": "Sign-in and permissions, the routes, the database, the audit events, and the joins between screens, rules and AI",
+    "builds": [
+      "The database tables and seeded synthetic accounts",
+      "Sign-in, roles and a permission check on every route",
+      "The routes that connect the frontend, the rules and the gateway, and the demo"
+    ],
+    "w1": "A FastAPI and SQLite skeleton with sign-in and a case route where a colleague gets 403.",
+    "explain": [
+      "How one request travels from the screen to the database and back",
+      "How permissions are checked on every route"
+    ],
+    "q": "How does the coverage rule work?  Code walks every duty and every date and flags any gap."
+  },
+  {
+    "k": "C",
+    "name": "Mahadi",
+    "t": "AI",
+    "layer": "AI integration and evaluation",
+    "feat": "The AI gateway, the interview and evidence extraction; next, HOLD change understanding",
+    "builds": [
+      "The AI gateway with the replay adapter, the prompts and their schemas",
+      "Extracting duties with the employee's own words as evidence",
+      "The model comparison on the synthetic cases"
+    ],
+    "w1": "The gateway interface with replay, the first prompt and its schema, and one Banglish fixture.",
+    "explain": [
+      "What each prompt asks and what shape the reply must have",
+      "What happens when the model replies badly"
+    ],
+    "q": "How do you stop the AI making things up?  Evidence, schema checks, rules, and a human approval."
+  },
+  {
+    "k": "D",
+    "name": "Nazha",
+    "t": "Rules and quality",
+    "layer": "Plain-Python rules and testing (pytest, Selenium, CI)",
+    "feat": "The rules (quote check, confirmation, then dated coverage) and the tests; next, FIT's time-clash check",
+    "builds": [
+      "The rules as plain functions with tests for pass, fail and boundaries",
+      "pytest, Selenium and the automatic test run on every pull request",
+      "The synthetic cases with answer keys"
+    ],
+    "w1": "pytest, a CI run on every pull request, rules R1 and R2, and the first three synthetic cases.",
+    "explain": [
+      "What each test proves",
+      "How each rule decides"
+    ],
+    "q": "How do you test AI that gives different answers?  Tests use recorded answers; quality is measured separately."
+  }
 ];
 W.roles = el => {
   let k = 'A';
-  el.innerHTML = `<div class="w"><div class="w-h"><b>A proposal, not agreed yet</b><span>Roles A to D are not assigned to names</span></div><div class="role-tabs">${ROLES.map(r => `<button data-k="${r.k}" aria-pressed="${r.k === k}">Role ${r.k}</button>`).join('')}</div><div class="rb"></div></div>
-    <div class="card tint"><b>How to choose who takes which.</b> Each person rates themselves 1 to 5 for Python and backend, React and frontend, AI prompting, and testing, and says which part interests them most and how many hours a week they can give. Match by interest first and skill second. Being willing to learn and explain matters more than current skill.</div>`;
+  el.innerHTML = `<div class="w"><div class="w-h"><b>Confirmed on 23 November 2026</b><span>One primary owner per area</span></div><div class="role-tabs">${ROLES.map(r => `<button data-k="${r.k}" aria-pressed="${r.k === k}">${r.name}</button>`).join('')}</div><div class="rb"></div></div>
+    <div class="card tint"><b>How the work is shared.</b> The screens are Tonni's, the database, sign-in and routes are Maruf's, the AI is Mahadi's, and the rules and tests are Nazha's. Where one part needs another (for example the interview route needs the gateway and the rules), the board says what must be merged first, and each person builds against the shared contract until it is. Nobody builds another person's part silently.</div>`;
   const rb = $('.rb', el), tabs = $$('.role-tabs button', el);
   const draw = () => {
     const r = ROLES.find(x => x.k === k); const [qa, qb] = r.q.split('  ');
@@ -1538,6 +1643,10 @@ W.exam = el => {
 
 /* ---------- Glossary ---------- */
 const GLOSS = [
+  ["Role continuity", "Keeping a job whole while its owner is away, and guarding the return. What Shetu is."],
+  ["Sector pack", "A small set of changes that adapts the neutral core to one sector: duty vocabulary, what a duty is covered by, capacity model, compliance rules, input channel and language."],
+  ["Litmus test", "Would this feature be at home in a generic task manager? If yes, Shetu does not build it."],
+
   ["Beachhead market", "The narrow first group of customers with the sharpest pain. A product wins there first, then expands."],
   ["CI (continuous integration)", "GitHub runs all the tests automatically on every pull request."],
   ["Cosine similarity", "A number that says how close two vectors (meanings) are."],
@@ -1605,7 +1714,7 @@ W.glossary = el => {
    ====================================================================== */
 $$('[data-widget]').forEach(el => { const f = W[el.dataset.widget]; if (f) { try { f(el); } catch (e) { el.innerHTML = '<div class="fb bad">This part could not load.</div>'; console.error(e); } } });
 COUNTED.forEach(mountQuiz);
-['d1', 'd2', 'd3', 'd4', 'd5', 'd6'].forEach(mountQuiz);   // the deeper lessons: quizzes, but not counted in the progress bar
+['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7'].forEach(mountQuiz);   // the deeper lessons: quizzes, but not counted in the progress bar
 renderNav(); renderProgress();
 go(location.hash.slice(1) || 'l0');
 })();
