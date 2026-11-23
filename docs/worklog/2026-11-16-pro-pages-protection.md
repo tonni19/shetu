@@ -8,7 +8,7 @@
 - Project state: the proposal is marked done, with the feedback we got (why only mothers, where is the niche, isn't it a work planner; the instructor mentioned tokenization and vectorization), and the next steps are answering that feedback and assigning roles.
 
 ## Learning guide: Deeper, in plain words
-- Added six lessons, explained to Ahmad first and then written down for the whole team: Rules, exactly; Tests and pytest; The architecture, piece by piece; The AI pipeline; Tokens and embeddings; Our niche. Each has a short quiz (also in the final exam), and nine glossary terms were added. The glossary is now sorted when shown.
+- Added six lessons, explained to Maruf first and then written down for the whole team: Rules, exactly; Tests and pytest; The architecture, piece by piece; The AI pipeline; Tokens and embeddings; Our niche. Each has a short quiz (also in the final exam), and nine glossary terms were added. The glossary is now sorted when shown.
 - The niche framing and the use of embeddings are marked "Proposed, not agreed" in the guide.
 - Fixed a phone layout bug in the whole guide: wide tables or code could make the page scroll sideways.
 - Checked in a headless browser at 1280 px and 390 px: every new lesson shows, has its quiz and lesson buttons, no sideways scrolling, no script errors.

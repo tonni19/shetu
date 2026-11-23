@@ -13,7 +13,7 @@
 | The Excel cell E3 now holds the final 63-word elevator speech written by Tonni | The team finalised it the night before the presentation |
 | Pitch pack section 2 leads with the final speech and keeps the earlier versions as drafts; the slide table says slide 1 opens with it and slide 3 explains the hourglass | One speech in three places: the workbook, the pack and the speaker notes |
 | The notes of slide 1 hold the speech; the notes of slide 3 no longer call it the thirty-second pitch | The speech is said first, before the introduction |
-| The team decided to keep her wording, including the line "all data stays on the company's own server", and a prepared answer was added to the pitch pack Q&A. Speaker split agreed: Tonni slides 1 to 3, Mahadi 4 and 5, Ahmad 6 and 7, Nazha 8 to 10 and the questions | It describes a design option (a local model on the company's own server), not the lab build, which uses a hosted AI with synthetic data |
+| The team decided to keep her wording, including the line "all data stays on the company's own server", and a prepared answer was added to the pitch pack Q&A. Speaker split agreed: Tonni slides 1 to 3, Mahadi 4 and 5, Maruf 6 and 7, Nazha 8 to 10 and the questions | It describes a design option (a local model on the company's own server), not the lab build, which uses a hosted AI with synthetic data |
 
 ## Deck wording fixes 1 to 5 applied: 14 November 2026
 

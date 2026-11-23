@@ -22,7 +22,7 @@ The team's final elevator speech (written by Tonni) was added unchanged to the w
 ## Not finished / known problems
 - Items 6 to 9 in the proposals file are optional and not applied.
 - Whether the Excel sheet was entered in the faculty's Google Sheet is not recorded.
-- Pull requests #4 to #12 were merged without a recorded review. Where a merge was done from Ahmad's computer under another member's account, the project state says so.
+- Pull requests #4 to #12 were merged without a recorded review. Where a merge was done from Maruf's computer under another member's account, the project state says so.
 
 ## AI assistance
 Claude Code made the changes; the member reviewed the rendered slides. Recorded in `AI-USAGE.md`.

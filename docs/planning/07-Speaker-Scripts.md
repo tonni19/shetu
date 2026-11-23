@@ -83,13 +83,13 @@ And then the manager decides. She can approve it or change it. Shetu never chang
 
 This is how we've designed it. We will build it, and show it working by the 60 percent update.
 
-Cue: Hand over to Ahmad for slide 6.
+Cue: Hand over to Maruf for slide 6.
 
 ## Ahmad Maruf Hossain: slides 6 and 7
 
 ### Slide 6, features and usp
 
-*Draft for Ahmad to edit into their own words.*
+*Draft for Maruf to edit into their own words.*
 
 So what can people actually do with Shetu?
 
@@ -101,7 +101,7 @@ Cue: Next slide: your slide 7, architecture and technology.
 
 ### Slide 7, architecture and technology
 
-*Draft for Ahmad to edit into their own words.*
+*Draft for Maruf to edit into their own words.*
 
 Now, how will we build it? We're keeping it simple on purpose.
 
@@ -157,10 +157,10 @@ The answers follow section 10 of the pitch pack. The name beside each question i
 
 | Question | Suggested | Answer |
 |---|---|---|
-| Is this just a chatbot? | Ahmad | No. The conversation is only the input. The product is the Role Map, the gaps it finds, and the plans it proposes and repairs. Take the AI out and it collapses into a form. |
-| What happens when the AI is wrong? | Ahmad | Every item needs a matching quote or document, numbers and times are recomputed by rules, and a person confirms. Unsupported items are flagged, not hidden. A wrong reply never reaches the database. |
-| Which model do you use? | Ahmad | Not chosen yet. It sits behind our own gateway, so we can swap it. We will run the same fake test cases through several models and choose by results. A local open model can run fully offline. |
-| Does all the data really stay on the company's own server? | Ahmad | That is how Shetu is designed for a real company: the AI can run on a local model on the company's own server, so employee data never has to leave. For this lab we use a hosted model with synthetic data only, and we have not claimed otherwise. |
+| Is this just a chatbot? | Maruf | No. The conversation is only the input. The product is the Role Map, the gaps it finds, and the plans it proposes and repairs. Take the AI out and it collapses into a form. |
+| What happens when the AI is wrong? | Maruf | Every item needs a matching quote or document, numbers and times are recomputed by rules, and a person confirms. Unsupported items are flagged, not hidden. A wrong reply never reaches the database. |
+| Which model do you use? | Maruf | Not chosen yet. It sits behind our own gateway, so we can swap it. We will run the same fake test cases through several models and choose by results. A local open model can run fully offline. |
+| Does all the data really stay on the company's own server? | Maruf | That is how Shetu is designed for a real company: the AI can run on a local model on the company's own server, so employee data never has to leave. For this lab we use a hosted model with synthetic data only, and we have not claimed otherwise. |
 | How do you know it works? | Nazha | Fake scenarios in Bangla, English and Banglish with answer keys written first, scored on six measures. They are team-written data, and we have no results yet. |
 | Is the drop in women in banks because of maternity leave? | Tonni | We do not claim that. It is a net fall in the number of women after six months, and the figures do not give a reason. We use it to show the problem, and Shetu fixes the part a company controls: the job. |
 | Did you build this before? | Tonni | The concept and a one-case prototype come from the GP FutureMakers competition, as you know. The application proposed here is a new build, and the repository history will show it. |
@@ -169,6 +169,6 @@ The answers follow section 10 of the pitch pack. The name beside each question i
 | Does it need payments? | Nazha | No. It would be licensed to an employer and invoiced. The application has no payment flow. |
 | What did you cut? | Nazha | Live calendar and email integrations, autonomous agents, and anything that scores people. Voice input is a planned extra for later. In the first version FIT checks time clashes only. |
 | Is the scope realistic? | Nazha | We simplified from the start: FIT checks time clashes only, the AI compares against the job description only, and HR gets a simple approval list. The riskiest AI parts come first, so they are tested early. |
-| Did you use AI to write code? | Ahmad | Yes, as the course encourages. Where we used it is recorded in the repository, and every member can explain and modify their own modules. |
-| Why React and FastAPI? | Ahmad | You recommended it. It lets frontend and backend work in parallel, and FastAPI is Python, so the AI code plugs in directly and Pydantic validates AI output. |
+| Did you use AI to write code? | Maruf | Yes, as the course encourages. Where we used it is recorded in the repository, and every member can explain and modify their own modules. |
+| Why React and FastAPI? | Maruf | You recommended it. It lets frontend and backend work in parallel, and FastAPI is Python, so the AI code plugs in directly and Pydantic validates AI output. |
 | Who built what? | Nazha | Each member will own a layer and one feature end to end. The commits, pull requests and reviews on GitHub show it. |
