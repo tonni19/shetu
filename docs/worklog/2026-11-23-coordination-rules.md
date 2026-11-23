@@ -17,6 +17,6 @@ At the start of a session the AI runs `git fetch`, reads the state, the board an
 Documentation only. Read the new rules against the existing ones for contradictions: none found. The board rows match the Thursday plan in `docs/UPDATE-1-PLAN.md`.
 
 ## Not finished / known problems
-- Owners on the board are proposed; Tonni, Mahadi and Nazha have not confirmed them.
+- The owners on the board are confirmed (all four members accepted on 23 November 2026, reported by Maruf).
 - The contract is proposed, not agreed. It must be agreed by all four owners before it is called final.
 - No application code yet, so the comment standard has not been used on real files.

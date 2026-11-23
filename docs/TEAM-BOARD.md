@@ -8,7 +8,7 @@ This is the live coordination file for the four members and their AI assistants.
 
 Keep it short and true. If this file disagrees with GitHub, **GitHub wins**: check `origin/main`, open pull requests and Issues, then fix this file.
 
-Last updated: 2026-11-23. The owners below are **proposed**; Tonni, Mahadi and Nazha have not confirmed them yet (see `docs/UPDATE-1-PLAN.md`).
+Last updated: 2026-11-23. The owners below are **confirmed**: all four members accepted their areas on 23 November 2026 (reported by Maruf). The shared contract is still proposed.
 
 ## How to use this file (members and AI assistants)
 
@@ -33,10 +33,10 @@ Last updated: 2026-11-23. The owners below are **proposed**; Tonni, Mahadi and N
 
 | Person | Area (primary owner) | May help with | Confirmed? |
 |---|---|---|---|
-| Sadia Noman Tonni | Frontend and UI/UX (React/Vite) | the API calls; Selenium flows | proposed |
-| Ahmad Maruf Hossain (Maruf) | Full stack: FastAPI, SQLite, sign-in and permissions, routes, wiring everything together | gateway wiring; the frontend's API use; everyone's reviews | proposed |
-| Mohammad Mahadi Hasan | AI: gateway, replay, prompts, evidence extraction, model comparison | the synthetic cases; wiring into the routes | proposed |
-| Nazha Tarannum Roza | Rules and quality: plain-Python rules, pytest, Selenium, CI, synthetic cases | the screens' Selenium; the cases | proposed |
+| Sadia Noman Tonni | Frontend and UI/UX (React/Vite) | the API calls; Selenium flows | confirmed |
+| Ahmad Maruf Hossain (Maruf) | Full stack: FastAPI, SQLite, sign-in and permissions, routes, wiring everything together | gateway wiring; the frontend's API use; everyone's reviews | confirmed |
+| Mohammad Mahadi Hasan | AI: gateway, replay, prompts, evidence extraction, model comparison | the synthetic cases; wiring into the routes | confirmed |
+| Nazha Tarannum Roza | Rules and quality: plain-Python rules, pytest, Selenium, CI, synthetic cases | the screens' Selenium; the cases | confirmed |
 
 One person is **primary** for each area. Others may help, but the primary owner decides how their module works and explains it to the instructor.
 
@@ -62,7 +62,8 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 
 | Date | From | To | Note |
 |---|---|---|---|
-| 2026-11-23 | Maruf | everyone | Board and contract created. Owners are proposed, not confirmed. |
+| 2026-11-23 | Maruf | everyone | Board and contract created. |
+| 2026-11-23 | Maruf | everyone | All four members accepted their areas; the owners on this board are confirmed. The contract is still proposed until each owner has read and agreed it. |
 
 ## Known conflicts and open questions
 
