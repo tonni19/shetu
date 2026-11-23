@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-23. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope, a proposed split of work (Tonni frontend and UI/UX, Ahmad full stack, Mahadi AI, Nazha rules and quality; the other three still need to confirm), the ideas we take from the separate Congress build, and answers to the presentation feedback. The lab project stays on React and FastAPI with SQLite. Application work has yet to start.
+Last updated: 2026-11-23, after pull requests #2 to #18. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope, a proposed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality; the other three still need to confirm), the ideas we take from the separate Congress build, and answers to the presentation feedback. The lab project stays on React and FastAPI with SQLite. Application work has yet to start.
 
 ## Milestones
 
@@ -36,10 +36,10 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 ## Known problems and open questions
 
 - Hosted AI provider not chosen (decided by the bake-off).
-- The faculty's later checkpoint dates (Update 1 at 30%, Update 2) are unknown. Ahmad confirmed that Thursday 26 November is the final date for the 10 to 15% presentation; an earlier note about Sunday 29 November is dropped.
-- A separate, public **Congress** build of Shetu exists (`SpicyFalcon619/shetu-congress`, Next.js and PostgreSQL, made by Ahmad and Tonni for the AI Builders Congress 2026). Our proposal answers called the earlier work "a one-case prototype". The team has to decide how to tell the instructor. This lab project stays a new build here, and anything adapted from Congress is credited in the worklog.
+- The faculty's later checkpoint dates (Update 1 at 30%, Update 2) are unknown. Maruf confirmed that Thursday 26 November is the final date for the 10 to 15% presentation; an earlier note about Sunday 29 November is dropped.
+- A separate, public **Congress** build of Shetu exists (`SpicyFalcon619/shetu-congress`, Next.js and PostgreSQL, made by Maruf and Tonni for the AI Builders Congress 2026). Our proposal answers called the earlier work "a one-case prototype". The team has to decide how to tell the instructor. This lab project stays a new build here, and anything adapted from Congress is credited in the worklog.
 - The learning guide on GitHub Pages is **public** (anyone with the link), even though the repository is private. Only `docs/learn` is published. Never put names with student IDs, emails, keys or course PDFs in `docs/learn`.
-- Member roles: a split is proposed in `docs/UPDATE-1-PLAN.md` (Tonni frontend and UI/UX, Ahmad full stack, Mahadi AI, Nazha rules and quality). Mahadi, Nazha and Tonni have not confirmed it yet; once they do, record it here and in `CONTRIBUTIONS.md`.
+- Member roles: a split is proposed in `docs/UPDATE-1-PLAN.md` (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality). Mahadi, Nazha and Tonni have not confirmed it yet; once they do, record it here and in `CONTRIBUTIONS.md`.
 - Hosted AI provider, and who holds the API key, not decided.
 - Task tracking: GitHub Issues with a Projects board is proposed instead of Jira. Not decided.
 - No review is recorded on pull requests #4 to #15 (merged before `main` was protected). From now on every pull request needs an approval from another member.
@@ -50,7 +50,7 @@ All four members are collaborators on `tonni19/shetu`: `tonni19` (admin, reposit
 
 **`main` is protected** (since 16 November 2026, when `tonni19`'s GitHub Pro became active): no direct pushes, no force pushes, and every pull request needs **one approving review from a member who is not the author** before it can be merged. This also applies to the owner. **Learning guide online:** https://tonni19.github.io/shetu/ (published by `.github/workflows/learn-guide.yml` whenever `docs/learn` changes on `main`; the workflow publishes only that folder. First published on 16 November 2026 and checked live).
 
-Three of the accounts (`SpicyFalcon619`, `tonni19`, `NazhaTarannum`) are signed in on Ahmad's computer. At the team's request, some pull requests were pushed or merged from it under one of them. The worklog notes and the table below say which. Commits are authored under the name of the person who wrote them.
+Three of the accounts (`SpicyFalcon619`, `tonni19`, `NazhaTarannum`) are signed in on Maruf's computer. At the team's request, some pull requests were pushed or merged from it under one of them. The worklog notes and the table below say which. Commits are authored under the name of the person who wrote them.
 
 ## Merged so far
 
@@ -69,12 +69,14 @@ This list lags by one: the pull request that updates this file cannot list itsel
 | #14 | Speaker scripts for all ten slides (`docs/planning/07-Speaker-Scripts.md`); decision 22 | tonni19 (commits by Ahmad Maruf Hossain) | NazhaTarannum. No review recorded |
 | #15 | Project state brought up to date after #14 | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19. No review recorded |
 | #16 | Learning guide online with GitHub Pages; six "Deeper, in plain words" lessons; presentation feedback; decision 23 | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19, **approved by tonni19** (the first reviewed pull request under branch protection) |
+| #17 | Project state after #16 | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19, approved by tonni19 |
+| #18 | Plan for the 26 November progress presentation; decision 24 (ideas, not stacks, from Congress) | NazhaTarannum (commits by Ahmad Maruf Hossain) | SpicyFalcon619, approved by SpicyFalcon619 |
 
 ## Things every assistant should know right now
 
 - No code exists yet. Do not assume any file or function is there; check.
 - Voice input is a **stretch** feature (decision 16), not cut and not in the first version.
-- Speaker scripts exist for all ten slides (decision 22). **Tonni's parts (the elevator speech, slides 2 and 3) are exactly as she wrote them: never edit or "improve" them.** The scripts for slides 4 to 10 are drafts that Mahadi, Ahmad and Nazha edit into their own words, so those may change.
+- Speaker scripts exist for all ten slides (decision 22). **Tonni's parts (the elevator speech, slides 2 and 3) are exactly as she wrote them: never edit or "improve" them.** The scripts for slides 4 to 10 are drafts that Mahadi, Maruf and Nazha edit into their own words, so those may change.
 - The deck wording fixes 1 to 5 are applied (decision 19). The bank statistic is a net fall in the count, never "women who left".
 - `main` is protected: a pull request cannot be merged without an approving review from another member. Do not try to bypass it.
 - Do not push, pull, merge or open issues or pull requests unless the member asks, and ask which GitHub account to use each time.

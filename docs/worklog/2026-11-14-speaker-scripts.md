@@ -7,7 +7,7 @@
 - Recorded decision 22, listed pull request #13 in the project state, and added the file to the planning README and overview.
 
 ## Not finished / known problems
-- Mahadi, Ahmad and Nazha have not yet edited their drafts.
+- Mahadi, Maruf and Nazha have not yet edited their drafts.
 - Nobody has timed the scripts out loud. Times in the file are estimates from word counts.
 - Tonni's slide 2 is longer than her "about 50 seconds" at normal speaking pace.
 - No code exists yet.
