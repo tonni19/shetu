@@ -46,7 +46,7 @@ Target: the 10 to 15% progress presentation on **Thursday 26 November 2026**. ID
 
 | ID | Work item | Owner | Status | Needs | Produces (what others rely on) | Issue / PR |
 |---|---|---|---|---|---|---|
-| T1 | Backend skeleton: health route, seeded synthetic accounts, sign-in, `GET /api/cases/{id}` with a permission check (colleague gets 403) | Maruf | Not started | nothing | The running API and the case route in `docs/API-CONTRACT.md` | |
+| T1 | Backend skeleton: health route, seeded synthetic accounts, sign-in, `GET /api/cases/{id}` with a permission check (colleague gets 403) | Maruf | In review (built and tested; 16 tests pass) | nothing | The running API and the case route in `docs/API-CONTRACT.md`; `backend/app/models.py` (User, Case, Duty) | branch `feature/t1-backend-skeleton` |
 | T2 | Frontend skeleton: login screen and the case page in the Shetu look | Tonni | Not started | the contract (stub until T1 is merged) | A running React app that shows a case | |
 | T3 | AI gateway: interface, replay adapter, first prompt and its Pydantic schema, one Banglish fixture | Mahadi | Not started | the Duty shape in the contract | `extract_duties(...)` that works in replay mode | |
 | T4 | Rules R1 (quote check) and R2 (confirmation) as plain functions with tests; pytest set-up and a CI workflow | Nazha | Not started | the Duty shape in the contract | `check_quote(...)`, `can_count(...)`, a green test run in CI | |
@@ -64,6 +64,8 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 |---|---|---|---|
 | 2026-11-23 | Maruf | everyone | Board and contract created. |
 | 2026-11-23 | Maruf | everyone | All four members accepted their areas; the owners on this board are confirmed. The contract is agreed, as accepted by Maruf for the team. Each owner should still read their part and raise a problem early. |
+| 2026-11-23 | Maruf | Tonni | T1 is built: sign-in, `GET /api/me`, `GET /api/cases/{id}`, demo accounts. Use the Vite proxy from `backend/README.md` so the session cookie works. Added `POST /api/logout` and `GET /api/me` to the contract. |
+| 2026-11-23 | Maruf | Mahadi, Nazha | The Duty table is in `backend/app/models.py` with the contract's field names; build `extract_duties` and the rules against those names. |
 
 ## Known conflicts and open questions
 

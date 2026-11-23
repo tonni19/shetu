@@ -52,16 +52,17 @@ Do not add a dependency without the team agreeing in an Issue.
 
 ## Folder map
 
-> Keep this current. `backend/`, `frontend/` and `eval/` do not exist yet.
+> Keep this current. `backend/` exists (skeleton, T1). `frontend/` and `eval/` do not exist yet.
 
 ```
 AGENTS.md            this file (CLAUDE.md points here)
 AI-USAGE.md          where AI tools were used
-backend/             FastAPI app, rules, AI gateway, tests (planned)
+backend/             FastAPI app (skeleton exists: sign-in, cases, health), rules, AI gateway, tests
 frontend/            React app (planned)
 eval/                synthetic scenarios and evaluation scripts (planned)
 docs/
   PROJECT-STATE.md   current state; update in every pull request
+  CODE-EXPLANATION.md  how each module works, in plain words; update with the module
   TEAM-BOARD.md      who is doing what, dependencies between parts, handoff log; update in every pull request
   API-CONTRACT.md    the shared data shapes, routes and function signatures; change only by the rules below
   DECISIONS.md       settled decisions
@@ -72,7 +73,19 @@ docs/
 
 ## How to run and test
 
-> Fill this in when the skeleton exists: exact commands for backend, frontend and tests.
+**Backend** (from `backend/`, Python 3.11 or newer; details in `backend/README.md`):
+
+```bash
+python -m venv .venv            # once; then activate it (.venv\Scripts\activate on Windows)
+pip install -r requirements-dev.txt
+python -m app.seed              # synthetic people and cases into backend/shetu.db
+uvicorn app.main:app --reload   # http://127.0.0.1:8000 , interactive docs at /docs
+python -m pytest -q             # every test uses its own temporary database
+```
+
+Demo accounts are in `backend/README.md` (password `shetu-demo`, all synthetic).
+
+**Frontend:** not created yet (T2).
 
 ## How we work
 

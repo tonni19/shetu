@@ -1,0 +1,8 @@
+# Runtime dependencies for the Shetu backend (board row T1, owner: Maruf).
+# Agreed stack: FastAPI, SQLAlchemy, SQLite, Pydantic (AGENTS.md, "Stack").
+# Do not add a dependency without the team agreeing in an Issue.
+fastapi>=0.115
+uvicorn[standard]>=0.32
+sqlalchemy>=2.0.36
+pydantic>=2.9
+itsdangerous>=2.2      # signs the session cookie (used by Starlette's SessionMiddleware)
