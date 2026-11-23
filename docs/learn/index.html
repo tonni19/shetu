@@ -544,7 +544,7 @@ select{font:inherit;border:1.5px solid var(--ink);border-radius:10px;padding:8px
 <section class="lesson" id="l12" hidden>
   <div class="kicker">Lesson 12 &middot; Who builds what</div>
   <h2>Four people, <em>four owned features.</em></h2>
-  <p class="lead">Each member has a main layer and one feature they own end to end. This is a <b>proposal</b>: it is not agreed yet, because we still need each person's skills and free time.</p>
+  <p class="lead">Each member is the <b>primary owner</b> of one area and builds one feature end to end. The four members accepted these areas on 23 November 2026. Others may help, but one person is responsible. The live version is in <code>docs/TEAM-BOARD.md</code>.</p>
   <div data-widget="roles"></div>
   <h3>The roadmap</h3>
   <div data-widget="roadmap"></div>
@@ -948,7 +948,7 @@ const QB = {
     { q: 'What is a merge conflict?', o: ['A broken server', 'Two changes to the same lines that git cannot combine by itself', 'A failed test', 'An unreviewed PR'], a: 1, w: 'Git stops and asks a person to decide what the final text should be.' }
   ],
   l12: [
-    { q: 'In our proposal, which role owns HOLD re-planning?', o: ['A: frontend', 'B: backend and database', 'C: AI and evaluation', 'D: testing and documentation'], a: 2, w: 'C owns the AI understanding and re-planning. B owns the rules that find impact and check workload.' },
+    { q: 'Who owns the AI gateway and the prompts?', o: ['Tonni', 'Maruf', 'Mahadi', 'Nazha'], a: 2, w: 'Mahadi owns the AI. Nazha owns the rules and tests, Maruf the routes that connect everything, and Tonni the screens.' },
     { q: 'Why not split purely by layer?', o: ['Layers are not allowed', 'One person gets little technical work and only one could explain the AI', 'It is slower', 'It needs more tools'], a: 1, w: 'Each member owns a layer and one feature end to end, so everyone writes real code and can explain something.' },
     { q: 'What does Step 1 deliver, before any AI?', o: ['The finished app', 'An empty app that runs: login, database, tests, gateway', 'The report', 'The slides'], a: 1, w: 'Step 1 is the foundation, so four people can build in parallel.' }
   ],
@@ -1236,15 +1236,15 @@ W.hold = el => {
 
 /* ---------- Lesson 7: architecture explorer and request trace ---------- */
 const NODES = [
-  { id: 'react', n: 'React frontend', s: 'the screens', what: 'The pages people see: interview, Role Map, manager review, HR queue. It sends requests to the backend and shows what comes back.', files: 'frontend/src/ (planned)', who: 'Role A', ex: 'A manager types the Tania sentence into a text box and clicks Submit.', q: 'Why is the frontend separate from the backend?  So two people can work in parallel against an agreed API.' },
-  { id: 'api', n: 'FastAPI routes', s: 'the backend entrance', what: 'Receives every request. Each route is one address, like POST /cases/12/changes.', files: 'backend/app/routes/ (planned)', who: 'Role B', ex: 'POST /cases/12/changes with the sentence in the body.', q: 'What is a route?  One address on the API that does one job.' },
-  { id: 'perm', n: 'Login and permissions', s: 'who may do this', what: 'Checks who you are and what your role allows, on the server, for every request.', files: 'backend/app/auth/ (planned)', who: 'Role B', ex: 'Is this person a manager on case 12? If not, refuse.', q: 'Why check on the server?  Anyone can call the API directly, so hiding a button is not security.' },
-  { id: 'rules', n: 'Rules engine', s: 'plain Python', what: 'Dates, impact, workload, policy and the coverage rule. Ordinary code with ordinary tests.', files: 'backend/app/rules/ (planned)', who: 'Roles B and C', ex: 'Imran has 3 of 4 spare hours: pass. Rafiq has 2 of 3 needed: reject.', q: 'Why not let the AI do the maths?  Models make arithmetic and date mistakes. Code must always be right.' },
-  { id: 'ai', n: 'AI pipeline', s: 'prompts and schemas', what: 'The prompts and the fixed shapes each reply must have. It prepares the request for the model and checks what comes back.', files: 'backend/app/ai/ (planned)', who: 'Role C', ex: 'Extract who, how long and the new date from the manager\'s sentence.', q: 'How do you stop the AI making things up?  Evidence on every item, schema checks, rules, and human approval.' },
-  { id: 'gw', n: 'AI gateway', s: 'one door to any model', what: 'The only place the app talks to a model. It validates, retries once, falls back to another provider, and logs.', files: 'backend/app/ai/gateway (planned)', who: 'Role C', ex: 'The hosted model is down, so it falls back to the local model.', q: 'Why a gateway?  So we can change model without rewriting the app, and nothing unchecked gets through.' },
-  { id: 'model', n: 'Model providers', s: 'hosted, local, replay', what: 'A hosted API, a local model such as Qwen3-4B, or recorded answers for tests. Chosen by testing the same fake cases on each.', files: 'configuration only', who: 'Role C', ex: 'The model returns: {"person": "Tania", "weeks": 3}.', q: 'Which model?  Not chosen yet. We measure candidates on the same test cases first.' },
-  { id: 'db', n: 'SQLite database', s: 'one file', what: 'Stores cases, duties, owners over time, proposals, approvals. One file, the same on every laptop.', files: 'backend/app/models/ (planned)', who: 'Role B', ex: 'A proposal saved as "waiting for approval".', q: 'Why SQLite?  No server to install, and it can move to PostgreSQL by configuration later.' },
-  { id: 'audit', n: 'Audit log', s: 'who did what', what: 'An append-only record of every AI proposal, rule verdict and human decision, with who and when.', files: 'a table in the database', who: 'Role B', ex: 'proposed by AI, checked by rules, approved by the manager.', q: 'Why log it?  So any decision can be explained and challenged afterwards.' }
+  { id: 'react', n: 'React frontend', s: 'the screens', what: 'The pages people see: interview, Role Map, manager review, HR queue. It sends requests to the backend and shows what comes back.', files: 'frontend/src/ (planned)', who: 'Tonni', ex: 'A manager types the Tania sentence into a text box and clicks Submit.', q: 'Why is the frontend separate from the backend?  So two people can work in parallel against an agreed API.' },
+  { id: 'api', n: 'FastAPI routes', s: 'the backend entrance', what: 'Receives every request. Each route is one address, like POST /cases/12/changes.', files: 'backend/app/routes/ (planned)', who: 'Maruf', ex: 'POST /cases/12/changes with the sentence in the body.', q: 'What is a route?  One address on the API that does one job.' },
+  { id: 'perm', n: 'Login and permissions', s: 'who may do this', what: 'Checks who you are and what your role allows, on the server, for every request.', files: 'backend/app/auth/ (planned)', who: 'Maruf', ex: 'Is this person a manager on case 12? If not, refuse.', q: 'Why check on the server?  Anyone can call the API directly, so hiding a button is not security.' },
+  { id: 'rules', n: 'Rules engine', s: 'plain Python', what: 'Dates, impact, workload, policy and the coverage rule. Ordinary code with ordinary tests.', files: 'backend/app/rules/ (planned)', who: 'Nazha (rules), Maruf (routes)', ex: 'Imran has 3 of 4 spare hours: pass. Rafiq has 2 of 3 needed: reject.', q: 'Why not let the AI do the maths?  Models make arithmetic and date mistakes. Code must always be right.' },
+  { id: 'ai', n: 'AI pipeline', s: 'prompts and schemas', what: 'The prompts and the fixed shapes each reply must have. It prepares the request for the model and checks what comes back.', files: 'backend/app/ai/ (planned)', who: 'Mahadi', ex: 'Extract who, how long and the new date from the manager\'s sentence.', q: 'How do you stop the AI making things up?  Evidence on every item, schema checks, rules, and human approval.' },
+  { id: 'gw', n: 'AI gateway', s: 'one door to any model', what: 'The only place the app talks to a model. It validates, retries once, falls back to another provider, and logs.', files: 'backend/app/ai/gateway (planned)', who: 'Mahadi', ex: 'The hosted model is down, so it falls back to the local model.', q: 'Why a gateway?  So we can change model without rewriting the app, and nothing unchecked gets through.' },
+  { id: 'model', n: 'Model providers', s: 'hosted, local, replay', what: 'A hosted API, a local model such as Qwen3-4B, or recorded answers for tests. Chosen by testing the same fake cases on each.', files: 'configuration only', who: 'Mahadi', ex: 'The model returns: {"person": "Tania", "weeks": 3}.', q: 'Which model?  Not chosen yet. We measure candidates on the same test cases first.' },
+  { id: 'db', n: 'SQLite database', s: 'one file', what: 'Stores cases, duties, owners over time, proposals, approvals. One file, the same on every laptop.', files: 'backend/app/models/ (planned)', who: 'Maruf', ex: 'A proposal saved as "waiting for approval".', q: 'Why SQLite?  No server to install, and it can move to PostgreSQL by configuration later.' },
+  { id: 'audit', n: 'Audit log', s: 'who did what', what: 'An append-only record of every AI proposal, rule verdict and human decision, with who and when.', files: 'a table in the database', who: 'Maruf', ex: 'proposed by AI, checked by rules, approved by the manager.', q: 'Why log it?  So any decision can be explained and challenged afterwards.' }
 ];
 const TRACE = [
   ['react', 'The manager types the sentence and clicks Submit. React sends it to the backend.'],
@@ -1269,7 +1269,7 @@ W.arch = el => {
   const sel = id => {
     const n = NODES.find(x => x.id === id); nodes.forEach(b => b.setAttribute('aria-pressed', b.dataset.id === id));
     const [qa, qb] = n.q.split('  ');
-    info.innerHTML = `<h4>${n.n}</h4><p>${esc(n.what)}</p><dl class="kv"><dt>Planned files</dt><dd><code>${esc(n.files)}</code></dd><dt>Owner (proposal)</dt><dd>${n.who}</dd><dt>Example</dt><dd>${esc(n.ex)}</dd><dt>Likely question</dt><dd><b>${esc(qa)}</b><br>${esc(qb || '')}</dd></dl>`;
+    info.innerHTML = `<h4>${n.n}</h4><p>${esc(n.what)}</p><dl class="kv"><dt>Planned files</dt><dd><code>${esc(n.files)}</code></dd><dt>Owner</dt><dd>${n.who}</dd><dt>Example</dt><dd>${esc(n.ex)}</dd><dt>Likely question</dt><dd><b>${esc(qa)}</b><br>${esc(qb || '')}</dd></dl>`;
   };
   nodes.forEach(b => b.addEventListener('click', () => sel(b.dataset.id)));
   let k = -1, timer = null;
@@ -1423,23 +1423,83 @@ W.conflict = el => {
 
 /* ---------- Lesson 12: roles and roadmap ---------- */
 const ROLES = [
-  { k: 'A', t: 'Frontend and MAP', layer: 'Frontend (React)', feat: 'MAP: the interview and Role Map confirmation',
-    builds: ['The interview screen', 'The Role Map table with an evidence label on every row', 'Confirm and edit, and the "suggested" questions'],
-    w1: 'Empty React app, a login screen and empty pages for the four roles.', explain: ['How a React page asks the backend for data', 'Why the frontend never talks to the database'], q: 'Where does the evidence label come from?  From the backend: each duty carries its status.' },
-  { k: 'B', t: 'Backend, database and ownership', layer: 'Backend and database (FastAPI, SQLite)', feat: 'Ownership timeline, cover proposals and approvals',
-    builds: ['Case flow as a state machine', 'The coverage rule: no duty without an owner', 'Cover proposals checked against workload, and manager approval'],
-    w1: 'FastAPI skeleton, database tables, login and roles, permission checks.', explain: ['The database tables and how duties, owners and dates relate', 'How permissions are checked on every route'], q: 'How does the coverage rule work?  Code walks every duty and every date and flags any gap.' },
-  { k: 'C', t: 'AI, evaluation and HOLD', layer: 'AI integration and evaluation', feat: 'HOLD: change understanding and re-planning',
-    builds: ['The AI gateway, prompts and schemas', 'Understanding a change typed in plain words, and drafting a repair', 'The evaluation scripts and the model comparison'],
-    w1: 'The gateway, the first model test, and the first fake test cases (with D).', explain: ['What each prompt asks and what shape the reply must have', 'What happens when the model replies badly'], q: 'How do you stop the AI making things up?  Evidence, schema checks, rules, and a human approval.' },
-  { k: 'D', t: 'Testing, documentation and FIT', layer: 'Testing and documentation (pytest, Selenium, CI)', feat: 'FIT: return needs, clashes and fixes',
-    builds: ['Return needs, time-clash detection and fix proposals', 'The browser tests and the automatic test run on every PR', 'The code explanation file and the contributions file'],
-    w1: 'pytest, GitHub running tests on every PR, and the first six fake test cases (with C).', explain: ['What each test proves', 'How the clash rules work'], q: 'How do you test AI that gives different answers?  Tests use recorded answers; quality is measured separately.' }
+  {
+    "k": "A",
+    "name": "Tonni",
+    "t": "Frontend and UI/UX",
+    "layer": "Frontend (React with Vite)",
+    "feat": "The screens: sign-in, the employee MAP screen (interview, evidence labels, confirm and dismiss) and the manager screen",
+    "builds": [
+      "The look and layout of every screen",
+      "The interview screen and the Role Map table with an evidence label on every row",
+      "Error states, such as a plan the rules reject"
+    ],
+    "w1": "A running React app with a login screen and the case page, reading a case from the API.",
+    "explain": [
+      "How a React page asks the backend for data",
+      "Why the frontend never talks to the database"
+    ],
+    "q": "Where does the evidence label come from?  From the backend: each duty carries its status."
+  },
+  {
+    "k": "B",
+    "name": "Maruf",
+    "t": "Full stack",
+    "layer": "Backend and database (FastAPI, SQLite), and the wiring to the frontend",
+    "feat": "Sign-in and permissions, the routes, the database, the audit events, and the joins between screens, rules and AI",
+    "builds": [
+      "The database tables and seeded synthetic accounts",
+      "Sign-in, roles and a permission check on every route",
+      "The routes that connect the frontend, the rules and the gateway, and the demo"
+    ],
+    "w1": "A FastAPI and SQLite skeleton with sign-in and a case route where a colleague gets 403.",
+    "explain": [
+      "How one request travels from the screen to the database and back",
+      "How permissions are checked on every route"
+    ],
+    "q": "How does the coverage rule work?  Code walks every duty and every date and flags any gap."
+  },
+  {
+    "k": "C",
+    "name": "Mahadi",
+    "t": "AI",
+    "layer": "AI integration and evaluation",
+    "feat": "The AI gateway, the interview and evidence extraction; next, HOLD change understanding",
+    "builds": [
+      "The AI gateway with the replay adapter, the prompts and their schemas",
+      "Extracting duties with the employee's own words as evidence",
+      "The model comparison on the synthetic cases"
+    ],
+    "w1": "The gateway interface with replay, the first prompt and its schema, and one Banglish fixture.",
+    "explain": [
+      "What each prompt asks and what shape the reply must have",
+      "What happens when the model replies badly"
+    ],
+    "q": "How do you stop the AI making things up?  Evidence, schema checks, rules, and a human approval."
+  },
+  {
+    "k": "D",
+    "name": "Nazha",
+    "t": "Rules and quality",
+    "layer": "Plain-Python rules and testing (pytest, Selenium, CI)",
+    "feat": "The rules (quote check, confirmation, then dated coverage) and the tests; next, FIT's time-clash check",
+    "builds": [
+      "The rules as plain functions with tests for pass, fail and boundaries",
+      "pytest, Selenium and the automatic test run on every pull request",
+      "The synthetic cases with answer keys"
+    ],
+    "w1": "pytest, a CI run on every pull request, rules R1 and R2, and the first three synthetic cases.",
+    "explain": [
+      "What each test proves",
+      "How each rule decides"
+    ],
+    "q": "How do you test AI that gives different answers?  Tests use recorded answers; quality is measured separately."
+  }
 ];
 W.roles = el => {
   let k = 'A';
-  el.innerHTML = `<div class="w"><div class="w-h"><b>A proposal, not agreed yet</b><span>Roles A to D are not assigned to names</span></div><div class="role-tabs">${ROLES.map(r => `<button data-k="${r.k}" aria-pressed="${r.k === k}">Role ${r.k}</button>`).join('')}</div><div class="rb"></div></div>
-    <div class="card tint"><b>How to choose who takes which.</b> Each person rates themselves 1 to 5 for Python and backend, React and frontend, AI prompting, and testing, and says which part interests them most and how many hours a week they can give. Match by interest first and skill second. Being willing to learn and explain matters more than current skill.</div>`;
+  el.innerHTML = `<div class="w"><div class="w-h"><b>Confirmed on 23 November 2026</b><span>One primary owner per area</span></div><div class="role-tabs">${ROLES.map(r => `<button data-k="${r.k}" aria-pressed="${r.k === k}">${r.name}</button>`).join('')}</div><div class="rb"></div></div>
+    <div class="card tint"><b>How the work is shared.</b> The screens are Tonni's, the database, sign-in and routes are Maruf's, the AI is Mahadi's, and the rules and tests are Nazha's. Where one part needs another (for example the interview route needs the gateway and the rules), the board says what must be merged first, and each person builds against the shared contract until it is. Nobody builds another person's part silently.</div>`;
   const rb = $('.rb', el), tabs = $$('.role-tabs button', el);
   const draw = () => {
     const r = ROLES.find(x => x.k === k); const [qa, qb] = r.q.split('  ');

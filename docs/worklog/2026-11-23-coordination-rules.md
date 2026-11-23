@@ -16,6 +16,9 @@ At the start of a session the AI runs `git fetch`, reads the state, the board an
 ## How I tested it
 Documentation only. Read the new rules against the existing ones for contradictions: none found. The board rows match the Thursday plan in `docs/UPDATE-1-PLAN.md`.
 
+## Learning guide
+The "Who builds what" lesson now shows the four confirmed owners by name (it still described four unassigned areas, A to D). The quiz question about who owns HOLD was replaced by one about who owns the gateway, and the architecture widget names owners instead of letters.
+
 ## Not finished / known problems
 - The owners on the board are confirmed (all four members accepted on 23 November 2026, reported by Maruf).
 - The contract is proposed, not agreed. It must be agreed by all four owners before it is called final.
