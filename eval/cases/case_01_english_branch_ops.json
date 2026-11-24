@@ -1,0 +1,75 @@
+{
+  "case": {
+    "id": "case-01",
+    "employee_id": "emp-101",
+    "manager_id": "mgr-201",
+    "leave_start": "2026-12-01",
+    "leave_end": "2027-02-28",
+    "stage": "map"
+  },
+  "job_description_lines": [
+    {
+      "line_id": "JD-01",
+      "text": "Oversee daily opening and closing checklists for the Gulshan branch."
+    },
+    {
+      "line_id": "JD-02",
+      "text": "Reconcile daily POS cash receipts against bank deposit slips."
+    },
+    {
+      "line_id": "JD-03",
+      "text": "Coordinate monthly fire safety and facility inspections."
+    }
+  ],
+  "turns": [
+    {
+      "role": "assistant",
+      "text": "Walk me through the recurring tasks you handle every week at the Gulshan branch."
+    },
+    {
+      "role": "employee",
+      "text": "Every Thursday afternoon I reconcile the branch cash ledger and upload the deposit receipts before 4 PM. I also approve emergency courier dispatches whenever regional branches run out of receipt rolls."
+    }
+  ],
+  "answer_key": {
+    "duties": [
+      {
+        "id": "duty-01-1",
+        "case_id": "case-01",
+        "title": "Reconcile weekly branch cash ledger and upload deposit receipts",
+        "evidence_type": "documented",
+        "quote": "Every Thursday afternoon I reconcile the branch cash ledger and upload the deposit receipts before 4 PM.",
+        "source_line_id": "JD-02",
+        "confirmation": "pending",
+        "hours_per_week": null
+      },
+      {
+        "id": "duty-01-2",
+        "case_id": "case-01",
+        "title": "Approve emergency courier dispatches for branch receipt rolls",
+        "evidence_type": "said",
+        "quote": "approve emergency courier dispatches whenever regional branches run out of receipt rolls",
+        "source_line_id": null,
+        "confirmation": "pending",
+        "hours_per_week": null
+      },
+      {
+        "id": "duty-01-3",
+        "case_id": "case-01",
+        "title": "Coordinate monthly fire safety and facility inspections",
+        "evidence_type": "suggested",
+        "quote": null,
+        "source_line_id": "JD-03",
+        "confirmation": "pending",
+        "hours_per_week": null
+      }
+    ],
+    "expected_fact_ids": [
+      "duty-01-1",
+      "duty-01-2"
+    ],
+    "forbidden_quote_substrings": [
+      "Walk me through the recurring tasks"
+    ]
+  }
+}

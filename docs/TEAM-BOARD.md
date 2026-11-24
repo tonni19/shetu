@@ -52,7 +52,7 @@ Target: the 10 to 15% progress presentation on **Thursday 26 November 2026**. ID
 | T4 | Rules R1 (quote check) and R2 (confirmation) as plain functions with tests; pytest set-up and a CI workflow | Nazha | Not started | the Duty shape in the contract | `check_quote(...)`, `can_count(...)`, a green test run in CI | |
 | T5 | Interview route: employee reply goes through the gateway, the rules, then SQLite; one audit event on confirm | Maruf | Not started | T1, T3, T4 | `POST /api/cases/{id}/interview/reply` | |
 | T6 | Frontend interview screen: reply box, duties with evidence labels, confirm and dismiss | Tonni | Not started | T2, T5 (stub until merged) | The employee MAP screen | |
-| T7 | First three synthetic cases with answer keys | Nazha | Not started | nothing | `eval/` cases the gateway fixture and tests can use | |
+| T7 | First three synthetic cases with answer keys | Nazha | In review | nothing | `eval/cases/` (English, Banglish, Bangla) + `eval/loader.py` & tests | branch `feature/t7-synthetic-cases` |
 
 When a row needs more than the Thursday scope, add it below with the next free ID.
 
@@ -64,6 +64,8 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 |---|---|---|---|
 | 2026-11-23 | Maruf | everyone | Board and contract created. |
 | 2026-11-23 | Maruf | everyone | All four members accepted their areas; the owners on this board are confirmed. The contract is agreed, as accepted by Maruf for the team. Each owner should still read their part and raise a problem early. |
+
+| 2026-11-24 | Nazha | Mahadi, Maruf | T7 first three synthetic cases with answer keys (`eval/cases/`, English/Banglish/Bangla) added and tested in `feature/t7-synthetic-cases` (ready for review). |
 
 ## Known conflicts and open questions
 

@@ -1,0 +1,71 @@
+{
+  "case": {
+    "id": "case-02",
+    "employee_id": "emp-102",
+    "manager_id": "mgr-202",
+    "leave_start": "2026-12-10",
+    "leave_end": "2027-03-10",
+    "stage": "map"
+  },
+  "job_description_lines": [
+    {
+      "line_id": "JD-01",
+      "text": "Provision laptop accounts and VPN credentials for newly onboarded staff."
+    },
+    {
+      "line_id": "JD-02",
+      "text": "Maintain quarterly software license renewal tracker."
+    }
+  ],
+  "turns": [
+    {
+      "role": "assistant",
+      "text": "Apnar regular kajer moddhe kon kajgulo onno keu handover na nile theme jabe?"
+    },
+    {
+      "role": "employee",
+      "text": "Notun employee join korle ami laptop setup ar VPN access create kore dei. Ar prottek Robibar shokale server backup log check kore IT manager ke ekta status ping pathai."
+    }
+  ],
+  "answer_key": {
+    "duties": [
+      {
+        "id": "duty-02-1",
+        "case_id": "case-02",
+        "title": "Provision laptops and VPN access for new joiners",
+        "evidence_type": "documented",
+        "quote": "Notun employee join korle ami laptop setup ar VPN access create kore dei.",
+        "source_line_id": "JD-01",
+        "confirmation": "pending",
+        "hours_per_week": null
+      },
+      {
+        "id": "duty-02-2",
+        "case_id": "case-02",
+        "title": "Verify Sunday morning server backup logs and send status update",
+        "evidence_type": "said",
+        "quote": "prottek Robibar shokale server backup log check kore IT manager ke ekta status ping pathai",
+        "source_line_id": null,
+        "confirmation": "pending",
+        "hours_per_week": null
+      },
+      {
+        "id": "duty-02-3",
+        "case_id": "case-02",
+        "title": "Maintain quarterly software license renewal tracker",
+        "evidence_type": "suggested",
+        "quote": null,
+        "source_line_id": "JD-02",
+        "confirmation": "pending",
+        "hours_per_week": null
+      }
+    ],
+    "expected_fact_ids": [
+      "duty-02-1",
+      "duty-02-2"
+    ],
+    "forbidden_quote_substrings": [
+      "Apnar regular kajer moddhe"
+    ]
+  }
+}

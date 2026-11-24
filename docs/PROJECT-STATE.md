@@ -24,7 +24,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 | Issue | What | Who | Branch |
 |---|---|---|---|
-| | Nothing in progress. The next work starts after the proposal presentation | | |
+| T7 | First three synthetic cases with answer keys (`eval/cases/`) in English, Banglish, and Bangla | Nazha Tarannum Roza | `feature/t7-synthetic-cases` |
 
 ## Next up
 

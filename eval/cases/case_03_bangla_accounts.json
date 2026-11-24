@@ -1,0 +1,75 @@
+{
+  "case": {
+    "id": "case-03",
+    "employee_id": "emp-103",
+    "manager_id": "mgr-203",
+    "leave_start": "2027-01-01",
+    "leave_end": "2027-04-01",
+    "stage": "map"
+  },
+  "job_description_lines": [
+    {
+      "line_id": "JD-01",
+      "text": "Prepare monthly withholding tax challan summaries."
+    },
+    {
+      "line_id": "JD-02",
+      "text": "Verify vendor invoices against approved purchase orders."
+    },
+    {
+      "line_id": "JD-03",
+      "text": "Archive signed audit vouchers at quarter-end."
+    }
+  ],
+  "turns": [
+    {
+      "role": "assistant",
+      "text": "আপনার দৈনন্দিন বা সাপ্তাহিক কাজের কোন অংশগুলো সবচেয়ে জরুরি?"
+    },
+    {
+      "role": "employee",
+      "text": "আমি প্রতি মঙ্গলবার ভেন্ডর ইনভয়েসগুলো পারচেজ অর্ডারের সাথে মিলিয়ে যাচাই করি। এছাড়া প্রতি মাসের ২৫ তারিখে ইউটিলিটি বিলের পেমেন্ট ভাউচার প্রস্তুত করি।"
+    }
+  ],
+  "answer_key": {
+    "duties": [
+      {
+        "id": "duty-03-1",
+        "case_id": "case-03",
+        "title": "Verify weekly vendor invoices against purchase orders",
+        "evidence_type": "documented",
+        "quote": "প্রতি মঙ্গলবার ভেন্ডর ইনভয়েসগুলো পারচেজ অর্ডারের সাথে মিলিয়ে যাচাই করি",
+        "source_line_id": "JD-02",
+        "confirmation": "pending",
+        "hours_per_week": null
+      },
+      {
+        "id": "duty-03-2",
+        "case_id": "case-03",
+        "title": "Prepare monthly utility bill payment vouchers on the 25th",
+        "evidence_type": "said",
+        "quote": "প্রতি মাসের ২৫ তারিখে ইউটিলিটি বিলের পেমেন্ট ভাউচার প্রস্তুত করি",
+        "source_line_id": null,
+        "confirmation": "pending",
+        "hours_per_week": null
+      },
+      {
+        "id": "duty-03-3",
+        "case_id": "case-03",
+        "title": "Archive signed audit vouchers at quarter-end",
+        "evidence_type": "suggested",
+        "quote": null,
+        "source_line_id": "JD-03",
+        "confirmation": "pending",
+        "hours_per_week": null
+      }
+    ],
+    "expected_fact_ids": [
+      "duty-03-1",
+      "duty-03-2"
+    ],
+    "forbidden_quote_substrings": [
+      "আপনার দৈনন্দিন বা সাপ্তাহিক কাজের"
+    ]
+  }
+}
