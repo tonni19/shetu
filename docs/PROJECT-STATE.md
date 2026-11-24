@@ -24,6 +24,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 | Issue | What | Who | Branch |
 |---|---|---|---|
+| T4 | Evidence validation rules R1 & R2 (`backend/app/rules/evidence.py`), pytest suite, and GitHub Actions CI | Nazha Tarannum Roza | `feature/t4-evidence-rules` |
 | 22 | T3: AI gateway with a replay adapter, the first prompt and one Banglish fixture (`backend/app/ai/`). Replay only, no live model. In review | Mohammad Mahadi Hasan | `feature/22-ai-gateway-replay` |
 
 ## Next up

@@ -7,8 +7,9 @@
 # DATA:        Synthetic only. No reason for leave, no medical or family details, ever.
 # AI NOTE:     No test here calls a real model. Tests that need a particular reply use FakeAdapter, a plain
 #              test double. It is not a STUB(T#): it stands in for nothing on the board.
-# TODO(Mahadi, T3): once Nazha's backend/app/rules/evidence.py is on main, make the quote test call the
-#              real `check_quote` (rule R1) instead of the plain `in` check used below.
+# AI NOTE:     The quote test uses Nazha's real `check_quote` (rule R1, backend/app/rules/evidence.py). The
+#              gateway itself never calls it; the route (Maruf, T5) does. The test only proves that our
+#              recorded reply would pass R1.
 
 import json
 import re
@@ -20,6 +21,7 @@ from backend.app.ai.adapters import DEFAULT_REPLAY_FIXTURE, ReplayAdapter
 from backend.app.ai.gateway import MODE_ENV_VAR, extract_duties, get_adapter
 from backend.app.ai.prompts import SYSTEM_PROMPT, build_prompts
 from backend.app.ai.schemas import GatewayError, JdLine, Turn
+from backend.app.rules.evidence import check_quote
 
 # The synthetic Banglish answer the replay fixture was written for (also used on slide 4 of the proposal).
 BANGLISH_ANSWER = (
@@ -82,7 +84,7 @@ def test_said_duty_quote_is_inside_the_employee_words():
     said = [d for d in result.duties if d.evidence_type == "said"]
     assert said, "the fixture should contain a 'said' duty"
     for duty in said:
-        assert duty.quote in BANGLISH_ANSWER
+        assert check_quote(duty.quote, [BANGLISH_ANSWER])
 
 
 def test_documented_duty_points_at_a_real_line_and_suggested_carries_no_evidence():

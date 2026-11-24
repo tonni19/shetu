@@ -28,8 +28,9 @@ Which parts are AI: only the adapter call. In replay mode that is a recorded rep
 
 ## Not finished / known problems
 - **No live adapter.** The provider is not chosen. `SHETU_AI_MODE=live` raises `live_not_configured`. Every run is a labelled replay.
-- **Depends on #21 for CI.** Nazha's pull request (#21) creates `backend/requirements-dev.txt`, `pytest.ini` and the CI workflow. CI installs only pytest, so these tests need `pydantic` added there. That one line is to be added after #21 is merged. Until then CI on this branch would fail on the missing package.
-- The quote test uses a plain `in` check. After #21 is merged it should call Nazha's `check_quote`. Marked `TODO(Mahadi, T3)` in the test file.
+- Nazha's pull request #21 is merged. This branch now includes it, and `backend/requirements-dev.txt` has one added line, `pydantic>=2.7`, because CI installs only that file. Maruf's open pull request #23 also changes `backend/requirements-dev.txt` and adds `backend/requirements.txt`, so whichever of us merges second will have a small conflict there to resolve.
+- The quote test now calls Nazha's real `check_quote` (rule R1).
+- All 29 tests (Nazha's 8 and these 21) pass locally with `python -m pytest`, the command CI uses.
 - One fixture entry only: unknown answers fail with `replay_no_match`, on purpose.
 - Tested on Python 3.12 locally; CI uses 3.13.
 - Not yet read through line by line by the member, and not yet reviewed by another member.
