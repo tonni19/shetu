@@ -70,6 +70,15 @@ The primary owner decides how their files work. Others may read them, call them,
 | `backend/app/` (everything else: `main.py`, `routes/`, `models.py`, `schemas.py`, `security.py`, `db.py`, `seed.py`, `config.py`) | Maruf | the routes call the gateway and the rules; the models match the contract |
 | `docs/` | shared | see "Shared files, and how to edit them" in `AGENTS.md` |
 
+## Requests waiting for a person
+
+Things another person needs from you, in one place every AI assistant reads at the start of a session. Add a row when you ask; remove it when it is done (and add a Handoff log line saying so). Newest at the bottom.
+
+| Since | For | From | What is needed | Where |
+|---|---|---|---|---|
+| 2026-11-24 | Mahadi | Maruf | **PR #25 (T3):** (1) change `from backend.app...` to `from app...` in the 5 files that use it (since PR #23 the backend is imported as `app`; a guard test fails otherwise); (2) merge `origin/main` into your branch and fix the conflicts: keep main's `backend/requirements-dev.txt` (it already includes pydantic), combine the two `docs/CODE-EXPLANATION.md` sections (both of us created the file), and keep both sides' rows in the board and state files; (3) run `python -m pytest` from the repo root. Your code and tests are otherwise good. | PR #25 |
+| 2026-11-24 | Maruf | Maruf | Comment on PR #25 that the contract change (`ExtractResult`, `DraftDuty`, `GatewayError`) has been seen. It matches how T5 will use it | PR #25 |
+
 ## Handoff log
 
 Append only; newest at the bottom. One line each: date, who to who, what is now ready or what is needed, link.
