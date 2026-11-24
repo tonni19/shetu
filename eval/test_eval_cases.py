@@ -1,36 +1,14 @@
 # FILE:        eval/test_eval_cases.py
 # PURPOSE:     Validate synthetic cases (T7) against docs/API-CONTRACT.md and rules R1/R2.
 # OWNER:       Nazha (board row T7)
-# DEPENDS ON:  eval/loader.py, docs/API-CONTRACT.md; uses STUB(T4) fallback until T4 merges to main
-# USED BY:     Local pytest and CI once merged
-# STATUS:      PARTIAL: uses inline STUB(T4) rule fallback until PR #19 (T4) merges to main
+# DEPENDS ON:  eval/loader.py, backend/app/rules/evidence.py, docs/API-CONTRACT.md
+# USED BY:     Local pytest and CI (.github/workflows/ci.yml)
+# STATUS:      REAL
 # DATA:        Synthetic only. No reason for leave, no medical or family details, ever.
-# AI NOTE:     Once T4 is merged to main, replace the STUB(T4) fallback import with direct
-#              `from backend.app.rules.evidence import check_quote, counts_as_fact`.
+# AI NOTE:     Imports real R1/R2 rules directly from backend.app.rules.evidence.
 
-import unicodedata
+from backend.app.rules.evidence import check_quote, counts_as_fact
 from eval.loader import load_all_cases
-
-try:
-    from backend.app.rules.evidence import check_quote, counts_as_fact
-except ImportError:
-    # STUB(T4): inline mirror of R1 and R2 while T4 PR #19 awaits merge to main
-    def check_quote(quote: str, employee_turns: list[str]) -> bool:
-        if not isinstance(quote, str) or not quote.strip() or not employee_turns:
-            return False
-        norm_quote = " ".join(unicodedata.normalize("NFC", quote).split())
-        return any(
-            norm_quote in " ".join(unicodedata.normalize("NFC", t).split())
-            for t in employee_turns
-            if isinstance(t, str) and t.strip()
-        )
-
-    def counts_as_fact(duty: dict) -> bool:
-        if duty.get("confirmation") == "dismissed":
-            return False
-        if duty.get("evidence_type") == "suggested":
-            return duty.get("confirmation") == "confirmed"
-        return duty.get("evidence_type") in ("said", "documented")
 
 
 REQUIRED_CASE_KEYS = {"id", "employee_id", "manager_id", "leave_start", "leave_end", "stage"}

@@ -18,7 +18,7 @@ Last updated: 2026-11-23, after pull requests #2 to #18. **Thursday 26 November 
 
 ## What works now
 
-No application code yet. The full plan, slides and Excel draft are in `docs/planning/`. An interactive learning guide for the whole team is online at https://tonni19.github.io/shetu/ and in `docs/learn/index.html` (works offline). Its "Deeper, in plain words" lessons explain rules, tests, the architecture, the AI pipeline, tokens and embeddings, and our niche.
+Evidence validation rules R1 & R2 (`backend/app/rules/evidence.py`) and pytest/CI are merged (T4). The full plan, slides and Excel draft are in `docs/planning/`. An interactive learning guide for the whole team is online at https://tonni19.github.io/shetu/ and in `docs/learn/index.html` (works offline). Its "Deeper, in plain words" lessons explain rules, tests, the architecture, the AI pipeline, tokens and embeddings, and our niche.
 
 ## In progress
 
