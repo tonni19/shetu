@@ -55,7 +55,7 @@ Do not add a dependency without the team agreeing in an Issue.
 > Keep this current. `backend/` exists (skeleton, T1). `frontend/` and `eval/` do not exist yet.
 
 ```
-AGENTS.md            this file (CLAUDE.md points here)
+AGENTS.md            this file (CLAUDE.md, GEMINI.md and .github/copilot-instructions.md point here)
 AI-USAGE.md          where AI tools were used
 backend/             FastAPI app (skeleton exists: sign-in, cases, health), rules, AI gateway, tests
 frontend/            React app (planned)
@@ -127,11 +127,16 @@ Four people build different parts at the same time, each with an AI assistant, a
 
 1. `git fetch`. If your branch or `main` is behind `origin/main`, update it first.
 2. Read `docs/PROJECT-STATE.md`, `docs/TEAM-BOARD.md`, `docs/API-CONTRACT.md` and your Issue. Look at open pull requests (`gh pr list`) to see what others are changing right now.
+   **Read what is addressed to your member.** On `docs/TEAM-BOARD.md`, read the table "Requests waiting for a person" and every Handoff log row whose "To" is your member (or "everyone"), and tell the member what is waiting for them, in plain words, before you start. If you have GitHub access (`gh`), also read the comments on your member's open pull requests and Issues (`gh pr list --author @me`, then `gh pr view <number> --comments`). If you cannot reach GitHub, say so, and ask the member to paste any review comments they received. Never assume there is nothing waiting.
 3. **Dependency check.** For the task you were given, list what it needs from other people (the **Needs** column of your board row). For each one, check it on `origin/main`: is the file, route or function really there, and do its tests pass? The board can be out of date; merged code is the truth.
 4. Decide, and **tell the member in plain words which case you are in**:
    - **Ready:** everything needed is merged. Build against the real thing.
    - **Partly ready:** build against `docs/API-CONTRACT.md` with a clearly labelled stub (see below). Say which person's work you are waiting for and what you assumed.
    - **Blocked:** you cannot make honest progress without someone else's work. Stop, explain what is missing, who owns it and what to ask them. Do not build their part for them without asking.
+
+### Leaving a message for another person
+
+If your work needs something from another member (a fix, a decision, a review), **put it on the team board**: a row in "Requests waiting for a person" (who, what, where, since when) and a Handoff log line. Also post a comment with an @mention on the pull request or Issue, so GitHub notifies them. The board is the one place every AI assistant reads, so a request that exists only in a pull request comment may never reach the other person's AI. When the request is done, move its row to the Handoff log ("done") and delete it from the table.
 
 ### While you work
 
