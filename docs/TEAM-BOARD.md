@@ -49,7 +49,7 @@ Target: the 10 to 15% progress presentation on **Thursday 26 November 2026**. ID
 | T1 | Backend skeleton: health route, seeded synthetic accounts, sign-in, `GET /api/cases/{id}` with a permission check (colleague gets 403) | Maruf | Not started | nothing | The running API and the case route in `docs/API-CONTRACT.md` | |
 | T2 | Frontend skeleton: login screen and the case page in the Shetu look | Tonni | Not started | the contract (stub until T1 is merged) | A running React app that shows a case | |
 | T3 | AI gateway: interface, replay adapter, first prompt and its Pydantic schema, one Banglish fixture | Mahadi | Not started | the Duty shape in the contract | `extract_duties(...)` that works in replay mode | |
-| T4 | Rules R1 (quote check) and R2 (confirmation) as plain functions with tests; pytest set-up and a CI workflow | Nazha | Not started | the Duty shape in the contract | `check_quote(...)`, `can_count(...)`, a green test run in CI | |
+| T4 | Rules R1 (quote check) and R2 (confirmation) as plain functions with tests; pytest set-up and a CI workflow | Nazha | In review | the Duty shape in the contract | `check_quote(...)`, `counts_as_fact(...)` / `can_count(...)`, pytest & CI in `backend/app/rules/evidence.py` | branch `feature/t4-evidence-rules` |
 | T5 | Interview route: employee reply goes through the gateway, the rules, then SQLite; one audit event on confirm | Maruf | Not started | T1, T3, T4 | `POST /api/cases/{id}/interview/reply` | |
 | T6 | Frontend interview screen: reply box, duties with evidence labels, confirm and dismiss | Tonni | Not started | T2, T5 (stub until merged) | The employee MAP screen | |
 | T7 | First three synthetic cases with answer keys | Nazha | Not started | nothing | `eval/` cases the gateway fixture and tests can use | |
@@ -64,6 +64,8 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 |---|---|---|---|
 | 2026-11-23 | Maruf | everyone | Board and contract created. |
 | 2026-11-23 | Maruf | everyone | All four members accepted their areas; the owners on this board are confirmed. The contract is agreed, as accepted by Maruf for the team. Each owner should still read their part and raise a problem early. |
+
+| 2026-11-24 | Nazha | Maruf, Mahadi | T4 (`check_quote`, `counts_as_fact` / `can_count`, pytest, and CI) implemented and tested in `feature/t4-evidence-rules` (ready for review). |
 
 ## Known conflicts and open questions
 
