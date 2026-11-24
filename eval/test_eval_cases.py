@@ -1,11 +1,13 @@
 # FILE:        eval/test_eval_cases.py
 # PURPOSE:     Validate synthetic cases (T7) against docs/API-CONTRACT.md and rules R1/R2.
 # OWNER:       Nazha (board row T7)
-# DEPENDS ON:  eval/loader.py, backend/app/rules/evidence.py, docs/API-CONTRACT.md
+# DEPENDS ON:  eval/loader.py, app/rules/evidence.py, docs/API-CONTRACT.md
 # USED BY:     Local pytest and CI (.github/workflows/ci.yml)
 # STATUS:      REAL
 # DATA:        Synthetic only. No reason for leave, no medical or family details, ever.
-# AI NOTE:     Imports real R1/R2 rules directly from backend.app.rules.evidence.
+# AI NOTE:     Imports real R1/R2 rules directly from app.rules.evidence.
+
+import re
 
 from app.rules.evidence import check_quote, counts_as_fact
 from eval.loader import load_all_cases
@@ -34,7 +36,12 @@ def test_three_synthetic_cases_exist_and_match_contract():
         assert "leave_reason" not in case_obj
         assert case_obj["stage"] == "map"
 
-        jd_ids = {line["line_id"] for line in item["job_description_lines"]}
+        jd_ids = set()
+        for line in item["job_description_lines"]:
+            assert set(line.keys()) == {"id", "text"}
+            assert re.fullmatch(r"jd-\d+", line["id"])
+            jd_ids.add(line["id"])
+
         employee_turns = [t["text"] for t in item["turns"] if t["role"] == "employee"]
         assert len(employee_turns) >= 1
 
@@ -48,13 +55,14 @@ def test_three_synthetic_cases_exist_and_match_contract():
 
             if duty["evidence_type"] == "said":
                 assert duty["quote"] is not None
+                assert duty["source_line_id"] is None
                 assert check_quote(duty["quote"], employee_turns) is True
             elif duty["evidence_type"] == "documented":
                 assert duty["source_line_id"] in jd_ids
-                if duty["quote"] is not None:
-                    assert check_quote(duty["quote"], employee_turns) is True
+                assert duty["quote"] is None
             elif duty["evidence_type"] == "suggested":
                 assert duty["quote"] is None
+                assert duty["source_line_id"] is None
 
             if counts_as_fact(duty):
                 fact_ids.append(duty["id"])

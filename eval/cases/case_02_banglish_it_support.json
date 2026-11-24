@@ -9,11 +9,11 @@
   },
   "job_description_lines": [
     {
-      "line_id": "JD-01",
+      "id": "jd-1",
       "text": "Provision laptop accounts and VPN credentials for newly onboarded staff."
     },
     {
-      "line_id": "JD-02",
+      "id": "jd-2",
       "text": "Maintain quarterly software license renewal tracker."
     }
   ],
@@ -32,10 +32,10 @@
       {
         "id": "duty-02-1",
         "case_id": "case-02",
-        "title": "Provision laptops and VPN access for new joiners",
+        "title": "Provision laptop accounts and VPN credentials for newly onboarded staff",
         "evidence_type": "documented",
-        "quote": "Notun employee join korle ami laptop setup ar VPN access create kore dei.",
-        "source_line_id": "JD-01",
+        "quote": null,
+        "source_line_id": "jd-1",
         "confirmation": "pending",
         "hours_per_week": null
       },
@@ -52,10 +52,10 @@
       {
         "id": "duty-02-3",
         "case_id": "case-02",
-        "title": "Maintain quarterly software license renewal tracker",
+        "title": "Revoke departing staff SSO and shared mailbox access during offboarding",
         "evidence_type": "suggested",
         "quote": null,
-        "source_line_id": "JD-02",
+        "source_line_id": null,
         "confirmation": "pending",
         "hours_per_week": null
       }

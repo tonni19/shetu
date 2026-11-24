@@ -9,26 +9,26 @@
   },
   "job_description_lines": [
     {
-      "line_id": "JD-01",
+      "id": "jd-1",
       "text": "Prepare monthly withholding tax challan summaries."
     },
     {
-      "line_id": "JD-02",
+      "id": "jd-2",
       "text": "Verify vendor invoices against approved purchase orders."
     },
     {
-      "line_id": "JD-03",
+      "id": "jd-3",
       "text": "Archive signed audit vouchers at quarter-end."
     }
   ],
   "turns": [
     {
       "role": "assistant",
-      "text": "আপনার দৈনন্দিন বা সাপ্তাহিক কাজের কোন অংশগুলো সবচেয়ে জরুরি?"
+      "text": "আপনার দৈনন্দিন বা সাপ্তাহিক কাজের কোন অংশগুলো সবচেয়ে জরুরি?"
     },
     {
       "role": "employee",
-      "text": "আমি প্রতি মঙ্গলবার ভেন্ডর ইনভয়েসগুলো পারচেজ অর্ডারের সাথে মিলিয়ে যাচাই করি। এছাড়া প্রতি মাসের ২৫ তারিখে ইউটিলিটি বিলের পেমেন্ট ভাউচার প্রস্তুত করি।"
+      "text": "আমি প্রতি মঙ্গলবার ভেন্ডর ইনভয়েসগুলো পারচেজ অর্ডারের সাথে মিলিয়ে যাচাই করি। এছাড়া প্রতি মাসের ২৫ তারিখে ইউটিলিটি বিলের পেমেন্ট ভাউচার প্রস্তুত করি।"
     }
   ],
   "answer_key": {
@@ -36,10 +36,10 @@
       {
         "id": "duty-03-1",
         "case_id": "case-03",
-        "title": "Verify weekly vendor invoices against purchase orders",
+        "title": "Verify vendor invoices against approved purchase orders",
         "evidence_type": "documented",
-        "quote": "প্রতি মঙ্গলবার ভেন্ডর ইনভয়েসগুলো পারচেজ অর্ডারের সাথে মিলিয়ে যাচাই করি",
-        "source_line_id": "JD-02",
+        "quote": null,
+        "source_line_id": "jd-2",
         "confirmation": "pending",
         "hours_per_week": null
       },
@@ -56,10 +56,10 @@
       {
         "id": "duty-03-3",
         "case_id": "case-03",
-        "title": "Archive signed audit vouchers at quarter-end",
+        "title": "Reconcile monthly bank charges and interest postings before ledger close",
         "evidence_type": "suggested",
         "quote": null,
-        "source_line_id": "JD-03",
+        "source_line_id": null,
         "confirmation": "pending",
         "hours_per_week": null
       }
