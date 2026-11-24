@@ -7,7 +7,7 @@
 # DATA:        Synthetic only. No reason for leave, no medical or family details, ever.
 # AI NOTE:     Imports real R1/R2 rules directly from backend.app.rules.evidence.
 
-from backend.app.rules.evidence import check_quote, counts_as_fact
+from app.rules.evidence import check_quote, counts_as_fact
 from eval.loader import load_all_cases
 
 
