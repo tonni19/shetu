@@ -24,7 +24,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 | Issue | What | Who | Branch |
 |---|---|---|---|
-| | Nothing in progress. The next work starts after the proposal presentation | | |
+| T4 | Evidence validation rules R1 & R2 (`backend/app/rules/evidence.py`), pytest suite, and GitHub Actions CI | Nazha Tarannum Roza | `feature/t4-evidence-rules` |
 
 ## Next up
 
