@@ -1,0 +1,31 @@
+{
+  "label": "REPLAY FIXTURE (synthetic): a recorded-style reply for one Banglish interview answer. It is not a live model call. Written by hand for the 26 November progress checkpoint.",
+  "entries": [
+    {
+      "match": "credit pre-meeting hoy",
+      "reply": {
+        "next_question": "Quarter-end er shomoy ki kono loan review hoy, ja apni ekhono bolen ni?",
+        "duties": [
+          {
+            "title": "Credit pre-meeting",
+            "evidence_type": "said",
+            "quote": "Protiti Tuesday sondha 6 ta theke 7:30 porjonto credit pre-meeting hoy",
+            "source_line_id": null
+          },
+          {
+            "title": "Monthly portfolio report",
+            "evidence_type": "documented",
+            "quote": null,
+            "source_line_id": "jd-3"
+          },
+          {
+            "title": "Quarter-end loan review",
+            "evidence_type": "suggested",
+            "quote": null,
+            "source_line_id": null
+          }
+        ]
+      }
+    }
+  ]
+}

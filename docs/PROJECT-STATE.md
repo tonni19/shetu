@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-23, after pull requests #2 to #18. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope, the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality), the ideas we take from the separate Congress build, and answers to the presentation feedback. The lab project stays on React and FastAPI with SQLite. Application work has yet to start.
+Last updated: 2026-11-24, only to add the AI gateway (T3) to "In progress". The rest of this file is as of 2026-11-23, after pull requests #2 to #18. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope, the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality), the ideas we take from the separate Congress build, and answers to the presentation feedback. The lab project stays on React and FastAPI with SQLite. Application work has yet to start.
 
 ## Milestones
 
@@ -24,7 +24,7 @@ No application code yet. The full plan, slides and Excel draft are in `docs/plan
 
 | Issue | What | Who | Branch |
 |---|---|---|---|
-| | Nothing in progress. The next work starts after the proposal presentation | | |
+| 22 | T3: AI gateway with a replay adapter, the first prompt and one Banglish fixture (`backend/app/ai/`). Replay only, no live model. In review | Mohammad Mahadi Hasan | `feature/22-ai-gateway-replay` |
 
 ## Next up
 
