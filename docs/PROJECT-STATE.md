@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-23, after pull requests #2 to #18. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope, the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality), the ideas we take from the separate Congress build, and answers to the presentation feedback. The lab project stays on React and FastAPI with SQLite. Application work has yet to start.
+Last updated: 2026-11-23, after pull requests #2 to #20 and the first application code (the backend skeleton, T1, on a branch waiting for review). **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope and the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality); `docs/TEAM-BOARD.md` shows who is doing what now.
 
 ## Milestones
 
@@ -18,7 +18,7 @@ Last updated: 2026-11-23, after pull requests #2 to #18. **Thursday 26 November 
 
 ## What works now
 
-No application code yet. The full plan, slides and Excel draft are in `docs/planning/`. An interactive learning guide for the whole team is online at https://tonni19.github.io/shetu/ and in `docs/learn/index.html` (works offline). Its "Deeper, in plain words" lessons explain rules, tests, the architecture, the AI pipeline, tokens and embeddings, and our niche.
+**The backend skeleton (T1)** is built and tested on the branch `feature/t1-backend-skeleton`, not yet merged: FastAPI and SQLite, seeded synthetic accounts, sign-in with a signed session cookie, `GET /api/me`, `GET /api/cases/{id}` with a server-side permission check (employee, manager and HR may read; a colleague gets 403), `GET /healthz`, and passing tests (16 for T1, plus Nazha's evidence rules R1 and R2 and CI from PR #21, merged into the same branch: 28 in total). How to run it: `backend/README.md`. How it works: `docs/CODE-EXPLANATION.md`. No frontend, AI or rules code yet. The full plan, slides and Excel draft are in `docs/planning/`; the learning guide is online at https://tonni19.github.io/shetu/.
 
 ## In progress
 
@@ -71,12 +71,15 @@ This list lags by one: the pull request that updates this file cannot list itsel
 | #16 | Learning guide online with GitHub Pages; six "Deeper, in plain words" lessons; presentation feedback; decision 23 | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19, **approved by tonni19** (the first reviewed pull request under branch protection) |
 | #17 | Project state after #16 | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19, approved by tonni19 |
 | #18 | Plan for the 26 November progress presentation; decision 24 (ideas, not stacks, from Congress) | NazhaTarannum (commits by Ahmad Maruf Hossain) | SpicyFalcon619, approved by SpicyFalcon619 |
+| #19 | Project state after #18, wording tidy-ups | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19 |
+| #20 | Team board, shared contract, coordination rules, positioning answers; decisions 25 to 28 | NazhaTarannum (commits by Ahmad Maruf Hossain) | SpicyFalcon619, approved by SpicyFalcon619 |
 
 ## Things every assistant should know right now
 
+- **Project layout.** Import the backend as `app...`, never `backend.app...`; tests run from the repo root or `backend/`; every source file has the standard header; check open pull requests before creating files. `AGENTS.md`: "Project layout and names" and "Avoiding conflicts". A guard test (`backend/tests/test_conventions.py`) and `.github/CODEOWNERS` back this up.
 - **Positioning (working answer, decision 28).** Shetu is role-continuity software, not a generic work manager: it manages a role through one absence and its return. Do not build task boards, time tracking, productivity scoring or auto-assignment (`AGENTS.md` rule 12). Wording is gender-neutral (rule 11). Details: `docs/planning/08-Positioning-and-Strategy.md`.
 - **Coordinate before you act.** Read `docs/TEAM-BOARD.md` and `docs/API-CONTRACT.md` at the start of every session, check on `origin/main` that the parts you depend on are really merged, and use labelled stubs (`STUB(T#)`) rather than guessing or building someone else's part. The rules are in `AGENTS.md`, section "Coordinate before you act".
-- No code exists yet. Do not assume any file or function is there; check.
+- Only the backend skeleton exists (T1). Do not assume any other file or function is there; check `origin/main` and `docs/TEAM-BOARD.md`.
 - Voice input is a **stretch** feature (decision 16), not cut and not in the first version.
 - Speaker scripts exist for all ten slides (decision 22). **Tonni's parts (the elevator speech, slides 2 and 3) are exactly as she wrote them: never edit or "improve" them.** The scripts for slides 4 to 10 are drafts that Mahadi, Maruf and Nazha edit into their own words, so those may change.
 - The deck wording fixes 1 to 5 are applied (decision 19). The bank statistic is a net fall in the count, never "women who left".

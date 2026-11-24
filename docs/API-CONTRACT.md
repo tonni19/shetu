@@ -31,15 +31,17 @@ Conventions: JSON field names are `snake_case`. Dates are ISO `YYYY-MM-DD`, rang
 Rule: a `suggested` duty never counts as a fact until `confirmation` is `"confirmed"` (rule R2).
 
 ### Error
-`{"code": "<machine_code>", "detail": "<human sentence>"}`. Permission problems return HTTP 403, a missing case 404, a failed rule 409.
+`{"code": "<machine_code>", "detail": "<human sentence>"}`. Not signed in returns HTTP 401 (`not_signed_in`), a wrong user id or password 401 (`invalid_credentials`), permission problems 403 (`forbidden`), a missing case 404 (`case_not_found`), a request body of the wrong shape 422 (`invalid_request`), a failed rule 409.
 
 ## 2. Routes (T1 and T5)
 
 | Action | Route | Who may call it |
 |---|---|---|
-| Sign in | `POST /api/login` with a seeded account; the server sets the session | anyone |
-| Health | `GET /healthz` | anyone |
-| Read a case | `GET /api/cases/{case_id}` | the employee, the manager, HR; a cover colleague only sees their own assignments. Anyone else gets **403** |
+| Sign in | `POST /api/login` with `{"user_id", "password"}` for a seeded synthetic account (list in `backend/README.md`); the server sets a signed session cookie and returns `{"id", "name", "role"}` | anyone |
+| Sign out | `POST /api/logout` (204) | anyone |
+| Who am I | `GET /api/me` returns `{"id", "name", "role"}`, or 401 | a signed-in user |
+| Health | `GET /healthz` returns `{"status": "ok", "database": "ok"}` | anyone |
+| Read a case | `GET /api/cases/{case_id}` returns the Case with a `duties` list | the employee, the manager, HR. A cover colleague gets **403** until cover assignments exist (then: only their own assignments). Anyone else gets **403** |
 | Answer the interview | `POST /api/cases/{case_id}/interview/reply` with `{"turns": [{"role": "assistant"\|"employee", "text": "..."}]}`. Returns `{"next_question": "...", "duties": [Duty]}`. Quotes are checked against `employee` turns only; raw turns are **not** stored | the employee of that case |
 | Confirm or dismiss a duty | `PATCH /api/cases/{case_id}/duties/{duty_id}` with `{"decision": "confirm"\|"dismiss"}`. Writes one audit event | the employee of that case |
 
