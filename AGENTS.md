@@ -94,6 +94,31 @@ Demo accounts are in `backend/README.md` (password `shetu-demo`, all synthetic).
 - Write the tests for the code you write.
 - Do not rewrite or reformat files you were not asked to change.
 
+## Project layout and names
+
+Everyone follows the same layout, so code written by four people and four AI assistants fits together. A guard test (`backend/tests/test_conventions.py`) checks the first three.
+
+- **The backend lives in `backend/` and is imported as `app`.** Run it from `backend/` with `uvicorn app.main:app`. In code, write `from app.rules.evidence import ...`, **never** `from backend.app...`. `backend/` has no `__init__.py`.
+- **Tests live in `backend/tests/`** and are run from the repository root or from `backend/` with `python -m pytest`. The root `pytest.ini` sets `testpaths` and `pythonpath = backend`, which is why both work. CI runs from the root.
+- **Every source file starts with the standard header** (see "Comments for the next AI").
+- **One module, one owner.** The area owners are on `docs/TEAM-BOARD.md` ("Who owns which files") and in `.github/CODEOWNERS`. Put new code in your own area; create a file in someone else's area only by agreement.
+- **Folders** (the owner creates a folder when they start): `backend/app/ai/` (Mahadi), `backend/app/rules/` (Nazha), `backend/app/routes/`, `models.py`, `security.py`, `db.py` (Maruf), `frontend/` (Tonni), `eval/` (Nazha).
+
+## Avoiding conflicts
+
+Most merge conflicts come from a few causes. These rules remove them.
+
+1. **Look before you create.** Before you add or rename a file, or change something shared, run `git fetch` and `gh pr list`, and `gh pr diff <number> --name-only` for the open pull requests. If another open pull request touches the same files, talk to its author first (a comment on it is enough).
+2. **Small, short-lived pull requests.** Merge within a day. A long-lived branch is the biggest source of conflicts. Do not pile one unmerged branch on another; if you must depend on an unmerged pull request, say "Depends on #N" at the top of yours.
+3. **Merge `origin/main` into your branch before you open the pull request, and again before you merge.** Run the tests after.
+4. **Shared files, and how to edit them.**
+   - *Append-only logs* (`AI-USAGE.md`, `docs/DECISIONS.md`): add your row at the **bottom**, change no one else's. Git keeps both sides' rows automatically (`.gitattributes`).
+   - *The worklog:* one new file per pull request; never edit someone else's.
+   - *`docs/PROJECT-STATE.md` and `docs/TEAM-BOARD.md`:* change **only your own row or line**. Do not reformat the table or reorder rows. Add a handoff line at the bottom of the Handoff log.
+   - *`docs/API-CONTRACT.md`:* only through the protocol in "Changing a shared interface".
+5. **Do not reformat or rename what you did not write.** No "tidy-up" of other people's files, and no moving files, inside a feature pull request.
+6. **Conflict anyway?** Fix it by keeping both people's intent. If you cannot tell what the other person meant, ask them. Never choose "mine" or "theirs" for a whole file without reading it. Run the tests after resolving.
+
 ## Coordinate before you act
 
 Four people build different parts at the same time, each with an AI assistant, and the parts depend on each other (the screens need the routes, the routes need the gateway and the rules). Nobody can see the others' laptops, so **GitHub and these files are the only shared memory.** These rules keep the pieces consistent. They apply to every AI assistant and every member.

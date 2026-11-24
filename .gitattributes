@@ -1,0 +1,10 @@
+# Git settings that prevent the most common team conflicts. See AGENTS.md, "Avoiding conflicts".
+
+# Store and check out text with LF line endings on every computer (Windows, macOS, Linux),
+# so nobody's editor turns every line into a "change".
+* text=auto eol=lf
+
+# Append-only logs: everybody adds a row at the bottom. `merge=union` keeps BOTH sides' new rows
+# instead of stopping with a conflict. (Only for files where rows are only ever added.)
+AI-USAGE.md merge=union
+docs/DECISIONS.md merge=union

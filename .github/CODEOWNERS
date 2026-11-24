@@ -1,0 +1,20 @@
+# Who owns which part. GitHub automatically asks the owner to review a pull request that
+# touches their files, and it shows who to ask. The last matching line wins.
+# Keep this in step with docs/TEAM-BOARD.md ("Who owns which files").
+# Owners are the primary owner of each area (confirmed 23 November 2026).
+
+# Default: Maruf (full stack, integration)
+*                           @SpicyFalcon619
+
+# Frontend and UI/UX: Tonni
+/frontend/                  @tonni19
+
+# AI gateway, prompts, replay: Mahadi
+/backend/app/ai/            @HasanGMS0047
+
+# Rules, tests, CI, synthetic cases: Nazha
+/backend/app/rules/         @NazhaTarannum
+/backend/tests/             @NazhaTarannum
+/.github/workflows/         @NazhaTarannum
+/eval/                      @NazhaTarannum
+/pytest.ini                 @NazhaTarannum

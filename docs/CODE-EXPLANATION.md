@@ -61,3 +61,22 @@ All of it is ordinary code. The AI gateway (Mahadi, T3) and the rules (Nazha, T4
 - The manager sees every duty; after the interview exists, the manager should see confirmed duties only.
 - No migration tool: change a table, then delete `shetu.db` and re-seed.
 - The session key has a development default; set `SHETU_SECRET_KEY` for any deployment.
+
+---
+
+## Evidence rules R1 and R2 (board row T4, owner: Nazha)
+
+Written by Nazha (PR #21); the explanation below is a short summary by Maruf. Nazha: please add your own words and any examples you want to show the instructor.
+
+- **Where:** `backend/app/rules/evidence.py`. Tests: `backend/tests/test_evidence.py`.
+- **R1, `check_quote(quote, employee_turns)`:** true only if the quote really appears in something the *employee* said. It first normalises Unicode (NFC) and collapses extra spaces, so the same Bangla word written two different ways still matches.
+- **R2, `counts_as_fact(duty)`:** a duty that was only *suggested* counts as a fact only after a person confirms it; a dismissed duty never counts. Also available as `can_count`.
+- **Plain Python, no AI:** the model never decides these. They have no database or web imports, so they are easy to test.
+- **Used by:** the interview route (Maruf, T5), which will call R1 on each duty the AI extracts and downgrade a "said" duty whose quote fails the check to "suggested".
+
+---
+
+## Guards that keep the project consistent (Maruf)
+
+`backend/tests/test_conventions.py` runs with every test run and in CI. It fails if: a file imports `backend...` instead of `app...`; `backend/__init__.py` exists; a source file lacks the standard header; or a model or schema gains a reason-for-leave style field. `.gitattributes` and `.github/CODEOWNERS` do the same job for line endings, shared logs and review ownership. The rules are in `AGENTS.md`.
+

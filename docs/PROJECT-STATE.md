@@ -18,7 +18,7 @@ Last updated: 2026-11-23, after pull requests #2 to #20 and the first applicatio
 
 ## What works now
 
-**The backend skeleton (T1)** is built and tested on the branch `feature/t1-backend-skeleton`, not yet merged: FastAPI and SQLite, seeded synthetic accounts, sign-in with a signed session cookie, `GET /api/me`, `GET /api/cases/{id}` with a server-side permission check (employee, manager and HR may read; a colleague gets 403), `GET /healthz`, and 16 passing tests. How to run it: `backend/README.md`. How it works: `docs/CODE-EXPLANATION.md`. No frontend, AI or rules code yet. The full plan, slides and Excel draft are in `docs/planning/`; the learning guide is online at https://tonni19.github.io/shetu/.
+**The backend skeleton (T1)** is built and tested on the branch `feature/t1-backend-skeleton`, not yet merged: FastAPI and SQLite, seeded synthetic accounts, sign-in with a signed session cookie, `GET /api/me`, `GET /api/cases/{id}` with a server-side permission check (employee, manager and HR may read; a colleague gets 403), `GET /healthz`, and passing tests (16 for T1, plus Nazha's evidence rules R1 and R2 and CI from PR #21, merged into the same branch: 28 in total). How to run it: `backend/README.md`. How it works: `docs/CODE-EXPLANATION.md`. No frontend, AI or rules code yet. The full plan, slides and Excel draft are in `docs/planning/`; the learning guide is online at https://tonni19.github.io/shetu/.
 
 ## In progress
 
@@ -76,6 +76,7 @@ This list lags by one: the pull request that updates this file cannot list itsel
 
 ## Things every assistant should know right now
 
+- **Project layout.** Import the backend as `app...`, never `backend.app...`; tests run from the repo root or `backend/`; every source file has the standard header; check open pull requests before creating files. `AGENTS.md`: "Project layout and names" and "Avoiding conflicts". A guard test (`backend/tests/test_conventions.py`) and `.github/CODEOWNERS` back this up.
 - **Positioning (working answer, decision 28).** Shetu is role-continuity software, not a generic work manager: it manages a role through one absence and its return. Do not build task boards, time tracking, productivity scoring or auto-assignment (`AGENTS.md` rule 12). Wording is gender-neutral (rule 11). Details: `docs/planning/08-Positioning-and-Strategy.md`.
 - **Coordinate before you act.** Read `docs/TEAM-BOARD.md` and `docs/API-CONTRACT.md` at the start of every session, check on `origin/main` that the parts you depend on are really merged, and use labelled stubs (`STUB(T#)`) rather than guessing or building someone else's part. The rules are in `AGENTS.md`, section "Coordinate before you act".
 - Only the backend skeleton exists (T1). Do not assume any other file or function is there; check `origin/main` and `docs/TEAM-BOARD.md`.

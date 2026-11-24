@@ -20,10 +20,16 @@ Every other part (Tonni's screens, Mahadi's gateway, Nazha's rules, the intervie
 ## Interface changes (contract)
 Added `POST /api/logout` and `GET /api/me`, and named the error codes (`not_signed_in`, `invalid_credentials`, `forbidden`, `case_not_found`, `invalid_request`). Logged for Tonni on the team board.
 
+## Update 2026-11-24: joined with T4 and conflict guards
+- Reviewed Nazha's PR #21 (T4: rules R1 and R2, pytest, CI): correct, and its tests pass.
+- Her branch and mine both create `backend/` files and imported the code under different names (`backend.app` against `app`), and both edited the same shared files. I merged her branch into this one and chose the `app` name (it is what uvicorn uses), added `pythonpath = backend` to `pytest.ini`, and removed the empty `backend/__init__.py`. All 28 tests (her 8, my 16, 4 new guards) pass from the repo root and from `backend/`.
+- Added guards so this does not recur: `.gitattributes`, `.github/CODEOWNERS`, `backend/tests/test_conventions.py`, a once-per-PR CI trigger, the new rules in `AGENTS.md` and a "Who owns which files" table on the team board (decision 29).
+- Proved a guard works: a probe file with `from backend.app import x` made the guard fail.
+
 ## Not finished / known problems
 - Cover colleagues cannot read any case until cover assignments exist.
 - The manager sees all duties; after the interview exists, the manager should see confirmed duties only (T5).
 - No migration tool; changing a table means deleting `shetu.db` and re-seeding.
 - The test client prints a deprecation warning from Starlette about `httpx`; harmless for now.
-- CI (running these tests on every pull request) is Nazha's T4.
+- CI is Nazha's T4 (now merged into this branch); the trigger was changed to once per pull request.
 - No stubs in this change.
