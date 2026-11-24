@@ -77,7 +77,7 @@ Things another person needs from you, in one place every AI assistant reads at t
 | Since | For | From | What is needed | Where |
 |---|---|---|---|---|
 | 2026-11-24 | Mahadi | Maruf | **PR #25 (T3):** (1) change `from backend.app...` to `from app...` in the 5 files that use it (since PR #23 the backend is imported as `app`; a guard test fails otherwise); (2) merge `origin/main` into your branch and fix the conflicts: keep main's `backend/requirements-dev.txt` (it already includes pydantic), combine the two `docs/CODE-EXPLANATION.md` sections (both of us created the file), and keep both sides' rows in the board and state files; (3) run `python -m pytest` from the repo root. Your code and tests are otherwise good. | PR #25 |
-| 2026-11-24 | Maruf | Maruf | Comment on PR #25 that the contract change (`ExtractResult`, `DraftDuty`, `GatewayError`) has been seen. It matches how T5 will use it | PR #25 |
+| 2026-11-24 | Nazha | Maruf | **PR #24 (T7):** (1) merge `origin/main` into your branch and fix the conflicts (keep your `pytest.ini`; keep both sides' rows in the board and state files); (2) agree one job description line format with Mahadi: your cases use `line_id` and `JD-01`, his gateway uses `id` and `jd-3`; I suggest `id` with lowercase `jd-1`; (3) decide with Mahadi how to label a job description duty the employee never mentioned: your case 2 has a "documented" duty with a quote and a "suggested" duty with a source line, which his schema forbids (documented = source line, no quote; suggested = neither); (4) fix the stale PR text and the `backend.app` wording in the `eval/test_eval_cases.py` header. | PR #24 |
 
 ## Handoff log
 
@@ -93,6 +93,7 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 | 2026-11-24 | Maruf | Nazha | Reviewed T4: good. T1 and T4 now meet in one branch: the backend is imported as `app...` (not `backend.app...`), `pytest.ini` has `pythonpath = backend`, and `backend/__init__.py` is gone. All 28 tests pass from the repo root and from `backend/`. Please keep that name in new code. Suggestions for `check_quote`: ignore case, and require a minimum quote length. Your `CODE-EXPLANATION.md` section can go in `docs/CODE-EXPLANATION.md` (it arrives with T1). |
 | 2026-11-24 | Maruf | everyone | New guards against conflicts: `.gitattributes` (LF endings; AI-USAGE.md and DECISIONS.md keep both sides' rows), `.github/CODEOWNERS`, `backend/tests/test_conventions.py` (import name, header, no reason field), CI runs once per pull request. Rules: `AGENTS.md`, "Project layout and names" and "Avoiding conflicts". |
 | 2026-11-24 | Maruf | everyone | T1 and T4 are merged to `main` (PRs #23 and #21). Pull `main`. Backend: run it from `backend/` (see `backend/README.md`), import as `app...`. Tonni: T2 can start against the real API now. Mahadi: T5 will call your `extract_duties` once #25 is merged. |
+| 2026-11-24 | Maruf | Mahadi, Nazha | Reviewed PRs #25 and #24; comments posted on both, and the requests are in "Requests waiting for a person". Mahadi and Nazha must agree the job description line format and how to label a job description duty the employee never mentioned. I (Maruf) acknowledged the T3 contract change on #25. |
 
 ## Known conflicts and open questions
 
