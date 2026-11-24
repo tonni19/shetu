@@ -46,10 +46,10 @@ Target: the 10 to 15% progress presentation on **Thursday 26 November 2026**. ID
 
 | ID | Work item | Owner | Status | Needs | Produces (what others rely on) | Issue / PR |
 |---|---|---|---|---|---|---|
-| T1 | Backend skeleton: health route, seeded synthetic accounts, sign-in, `GET /api/cases/{id}` with a permission check (colleague gets 403) | Maruf | In review (built and tested; 28 tests pass together with T4) | nothing | The running API and the case route in `docs/API-CONTRACT.md`; `backend/app/models.py` (User, Case, Duty) | branch `feature/t1-backend-skeleton` |
+| T1 | Backend skeleton: health route, seeded synthetic accounts, sign-in, `GET /api/cases/{id}` with a permission check (colleague gets 403) | Maruf | Done (merged, PR #23; 28 tests pass) | nothing | The running API and the case route in `docs/API-CONTRACT.md`; `backend/app/models.py` (User, Case, Duty) | branch PR #23 |
 | T2 | Frontend skeleton: login screen and the case page in the Shetu look | Tonni | Not started | the contract (stub until T1 is merged) | A running React app that shows a case | |
 | T3 | AI gateway: interface, replay adapter, first prompt and its Pydantic schema, one Banglish fixture | Mahadi | Not started | the Duty shape in the contract | `extract_duties(...)` that works in replay mode | |
-| T4 | Rules R1 (quote check) and R2 (confirmation) as plain functions with tests; pytest set-up and a CI workflow | Nazha | In review | the Duty shape in the contract | `check_quote(...)`, `counts_as_fact(...)` / `can_count(...)`, pytest & CI in `backend/app/rules/evidence.py` | branch `feature/t4-evidence-rules` |
+| T4 | Rules R1 (quote check) and R2 (confirmation) as plain functions with tests; pytest set-up and a CI workflow | Nazha | Done (merged, PR #21) | the Duty shape in the contract | `check_quote(...)`, `counts_as_fact(...)` / `can_count(...)`, pytest & CI in `backend/app/rules/evidence.py` | branch `feature/t4-evidence-rules` |
 | T5 | Interview route: employee reply goes through the gateway, the rules, then SQLite; one audit event on confirm | Maruf | Not started | T1, T3, T4 | `POST /api/cases/{id}/interview/reply` | |
 | T6 | Frontend interview screen: reply box, duties with evidence labels, confirm and dismiss | Tonni | Not started | T2, T5 (stub until merged) | The employee MAP screen | |
 | T7 | First three synthetic cases with answer keys | Nazha | Not started | nothing | `eval/` cases the gateway fixture and tests can use | |
@@ -83,6 +83,7 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 | 2026-11-24 | Nazha | Maruf, Mahadi | T4 (`check_quote`, `counts_as_fact` / `can_count`, pytest, and CI) implemented and tested in `feature/t4-evidence-rules` (ready for review). |
 | 2026-11-24 | Maruf | Nazha | Reviewed T4: good. T1 and T4 now meet in one branch: the backend is imported as `app...` (not `backend.app...`), `pytest.ini` has `pythonpath = backend`, and `backend/__init__.py` is gone. All 28 tests pass from the repo root and from `backend/`. Please keep that name in new code. Suggestions for `check_quote`: ignore case, and require a minimum quote length. Your `CODE-EXPLANATION.md` section can go in `docs/CODE-EXPLANATION.md` (it arrives with T1). |
 | 2026-11-24 | Maruf | everyone | New guards against conflicts: `.gitattributes` (LF endings; AI-USAGE.md and DECISIONS.md keep both sides' rows), `.github/CODEOWNERS`, `backend/tests/test_conventions.py` (import name, header, no reason field), CI runs once per pull request. Rules: `AGENTS.md`, "Project layout and names" and "Avoiding conflicts". |
+| 2026-11-24 | Maruf | everyone | T1 and T4 are merged to `main` (PRs #23 and #21). Pull `main`. Backend: run it from `backend/` (see `backend/README.md`), import as `app...`. Tonni: T2 can start against the real API now. Mahadi: T5 will call your `extract_duties` once #25 is merged. |
 
 ## Known conflicts and open questions
 
