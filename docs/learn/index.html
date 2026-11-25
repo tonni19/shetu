@@ -815,6 +815,40 @@ has_capacity(3, 3)   <span class="c"># Imran</span>  <span class="ok">True</span
   <div class="remember"><div><b>Remember</b><p>The manager approves; the AI does the typing. The employee confirms her own job, and the return guard protects it. "Built for maternity, ready for any long leave."</p></div></div>
 </section>
 
+<!-- ============ D8 THE BACKEND, FROM THE FETCH SIDE ============ -->
+<section class="lesson" id="d8" hidden>
+  <div class="kicker">Deeper 8 &middot; The backend, step by step</div>
+  <h2>The other end of <em>your fetch.</em></h2>
+  <p class="lead">If you have written <code>fetch</code> in JavaScript, you have been the <b>client</b>: the program that asks. This lesson is about the program that answers, our <b>backend</b>. Code: <code>backend/</code>. Full walk-through: <code>docs/CODE-EXPLANATION.md</code>.</p>
+
+  <h3>1. The server answers your fetch</h3>
+  <p>When the React app runs <code>fetch("/api/cases/case-1")</code>, a Python program on another computer receives that request, finds case 1 in the database, and sends back JSON. That program is the <b>server</b>, or <b>backend</b>. Ours uses FastAPI.</p>
+
+  <h3>2. A route is one Python function per address</h3>
+  <pre><span class="k">@router.get</span>("/healthz")
+<span class="k">def</span> healthz():
+    <span class="k">return</span> {"status": "ok"}</pre>
+  <p>The line starting with <code>@</code> is a <b>decorator</b>. It says: "when a GET request arrives for <code>/healthz</code>, run the function below." The dictionary it returns becomes JSON automatically. GET means "give me something"; POST means "here is something, do something with it". So <code>@router.post("/api/login")</code> runs when someone POSTs to <code>/api/login</code>.</p>
+
+  <h3>3. The server chooses the status code</h3>
+  <div style="overflow-x:auto"><table>
+    <tr><th>Situation</th><th>Status</th><th><code>response.ok</code></th></tr>
+    <tr><td>Everything fine</td><td>200</td><td>true</td></tr>
+    <tr><td>Nobody is signed in</td><td>401</td><td>false</td></tr>
+    <tr><td>Signed in, but not allowed to see this case</td><td>403</td><td>false</td></tr>
+    <tr><td>No such case</td><td>404</td><td>false</td></tr>
+  </table></div>
+  <p>In Python, a route stops with <code>raise ApiError(404, "case_not_found", "...")</code>. The client gets that status and a body like <code>{"code": "case_not_found", "detail": "..."}</code>. Every error in our API has that same shape, so one piece of React code can show any of them.</p>
+
+  <h3>4. How the server knows who is asking</h3>
+  <p>At sign-in the server gives the browser a <b>session cookie</b> holding the user id. The server <b>signs</b> it, like a wax seal: the browser can keep it and send it back, but cannot change the id inside without breaking the seal. On every request the server reads the user from the cookie (never from anything the caller types) and then checks what that user may do. Passwords are never stored: only a salted one-way hash, which is compared at sign-in.</p>
+
+  <h3>5. The permission check</h3>
+  <p>For a case, one function decides: the employee whose case it is, that case's manager, and HR may read it; everyone else, including cover colleagues for now, gets 403. This runs on the server on every request. Hiding a button in React is not security, because anyone can send a request without the button.</p>
+
+  <div class="remember"><div><b>Remember</b><p>The server decides the status code and who may see what. The client only asks. The same fetch can get a 200, a 401, a 403 or a 404, depending on who is signed in.</p></div></div>
+</section>
+
   </main>
 </div>
 <script>
@@ -877,7 +911,8 @@ const LESSONS = [
   { id: 'd4', t: 'The AI pipeline', g: 'Deeper, in plain words' },
   { id: 'd5', t: 'Tokens and embeddings', g: 'Deeper, in plain words' },
   { id: 'd6', t: 'Our niche', g: 'Deeper, in plain words' },
-  { id: 'd7', t: 'Five hard questions', g: 'Deeper, in plain words' }
+  { id: 'd7', t: 'Five hard questions', g: 'Deeper, in plain words' },
+  { id: 'd8', t: 'The backend, step by step', g: 'Deeper, in plain words' }
 ];
 const COUNTED = LESSONS.slice(1, 14).map(l => l.id);      // lessons 1 to 13 carry a quiz
 let done = store.get('done', {});
@@ -928,6 +963,8 @@ document.addEventListener('click', e => {
    QUIZ BANK (also the question pool for the final exam)
    ====================================================================== */
 const QB = {
+  d8: [{"q": "A signed-in colleague runs fetch for a case that is not theirs. What does response.status show?", "o": ["200", "401", "403", "404"], "a": 2, "w": "They are signed in (so not 401), the case exists (so not 404), but they are not allowed: 403, and response.ok is false."}, {"q": "Why can't a user pretend to be someone else by editing their cookie?", "o": ["Cookies cannot be edited", "The server signs the cookie, so a changed id breaks the seal", "The password is inside the cookie", "React hides it"], "a": 1, "w": "The id comes only from the signed cookie; changing it invalidates the signature."}],
+
   d7: [{"q": "What does the 'litmus test' ask?", "o": ["Is it cheap to build?", "Would this feature be at home in a generic task manager? If yes, we do not build it", "Does it use AI?", "Is it in Bangla?"], "a": 1, "w": "It keeps Shetu a role-continuity product, not a workload balancer."}, {"q": "Who is the main user of Shetu, and who is the person it protects?", "o": ["HR uses it, the manager is protected", "The manager uses it most; the employee is the person it protects", "Only the employee uses it", "The company's customers"], "a": 1, "w": "The manager is the operator, the employee is the protagonist, and HR or the organization is the customer."}],
 
   d1: [{"q": "What is a rule in Shetu?", "o": ["A machine-learning model", "Ordinary Python code that checks something we can calculate", "A prompt for the AI", "A setting in GitHub"], "a": 1, "w": "Plain arithmetic and if/else logic, with tests. No AI."}, {"q": "Rafiq has 2 spare hours and the duty needs 3. What happens?", "o": ["The workload rule rejects the proposal", "The manager is never told", "Rafiq gets it anyway", "The AI decides"], "a": 0, "w": "Capacity is computed by code, never trusted from the model."}],
@@ -1643,6 +1680,11 @@ W.exam = el => {
 
 /* ---------- Glossary ---------- */
 const GLOSS = [
+  ["Backend", "The program that answers the frontend's requests: it holds the login, the rules, the AI calls and the database. Ours uses FastAPI."],
+  ["Route", "One address the API answers, such as GET /api/cases/{id}. In FastAPI, a Python function with a decorator such as @router.get."],
+  ["Session cookie", "A small piece of data the server gives the browser at sign-in. Ours is signed, so the browser can hold it but not change it."],
+  ["Merge-base", "The point where a branch and main last shared history. If it changes after someone approves a pull request, GitHub can dismiss the approval."],
+
   ["Role continuity", "Keeping a job whole while its owner is away, and guarding the return. What Shetu is."],
   ["Sector pack", "A small set of changes that adapts the neutral core to one sector: duty vocabulary, what a duty is covered by, capacity model, compliance rules, input channel and language."],
   ["Litmus test", "Would this feature be at home in a generic task manager? If yes, Shetu does not build it."],
@@ -1714,7 +1756,7 @@ W.glossary = el => {
    ====================================================================== */
 $$('[data-widget]').forEach(el => { const f = W[el.dataset.widget]; if (f) { try { f(el); } catch (e) { el.innerHTML = '<div class="fb bad">This part could not load.</div>'; console.error(e); } } });
 COUNTED.forEach(mountQuiz);
-['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7'].forEach(mountQuiz);   // the deeper lessons: quizzes, but not counted in the progress bar
+['d1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8'].forEach(mountQuiz);   // the deeper lessons: quizzes, but not counted in the progress bar
 renderNav(); renderProgress();
 go(location.hash.slice(1) || 'l0');
 })();

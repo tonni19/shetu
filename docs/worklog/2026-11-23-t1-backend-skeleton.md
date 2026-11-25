@@ -26,6 +26,15 @@ Added `POST /api/logout` and `GET /api/me`, and named the error codes (`not_sign
 - Added guards so this does not recur: `.gitattributes`, `.github/CODEOWNERS`, `backend/tests/test_conventions.py`, a once-per-PR CI trigger, the new rules in `AGENTS.md` and a "Who owns which files" table on the team board (decision 29).
 - Proved a guard works: a probe file with `from backend.app import x` made the guard fail.
 
+## Update 2026-11-24 (evening): why the approvals kept being dismissed
+- Approvals on PR #23 were cancelled by GitHub a few seconds after they were given ("The merge-base changed after approval"). Cause: the pull request contained Nazha's commit, and her own PR (#21) was merged into `main` separately, which moved the merge-base. Our branch protection dismisses stale approvals, so each new approval was dismissed.
+- Fix: merged the current `main` into the branch and pushed; Tonni's next approval stuck and the PR was merged.
+- Lesson (now in the project rules): do not carry another person's unmerged commit in your pull request; merge their pull request first, then branch from `main`.
+
+## Update 2026-11-24 (night): reaching the other members' AIs
+- Reviewed PRs #24 (Nazha, T7) and #25 (Mahadi, T3). Found: #25 uses the old `backend.app` import in 5 files and conflicts with main; #24 uses a different job description line format (`line_id`, `JD-01`) from the gateway (`id`, `jd-3`), and its answer keys label a job description duty that the employee did not mention in a way the gateway's schema forbids. Needs a decision between Nazha and Mahadi.
+- Added a "Requests waiting for a person" table and a start-of-session rule so every member's AI reads what is addressed to them, plus `GEMINI.md` and `.github/copilot-instructions.md` (decision 30).
+
 ## Not finished / known problems
 - Cover colleagues cannot read any case until cover assignments exist.
 - The manager sees all duties; after the interview exists, the manager should see confirmed duties only (T5).

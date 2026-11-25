@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-23, after pull requests #2 to #20 and the first application code (the backend skeleton, T1, on a branch waiting for review). **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope and the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality); `docs/TEAM-BOARD.md` shows who is doing what now.
+Last updated: 2026-11-24, after pull requests #2 to #23: the backend skeleton (T1) and the evidence rules with CI (T4) are merged. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope and the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality); `docs/TEAM-BOARD.md` shows who is doing what now.
 
 ## Milestones
 
@@ -18,13 +18,18 @@ Last updated: 2026-11-23, after pull requests #2 to #20 and the first applicatio
 
 ## What works now
 
-**The backend skeleton (T1)** and **evidence validation rules R1 & R2 (T4)** are merged to `main` (PR #21 and PR #23): FastAPI and SQLite, seeded synthetic accounts, sign-in with a signed session cookie, `GET /api/me`, `GET /api/cases/{id}` with a server-side permission check (employee, manager and HR may read; a colleague gets 403), `GET /healthz`, `backend/app/rules/evidence.py` (`check_quote`, `counts_as_fact` / `can_count`), and 28 passing tests plus CI. How to run it: `backend/README.md`. How it works: `docs/CODE-EXPLANATION.md`. First three synthetic evaluation cases with answer keys (T7) are in review on `feature/t7-synthetic-cases`. The full plan, slides and Excel draft are in `docs/planning/`; the learning guide is online at https://tonni19.github.io/shetu/.
+**The backend skeleton (T1)** is merged (PR #23): FastAPI and SQLite, seeded synthetic accounts, sign-in with a signed session cookie, `GET /api/me`, `GET /api/cases/{id}` with a server-side permission check (employee, manager and HR may read; a colleague gets 403), `GET /healthz`, and passing tests (28 in total: 16 for T1, 8 for Nazha's evidence rules R1 and R2 from PR #21, and 4 guard tests that keep the project layout consistent). CI runs them on every pull request. How to run it: `backend/README.md`. How it works: `docs/CODE-EXPLANATION.md`. No frontend, AI or rules code yet. The full plan, slides and Excel draft are in `docs/planning/`; the learning guide is online at https://tonni19.github.io/shetu/. First three synthetic evaluation cases with answer keys (T7) are in review in PR #24.
 
 ## In progress
 
-| Issue | What | Who | Branch |
+| Board row | What | Who | Where |
 |---|---|---|---|
-| T7 | First three synthetic cases with answer keys (`eval/cases/`) in English, Banglish, and Bangla | Nazha Tarannum Roza | `feature/t7-synthetic-cases` |
+
+| T3 | AI gateway with a replay adapter, first prompt, one Banglish fixture | Mahadi | PR #25, open (Issue #22) |
+| T7 | First three synthetic cases with answer keys in `eval/` | Nazha | PR #24, open |
+| T2 | Frontend skeleton: login screen and the case page | Tonni | not started on GitHub yet (no branch) |
+| T5 | Interview route (needs T3, which is not merged yet) | Maruf | not started |
+
 
 ## Next up
 
@@ -73,13 +78,15 @@ This list lags by one: the pull request that updates this file cannot list itsel
 | #18 | Plan for the 26 November progress presentation; decision 24 (ideas, not stacks, from Congress) | NazhaTarannum (commits by Ahmad Maruf Hossain) | SpicyFalcon619, approved by SpicyFalcon619 |
 | #19 | Project state after #18, wording tidy-ups | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19 |
 | #20 | Team board, shared contract, coordination rules, positioning answers; decisions 25 to 28 | NazhaTarannum (commits by Ahmad Maruf Hossain) | SpicyFalcon619, approved by SpicyFalcon619 |
+| #21 | Evidence rules R1 and R2, pytest and CI (T4) | NazhaTarannum | tonni19, approved by tonni19 |
+| #23 | Backend skeleton (T1), joined with T4, conflict guards and the new rules in `AGENTS.md`; decisions 29 | SpicyFalcon619 (commits by Ahmad Maruf Hossain) | tonni19, approved by tonni19 (earlier approvals were dismissed by GitHub because the merge-base changed; see the worklog) |
 
 ## Things every assistant should know right now
 
 - **Project layout.** Import the backend as `app...`, never `backend.app...`; tests run from the repo root or `backend/`; every source file has the standard header; check open pull requests before creating files. `AGENTS.md`: "Project layout and names" and "Avoiding conflicts". A guard test (`backend/tests/test_conventions.py`) and `.github/CODEOWNERS` back this up.
 - **Positioning (working answer, decision 28).** Shetu is role-continuity software, not a generic work manager: it manages a role through one absence and its return. Do not build task boards, time tracking, productivity scoring or auto-assignment (`AGENTS.md` rule 12). Wording is gender-neutral (rule 11). Details: `docs/planning/08-Positioning-and-Strategy.md`.
 - **Coordinate before you act.** Read `docs/TEAM-BOARD.md` and `docs/API-CONTRACT.md` at the start of every session, check on `origin/main` that the parts you depend on are really merged, and use labelled stubs (`STUB(T#)`) rather than guessing or building someone else's part. The rules are in `AGENTS.md`, section "Coordinate before you act".
-- Only the backend skeleton exists (T1). Do not assume any other file or function is there; check `origin/main` and `docs/TEAM-BOARD.md`.
+- Merged code: the backend skeleton (T1) and the evidence rules (T4). The gateway (T3), the synthetic cases (T7) and the frontend (T2) are not on `main` yet. Do not assume any other file or function is there; check `origin/main` and `docs/TEAM-BOARD.md`.
 - Voice input is a **stretch** feature (decision 16), not cut and not in the first version.
 - Speaker scripts exist for all ten slides (decision 22). **Tonni's parts (the elevator speech, slides 2 and 3) are exactly as she wrote them: never edit or "improve" them.** The scripts for slides 4 to 10 are drafts that Mahadi, Maruf and Nazha edit into their own words, so those may change.
 - The deck wording fixes 1 to 5 are applied (decision 19). The bank statistic is a net fall in the count, never "women who left".
