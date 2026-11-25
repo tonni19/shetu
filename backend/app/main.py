@@ -20,7 +20,7 @@ from starlette.middleware.sessions import SessionMiddleware
 from app import db as db_module
 from app.config import DEV_SECRET, settings
 from app.errors import register_error_handlers
-from app.routes import auth, cases, health
+from app.routes import auth, cases, health, interview
 
 log = logging.getLogger("shetu")
 
@@ -54,6 +54,7 @@ def create_app(database_url: str | None = None) -> FastAPI:
     app.include_router(health.router)
     app.include_router(auth.router)
     app.include_router(cases.router)
+    app.include_router(interview.router)
     return app
 
 

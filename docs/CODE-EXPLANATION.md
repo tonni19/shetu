@@ -235,3 +235,46 @@ All of it is ordinary code. The screens show what the backend sends. The AI's wo
 ### Known limits (on purpose, for now)
 - **No automated frontend tests yet.** Vitest is proposed in the Issue for T2. Selenium flows are planned (Nazha).
 - **The font:** the app asks for Plus Jakarta Sans and falls back to Segoe UI when it is not installed. Shipping the font file with the app is a possible follow-up.
+
+---
+
+## The interview route (board row T5, owner: Maruf)
+
+Added 2026-11-26. Code: `backend/app/routes/interview.py`. Tests: `backend/tests/test_interview.py` (20). This is where the three parts meet: **Mahadi's AI gateway proposes, Nazha's rules check, and the employee decides.**
+
+### What it does
+Two routes, both only for the employee of the case:
+- `POST /api/cases/{id}/interview/reply`: the browser sends the conversation so far. The route returns the next question and the Role Map (every duty of the case, each with its evidence).
+- `PATCH /api/cases/{id}/duties/{duty_id}`: the employee confirms or dismisses one duty. Each decision writes one audit event.
+
+### How one reply travels
+1. **Who is asking?** `current_user` reads the signed cookie. The route then checks the user is *the employee of this case*. A manager, HR or a colleague gets **403**, even though they may read the case.
+2. **The job description.** The route loads the case's numbered job description lines from the database (`jd-1`, `jd-2`, ...).
+3. **The AI proposes.** It calls `gateway.extract_duties(turns, lines)`. The gateway validates the answer's shape and returns *drafts*, or raises `GatewayError`. Today this is a recorded **replay**, so the response says `mode: "replay"`.
+4. **Rule R1 checks.** For every duty marked "said", `check_quote` asks: are these exact words in something the *employee* typed? If not, the duty is not trusted: it becomes "suggested" (a question) and its title goes into `downgraded`.
+5. **Saved as pending.** New duties are stored with `confirmation: "pending"`. A duty with the same title is not stored twice. A duty the employee already confirmed or dismissed is never changed or brought back. The raw interview text is **not stored**: only the verified quote, inside its duty.
+6. **Rule R2 counts.** `counts_as_fact` decides which duties count as facts. A "suggested" duty only counts after the employee confirms it. The response carries `fact_count`.
+7. **The employee decides.** Confirming a duty sets `confirmation: "confirmed"` and writes an `AuditEvent` (who, what, when). Nothing becomes a fact on its own.
+
+### AI or ordinary code?
+Only step 3 is AI (and today even that is a recording). Steps 1, 2, 4, 5, 6 and 7 are ordinary code. That is the whole product idea: **AI proposes, rules check, people decide.**
+
+### Why it is built this way (questions an instructor may ask)
+- *Why not trust the model's quote?* A model can invent a quote. R1 checks it against the employee's real words, and a failure downgrades the duty instead of hiding it, so nothing silently disappears and nothing false is trusted.
+- *Why doesn't the route store the conversation?* It is sensitive and not needed: only the evidence behind each duty is kept (privacy by design).
+- *Why can a manager not answer for the employee?* The Role Map is the employee's own account of their job, and nothing counts until they confirm it.
+- *Why a 502 and not a 200 when the AI fails?* The caller must know no valid answer exists. The error says our own sentence, never the model's text.
+- *Why "replay"?* No hosted model is chosen yet. A recorded answer makes tests and demos repeatable, and the label stops it from being shown as live.
+- *How do you know it works?* 20 tests, and each rule was proved by breaking the code on purpose: removing R1, the employee check, the audit event or the de-duplication each made tests fail.
+
+### Words to know
+- **Draft duty:** what the model returns: a title, an evidence type, a quote or a source line. It is not yet a duty of the case.
+- **Downgrade:** a "said" duty with a failed quote becomes "suggested" (a question).
+- **Audit event:** a permanent record of one human decision. It never holds interview text.
+
+### Known limits (on purpose, for now)
+- Replay only: one recorded answer. A live model comes when the provider is chosen.
+- Each call re-reads the whole conversation; there is no "retry once" on a bad AI answer yet (the gateway's TODO).
+- The manager still sees every duty; showing only confirmed duties comes with the manager screen.
+- Cover assignments and the full audit log come later.
+

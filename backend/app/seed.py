@@ -15,9 +15,10 @@
 
 from datetime import date
 
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models import Case, Duty, User
+from app.models import Case, Duty, JobDescriptionLine, User
 from app.security import hash_password
 
 DEMO_PASSWORD = "shetu-demo"
@@ -55,6 +56,16 @@ DUTIES = [
 ]
 
 
+# A short synthetic job description for each case: (line_id, text). The interview shows these lines to
+# the AI so it can cite one for a "documented" duty. jd-3 is the line the recorded Banglish reply cites.
+JD_LINES = [
+    ("jd-1", "Review and approve client loan applications within the branch limit."),
+    ("jd-2", "Attend the weekly credit committee and record its decisions."),
+    ("jd-3", "Prepare and submit the monthly portfolio report."),
+    ("jd-4", "Reconcile the quarter-end loan register with the ledger."),
+]
+
+
 def seed(db: Session) -> None:
     """Add the synthetic users, cases and duties that are not there yet, then commit."""
     for uid, name, role in USERS:
@@ -77,6 +88,10 @@ def seed(db: Session) -> None:
                     hours_per_week=hours,
                 )
             )
+    for cid, *_ in CASES:
+        if not db.scalars(select(JobDescriptionLine).where(JobDescriptionLine.case_id == cid)).first():
+            for position, (line_id, text) in enumerate(JD_LINES, start=1):
+                db.add(JobDescriptionLine(case_id=cid, line_id=line_id, position=position, text=text))
     db.commit()
 
 

@@ -4,16 +4,17 @@
 # DEPENDS ON:  app/db.py (Base); docs/API-CONTRACT.md section 1 (the Case and Duty shapes)
 # USED BY:     app/routes/*, app/security.py, app/seed.py, tests; later the rules (Nazha, T4)
 #              and the interview route (Maruf, T5)
-# STATUS:      PARTIAL: User, Case and Duty exist (a Case can reach its employee and manager). Cover assignments and the audit log come later
+# STATUS:      PARTIAL: User, Case, Duty, JobDescriptionLine and AuditEvent exist. Cover assignments
+#              come later. Cover assignments and the audit log come later
 #              (T5 adds the audit event).
 # DATA:        Synthetic only. There is NO column for the reason for leave, and none may be added
 #              (AGENTS.md rule 5). No medical or family details anywhere.
 # AI NOTE:     Field names follow docs/API-CONTRACT.md exactly. Renaming one is a shared-interface
 #              change: follow "Changing a shared interface" in AGENTS.md.
 
-from datetime import date
+from datetime import date, datetime
 
-from sqlalchemy import Date, Float, ForeignKey, String, Text
+from sqlalchemy import Date, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
@@ -74,3 +75,37 @@ class Duty(Base):
     hours_per_week: Mapped[float | None] = mapped_column(Float, nullable=True)
 
     case: Mapped[Case] = relationship(back_populates="duties")
+
+
+class JobDescriptionLine(Base):
+    """One numbered line of a case's (synthetic) job description, so a duty can point at its source.
+
+    The AI gateway receives these lines with each interview answer; a "documented" duty must cite
+    one of their ids (`line_id`, for example "jd-3"), or the gateway rejects the reply.
+    """
+
+    __tablename__ = "job_description_lines"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    case_id: Mapped[str] = mapped_column(ForeignKey("cases.id"))
+    line_id: Mapped[str] = mapped_column(String(20))  # "jd-1", "jd-2", ... becomes Duty.source_line_id
+    position: Mapped[int] = mapped_column(Integer)  # order within the job description
+    text: Mapped[str] = mapped_column(Text)
+
+
+class AuditEvent(Base):
+    """A permanent record of one human decision: who did what to which duty, and when.
+
+    Only decisions are recorded here (confirm or dismiss). It never holds interview text, and there
+    is no reason-for-leave field (AGENTS.md rule 5). The full audit log and the HR view come later.
+    """
+
+    __tablename__ = "audit_events"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    case_id: Mapped[str] = mapped_column(ForeignKey("cases.id"))
+    actor_id: Mapped[str] = mapped_column(ForeignKey("users.id"))
+    action: Mapped[str] = mapped_column(String(30))  # "duty_confirmed" | "duty_dismissed"
+    duty_id: Mapped[str | None] = mapped_column(ForeignKey("duties.id"), nullable=True)
+    at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
