@@ -13,6 +13,7 @@ Conventions: JSON field names are `snake_case`. Dates are ISO `YYYY-MM-DD`, rang
 |---|---|---|
 | `id` | string | |
 | `employee_id`, `manager_id` | string | user IDs |
+| `employee_name`, `manager_name` | string | display names, read from the users table (added 2026-11-25 at the request of Issue #28) |
 | `leave_start`, `leave_end` | date | inclusive; no reason field |
 | `stage` | `"map"` \| `"hold"` \| `"fit"` | only `"map"` is used first |
 
@@ -41,7 +42,8 @@ Rule: a `suggested` duty never counts as a fact until `confirmation` is `"confir
 | Sign out | `POST /api/logout` (204) | anyone |
 | Who am I | `GET /api/me` returns `{"id", "name", "role"}`, or 401 | a signed-in user |
 | Health | `GET /healthz` returns `{"status": "ok", "database": "ok"}` | anyone |
-| Read a case | `GET /api/cases/{case_id}` returns the Case with a `duties` list | the employee, the manager, HR. A cover colleague gets **403** until cover assignments exist (then: only their own assignments). Anyone else gets **403** |
+| List my cases | `GET /api/cases` returns a list of case summaries (the Case fields without `duties`), only the cases this user may read: the employee's own, the manager's, every case for HR, and an empty list for a cover colleague (added 2026-11-25) | a signed-in user |
+| Read a case | `GET /api/cases/{case_id}` returns the Case, including `employee_name` and `manager_name`, with a `duties` list | the employee, the manager, HR. A cover colleague gets **403** until cover assignments exist (then: only their own assignments). Anyone else gets **403** |
 | Answer the interview | `POST /api/cases/{case_id}/interview/reply` with `{"turns": [{"role": "assistant"\|"employee", "text": "..."}]}`. Returns `{"next_question": "...", "duties": [Duty]}`. Quotes are checked against `employee` turns only; raw turns are **not** stored | the employee of that case |
 | Confirm or dismiss a duty | `PATCH /api/cases/{case_id}/duties/{duty_id}` with `{"decision": "confirm"\|"dismiss"}`. Writes one audit event | the employee of that case |
 

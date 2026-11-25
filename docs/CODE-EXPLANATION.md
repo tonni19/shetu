@@ -56,6 +56,12 @@ All of it is ordinary code. The AI gateway (Mahadi, T3) and the rules (Nazha, T4
 - *Why `hours_per_week` can be empty?* Unknown stays unknown until a person fills it in; the AI never guesses it.
 - *How do you know it works?* `python -m pytest`: 16 tests, including 401, 403 and 404 cases, each on a fresh database.
 
+### Update 2026-11-25: names and the case list
+Tonni's frontend (Issue #28) asked for two things, so a screen can show people and not just ids:
+- **Display names.** `Case` now has two *relationships* (`employee` and `manager`) that point at the `User` table, and `GET /api/cases/{id}` returns `employee_name` and `manager_name`. Only the name leaves the server, never the role or the password hash. A `Case` has two links to `users`, so each relationship says which column it follows (`foreign_keys=[employee_id]`).
+- **`GET /api/cases`.** Returns the cases the signed-in user may read. It uses the **same** `can_read_case` function as reading one case, so the list can never show a case the user cannot open (a test checks this). A cover colleague gets an empty list, not an error, because "nothing to show" is not a mistake.
+- **Shape.** `CaseSummaryOut` is the row (names, dates, stage). `CaseOut` is the summary plus the duties.
+
 ### Known limits (on purpose, for now)
 - Cover colleagues cannot read any case yet; they will see their own assignments once assignments exist.
 - The manager sees every duty; after the interview exists, the manager should see confirmed duties only.
