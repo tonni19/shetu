@@ -44,7 +44,7 @@ Core rule of the product: **AI proposes, rules check, people decide.**
 | Part | Technology |
 |---|---|
 | Backend | Python, FastAPI, SQLAlchemy, SQLite, Pydantic |
-| Frontend | React with Vite, plain components, `fetch`, React Router |
+| Frontend | React with Vite and TypeScript, plain components, `fetch`, React Router (version 8: import from `react-router`, there is no `react-router-dom`) |
 | Tests | pytest (backend), Selenium (user flows), a replay adapter so tests never call a real model |
 | Not used | Redux, Next.js, LangChain, agent frameworks, vector databases, microservices. Do not add them |
 
@@ -52,13 +52,13 @@ Do not add a dependency without the team agreeing in an Issue.
 
 ## Folder map
 
-> Keep this current. `backend/` exists (skeleton, T1). `frontend/` and `eval/` do not exist yet.
+> Keep this current. `backend/` exists (skeleton, T1). `frontend/` exists (skeleton, T2). `eval/` does not exist yet.
 
 ```
 AGENTS.md            this file (CLAUDE.md, GEMINI.md and .github/copilot-instructions.md point here)
 AI-USAGE.md          where AI tools were used
 backend/             FastAPI app (skeleton exists: sign-in, cases, health), rules, AI gateway, tests
-frontend/            React app (planned)
+frontend/            React + TypeScript app (skeleton exists: sign-in, case page); see frontend/README.md
 eval/                synthetic scenarios and evaluation scripts (planned)
 docs/
   PROJECT-STATE.md   current state; update in every pull request
@@ -85,7 +85,13 @@ python -m pytest -q             # every test uses its own temporary database
 
 Demo accounts are in `backend/README.md` (password `shetu-demo`, all synthetic).
 
-**Frontend:** not created yet (T2).
+**Frontend** (from `frontend/`, Node.js 22.22 or newer; start the backend first; details in `frontend/README.md`):
+
+```bash
+npm install                     # once, and whenever package.json changes
+npm run dev                     # http://localhost:5173 , proxies /api to the backend
+npm run typecheck               # TypeScript checks the code against the API shapes
+```
 
 ## How we work
 

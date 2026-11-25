@@ -26,7 +26,7 @@ Last updated: 2026-11-24, after pull requests #2 to #23: the backend skeleton (T
 |---|---|---|---|
 | T3 | AI gateway with a replay adapter, first prompt, one Banglish fixture | Mahadi | PR #25, open (Issue #22) |
 | T7 | First three synthetic cases with answer keys in `eval/` | Nazha | PR #24, open |
-| T2 | Frontend skeleton: login screen and the case page | Tonni | not started on GitHub yet (no branch) |
+| T2 | Frontend skeleton: login screen and the case page (React, Vite, TypeScript), built against the real T1 API | Tonni | branch `feature/ISSUE-frontend-skeleton`; pull request not opened yet |
 | T5 | Interview route (needs T3, which is not merged yet) | Maruf | not started |
 
 ## Next up

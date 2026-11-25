@@ -1,0 +1,24 @@
+<!--
+FILE:        frontend/index.html
+PURPOSE:     The single HTML page the browser loads. React draws every screen inside <div id="root">.
+OWNER:       Tonni (board row T2)
+DEPENDS ON:  src/main.tsx (Vite injects the compiled script here)
+USED BY:     Vite's dev server (`npm run dev`) and the production build (`npm run build`)
+STATUS:      REAL
+DATA:        No data lives here.
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shetu keeps a role intact through a planned leave. Synthetic demo data only." />
+    <meta name="theme-color" content="#F8F4EC" />
+    <link rel="icon" type="image/svg+xml" href="/shetu-mark.svg" />
+    <title>Shetu</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
