@@ -1,0 +1,33 @@
+// FILE:        frontend/tsconfig.json
+// PURPOSE:     Settings for the TypeScript checker (`npm run typecheck`). It reads our code and
+//              reports type mistakes; it does not produce files (Vite does the building).
+// OWNER:       Tonni (board row T2)
+// DEPENDS ON:  typescript (version pinned in package.json)
+// USED BY:     `npm run typecheck`, `npm run build`, the editor (VS Code)
+// STATUS:      REAL
+// AI NOTE:     "strict" plus "noUncheckedIndexedAccess" are on purpose: they force the code to
+//              handle null and missing values, which matters here because the API uses null for
+//              "unknown" (for example hours_per_week). Do not turn them off to silence an error;
+//              handle the null instead.
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "types": ["vite/client"],
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": ["src", "vite.config.ts"]
+}
