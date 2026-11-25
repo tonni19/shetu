@@ -132,6 +132,10 @@ Four people build different parts at the same time, each with an AI assistant, a
 ### At the start of every session
 
 1. `git fetch`. If your branch or `main` is behind `origin/main`, update it first.
+   **After you pull new code from `main`, refresh your local setup before you run anything** (a new table, route or package may need it; the member should not have to remember):
+   - In `backend/` (virtual environment active): `pip install -r requirements-dev.txt`, then **`python -m app.seed`**. The seed only adds what is missing, so it is safe to repeat. Without it, an older `shetu.db` lacks new demo data and a route may answer an error (for example `502 unknown_source_line` on the interview route when the job description lines are missing).
+   - In `frontend/`: `npm install`.
+   - Then run the tests (`python -m pytest -q` from the repository root) and tell the member the result. If the team board's Handoff log asks for anything else after a change, do that too.
 2. Read `docs/PROJECT-STATE.md`, `docs/TEAM-BOARD.md`, `docs/API-CONTRACT.md` and your Issue. Look at open pull requests (`gh pr list`) to see what others are changing right now.
    **Read what is addressed to your member.** On `docs/TEAM-BOARD.md`, read the table "Requests waiting for a person" and every Handoff log row whose "To" is your member (or "everyone"), and tell the member what is waiting for them, in plain words, before you start. If you have GitHub access (`gh`), also read the comments on your member's open pull requests and Issues (`gh pr list --author @me`, then `gh pr view <number> --comments`). If you cannot reach GitHub, say so, and ask the member to paste any review comments they received. Never assume there is nothing waiting.
 3. **Dependency check.** For the task you were given, list what it needs from other people (the **Needs** column of your board row). For each one, check it on `origin/main`: is the file, route or function really there, and do its tests pass? The board can be out of date; merged code is the truth.

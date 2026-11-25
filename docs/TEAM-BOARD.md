@@ -76,6 +76,7 @@ Things another person needs from you, in one place every AI assistant reads at t
 
 | Since | For | From | What is needed | Where |
 |---|---|---|---|---|
+| 2026-11-26 | everyone | Maruf | **After you pull `main` (PR #32, the interview route):** in `backend/` run `pip install -r requirements-dev.txt` and **`python -m app.seed`** (safe to repeat; an older `shetu.db` has no job description lines, so the interview route answers `502 unknown_source_line`), and in `frontend/` run `npm install`. Then `python -m pytest -q` from the repo root should show 80 passed. Delete this row once you have done it, and add a Handoff line saying so. | PR #32 |
 
 ## Handoff log
 
