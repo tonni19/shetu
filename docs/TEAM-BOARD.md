@@ -52,7 +52,7 @@ Target: the 10 to 15% progress presentation on **Thursday 26 November 2026**. ID
 | T4 | Rules R1 (quote check) and R2 (confirmation) as plain functions with tests; pytest set-up and a CI workflow | Nazha | Done (merged, PR #21) | the Duty shape in the contract | `check_quote(...)`, `counts_as_fact(...)` / `can_count(...)`, pytest & CI in `backend/app/rules/evidence.py` | branch `feature/t4-evidence-rules` |
 | T5 | Interview route: employee reply goes through the gateway, the rules, then SQLite; one audit event on confirm | Maruf | Not started | T1, T3, T4 | `POST /api/cases/{id}/interview/reply` | |
 | T6 | Frontend interview screen: reply box, duties with evidence labels, confirm and dismiss | Tonni | Not started | T2, T5 (stub until merged) | The employee MAP screen | |
-| T7 | First three synthetic cases with answer keys | Nazha | Not started | nothing | `eval/` cases the gateway fixture and tests can use | |
+| T7 | First three synthetic cases with answer keys | Nazha | In review | nothing | `eval/cases/` (English, Banglish, Bangla) + `eval/loader.py` & tests | branch `feature/t7-synthetic-cases` |
 
 When a row needs more than the Thursday scope, add it below with the next free ID.
 
@@ -89,11 +89,12 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 | 2026-11-23 | Maruf | everyone | All four members accepted their areas; the owners on this board are confirmed. The contract is agreed, as accepted by Maruf for the team. Each owner should still read their part and raise a problem early. |
 | 2026-11-23 | Maruf | Tonni | T1 is built: sign-in, `GET /api/me`, `GET /api/cases/{id}`, demo accounts. Use the Vite proxy from `backend/README.md` so the session cookie works. Added `POST /api/logout` and `GET /api/me` to the contract. |
 | 2026-11-23 | Maruf | Mahadi, Nazha | The Duty table is in `backend/app/models.py` with the contract's field names; build `extract_duties` and the rules against those names. |
-| 2026-11-24 | Nazha | Maruf, Mahadi | T4 (`check_quote`, `counts_as_fact` / `can_count`, pytest, and CI) implemented and tested in `feature/t4-evidence-rules` (ready for review). |
+| 2026-11-24 | Nazha | Maruf, Mahadi | T4 (`check_quote`, `counts_as_fact` / `can_count`, pytest, and CI) implemented and tested in `feature/t4-evidence-rules` (merged in PR #21). |
 | 2026-11-24 | Maruf | Nazha | Reviewed T4: good. T1 and T4 now meet in one branch: the backend is imported as `app...` (not `backend.app...`), `pytest.ini` has `pythonpath = backend`, and `backend/__init__.py` is gone. All 28 tests pass from the repo root and from `backend/`. Please keep that name in new code. Suggestions for `check_quote`: ignore case, and require a minimum quote length. Your `CODE-EXPLANATION.md` section can go in `docs/CODE-EXPLANATION.md` (it arrives with T1). |
 | 2026-11-24 | Maruf | everyone | New guards against conflicts: `.gitattributes` (LF endings; AI-USAGE.md and DECISIONS.md keep both sides' rows), `.github/CODEOWNERS`, `backend/tests/test_conventions.py` (import name, header, no reason field), CI runs once per pull request. Rules: `AGENTS.md`, "Project layout and names" and "Avoiding conflicts". |
 | 2026-11-24 | Maruf | everyone | T1 and T4 are merged to `main` (PRs #23 and #21). Pull `main`. Backend: run it from `backend/` (see `backend/README.md`), import as `app...`. Tonni: T2 can start against the real API now. Mahadi: T5 will call your `extract_duties` once #25 is merged. |
 | 2026-11-24 | Maruf | Mahadi, Nazha | Reviewed PRs #25 and #24; comments posted on both, and the requests are in "Requests waiting for a person". Mahadi and Nazha must agree the job description line format and how to label a job description duty the employee never mentioned. I (Maruf) acknowledged the T3 contract change on #25. |
+| 2026-11-24 | Nazha | Mahadi, Maruf | T7 first three synthetic cases with answer keys (`eval/cases/`, English/Banglish/Bangla) updated to `id: jd-1` format and strict 3-way evidence partitioning (`said` / `documented` / `suggested`) in `feature/t7-synthetic-cases`. |
 
 ## Known conflicts and open questions
 
