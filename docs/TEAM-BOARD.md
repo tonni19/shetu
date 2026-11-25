@@ -52,7 +52,7 @@ Target: the 10 to 15% progress presentation on **Thursday 26 November 2026**. ID
 | T4 | Rules R1 (quote check) and R2 (confirmation) as plain functions with tests; pytest set-up and a CI workflow | Nazha | Done (merged, PR #21) | the Duty shape in the contract | `check_quote(...)`, `counts_as_fact(...)` / `can_count(...)`, pytest & CI in `backend/app/rules/evidence.py` | branch `feature/t4-evidence-rules` |
 | T5 | Interview route: employee reply goes through the gateway, the rules, then SQLite; one audit event on confirm | Maruf | Not started | T1, T3, T4 | `POST /api/cases/{id}/interview/reply` | |
 | T6 | Frontend interview screen: reply box, duties with evidence labels, confirm and dismiss | Tonni | Not started | T2, T5 (stub until merged) | The employee MAP screen | |
-| T7 | First three synthetic cases with answer keys | Nazha | In review | nothing | `eval/cases/` (English, Banglish, Bangla) + `eval/loader.py` & tests | branch `feature/t7-synthetic-cases` |
+| T7 | First three synthetic cases with answer keys | Nazha | Done (merged, PR #24) | nothing | `eval/cases/` (English, Banglish, Bangla) + `eval/loader.py` & tests | branch `feature/t7-synthetic-cases` |
 
 When a row needs more than the Thursday scope, add it below with the next free ID.
 
@@ -77,8 +77,6 @@ Things another person needs from you, in one place every AI assistant reads at t
 | Since | For | From | What is needed | Where |
 |---|---|---|---|---|
 | 2026-11-24 | Mahadi | Maruf | **PR #25 (T3):** (1) change `from backend.app...` to `from app...` in the 5 files that use it (since PR #23 the backend is imported as `app`; a guard test fails otherwise); (2) merge `origin/main` into your branch and fix the conflicts: keep main's `backend/requirements-dev.txt` (it already includes pydantic), combine the two `docs/CODE-EXPLANATION.md` sections (both of us created the file), and keep both sides' rows in the board and state files; (3) run `python -m pytest` from the repo root. Your code and tests are otherwise good. | PR #25 |
-| 2026-11-24 | Nazha | Maruf | **PR #24 (T7):** (1) merge `origin/main` into your branch and fix the conflicts (keep your `pytest.ini`; keep both sides' rows in the board and state files); (2) agree one job description line format with Mahadi: your cases use `line_id` and `JD-01`, his gateway uses `id` and `jd-3`; I suggest `id` with lowercase `jd-1`; (3) decide with Mahadi how to label a job description duty the employee never mentioned: your case 2 has a "documented" duty with a quote and a "suggested" duty with a source line, which his schema forbids (documented = source line, no quote; suggested = neither); (4) fix the stale PR text and the `backend.app` wording in the `eval/test_eval_cases.py` header. | PR #24 |
-| 2026-11-25 | Maruf | Tonni | **Two contract gaps found while building T2 (no rush, not needed for Sunday):** (1) the case has only `employee_id` and `manager_id`, so the manager and HR see ids such as `u-sabbir` instead of names; would you add display names to `GET /api/cases/{id}` (for example `employee_name`, `manager_name`)? (2) there is no route that lists the cases a user may read, so the app opens a fixed demo case after sign-in (`frontend/src/demoAccounts.ts`, `firstCaseFor`); would you add `GET /api/cases` returning the readable cases? Either needs a contract change by the protocol in `AGENTS.md`. | Issue #28 |
 
 ## Handoff log
 
@@ -96,7 +94,10 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 | 2026-11-24 | Maruf | everyone | T1 and T4 are merged to `main` (PRs #23 and #21). Pull `main`. Backend: run it from `backend/` (see `backend/README.md`), import as `app...`. Tonni: T2 can start against the real API now. Mahadi: T5 will call your `extract_duties` once #25 is merged. |
 | 2026-11-24 | Maruf | Mahadi, Nazha | Reviewed PRs #25 and #24; comments posted on both, and the requests are in "Requests waiting for a person". Mahadi and Nazha must agree the job description line format and how to label a job description duty the employee never mentioned. I (Maruf) acknowledged the T3 contract change on #25. |
 | 2026-11-24 | Nazha | Mahadi, Maruf | T7 first three synthetic cases with answer keys (`eval/cases/`, English/Banglish/Bangla) updated to `id: jd-1` format and strict 3-way evidence partitioning (`said` / `documented` / `suggested`) in `feature/t7-synthetic-cases`. |
-| 2026-11-25 | Tonni | Maruf, Nazha | T2 frontend skeleton built against the real T1 API (React, Vite, TypeScript, React Router 8). Maruf: two contract questions in "Requests waiting for a person". Nazha: the screens have `data-testid` hooks for Selenium (`demo-u-nusrat`, `sign-in-submit`, `case-page`, `case-forbidden`, `duty-<id>`, `sign-out`); see `frontend/README.md`. |
+| 2026-11-25 | Tonni | Maruf, Nazha | T2 frontend skeleton built against the real T1 API (React, Vite, TypeScript, React Router 8). Maruf: I asked for case names and a case list on Issue #28. Nazha: the screens have `data-testid` hooks for Selenium (`demo-u-nusrat`, `sign-in-submit`, `case-page`, `case-forbidden`, `duty-<id>`, `sign-out`); see `frontend/README.md`. |
+| 2026-11-25 | Maruf | Tonni | Added what your Issue #28 asked for: `employee_name` and `manager_name` on a case, and `GET /api/cases` (the cases the signed-in user may read; a colleague gets an empty list). Contract and `backend/README.md` updated. Switch the page to the list and the names once it is merged. TypeScript is approved (comment on #28). |
+| 2026-11-25 | Maruf | Nazha | PRs #24 and #27 are merged. T7 is Done; I removed your request row, which is finished. Thank you for the quick fixes. |
+| 2026-11-26 | Tonni | Maruf | Done: my request for case names and a case list (#29). The app now opens the list from `GET /api/cases` after sign-in and shows `employee_name` and `manager_name`. Thank you. |
 
 ## Known conflicts and open questions
 
