@@ -124,6 +124,14 @@ The interview route (Maruf, T5) is planned to run R1 on each duty the AI extract
 
 ---
 
+## Synthetic evaluation cases (board row T7, owner: Nazha)
+
+- **Where:** `eval/cases/` (`case_01_english_branch_ops.json`, `case_02_banglish_it_support.json`, `case_03_bangla_accounts.json`), `eval/loader.py`, and `eval/test_eval_cases.py`.
+- **What they test:** Three synthetic MAP interviews—one in English (Gulshan branch operations), one in Banglish (IT support), and one in Bangla (accounts payable)—with numbered job description lines (`id: "jd-1"`, etc.), interview turns, and labeled answer keys.
+- **Contract and evidence checks:** `eval/test_eval_cases.py` loads every case via `eval.loader.load_all_cases()` and checks that `case` and `duty` match `docs/API-CONTRACT.md` (`hours_per_week` is `null`, no `leave_reason` field), that `said` duties carry a verified employee `quote` (R1) with `source_line_id: null`, that `documented` duties carry a valid JD `source_line_id` with `quote: null`, that `suggested` duties carry neither, and that `counts_as_fact` (R2) matches `expected_fact_ids`.
+
+---
+
 ## Guards that keep the project consistent (Maruf)
 
 `backend/tests/test_conventions.py` runs with every test run and in CI. It fails if: a file imports `backend...` instead of `app...`; `backend/__init__.py` exists; a source file lacks the standard header; or a model or schema gains a reason-for-leave style field. `.gitattributes` and `.github/CODEOWNERS` do the same job for line endings, shared logs and review ownership. The rules are in `AGENTS.md`.
