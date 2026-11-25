@@ -4,7 +4,7 @@
 # DEPENDS ON:  app/db.py (Base); docs/API-CONTRACT.md section 1 (the Case and Duty shapes)
 # USED BY:     app/routes/*, app/security.py, app/seed.py, tests; later the rules (Nazha, T4)
 #              and the interview route (Maruf, T5)
-# STATUS:      PARTIAL: User, Case and Duty exist. Cover assignments and the audit log come later
+# STATUS:      PARTIAL: User, Case and Duty exist (a Case can reach its employee and manager). Cover assignments and the audit log come later
 #              (T5 adds the audit event).
 # DATA:        Synthetic only. There is NO column for the reason for leave, and none may be added
 #              (AGENTS.md rule 5). No medical or family details anywhere.
@@ -47,6 +47,10 @@ class Case(Base):
     stage: Mapped[str] = mapped_column(String(10), default="map")  # "map" | "hold" | "fit"
 
     duties: Mapped[list["Duty"]] = relationship(back_populates="case", order_by="Duty.id")
+    # The two people, so a screen can show a name instead of an id. `foreign_keys` says which column
+    # each one follows, because a Case has two links to the users table.
+    employee: Mapped["User"] = relationship(foreign_keys=[employee_id])
+    manager: Mapped["User"] = relationship(foreign_keys=[manager_id])
 
 
 class Duty(Base):

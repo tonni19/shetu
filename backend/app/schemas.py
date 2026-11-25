@@ -47,17 +47,25 @@ class DutyOut(BaseModel):
     hours_per_week: float | None
 
 
-class CaseOut(BaseModel):
-    """CONTRACT: docs/API-CONTRACT.md, "Case", plus the duties the caller is allowed to see."""
+class CaseSummaryOut(BaseModel):
+    """One row of the case list (GET /api/cases). CONTRACT: docs/API-CONTRACT.md, "List my cases".
 
-    model_config = ConfigDict(from_attributes=True)
+    Only the names and dates a list screen needs. It has no duties; the full case has them.
+    """
 
     id: str
     employee_id: str
+    employee_name: str
     manager_id: str
+    manager_name: str
     leave_start: date
     leave_end: date
     stage: Literal["map", "hold", "fit"]
+
+
+class CaseOut(CaseSummaryOut):
+    """CONTRACT: docs/API-CONTRACT.md, "Case": the summary plus the duties the caller may see."""
+
     duties: list[DutyOut]
 
 

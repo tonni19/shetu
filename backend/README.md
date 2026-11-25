@@ -47,7 +47,8 @@ All passwords are `shetu-demo`. Nobody here is a real person.
 | `POST /api/login` | body `{"user_id": "...", "password": "..."}`; sets the session cookie; returns the user |
 | `POST /api/logout` | clears the session |
 | `GET /api/me` | the signed-in user, or 401 |
-| `GET /api/cases/{case_id}` | the case and its duties; 401 if signed out, 403 if not allowed, 404 if unknown |
+| `GET /api/cases` | the cases you may read (each with `employee_name` and `manager_name`, no duties); an empty list if none |
+| `GET /api/cases/{case_id}` | the case, its two names and its duties; 401 if signed out, 403 if not allowed, 404 if unknown |
 
 Errors always look like `{"code": "forbidden", "detail": "You are not allowed to see this case."}`.
 
