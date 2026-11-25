@@ -66,13 +66,61 @@ All of it is ordinary code. The AI gateway (Mahadi, T3) and the rules (Nazha, T4
 
 ## Evidence rules R1 and R2 (board row T4, owner: Nazha)
 
-Written by Nazha (PR #21); the explanation below is a short summary by Maruf. Nazha: please add your own words and any examples you want to show the instructor.
+Added 2026-11-24. Code: `backend/app/rules/evidence.py`. Tests: `backend/tests/test_evidence.py`.
 
-- **Where:** `backend/app/rules/evidence.py`. Tests: `backend/tests/test_evidence.py`.
-- **R1, `check_quote(quote, employee_turns)`:** true only if the quote really appears in something the *employee* said. It first normalises Unicode (NFC) and collapses extra spaces, so the same Bangla word written two different ways still matches.
-- **R2, `counts_as_fact(duty)`:** a duty that was only *suggested* counts as a fact only after a person confirms it; a dismissed duty never counts. Also available as `can_count`.
-- **Plain Python, no AI:** the model never decides these. They have no database or web imports, so they are easy to test.
-- **Used by:** the interview route (Maruf, T5), which will call R1 on each duty the AI extracts and downgrade a "said" duty whose quote fails the check to "suggested".
+### Why these rules exist
+Shetu builds a Role Map from what an employee says in an interview. An AI model drafts the duties, and a model can invent things, including a "quote" the employee never said. A Role Map is only useful if the manager can trust it. So two small rules, written as ordinary code, sit between the AI and the map. The AI proposes, the rules check, and a person confirms.
+
+### R1: `check_quote(quote, employee_turns)`
+**Question it answers:** did the employee really say this?
+
+It returns `True` only if the quote appears inside at least one reply the employee typed.
+
+How it works:
+1. It rejects an empty or whitespace-only quote, and an empty list of turns.
+2. It normalises both the quote and each reply. Unicode is converted to NFC, and runs of spaces, tabs and line breaks are collapsed to one space.
+3. It checks whether the normalised quote is inside any normalised reply.
+
+**Why only `employee` turns?** The assistant's own questions and the job description also contain words. If they were allowed, the AI could "prove" a quote by pointing at its own text. Evidence has to come from the person.
+
+**Why normalise?** Bangla text can be stored in two ways: one composed character, or a base character plus a mark (NFC and NFD). They look identical but are different strings, so a plain comparison would wrongly fail. The test `test_check_quote_normalizes_bangla_unicode_nfc_vs_nfd` proves the fix. Typing with extra spaces, as in Banglish replies, is handled the same way.
+
+**Example:**
+- Employee said: `Protidin   shokal 10tay inventory sheet update kori.`
+- Quote `inventory sheet update kori` → `True`
+- Quote `monthly tax audit` → `False` (never said, so it is rejected)
+
+### R2: `counts_as_fact(duty)` (also exported as `can_count`)
+**Question it answers:** may this duty be treated as a fact on the Role Map?
+
+| Duty | Counts as fact? |
+|---|---|
+| `dismissed` (any type) | No, never |
+| `suggested` and `pending` | No |
+| `suggested` and `confirmed` | Yes, only after a person confirms |
+| `said` or `documented`, not dismissed | Yes |
+| missing or unknown `evidence_type` | No |
+
+**Why?** A `suggested` duty is only the AI's hypothesis. It becomes a fact when a person confirms it. The duty keeps its original `evidence_type` ("suggested"), so the map stays honest about where it came from. It takes either a dict or an object.
+
+### Which parts are AI and which are ordinary code
+Both rules are ordinary Python with no AI, database or web imports. The model never decides them, and that is why they are easy to test (8 unit tests, in CI).
+
+### Where they are used
+The interview route (Maruf, T5) is planned to run R1 on each duty the AI extracts, and to use R2 whenever it counts duties as facts. Handling a `said` duty whose quote fails R1 is still to be agreed and is not in the API contract yet.
+
+### What an instructor might ask
+- *Why check quotes in code and not ask the AI to be careful?* A prompt is a request and a rule is a guarantee. The check runs every time, and a model can ignore a request.
+- *Why only the employee's words?* So the AI can't use its own text as proof.
+- *What does NFC mean?* A standard form for Unicode text, so the same Bangla word written two ways compares as equal.
+- *Can an AI-suggested duty become a fact?* Yes, but only after a person confirms it.
+- *How do you know it works?* `python -m pytest`: exact match, a made-up quote, empty input, Bangla NFC/NFD, Banglish with extra spaces, and every R2 case.
+
+### Known limits (on purpose, for now)
+- Matching is case-sensitive, so "tuesday" does not match "Tuesday".
+- There is no minimum length, so a very short quote such as one word can match by accident.
+- It checks that text appears, not that it means the duty.
+- Planned: ignore case and add a minimum length, each with a test, agreed with Mahadi and Maruf first so the gateway fixtures still pass.
 
 ---
 
