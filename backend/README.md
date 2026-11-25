@@ -39,6 +39,15 @@ All passwords are `shetu-demo`. Nobody here is a real person.
 | `u-farhana` | Farhana Islam | hr | every case |
 | `u-tania`, `u-rafiq`, `u-imran` | cover colleagues | colleague | no case yet (403) |
 
+**To try the interview** (replay mode): sign in as `u-sabbir` (employee of `case-2`, who starts with an empty Role Map) and POST this to `/api/cases/case-2/interview/reply` from the interactive page at `/docs`:
+
+```json
+{"turns": [{"role": "assistant", "text": "Apnar sprotahik kaj ki ki?"},
+           {"role": "employee", "text": "Protiti Tuesday sondha 6 ta theke 7:30 porjonto credit pre-meeting hoy"}]}
+```
+
+The answer says `"mode": "replay"`: it is a recorded reply, not a live model, and must be called that in any demo.
+
 ## Routes so far
 
 | Route | What it does |
@@ -48,6 +57,8 @@ All passwords are `shetu-demo`. Nobody here is a real person.
 | `POST /api/logout` | clears the session |
 | `GET /api/me` | the signed-in user, or 401 |
 | `GET /api/cases` | the cases you may read (each with `employee_name` and `manager_name`, no duties); an empty list if none |
+| `POST /api/cases/{case_id}/interview/reply` | the employee's interview: send `{"turns": [...]}`, get the next question and the Role Map (every duty, with evidence); only the case's employee may call it |
+| `PATCH /api/cases/{case_id}/duties/{duty_id}` | the employee confirms or dismisses a duty (`{"decision": "confirm"\|"dismiss"}`); audited |
 | `GET /api/cases/{case_id}` | the case, its two names and its duties; 401 if signed out, 403 if not allowed, 404 if unknown |
 
 Errors always look like `{"code": "forbidden", "detail": "You are not allowed to see this case."}`.
@@ -71,3 +82,5 @@ Then call `fetch("/api/login", { method: "POST", headers: { "Content-Type": "app
 | `SHETU_CORS_ORIGINS` | `http://localhost:5173,http://127.0.0.1:5173` | browser origins allowed without the proxy |
 
 If you change a table in `app/models.py`, delete `shetu.db` and run `python -m app.seed` again (no migration tool yet).
+
+**After you pull new code, run `python -m app.seed` again.** It only adds what is missing, so it is safe. Without it, an older `shetu.db` has no job description lines, and the interview route answers `502 unknown_source_line`. (The server creates new tables by itself; the seed fills them.)

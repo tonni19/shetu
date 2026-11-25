@@ -12,7 +12,9 @@
 from datetime import date
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
+
+from app.ai.schemas import Turn
 
 
 class LoginRequest(BaseModel):
@@ -74,3 +76,31 @@ class ErrorOut(BaseModel):
 
     code: str
     detail: str
+
+
+class InterviewRequest(BaseModel):
+    """Body of POST /api/cases/{id}/interview/reply. CONTRACT: docs/API-CONTRACT.md.
+
+    The browser keeps the conversation and sends all of it each time. `Turn` is the gateway's own
+    shape (role "assistant" or "employee", plus text), so nothing is translated on the way in.
+    The limits stop an absurdly long request from reaching the model.
+    """
+
+    turns: list[Turn] = Field(min_length=1, max_length=60)
+
+
+class InterviewReplyOut(BaseModel):
+    """What the interview route returns. CONTRACT: docs/API-CONTRACT.md, "Answer the interview"."""
+
+    mode: Literal["replay", "live"]  # set by the gateway, never by the model: a replay is never shown as live
+    next_question: str
+    duties: list[DutyOut]  # the Role Map as it stands: every duty of the case
+    downgraded: list[str]  # titles of "said" duties whose quote failed rule R1 (now shown as questions)
+    fact_count: int  # how many duties count as facts under rule R2
+
+
+class DecisionRequest(BaseModel):
+    """Body of PATCH /api/cases/{id}/duties/{duty_id}: the employee's decision on one duty."""
+
+    decision: Literal["confirm", "dismiss"]
+
