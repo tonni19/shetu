@@ -52,16 +52,17 @@ Do not add a dependency without the team agreeing in an Issue.
 
 ## Folder map
 
-> Keep this current. `backend/`, `frontend/` and `eval/` do not exist yet.
+> Keep this current. `backend/` exists (skeleton, T1). `frontend/` and `eval/` do not exist yet.
 
 ```
-AGENTS.md            this file (CLAUDE.md points here)
+AGENTS.md            this file (CLAUDE.md, GEMINI.md and .github/copilot-instructions.md point here)
 AI-USAGE.md          where AI tools were used
-backend/             FastAPI app, rules, AI gateway, tests (planned)
+backend/             FastAPI app (skeleton exists: sign-in, cases, health), rules, AI gateway, tests
 frontend/            React app (planned)
 eval/                synthetic scenarios and evaluation scripts (planned)
 docs/
   PROJECT-STATE.md   current state; update in every pull request
+  CODE-EXPLANATION.md  how each module works, in plain words; update with the module
   TEAM-BOARD.md      who is doing what, dependencies between parts, handoff log; update in every pull request
   API-CONTRACT.md    the shared data shapes, routes and function signatures; change only by the rules below
   DECISIONS.md       settled decisions
@@ -72,7 +73,19 @@ docs/
 
 ## How to run and test
 
-> Fill this in when the skeleton exists: exact commands for backend, frontend and tests.
+**Backend** (from `backend/`, Python 3.11 or newer; details in `backend/README.md`):
+
+```bash
+python -m venv .venv            # once; then activate it (.venv\Scripts\activate on Windows)
+pip install -r requirements-dev.txt
+python -m app.seed              # synthetic people and cases into backend/shetu.db
+uvicorn app.main:app --reload   # http://127.0.0.1:8000 , interactive docs at /docs
+python -m pytest -q             # every test uses its own temporary database
+```
+
+Demo accounts are in `backend/README.md` (password `shetu-demo`, all synthetic).
+
+**Frontend:** not created yet (T2).
 
 ## How we work
 
@@ -80,6 +93,31 @@ docs/
 - Small changes. Do only what the Issue asks. If you see something else to fix, say so; do not fix it silently.
 - Write the tests for the code you write.
 - Do not rewrite or reformat files you were not asked to change.
+
+## Project layout and names
+
+Everyone follows the same layout, so code written by four people and four AI assistants fits together. A guard test (`backend/tests/test_conventions.py`) checks the first three.
+
+- **The backend lives in `backend/` and is imported as `app`.** Run it from `backend/` with `uvicorn app.main:app`. In code, write `from app.rules.evidence import ...`, **never** `from backend.app...`. `backend/` has no `__init__.py`.
+- **Tests live in `backend/tests/`** and are run from the repository root or from `backend/` with `python -m pytest`. The root `pytest.ini` sets `testpaths` and `pythonpath = backend`, which is why both work. CI runs from the root.
+- **Every source file starts with the standard header** (see "Comments for the next AI").
+- **One module, one owner.** The area owners are on `docs/TEAM-BOARD.md` ("Who owns which files") and in `.github/CODEOWNERS`. Put new code in your own area; create a file in someone else's area only by agreement.
+- **Folders** (the owner creates a folder when they start): `backend/app/ai/` (Mahadi), `backend/app/rules/` (Nazha), `backend/app/routes/`, `models.py`, `security.py`, `db.py` (Maruf), `frontend/` (Tonni), `eval/` (Nazha).
+
+## Avoiding conflicts
+
+Most merge conflicts come from a few causes. These rules remove them.
+
+1. **Look before you create.** Before you add or rename a file, or change something shared, run `git fetch` and `gh pr list`, and `gh pr diff <number> --name-only` for the open pull requests. If another open pull request touches the same files, talk to its author first (a comment on it is enough).
+2. **Small, short-lived pull requests.** Merge within a day. A long-lived branch is the biggest source of conflicts. Do not pile one unmerged branch on another; if you must depend on an unmerged pull request, say "Depends on #N" at the top of yours.
+3. **Merge `origin/main` into your branch before you open the pull request, and again before you merge.** Run the tests after.
+4. **Shared files, and how to edit them.**
+   - *Append-only logs* (`AI-USAGE.md`, `docs/DECISIONS.md`): add your row at the **bottom**, change no one else's. Git keeps both sides' rows automatically (`.gitattributes`).
+   - *The worklog:* one new file per pull request; never edit someone else's.
+   - *`docs/PROJECT-STATE.md` and `docs/TEAM-BOARD.md`:* change **only your own row or line**. Do not reformat the table or reorder rows. Add a handoff line at the bottom of the Handoff log.
+   - *`docs/API-CONTRACT.md`:* only through the protocol in "Changing a shared interface".
+5. **Do not reformat or rename what you did not write.** No "tidy-up" of other people's files, and no moving files, inside a feature pull request.
+6. **Conflict anyway?** Fix it by keeping both people's intent. If you cannot tell what the other person meant, ask them. Never choose "mine" or "theirs" for a whole file without reading it. Run the tests after resolving.
 
 ## Coordinate before you act
 
@@ -89,11 +127,16 @@ Four people build different parts at the same time, each with an AI assistant, a
 
 1. `git fetch`. If your branch or `main` is behind `origin/main`, update it first.
 2. Read `docs/PROJECT-STATE.md`, `docs/TEAM-BOARD.md`, `docs/API-CONTRACT.md` and your Issue. Look at open pull requests (`gh pr list`) to see what others are changing right now.
+   **Read what is addressed to your member.** On `docs/TEAM-BOARD.md`, read the table "Requests waiting for a person" and every Handoff log row whose "To" is your member (or "everyone"), and tell the member what is waiting for them, in plain words, before you start. If you have GitHub access (`gh`), also read the comments on your member's open pull requests and Issues (`gh pr list --author @me`, then `gh pr view <number> --comments`). If you cannot reach GitHub, say so, and ask the member to paste any review comments they received. Never assume there is nothing waiting.
 3. **Dependency check.** For the task you were given, list what it needs from other people (the **Needs** column of your board row). For each one, check it on `origin/main`: is the file, route or function really there, and do its tests pass? The board can be out of date; merged code is the truth.
 4. Decide, and **tell the member in plain words which case you are in**:
    - **Ready:** everything needed is merged. Build against the real thing.
    - **Partly ready:** build against `docs/API-CONTRACT.md` with a clearly labelled stub (see below). Say which person's work you are waiting for and what you assumed.
    - **Blocked:** you cannot make honest progress without someone else's work. Stop, explain what is missing, who owns it and what to ask them. Do not build their part for them without asking.
+
+### Leaving a message for another person
+
+If your work needs something from another member (a fix, a decision, a review), **put it on the team board**: a row in "Requests waiting for a person" (who, what, where, since when) and a Handoff log line. Also post a comment with an @mention on the pull request or Issue, so GitHub notifies them. The board is the one place every AI assistant reads, so a request that exists only in a pull request comment may never reach the other person's AI. When the request is done, move its row to the Handoff log ("done") and delete it from the table.
 
 ### While you work
 

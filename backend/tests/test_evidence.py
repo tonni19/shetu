@@ -10,7 +10,7 @@
 import unicodedata
 from types import SimpleNamespace
 
-from backend.app.rules.evidence import can_count, check_quote, counts_as_fact
+from app.rules.evidence import can_count, check_quote, counts_as_fact
 
 
 # --- Rule R1: check_quote ---

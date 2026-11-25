@@ -10,7 +10,7 @@
 # AI NOTE:     Interview text is untrusted input. It is placed in the user message, never in the system
 #              message, and the model's answer is validated no matter what the text says.
 
-from backend.app.ai.schemas import JdLine, Turn
+from app.ai.schemas import JdLine, Turn
 
 # PROMPT: extract draft duties for the employee's Role Map.
 #   Purpose:  turn the interview so far into draft duties with evidence, and pick one follow-up question.

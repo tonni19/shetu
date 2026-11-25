@@ -17,11 +17,11 @@ from pathlib import Path
 
 import pytest
 
-from backend.app.ai.adapters import DEFAULT_REPLAY_FIXTURE, ReplayAdapter
-from backend.app.ai.gateway import MODE_ENV_VAR, extract_duties, get_adapter
-from backend.app.ai.prompts import SYSTEM_PROMPT, build_prompts
-from backend.app.ai.schemas import GatewayError, JdLine, Turn
-from backend.app.rules.evidence import check_quote
+from app.ai.adapters import DEFAULT_REPLAY_FIXTURE, ReplayAdapter
+from app.ai.gateway import MODE_ENV_VAR, extract_duties, get_adapter
+from app.ai.prompts import SYSTEM_PROMPT, build_prompts
+from app.ai.schemas import GatewayError, JdLine, Turn
+from app.rules.evidence import check_quote
 
 # The synthetic Banglish answer the replay fixture was written for (also used on slide 4 of the proposal).
 BANGLISH_ANSWER = (

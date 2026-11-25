@@ -17,9 +17,9 @@
 import json
 import os
 
-from backend.app.ai.adapters import ModelAdapter, ReplayAdapter
-from backend.app.ai.prompts import build_prompts
-from backend.app.ai.schemas import ExtractResult, GatewayError, JdLine, ModelReply, Turn
+from app.ai.adapters import ModelAdapter, ReplayAdapter
+from app.ai.prompts import build_prompts
+from app.ai.schemas import ExtractResult, GatewayError, JdLine, ModelReply, Turn
 
 # Environment variable that picks the adapter. Default is replay, so nothing calls a real model by accident.
 MODE_ENV_VAR = "SHETU_AI_MODE"

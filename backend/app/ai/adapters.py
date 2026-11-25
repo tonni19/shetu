@@ -15,7 +15,7 @@ import json
 from pathlib import Path
 from typing import Literal, Protocol
 
-from backend.app.ai.schemas import GatewayError
+from app.ai.schemas import GatewayError
 
 DEFAULT_REPLAY_FIXTURE = (
     Path(__file__).parent / "fixtures" / "replay" / "banglish_credit_pre_meeting.json"
