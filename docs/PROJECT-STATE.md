@@ -18,16 +18,18 @@ Last updated: 2026-11-24, after pull requests #2 to #23: the backend skeleton (T
 
 ## What works now
 
-**The backend skeleton (T1)** is merged (PR #23): FastAPI and SQLite, seeded synthetic accounts, sign-in with a signed session cookie, `GET /api/me`, `GET /api/cases/{id}` with a server-side permission check (employee, manager and HR may read; a colleague gets 403), `GET /healthz`, and passing tests (28 in total: 16 for T1, 8 for Nazha's evidence rules R1 and R2 from PR #21, and 4 guard tests that keep the project layout consistent). CI runs them on every pull request. How to run it: `backend/README.md`. How it works: `docs/CODE-EXPLANATION.md`. No frontend, AI or rules code yet. The full plan, slides and Excel draft are in `docs/planning/`; the learning guide is online at https://tonni19.github.io/shetu/.
+**The backend skeleton (T1)** is merged (PR #23): FastAPI and SQLite, seeded synthetic accounts, sign-in with a signed session cookie, `GET /api/me`, `GET /api/cases/{id}` with a server-side permission check (employee, manager and HR may read; a colleague gets 403), `GET /healthz`, and passing tests (28 in total: 16 for T1, 8 for Nazha's evidence rules R1 and R2 from PR #21, and 4 guard tests that keep the project layout consistent). CI runs them on every pull request. How to run it: `backend/README.md`. How it works: `docs/CODE-EXPLANATION.md`. No frontend, AI or rules code yet. The full plan, slides and Excel draft are in `docs/planning/`; the learning guide is online at https://tonni19.github.io/shetu/. First three synthetic evaluation cases with answer keys (T7) are in review in PR #24.
 
 ## In progress
 
 | Board row | What | Who | Where |
 |---|---|---|---|
+
 | T3 | AI gateway with a replay adapter, first prompt, one Banglish fixture | Mahadi | PR #25, open (Issue #22) |
 | T7 | First three synthetic cases with answer keys in `eval/` | Nazha | PR #24, open |
 | T2 | Frontend skeleton: login screen and the case page (React, Vite, TypeScript), built against the real T1 API | Tonni | branch `feature/ISSUE-frontend-skeleton`; pull request not opened yet |
 | T5 | Interview route (needs T3, which is not merged yet) | Maruf | not started |
+
 
 ## Next up
 

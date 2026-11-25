@@ -66,13 +66,18 @@ All of it is ordinary code. The AI gateway (Mahadi, T3) and the rules (Nazha, T4
 
 ## Evidence rules R1 and R2 (board row T4, owner: Nazha)
 
-Written by Nazha (PR #21); the explanation below is a short summary by Maruf. Nazha: please add your own words and any examples you want to show the instructor.
-
 - **Where:** `backend/app/rules/evidence.py`. Tests: `backend/tests/test_evidence.py`.
-- **R1, `check_quote(quote, employee_turns)`:** true only if the quote really appears in something the *employee* said. It first normalises Unicode (NFC) and collapses extra spaces, so the same Bangla word written two different ways still matches.
-- **R2, `counts_as_fact(duty)`:** a duty that was only *suggested* counts as a fact only after a person confirms it; a dismissed duty never counts. Also available as `can_count`.
-- **Plain Python, no AI:** the model never decides these. They have no database or web imports, so they are easy to test.
-- **Used by:** the interview route (Maruf, T5), which will call R1 on each duty the AI extracts and downgrade a "said" duty whose quote fails the check to "suggested".
+- **Why plain Python matters:** The AI model proposes duties, but deterministic Python rules decide whether a duty is backed by real evidence or allowed to count as a fact. Because `evidence.py` uses only the Python standard library (`unicodedata`), every edge case can be tested in milliseconds without a database or model call.
+- **R1, `check_quote(quote, employee_turns)`:** Returns `True` only when `quote` is non-empty and appears verbatim inside at least one *employee* turn (never assistant turns or job description lines). Before matching, both strings are normalised with `unicodedata.normalize("NFC", ...)` and whitespace-collapsed, so Bangla words composed in NFC or NFD (for example `যাচাই` with precomposed vs decomposed `য়`) match reliably.
+- **R2, `counts_as_fact(duty)` (alias `can_count`):** Enforces that a `dismissed` duty never counts as a fact, a `suggested` duty counts only after a person sets `confirmation="confirmed"`, and `said` or `documented` duties count while `pending` or `confirmed`.
+
+---
+
+## Synthetic evaluation cases (board row T7, owner: Nazha)
+
+- **Where:** `eval/cases/` (`case_01_english_branch_ops.json`, `case_02_banglish_it_support.json`, `case_03_bangla_accounts.json`), `eval/loader.py`, and `eval/test_eval_cases.py`.
+- **What they test:** Three synthetic MAP interviews—one in English (Gulshan branch operations), one in Banglish (IT support), and one in Bangla (accounts payable)—with numbered job description lines (`id: "jd-1"`, etc.), interview turns, and labeled answer keys.
+- **Contract and evidence checks:** `eval/test_eval_cases.py` loads every case via `eval.loader.load_all_cases()` and checks that `case` and `duty` match `docs/API-CONTRACT.md` (`hours_per_week` is `null`, no `leave_reason` field), that `said` duties carry a verified employee `quote` (R1) with `source_line_id: null`, that `documented` duties carry a valid JD `source_line_id` with `quote: null`, that `suggested` duties carry neither, and that `counts_as_fact` (R2) matches `expected_fact_ids`.
 
 ---
 
