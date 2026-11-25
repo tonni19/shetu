@@ -5,13 +5,13 @@
 - Date: 2026-11-25
 
 ## What I did
-Created the React app in `frontend/` with Vite, TypeScript and React Router 8. It has a sign-in screen (a user id and password form, plus one-click buttons for the synthetic demo accounts) and a case page. The case page reads `GET /api/cases/{id}` from the real backend and shows the leave dates, the stage (Map, Hold, Fit) and the Role Map, with each duty's evidence and confirmation kept apart. There are clear screens for 401, 403, 404 and a server that cannot be reached. The look follows the learning guide (same colours, font and bridge mark).
+Created the React app in `frontend/` with Vite, TypeScript and React Router 8. It has a sign-in screen (a user id and password form, plus one-click buttons for the synthetic demo accounts), a list of the cases the person may read (`GET /api/cases`), and a case page. The case page reads `GET /api/cases/{id}` from the real backend and shows the employee's and manager's names, the leave dates, the stage (Map, Hold, Fit) and the Role Map, with each duty's evidence and confirmation kept apart. There are clear screens for 401, 403, 404 and a server that cannot be reached. The look follows the learning guide (same colours, font and bridge mark).
 
 ## Why
-T2 on the board, for the progress presentation on Sunday 29 November. I chose TypeScript over plain JavaScript as the better fit: the screens and the API must agree on every field, and the type checker catches a missing or invented field (for example a reason for leave) or a forgotten `null` before the app runs. Decision 32; the team still has to confirm the new development libraries on Issue #28.
+T2 on the board, for the progress presentation on Sunday 29 November. I chose TypeScript over plain JavaScript as the better fit: the screens and the API must agree on every field, and the type checker catches a missing or invented field (for example a reason for leave) or a forgotten `null` before the app runs. Decision 32; Maruf confirmed the new development libraries for the team on Issue #28.
 
 ## How it works
-`src/session.tsx` asks `GET /api/me` at start-up. The guard in `src/App.tsx` sends a signed-out person to `/sign-in` and back afterwards. Sign-in uses `POST /api/login`, and the server sets a signed, HttpOnly cookie that JavaScript cannot read. `src/pages/CasePage.tsx` calls `GET /api/cases/{id}` through `src/api/client.ts`. The Vite proxy (`vite.config.ts`) forwards `/api` to the backend, so the browser sees one site and sends the cookie. No AI runs in the frontend; everything here is ordinary code. Details: `docs/CODE-EXPLANATION.md`, "Frontend skeleton".
+`src/session.tsx` asks `GET /api/me` at start-up. The guard in `src/App.tsx` sends a signed-out person to `/sign-in` and back afterwards. Sign-in uses `POST /api/login`, and the server sets a signed, HttpOnly cookie that JavaScript cannot read. After sign-in, `src/pages/CaseListPage.tsx` calls `GET /api/cases`; opening a case, `src/pages/CasePage.tsx` calls `GET /api/cases/{id}`. Both go through `src/api/client.ts`. The Vite proxy (`vite.config.ts`) forwards `/api` to the backend, so the browser sees one site and sends the cookie. No AI runs in the frontend; everything here is ordinary code. Details: `docs/CODE-EXPLANATION.md`, "Frontend skeleton".
 
 ## How I tested it
 No automated frontend test tool is agreed yet (Vitest is proposed on Issue #28). Checks run on 25 November:
@@ -29,11 +29,12 @@ No automated frontend test tool is agreed yet (Vitest is proposed on Issue #28).
   - an expired session (cookie deleted): sign in returns to the same page;
   - no localStorage or sessionStorage used; `document.cookie` is empty for JavaScript;
   - phone width (390 px): no sideways scrolling.
+- 26 November, after merging `main` with PR #29 (names and `GET /api/cases`): 39 backend tests pass; type check and build pass. In the browser: the employee sees one case card ("Your leave", manager Shirin Akter) and the case shows "Nusrat Jahan (you)"; the manager sees both cases with the employees' names and "Shirin Akter (you)" as manager; HR sees both; a cover colleague sees an empty list (and still 403 on a case address); the "All cases" link returns to the list; an expired session still returns to the case; no unexpected console errors; phone width fine.
+- The address the app returns to after sign-in must start with a single "/", so a crafted `//other-site` address cannot send the person to another website (an open redirect).
 - **Bug found and fixed:** after a deliberate "Sign out", the next person was sent to the previous person's last page. Now the page is remembered only when the session expired or the app opened signed out.
 
 ## Not finished / known problems
-- **No stubs.** T1 is merged and used for real.
-- The case has only user ids, so the manager and HR see ids, not names. There is no "list my cases" route, so the app opens a fixed demo case after sign-in (`firstCaseFor` in `src/demoAccounts.ts`). Both are asked of Maruf on the team board.
+- **No stubs.** T1 is merged and used for real, including the names and the case list Maruf added in PR #29 at this Issue's request. The temporary `firstCaseFor` shortcut (which opened a fixed case) is removed.
 - Read-only: confirm and dismiss come with T6, after the interview route (T5).
 - `src/demoAccounts.ts` copies the seeded accounts from `backend/app/seed.py`; keep them in step.
 - The Plus Jakarta Sans font is not shipped; the app falls back to Segoe UI.

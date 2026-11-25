@@ -454,6 +454,81 @@ input {
   font-size: 13px;
 }
 
+/* ---------- case list ---------- */
+
+.case-list-lede {
+  margin-top: 6px;
+}
+
+.case-cards {
+  display: grid;
+  gap: 12px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-card {
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.case-card:hover {
+  border-color: var(--pink);
+  background: var(--blush);
+}
+
+.case-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.case-card-name {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.case-card-meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.stage-chip {
+  flex: none;
+  padding: 2px 10px;
+  background: var(--blush);
+  border-radius: 99px;
+  color: var(--red-d);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.case-back {
+  margin-bottom: 14px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.case-back a {
+  text-decoration: none;
+}
+
+.case-back a:hover {
+  text-decoration: underline;
+}
+
 /* ---------- case page ---------- */
 
 .case-head {
@@ -763,7 +838,8 @@ input {
   }
 
   .button,
-  .demo-account {
+  .demo-account,
+  .case-card {
     transition: none;
   }
 }

@@ -18,10 +18,10 @@ npm run dev        # http://localhost:5173
 
 | Demo account | What you should see |
 |---|---|
-| Nusrat Jahan (employee) | "Your leave case": case-1 with two duties |
-| Shirin Akter (manager) | case-1 and case-2 (type `/cases/case-2` in the address bar) |
-| Farhana Islam (HR) | every case |
-| Tania Akter (cover colleague) | "You cannot open this case" (the server answers 403) |
+| Nusrat Jahan (employee) | Their own case in the list; case-1 has two duties |
+| Shirin Akter (manager) | Both cases they manage, with the employees' names |
+| Farhana Islam (HR) | Every case |
+| Tania Akter (cover colleague) | An empty list; typing `/cases/case-1` gives "You cannot open this case" (403) |
 
 ## Checks
 
@@ -63,6 +63,7 @@ src/
   api/types.ts          the contract's shapes as TypeScript types
   api/client.ts         the only place that calls fetch; one ApiError for every failure
   pages/SignInPage.tsx  sign-in form and demo accounts
+  pages/CaseListPage.tsx  the cases this person may read (GET /api/cases)
   pages/CasePage.tsx    one leave case with its Role Map, and its error screens
   components/           AppShell, DutyCard, StageSteps, StatusPanel, BridgeMark
   demoAccounts.ts       the seeded demo accounts (copy of backend/app/seed.py)

@@ -149,7 +149,7 @@ The interview route (Maruf, T5) is planned to run R1 on each duty the AI extract
 Added 2026-11-25. Folder: `frontend/`. How to run it: `frontend/README.md`.
 
 ### What it does
-A React app, written in TypeScript and served by Vite. A synthetic person signs in, and the app opens a leave case from the real backend (`GET /api/cases/case-1`) and shows its leave dates, its stage (Map, Hold, Fit) and its Role Map: every duty with its evidence and its confirmation. It reads only; confirming and dismissing duties come with the interview screen (T6). No AI runs in the browser.
+A React app, written in TypeScript and served by Vite. A synthetic person signs in and sees the leave cases they may read (`GET /api/cases`). Opening one reads it from the real backend (`GET /api/cases/{id}`) and shows the names, its leave dates, its stage (Map, Hold, Fit) and its Role Map: every duty with its evidence and its confirmation. It reads only; confirming and dismissing duties come with the interview screen (T6). No AI runs in the browser.
 
 ### The files, and why each exists
 
@@ -161,6 +161,7 @@ A React app, written in TypeScript and served by Vite. A synthetic person signs 
 | `src/session.tsx` | Who is signed in, for the whole app | Asks the server (`GET /api/me`); stores nothing in the browser |
 | `src/App.tsx` | The routes and the sign-in guard | Signed out? Go to `/sign-in`, then come back |
 | `src/pages/SignInPage.tsx` | Sign-in form and demo-account buttons | Both use the real `POST /api/login` |
+| `src/pages/CaseListPage.tsx` | The cases this person may read | The server chooses the list; a colleague's is empty |
 | `src/pages/CasePage.tsx` | One case, or the right error screen | 401 sign in again, 403 not allowed, 404 not found |
 | `src/components/DutyCard.tsx` | One duty: evidence and confirmation, kept apart | "Suggested" is worded as a question |
 | `src/format.ts` | Dates in words and the number of leave days | Computed by code, the same on every laptop |
@@ -170,7 +171,7 @@ A React app, written in TypeScript and served by Vite. A synthetic person signs 
 1. The browser loads `http://localhost:5173`. `src/session.tsx` calls `GET /api/me`. Vite's proxy forwards it to the backend on port 8000.
 2. Nobody is signed in yet, so the backend answers **401**. The guard in `src/App.tsx` sends the browser to `/sign-in` and remembers the page it wanted.
 3. The person clicks "Nusrat Jahan". The app sends `POST /api/login` with the user id and the demo password. The backend checks the password hash and answers with the user, and sets a **signed, HttpOnly session cookie**. The browser keeps the cookie; JavaScript cannot read it.
-4. The app goes to `/cases/case-1`. `src/pages/CasePage.tsx` calls `GET /api/cases/case-1`; the browser sends the cookie along automatically.
+4. The app goes to `/`. `src/pages/CaseListPage.tsx` calls `GET /api/cases`, and the server answers with only the cases this person may read (for the employee, their own). Clicking a case goes to `/cases/case-1`, and `src/pages/CasePage.tsx` calls `GET /api/cases/case-1`. The browser sends the cookie with every call automatically.
 5. The backend checks the cookie, then `can_read_case` (the employee, the manager and HR may read). It answers with the case as JSON in the shape of `CaseOut`.
 6. The page draws it. `src/format.ts` turns `2027-01-10` into "10 January 2027" and counts the days (both ends included). Each duty goes to `DutyCard`.
 
@@ -189,14 +190,12 @@ All of it is ordinary code. The screens show what the backend sends. The AI's wo
 ### What an instructor might ask, and the answer
 - *Why TypeScript?* The screens and the API must agree on every field. `src/api/types.ts` copies the contract. If a screen uses a field that does not exist, such as a reason for leave, or forgets that `hours_per_week` can be `null`, `npm run typecheck` fails before anyone runs the app. We tried this on purpose, and both mistakes were caught.
 - *Where is the password or session stored in the browser?* Nowhere that JavaScript can reach. The server keeps the session in a signed, HttpOnly cookie. The app uses no localStorage or sessionStorage.
-- *What stops a cover colleague from seeing a case?* The server. `GET /api/cases/{id}` answers 403 and the page only reports it. Hiding a button is not security (`AGENTS.md` rule 9).
+- *What stops a cover colleague from seeing a case?* The server. Their list from `GET /api/cases` is empty, and if they type a case address, `GET /api/cases/{id}` answers 403. The page only reports what the server decided. Hiding a button is not security (`AGENTS.md` rule 9).
 - *Why does "suggested" look different?* It is an AI guess. It is shown as a question, in amber with a dashed border, and it does not count until the employee confirms it (rule R2).
 - *Why "Unknown" and not 0 hours?* Unknown stays unknown until a person fills it in; the AI never guesses it.
 - *Why compute the number of days in code?* Dates are computed by code, never by the model (`AGENTS.md` rule 3). The code reads the year, month and day itself, because JavaScript's default date parsing can show the day before in some time zones.
-- *How was it tested?* With the type checker, a production build, and a browser run of each flow against the real backend: sign-in, wrong password, the case, 403, 404, sign-out, an expired session, phone width. The browser run found a bug: after a deliberate sign-out, the next person was sent to the previous person's last page. It is fixed. The checks are listed in the worklog.
+- *How was it tested?* With the type checker, a production build, and a browser run of each flow against the real backend: sign-in, wrong password, the case list for each role, the case, 403, 404, sign-out, an expired session, phone width. The browser run found a bug: after a deliberate sign-out, the next person was sent to the previous person's last page. It is fixed. The checks are listed in the worklog.
 
 ### Known limits (on purpose, for now)
-- **No names for the employee or manager on the case page.** The contract has only `employee_id` and `manager_id`. The page shows "You" or the id. Names need a contract change (asked on the team board).
-- **No "list my cases" route.** After sign-in the app opens a fixed demo case (`firstCaseFor` in `src/demoAccounts.ts`). The server still checks access on every read.
 - **No automated frontend tests yet.** Vitest is proposed in the Issue for T2. Selenium flows are planned (Nazha).
 - **The font:** the app asks for Plus Jakarta Sans and falls back to Segoe UI when it is not installed. Shipping the font file with the app is a possible follow-up.

@@ -5,17 +5,18 @@
 // OWNER:       Tonni (board row T2)
 // DEPENDS ON:  src/api/types.ts; the backend routes in backend/app/routes/ (Maruf, T1), reached
 //              through the Vite proxy in vite.config.ts
-// USED BY:     src/session.tsx (sign-in state), src/pages/CasePage.tsx
+// USED BY:     src/session.tsx (sign-in state), src/pages/CaseListPage.tsx, src/pages/CasePage.tsx
 // STATUS:      REAL. Calls the real backend; there are no stubs in this file.
 // DATA:        Sends only a user id and password at sign-in. Never logs request or response bodies.
-// CONTRACT:    docs/API-CONTRACT.md section 2: Sign in, Sign out, Who am I, Read a case.
+// CONTRACT:    docs/API-CONTRACT.md section 2: Sign in, Sign out, Who am I, List my cases,
+//              Read a case.
 // SECURITY:    The session lives in a cookie the server signs; this code never reads or stores it
 //              (no localStorage, no tokens in JavaScript). `credentials: "same-origin"` lets the
 //              browser send that cookie to our own address, which the proxy forwards to the API.
 // AI NOTE:     Paths are relative ("/api/..."), on purpose: the Vite proxy forwards them. Do not
 //              hard-code http://127.0.0.1:8000 here, or the cookie stops working.
 
-import type { Case, ErrorBody, LoginRequest, User } from "./types";
+import type { Case, CaseSummary, ErrorBody, LoginRequest, User } from "./types";
 
 /**
  * An error from talking to the backend.
@@ -105,6 +106,16 @@ export function logout(): Promise<void> {
 /** GET /api/me. Resolves with the signed-in user, or rejects with ApiError 401 "not_signed_in". */
 export function getMe(): Promise<User> {
   return request<User>("/api/me");
+}
+
+/**
+ * GET /api/cases. Resolves with the cases the signed-in user may read: the employee's own, the
+ * manager's, every case for HR, and an empty list for a cover colleague (not an error).
+ * Rejects with ApiError 401 "not_signed_in".
+ * SECURITY: the server chooses which cases are in the list (can_read_case); the screen shows it.
+ */
+export function listCases(): Promise<CaseSummary[]> {
+  return request<CaseSummary[]>("/api/cases");
 }
 
 /**

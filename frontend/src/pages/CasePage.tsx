@@ -12,10 +12,8 @@
 // SECURITY:    Who may read a case is decided by the server (backend/app/security.py,
 //              can_read_case). This page only reports the answer: 403 shows "not allowed".
 // CONTRACT:    docs/API-CONTRACT.md section 2, "Read a case", and section 1, "Case" and "Duty".
-// AI NOTE:     The case has only user ids (employee_id, manager_id), no names: the contract has
-//              no name fields. We show "You" when the id is the signed-in user, otherwise the id.
-//              Showing names needs a contract change first (AGENTS.md, "Changing a shared
-//              interface"); do not invent a field here.
+// AI NOTE:     Names come from employee_name and manager_name (added to the contract in PR #29).
+//              "You" is decided by comparing ids, never names: two people can share a name.
 
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
@@ -72,7 +70,16 @@ export function CasePage() {
 function CaseError({ caseId, error, onRetry }: { caseId: string; error: ApiError; onRetry: () => void }) {
   if (error.code === "forbidden") {
     return (
-      <StatusPanel tone="denied" title="You cannot open this case" testId="case-forbidden">
+      <StatusPanel
+        tone="denied"
+        title="You cannot open this case"
+        testId="case-forbidden"
+        actions={
+          <Link to="/" className="button button-quiet">
+            Go to my cases
+          </Link>
+        }
+      >
         <p>{error.detail}</p>
         <p className="muted">
           Only the employee, their manager and HR can read a leave case. The server checked this, not the screen.
@@ -88,7 +95,7 @@ function CaseError({ caseId, error, onRetry }: { caseId: string; error: ApiError
         testId="case-not-found"
         actions={
           <Link to="/" className="button button-quiet">
-            Open my first case
+            Go to my cases
           </Link>
         }
       >
@@ -114,9 +121,9 @@ function CaseError({ caseId, error, onRetry }: { caseId: string; error: ApiError
   );
 }
 
-/** Who a user id is, from the viewer's point of view: "You" for themselves, else the id. */
-function personLabel(id: string, viewer: User): string {
-  return id === viewer.id ? "You" : id;
+/** A person's name, with "(you)" when it is the viewer. Compares ids, because names can repeat. */
+function personLabel(id: string, name: string, viewer: User): string {
+  return id === viewer.id ? `${name} (you)` : name;
 }
 
 /** The loaded case: header, leave window, stage and the Role Map. */
@@ -132,10 +139,13 @@ function CaseView({ data, user }: { data: Case; user: User }) {
   return (
     <article className="case" data-testid="case-page">
       <header className="case-head">
+        <p className="case-back">
+          <Link to="/">← All cases</Link>
+        </p>
         <p className="eyebrow">
           Leave case <span className="mono">{data.id}</span>
         </p>
-        <h1 className="case-title">{isEmployee ? "Your leave case" : "Leave case"}</h1>
+        <h1 className="case-title">{isEmployee ? "Your leave case" : `Leave case: ${data.employee_name}`}</h1>
         <dl className="case-facts">
           <div>
             <dt>Leave</dt>
@@ -146,11 +156,11 @@ function CaseView({ data, user }: { data: Case; user: User }) {
           </div>
           <div>
             <dt>Employee</dt>
-            <dd className={isEmployee ? undefined : "mono"}>{personLabel(data.employee_id, user)}</dd>
+            <dd data-testid="case-employee">{personLabel(data.employee_id, data.employee_name, user)}</dd>
           </div>
           <div>
             <dt>Manager</dt>
-            <dd className={user.id === data.manager_id ? undefined : "mono"}>{personLabel(data.manager_id, user)}</dd>
+            <dd data-testid="case-manager">{personLabel(data.manager_id, data.manager_name, user)}</dd>
           </div>
         </dl>
       </header>
@@ -161,8 +171,9 @@ function CaseView({ data, user }: { data: Case; user: User }) {
         <div className="rolemap-head">
           <h2 id="rolemap-title">Role Map</h2>
           <p className="muted">
-            {plural(data.duties.length, "duty", "duties")}: {counts.said} said, {counts.documented} documented,{" "}
-            {counts.suggested} suggested
+            {data.duties.length === 0
+              ? "No duties yet"
+              : `${plural(data.duties.length, "duty", "duties")}: ${counts.said} said, ${counts.documented} documented, ${counts.suggested} suggested`}
           </p>
         </div>
         <p className="rolemap-lede">

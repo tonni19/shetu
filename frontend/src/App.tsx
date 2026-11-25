@@ -2,7 +2,8 @@
 // PURPOSE:     The map of the app's pages (routes), and the guard that sends a signed-out person
 //              to the sign-in screen and brings them back afterwards.
 // OWNER:       Tonni (board row T2)
-// DEPENDS ON:  react-router (declarative mode); src/session.tsx; the pages and AppShell
+// DEPENDS ON:  react-router (declarative mode); src/session.tsx; the pages (sign-in, case list,
+//              case) and AppShell
 // USED BY:     src/main.tsx
 // STATUS:      REAL
 // DATA:        No data lives here.
@@ -11,7 +12,7 @@
 // AI NOTE:     React Router 8 has no `react-router-dom` package any more: import everything from
 //              "react-router". Pages:
 //                /sign-in          the sign-in screen (anyone)
-//                /                 opens the signed-in person's first case
+//                /                 the cases this person may read (GET /api/cases)
 //                /cases/:caseId    the case page (signed in; the server decides 403)
 //                anything else     "page not found"
 //              Every page that needs a signed-in user goes inside <SignedInLayout>. The
@@ -21,10 +22,10 @@ import { Link, Navigate, Route, Routes, useLocation } from "react-router";
 
 import { AppShell } from "./components/AppShell";
 import { StatusPanel } from "./components/StatusPanel";
-import { firstCaseFor } from "./demoAccounts";
+import { CaseListPage } from "./pages/CaseListPage";
 import { CasePage } from "./pages/CasePage";
 import { SignInPage } from "./pages/SignInPage";
-import { useSession, useSignedInUser } from "./session";
+import { useSession } from "./session";
 
 /**
  * The guard and frame for every signed-in page. While the app is still asking the server who is
@@ -72,12 +73,6 @@ function SignedInLayout() {
   }
 }
 
-/** "/" opens the signed-in person's first case (see firstCaseFor for why there is no list). */
-function OpenFirstCase() {
-  const user = useSignedInUser();
-  return <Navigate to={`/cases/${firstCaseFor(user.id)}`} replace />;
-}
-
 /** Shown for an address the app does not know. */
 function NotFound() {
   return (
@@ -87,7 +82,7 @@ function NotFound() {
         title="Page not found"
         actions={
           <Link to="/" className="button button-quiet">
-            Go to the start
+            Go to my cases
           </Link>
         }
       >
@@ -103,7 +98,7 @@ export function App() {
     <Routes>
       <Route path="/sign-in" element={<SignInPage />} />
       <Route element={<SignedInLayout />}>
-        <Route index element={<OpenFirstCase />} />
+        <Route index element={<CaseListPage />} />
         <Route path="cases/:caseId" element={<CasePage />} />
       </Route>
       <Route path="*" element={<NotFound />} />

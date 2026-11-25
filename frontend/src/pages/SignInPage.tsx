@@ -9,8 +9,8 @@
 // SECURITY:    A wrong user id and a wrong password give the same message, because the server
 //              gives the same error for both (so nobody can find out which accounts exist).
 // AI NOTE:     After signing in, the app returns to the page the person first asked for
-//              (location.state.from, set by RequireSignIn in src/App.tsx), or else opens their
-//              first case.
+//              (location.state.from, set by SignedInLayout in src/App.tsx), or else opens their
+//              case list (GET /api/cases).
 
 import { useState, type FormEvent } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router";
@@ -18,13 +18,14 @@ import { Navigate, useLocation, useNavigate } from "react-router";
 import { ApiError } from "../api/client";
 import type { LoginRequest } from "../api/types";
 import { BridgeMark } from "../components/BridgeMark";
-import { DEMO_ACCOUNTS, DEMO_PASSWORD, ROLE_LABEL, firstCaseFor } from "../demoAccounts";
+import { DEMO_ACCOUNTS, DEMO_PASSWORD, ROLE_LABEL } from "../demoAccounts";
 import { useSession } from "../session";
 
-/** Where to go after signing in: back to the page that sent us here, or the first case. */
-function destination(state: unknown, userId: string): string {
+/** Where to go after signing in: back to the page that sent us here, or the case list ("/"). */
+function destination(state: unknown): string {
   const from = (state as { from?: unknown } | null)?.from;
-  return typeof from === "string" && from.startsWith("/") && from !== "/sign-in" ? from : `/cases/${firstCaseFor(userId)}`;
+  // SECURITY: only paths inside this app ("/..."), never "//other-site" or a full URL.
+  return typeof from === "string" && from.startsWith("/") && !from.startsWith("//") && from !== "/sign-in" ? from : "/";
 }
 
 /** The sign-in screen. Shows an error under the form if sign-in fails; never throws. */
@@ -40,15 +41,15 @@ export function SignInPage() {
 
   // Already signed in (for example after pressing Back): go straight on.
   if (state.status === "signed-in") {
-    return <Navigate to={destination(location.state, state.user.id)} replace />;
+    return <Navigate to={destination(location.state)} replace />;
   }
 
   async function attempt(credentials: LoginRequest) {
     setBusy(true);
     setError(null);
     try {
-      const user = await signIn(credentials);
-      navigate(destination(location.state, user.id), { replace: true });
+      await signIn(credentials);
+      navigate(destination(location.state), { replace: true });
     } catch (caught: unknown) {
       setError(caught instanceof ApiError ? caught.detail : "Sign-in failed. Please try again.");
       setBusy(false);

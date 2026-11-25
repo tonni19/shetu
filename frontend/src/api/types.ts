@@ -58,16 +58,26 @@ export interface Duty {
   hours_per_week: number | null;
 }
 
-/** CONTRACT: Case, as GET /api/cases/{case_id} returns it (with the duties the caller may see). */
-export interface Case {
+/**
+ * CONTRACT: one row of "List my cases" (GET /api/cases): the Case fields without the duties.
+ * Mirrors CaseSummaryOut in backend/app/schemas.py (Maruf, T1, added in PR #29).
+ */
+export interface CaseSummary {
   id: string;
   employee_id: string;
+  /** Display name from the users table, for example "Nusrat Jahan". Synthetic. */
+  employee_name: string;
   manager_id: string;
+  manager_name: string;
   /** ISO date "YYYY-MM-DD", inclusive. */
   leave_start: string;
   /** ISO date "YYYY-MM-DD", inclusive. */
   leave_end: string;
   stage: Stage;
+}
+
+/** CONTRACT: Case, as GET /api/cases/{case_id} returns it: the summary plus the duties. */
+export interface Case extends CaseSummary {
   duties: Duty[];
 }
 
