@@ -68,6 +68,27 @@ def counts_as_fact(duty: Duty) -> bool:
     """R2: a suggested duty counts only once a person has confirmed it."""
 ```
 
+### What `extract_duties` returns (added 2026-11-24, T3)
+
+`extract_duties` returns an `ExtractResult`. Its duties are **DraftDuty**, not full Duty: the model never sets an id, a case, a confirmation or hours. The route (T5) turns each DraftDuty into a Duty by adding `id`, `case_id` and `confirmation: "pending"`, and sets `hours_per_week: null`.
+
+| ExtractResult field | Type | Notes |
+|---|---|---|
+| `mode` | `"replay"` \| `"live"` | set by the gateway, never by the model; show it in a demo so a replay is never called live |
+| `next_question` | string | one follow-up question, in the language the employee used |
+| `duties` | list of DraftDuty | may be empty |
+
+| DraftDuty field | Type | Notes |
+|---|---|---|
+| `title` | string | 1 to 120 characters |
+| `evidence_type` | `"said"` \| `"documented"` \| `"suggested"` | same meaning as in Duty |
+| `quote` | string or null | required for `said`; must be null otherwise. Still checked by rule R1 |
+| `source_line_id` | string or null | required for `documented` and must be an id the caller passed in; must be null otherwise |
+
+A `suggested` DraftDuty carries neither a quote nor a source line: it is only a question. Extra fields in the model's reply (for example a "reason") make the whole reply invalid.
+
+`GatewayError` has the same two fields as the Error shape: `code` and `detail`. Codes: `bad_input`, `invalid_reply`, `unknown_source_line`, `replay_no_match`, `replay_unavailable`, `live_not_configured`, `bad_mode`. A route should turn it into an error response and never show model text.
+
 ## 4. Who depends on what
 
 | If this changes | Tell | Because |
