@@ -278,3 +278,16 @@ Only step 3 is AI (and today even that is a recording). Steps 1, 2, 4, 5, 6 and 
 - The manager still sees every duty; showing only confirmed duties comes with the manager screen.
 - Cover assignments and the full audit log come later.
 
+---
+
+## Selenium end-to-end browser tests (`e2e/`, T9)
+
+**Author:** Nazha Tarannum Roza
+
+### What it is
+An automated browser test suite in `e2e/` (`conftest.py` and `test_user_flows.py`) that drives real Google Chrome through the React frontend (`http://localhost:5173`) and FastAPI backend (`http://127.0.0.1:8000`) on a fresh seeded SQLite database.
+
+### How it works
+1. `app_servers` in `e2e/conftest.py` runs `python -m app.seed` against a temporary SQLite file so tests never touch `backend/shetu.db`, then starts Uvicorn and Vite and polls `/healthz` until both respond.
+2. Each test receives a fresh Chrome instance (`driver` fixture) with clean cookies and clicks the real UI elements via Tonni's `data-testid` hooks (`demo-u-nusrat`, `case-card-case-1`, `case-page`, `duty-duty-1`, `case-forbidden`, `sign-out`).
+3. `pytest.ini` keeps `testpaths = backend/tests eval`, so fast unit/eval tests run without Chrome while `python -m pytest e2e -v` runs the full browser suite.

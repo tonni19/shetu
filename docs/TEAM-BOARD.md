@@ -53,6 +53,7 @@ Target: the 10 to 15% progress presentation on **Thursday 26 November 2026**. ID
 | T5 | Interview route: employee reply goes through the gateway, the rules, then SQLite; one audit event on confirm | Maruf | In review (PR for T5; replay mode) | T1, T3, T4 | `POST /api/cases/{id}/interview/reply` | |
 | T6 | Frontend interview screen: reply box, duties with evidence labels, confirm and dismiss | Tonni | Not started | T2, T5 (stub until merged) | The employee MAP screen | |
 | T7 | First three synthetic cases with answer keys | Nazha | Done (merged, PR #24) | nothing | `eval/cases/` (English, Banglish, Bangla) + `eval/loader.py` & tests | branch `feature/t7-synthetic-cases` |
+| T9 | Selenium end-to-end browser test suite for sign-in, Role Map view, 403 enforcement, and sign-out | Nazha | In review (branch `feature/selenium-e2e`; 3 browser tests pass) | T1, T2 | `e2e/conftest.py` & `e2e/test_user_flows.py` (`python -m pytest e2e -v`) | branch `feature/selenium-e2e` |
 
 When a row needs more than the Thursday scope, add it below with the next free ID.
 
@@ -108,3 +109,4 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 ## Known conflicts and open questions
 
 - None recorded. Add a line here when two parts disagree (for example two people need different shapes for the same data), with who has to decide.
+| 2026-11-28 | Nazha | Tonni, Maruf | T9 Selenium E2E browser suite added in `e2e/` (`python -m pytest e2e -v`, 3 passing flows against live Vite + FastAPI) on `feature/selenium-e2e`. |

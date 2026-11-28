@@ -36,6 +36,7 @@ The learning guide is online at https://tonni19.github.io/shetu/ and in `docs/le
 | T5 | Interview route and confirm or dismiss route (replay mode) | Maruf | pull request in review, branch `feature/t5-interview-route` |
 | T8 | Replay fixtures for the three synthetic cases and a gateway check against their answer keys | Mahadi | Issue #30 |
 | T6 | Frontend interview screen: reply box, duties with evidence labels, confirm and dismiss (needs T5) | Tonni | not started |
+| T9 | Selenium E2E browser test suite (`e2e/`) | Nazha | pull request in review, branch `feature/selenium-e2e` |
 
 ## Next up
 
