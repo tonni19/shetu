@@ -59,7 +59,8 @@ AGENTS.md            this file (CLAUDE.md, GEMINI.md and .github/copilot-instruc
 AI-USAGE.md          where AI tools were used
 backend/             FastAPI app (skeleton exists: sign-in, cases, health), rules, AI gateway, tests
 frontend/            React + TypeScript app (skeleton exists: sign-in, case page); see frontend/README.md
-eval/                synthetic scenarios and evaluation scripts (planned)
+eval/                synthetic scenarios and evaluation scripts
+e2e/                 Selenium end-to-end browser tests (`python -m pytest e2e -v`)
 docs/
   PROJECT-STATE.md   current state; update in every pull request
   CODE-EXPLANATION.md  how each module works, in plain words; update with the module

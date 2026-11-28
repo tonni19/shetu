@@ -1,0 +1,4 @@
+# Selenium end-to-end test dependencies. Install with:
+#   pip install -r e2e/requirements.txt
+pytest>=8.3
+selenium>=4.25

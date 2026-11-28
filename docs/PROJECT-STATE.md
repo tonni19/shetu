@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-26, after pull requests #2 to #31: the backend (T1), evidence rules and CI (T4), synthetic cases (T7), AI gateway in replay mode (T3) and the frontend skeleton (T2) are merged; the interview route (T5) is built and in review. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope and the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality); `docs/TEAM-BOARD.md` shows who is doing what now.
+Last updated: 2026-11-28, after pull requests #2 to #31: the backend (T1), evidence rules and CI (T4), synthetic cases (T7), AI gateway in replay mode (T3) and the frontend skeleton (T2) are merged; the interview route (T5) is built and in review. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope and the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality); `docs/TEAM-BOARD.md` shows who is doing what now.
 
 ## Milestones
 
@@ -36,6 +36,7 @@ The learning guide is online at https://tonni19.github.io/shetu/ and in `docs/le
 | T5 | Interview route and confirm or dismiss route (replay mode) | Maruf | pull request in review, branch `feature/t5-interview-route` |
 | T8 | Replay fixtures for the three synthetic cases and a gateway check against their answer keys | Mahadi | Issue #30 |
 | T6 | Frontend interview screen: reply box, duties with evidence labels, confirm and dismiss (needs T5) | Tonni | not started |
+| T9 | Selenium E2E browser test suite (`e2e/`) | Nazha | pull request in review, branch `feature/selenium-e2e` |
 
 ## Next up
 
