@@ -4,7 +4,7 @@ The current picture of the project. Keep it short: this is "where are we now", n
 
 **Update this file whenever the state of the project changes, not only when code changes.** The triggers and the routine are in `AGENTS.md`, section "Keep the project state current". If this file looks old, assume it is wrong and check GitHub.
 
-Last updated: 2026-11-26, after pull requests #2 to #31: the backend (T1), evidence rules and CI (T4), synthetic cases (T7), AI gateway in replay mode (T3) and the frontend skeleton (T2) are merged; the interview route (T5) is built and in review. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope and the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality); `docs/TEAM-BOARD.md` shows who is doing what now.
+Last updated: 2026-11-28, after pull requests #2 to #31: the backend (T1), evidence rules and CI (T4), synthetic cases (T7), AI gateway in replay mode (T3) and the frontend skeleton (T2) are merged; the interview route (T5) is built and in review. **Thursday 26 November 2026 is the final date for the 10 to 15% progress presentation (online, every member present).** The [progress plan](UPDATE-1-PLAN.md) has the scope and the confirmed split of work (Tonni frontend and UI/UX, Maruf full stack, Mahadi AI, Nazha rules and quality); `docs/TEAM-BOARD.md` shows who is doing what now.
 
 ## Milestones
 
