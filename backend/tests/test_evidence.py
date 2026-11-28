@@ -32,7 +32,7 @@ def test_check_quote_rejects_empty_and_whitespace_inputs():
     turns = ["I handle client onboarding."]
     assert check_quote("", turns) is False
     assert check_quote("   \n\t  ", turns) is False
-    assert check_quote("client onboarding", []) is False
+    assert check_quote("handle client onboarding", []) is False
 
 
 def test_check_quote_normalizes_bangla_unicode_nfc_vs_nfd():
@@ -47,6 +47,19 @@ def test_check_quote_normalizes_bangla_unicode_nfc_vs_nfd():
 def test_check_quote_handles_banglish_and_extra_whitespace():
     turns = ["Protidin   shokal 10tay\n  inventory sheet update kori."]
     assert check_quote("inventory sheet update kori", turns) is True
+
+
+def test_check_quote_ignores_case_for_banglish_and_english():
+    turns = ["Protiti Tuesday sondha 6 ta theke credit pre-meeting hoy."]
+    assert check_quote("protiti tuesday sondha", turns) is True
+    assert check_quote("CREDIT PRE-MEETING HOY", turns) is True
+
+
+def test_check_quote_rejects_quotes_shorter_than_three_words():
+    turns = ["Protidin shokal 10tay inventory sheet update kori."]
+    assert check_quote("kori", turns) is False
+    assert check_quote("update kori", turns) is False
+    assert check_quote("sheet update kori", turns) is True
 
 
 # --- Rule R2: counts_as_fact / can_count ---

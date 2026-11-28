@@ -84,8 +84,9 @@ It returns `True` only if the quote appears inside at least one reply the employ
 
 How it works:
 1. It rejects an empty or whitespace-only quote, and an empty list of turns.
-2. It normalises both the quote and each reply. Unicode is converted to NFC, and runs of spaces, tabs and line breaks are collapsed to one space.
-3. It checks whether the normalised quote is inside any normalised reply.
+2. It normalises both the quote and each reply: Unicode is converted to NFC, runs of spaces, tabs and line breaks are collapsed to one space, and `.casefold()` is applied so case differences in English or Banglish do not cause false mismatches.
+3. It requires at least `MIN_QUOTE_WORDS = 3` words in the normalised quote so a stray single word like `"kori"` cannot pass on its own.
+4. It checks whether the normalised quote is inside any normalised reply.
 
 **Why only `employee` turns?** The assistant's own questions and the job description also contain words. If they were allowed, the AI could "prove" a quote by pointing at its own text. Evidence has to come from the person.
 

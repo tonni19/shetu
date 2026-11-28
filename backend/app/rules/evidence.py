@@ -11,27 +11,30 @@
 import unicodedata
 from typing import Any
 
+MIN_QUOTE_WORDS = 3
+
 
 def _normalize_text(text: str) -> str:
-    """Normalize Unicode to NFC and collapse whitespace so Bangla and Banglish strings compare reliably."""
+    """Normalize Unicode to NFC, collapse whitespace, and casefold so Bangla and Banglish compare reliably."""
     normalized = unicodedata.normalize("NFC", text)
-    return " ".join(normalized.split())
+    return " ".join(normalized.split()).casefold()
 
 
 def check_quote(quote: str, employee_turns: list[str]) -> bool:
     """R1: Verify that `quote` actually appears in at least one employee reply.
 
     Why it exists:
-        Prevents AI-hallucinated quotes from being attached to a Duty as employee evidence.
-        Only `employee` turns may be passed here—never assistant prompts or job descriptions.
+        Prevents AI-hallucinated or overly short single-word quotes from being attached to a Duty
+        as employee evidence. Only `employee` turns may be passed here—never assistant prompts
+        or job descriptions.
 
     Inputs:
         quote: Exact substring claimed by the extractor (may be empty or contain Bangla/English).
         employee_turns: List of raw reply strings spoken by the employee during the interview.
 
     Returns:
-        True if the NFC-normalized, whitespace-collapsed `quote` appears inside any turn;
-        False if `quote` is empty/whitespace, `employee_turns` is empty, or no match is found.
+        True if the NFC-normalized, whitespace-collapsed, casefolded `quote` has at least
+        `MIN_QUOTE_WORDS` words and appears inside any employee turn; False otherwise.
     """
     if not isinstance(quote, str) or not quote.strip():
         return False
@@ -39,6 +42,8 @@ def check_quote(quote: str, employee_turns: list[str]) -> bool:
         return False
 
     norm_quote = _normalize_text(quote)
+    if len(norm_quote.split()) < MIN_QUOTE_WORDS:
+        return False
 
     for turn in employee_turns:
         if isinstance(turn, str) and turn.strip():

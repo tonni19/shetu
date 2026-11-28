@@ -105,6 +105,8 @@ Append only; newest at the bottom. One line each: date, who to who, what is now 
 | 2026-11-26 | Maruf | Mahadi | T5 calls your `extract_duties` for real and maps `GatewayError` to 422 (`bad_input`), 502 (`invalid_reply`, `unknown_source_line`, `replay_*`) and 503 (`live_not_configured`, `bad_mode`). Case-1 and case-2 now have jd-1 to jd-4 in the database; jd-3 is the line your fixture cites. For T8: the job description lines come from the `job_description_lines` table. |
 | 2026-11-26 | Maruf | Nazha | T5 calls your R1 on every "said" duty (a failed quote downgrades it to "suggested") and R2 for `fact_count`. Your two ideas for R1 (ignore case, minimum length) would change what the route accepts; please tell me the numbers you agree with Mahadi before you change it. |
 
+| 2026-11-28 | Nazha | Maruf, Mahadi | Hardened R1 (`check_quote` in `backend/app/rules/evidence.py`) with `.casefold()` and `MIN_QUOTE_WORDS = 3` plus two unit tests in `backend/tests/test_evidence.py` (82 tests pass). |
+
 ## Known conflicts and open questions
 
 - None recorded. Add a line here when two parts disagree (for example two people need different shapes for the same data), with who has to decide.
