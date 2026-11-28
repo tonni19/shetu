@@ -74,3 +74,21 @@ def test_hr_can_view_all_cases_and_sign_out(driver: WebDriver, app_servers: str)
 
     wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="sign-in-submit"]')))
     assert "/sign-in" in driver.current_url
+
+def test_unauthenticated_case_url_redirects_to_sign_in(driver: WebDriver, app_servers: str) -> None:
+    """Visiting a protected case URL without a session redirects to /sign-in."""
+    wait = WebDriverWait(driver, 10)
+    driver.get(f"{app_servers}/cases/case-1")
+    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="sign-in-submit"]')))
+    assert "/sign-in" in driver.current_url
+
+
+def test_unknown_case_shows_not_found_panel(driver: WebDriver, app_servers: str) -> None:
+    """Opening a non-existent case ID renders the 404 case-not-found panel."""
+    wait = WebDriverWait(driver, 10)
+    _sign_in_as_demo(driver, app_servers, "u-farhana")
+    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="case-card-case-1"]')))
+
+    driver.get(f"{app_servers}/cases/does-not-exist")
+    not_found = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '[data-testid="case-not-found"]')))
+    assert "does-not-exist" in not_found.text

@@ -12,6 +12,8 @@
 
 from __future__ import annotations
 
+import socket
+
 import os
 import subprocess
 import sys
@@ -27,6 +29,14 @@ ROOT = Path(__file__).resolve().parents[1]
 BACKEND_DIR = ROOT / "backend"
 FRONTEND_DIR = ROOT / "frontend"
 BASE_URL = os.environ.get("SHETU_E2E_URL", "http://localhost:5173").rstrip("/")
+
+
+def _assert_port_free(port: int) -> None:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+        if sock.connect_ex(("127.0.0.1", port)) == 0:
+            raise RuntimeError(
+                f"Port {port} is already in use. Stop any running dev server before running `pytest e2e`."
+            )
 
 
 def _wait_for_http(url: str, timeout: float = 25.0) -> None:
@@ -65,6 +75,9 @@ def app_servers(tmp_path_factory: pytest.TempPathFactory) -> str:
         env=backend_env,
         check=True,
     )
+
+    _assert_port_free(8000)
+    _assert_port_free(5173)
 
     backend_proc = subprocess.Popen(
         [sys.executable, "-m", "uvicorn", "app.main:app", "--host", "127.0.0.1", "--port", "8000"],
